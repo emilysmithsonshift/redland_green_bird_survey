@@ -58,57 +58,47 @@ class _EnterObservationsScreenState extends State<EnterObservationsScreen> {
           steps: [
             Step(
               title: Text('Select the Bird Box Number'),
-              content: Container(
-                height: 300,
-                child: Center(
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
-                      SizedBox(
-                        height: 200,
-                        child: GridView.builder(
-                            itemCount: BirdBoxes.birdBoxesList.length,
-                            gridDelegate:
-                                SliverGridDelegateWithMaxCrossAxisExtent(
-                              childAspectRatio: 1,
-                              maxCrossAxisExtent: 60,
-                            ),
-                            itemBuilder: (context, index) {
-                              return GestureDetector(
-                                onTap: () {
-                                  setState(() {
-                                    _birdbox = index;
-                                  });
-                                },
-                                child: Container(
-                                  margin: EdgeInsets.all(4),
-                                  decoration: BoxDecoration(
-                                    color: Colors.green[50],
-                                    borderRadius: BorderRadius.all(
-                                      Radius.circular(60),
-                                    ),
-                                    boxShadow: [
-                                      new BoxShadow(
-                                        color: Colors.grey,
-                                        offset: new Offset(3.0, 3.0),
-                                        blurRadius: 3.0,
-                                      )
-                                    ],
-                                    border: Border.all(
-                                      width: _birdbox == index ? 2.0 : 0.0,
-                                      color: Colors.blueAccent,
-                                    ),
-                                  ),
-                                  child: Center(
-                                    child: Text(
-                                      (index + 1).toString(),
-                                    ),
-                                  ),
+              content: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  Wrap(
+                      children: BirdBoxes.birdBoxesList.map((birdBox) {
+                    return GestureDetector(
+                      onTap: () {
+                        setState(() {
+                          _birdbox = birdBox.id - 1;
+                        });
+                      },
+                      child: ClipOval(
+                          child: Container(
+                              height: 30,
+                              width: 30,
+                              margin: EdgeInsets.all(8),
+                              decoration: BoxDecoration(
+                                color: Colors.green[50],
+                                borderRadius: BorderRadius.all(
+                                  Radius.circular(60),
                                 ),
-                              );
-                            }),
-                      ),
-                      _birdbox == -1
+                                boxShadow: [
+                                  new BoxShadow(
+                                    color: Colors.grey,
+                                    offset: new Offset(3.0, 3.0),
+                                    blurRadius: 3.0,
+                                  )
+                                ],
+                                border: Border.all(
+                                  width: _birdbox == birdBox.id - 1 ? 2.0 : 0.0,
+                                  color: Colors.blueAccent,
+                                ),
+                              ),
+                              child:
+                                  Center(child: Text(birdBox.id.toString())))),
+                    );
+                  }).toList()),
+                  SizedBox(
+                    height: 60,
+                    child: Center(
+                      child: _birdbox == -1
                           ? Container(
                               padding: EdgeInsets.all(8),
                               decoration: BoxDecoration(
@@ -132,9 +122,9 @@ class _EnterObservationsScreenState extends State<EnterObservationsScreen> {
                                   'Tap here to see the map of where all the bird boxes are located'))
                           : Text(BirdBoxes
                               .birdBoxesList[_birdbox].locationDescription),
-                    ],
+                    ),
                   ),
-                ),
+                ],
               ),
             ),
             Step(
