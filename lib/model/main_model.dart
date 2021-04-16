@@ -1,3 +1,5 @@
+import 'package:latlng/latlng.dart';
+
 class BoxType {
   String name;
   String description;
@@ -33,9 +35,16 @@ class Sighting {
   int birdBox;
   Bird bird;
   String user;
-  bool birdSighted;
-  String comment;
-  Sighting(this.id, this.dateTime, this.birdBox, this.user, this.birdSighted,
-      this.comment,
+  SightingType sightingType;
+  Sighting(this.id, this.dateTime, this.birdBox, this.user, this.sightingType,
       {this.bird});
+}
+
+class SightingType {
+  int id;
+  String description;
+  SightingType(
+    this.id,
+    this.description,
+  );
 }

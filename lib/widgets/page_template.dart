@@ -6,6 +6,7 @@ class PageTemplate extends StatelessWidget {
   final List<Widget> widgetList;
   final List<Widget> gridList;
   final String heroTag;
+  final int crossAxisCount;
 
   const PageTemplate(
       {Key key,
@@ -13,7 +14,8 @@ class PageTemplate extends StatelessWidget {
       this.image,
       this.widgetList,
       this.gridList,
-      this.heroTag})
+      this.heroTag,
+      this.crossAxisCount})
       : super(key: key);
   @override
   Widget build(BuildContext context) {
@@ -49,7 +51,7 @@ class PageTemplate extends StatelessWidget {
           if (gridList != null)
             SliverGrid(
               gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 2,
+                crossAxisCount: crossAxisCount ?? 2,
               ),
               delegate:
                   SliverChildBuilderDelegate((BuildContext context, int index) {

@@ -67,6 +67,20 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
+  intl:
+    dependency: "direct main"
+    description:
+      name: intl
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.16.1"
+  latlng:
+    dependency: "direct main"
+    description:
+      name: latlng
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.0.2"
   matcher:
     dependency: transitive
     description:

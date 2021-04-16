@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
+import 'package:redland_green_bird_survey/model/main_model.dart';
 import 'package:redland_green_bird_survey/pages/information_screen.dart';
+import 'package:redland_green_bird_survey/providers/sightings_provider.dart';
 import 'package:redland_green_bird_survey/widgets/page_template.dart';
 import 'package:redland_green_bird_survey/widgets/rg_grid_tile.dart';
 import 'package:redland_green_bird_survey/widgets/rg_list_tile.dart';
@@ -30,29 +33,36 @@ class _HomePageState extends State<HomePage> {
           text: 'Enter your own observations ',
           imageAsset: 'assets/greattit.png'),
     ];
-    final Widget observation = Padding(
-      padding: EdgeInsets.all(8),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
-        children: [
-          SizedBox(width: 8),
-          Column(
-            children: [
-              Text(
-                'Blue Tit',
-                style: TextStyle(fontWeight: FontWeight.bold),
-              ),
-              Text('26th Feb 8.03pm'),
-            ],
-          ),
-          Card(
-              child: Padding(
-            padding: const EdgeInsets.all(2.0),
-            child: Text('Birdbox: 8'),
-          ))
-        ],
-      ),
-    );
+    Widget observationSummary(Sighting sighting) {
+      return Padding(
+        padding: EdgeInsets.all(8),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: [
+            SizedBox(width: 8),
+            Column(
+              children: [
+                Text(
+                  sighting.bird.name ?? 'hi',
+                  style: TextStyle(fontWeight: FontWeight.bold),
+                ),
+                Text(
+                  DateFormat('d MMM yyyy').format(sighting.dateTime) +
+                      '  ' +
+                      DateFormat.jm().format(sighting.dateTime),
+                ),
+              ],
+            ),
+            Card(
+                child: Padding(
+              padding: const EdgeInsets.all(2.0),
+              child: Text(sighting.birdBox.toString()),
+            ))
+          ],
+        ),
+      );
+    }
+
     final List<Widget> _widgetList = [
       RGListTile(
         navigateTo: InformationScreen(),
@@ -60,7 +70,7 @@ class _HomePageState extends State<HomePage> {
         heroTag: 'bluetit',
         imageLeft: false,
         widget: Padding(
-          padding: const EdgeInsets.all(8.0),
+          padding: const EdgeInsets.all(12.0),
           child: Column(
             children: [
               Center(
@@ -87,19 +97,23 @@ class _HomePageState extends State<HomePage> {
             Padding(
               padding: const EdgeInsets.all(12.0),
               child: Center(
-                child: Row(
-                  children: [
-                    Text(
-                      'Latest Observations',
-                      style: TextStyle(fontWeight: FontWeight.bold),
-                    ),
-                  ],
+                child: Text(
+                  'Latest Observations',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(fontWeight: FontWeight.bold),
                 ),
               ),
             ),
-            observation,
-            observation,
-            observation,
+            Expanded(
+              child: Wrap(
+                direction: Axis.horizontal,
+                spacing: 8.0, // gap between adjacent chips
+                runSpacing: 4.0,
+                children: SightingsProvider.sightings.map((sighting) {
+                  return observationSummary(sighting);
+                }).toList(),
+              ),
+            )
           ],
         ),
       ),

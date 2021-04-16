@@ -1,35 +1,167 @@
-import 'package:flutter/material.dart';
-import 'package:rg_bird_survey/model/main_model.dart';
-import 'package:rg_bird_survey/providers/birds_provider.dart';
+import 'package:redland_green_bird_survey/model/main_model.dart';
+import 'package:redland_green_bird_survey/providers/sightings_type_provider.dart';
 
+import 'birds_provider.dart';
 
-class Sightings extends ChangeNotifier {
-  var _sightings = [
-    Sighting(0, DateTime(2020, 12, 07, 12, 34, 21, 32, ), 0,  'Emily', true, 'lovely', bird: Birds.nuthatch,),
-    Sighting(3, DateTime(2020, 12, 07, 11, 34, 21, 32, ), 2, 'Neil', true, 'feeding young', bird: Birds.nuthatch,),
-    Sighting(0, DateTime(2020, 12, 07, 14, 34, 21, 32, ), 5,  'Jess', true, 'not sure what I saw', bird: Birds.nuthatch,),
-    Sighting(5, DateTime(2020, 12, 07, 16, 34, 21, 32, ), 2,  'John', false, ''),
-    Sighting(2, DateTime(2020, 12, 07, 17, 34, 21, 32, ), 7, 'Julie', true, 'nice', bird: Birds.nuthatch,),
-    Sighting(0, DateTime(2020, 12, 07, 10, 34, 21, 32, ), 0, 'Emily', true, 'exciting', bird: Birds.robin,),
-    Sighting(1, DateTime(2020, 12, 07, 15, 34, 21, 32, ), 2,  'Emily', true, 'lovely', bird: Birds.nuthatch,),
-    Sighting(0, DateTime(2020, 12, 07, 18, 34, 21, 32, ), 9,  'Emily', true, 'lovely', bird: Birds.nuthatch,),
-    Sighting(0, DateTime(2020, 12, 07, 14, 34, 21, 32, ), 2,  'Emily', false, ''),
-    Sighting(0, DateTime(2020, 12, 07, 13, 34, 21, 32, ), 2,  'Emily', true, 'lovely', bird: Birds.nuthatch,)
+class SightingsProvider {
+  static final List<Sighting> sightings = [
+    Sighting(
+      0,
+      DateTime(
+        2020,
+        12,
+        07,
+        12,
+        34,
+        21,
+        32,
+      ),
+      0,
+      'Emily',
+      SightingsTypeProvider.sightingsTypeList[1],
+      bird: Birds.nuthatch,
+    ),
+    Sighting(
+      3,
+      DateTime(
+        2020,
+        12,
+        07,
+        11,
+        34,
+        21,
+        32,
+      ),
+      2,
+      'Neil',
+      SightingsTypeProvider.sightingsTypeList[3],
+      bird: Birds.robin,
+    ),
+    Sighting(
+      0,
+      DateTime(
+        2020,
+        12,
+        07,
+        14,
+        34,
+        21,
+        32,
+      ),
+      5,
+      'Jess',
+      SightingsTypeProvider.sightingsTypeList[5],
+      bird: Birds.blueTit,
+    ),
+    // Sighting(
+    //   5,
+    //   DateTime(
+    //     2020,
+    //     12,
+    //     07,
+    //     16,
+    //     34,
+    //     21,
+    //     32,
+    //   ),
+    //   2,
+    //   'John',
+    //   6,
+    // ),
+    Sighting(
+      2,
+      DateTime(
+        2020,
+        12,
+        07,
+        17,
+        34,
+        21,
+        32,
+      ),
+      7,
+      'Julie',
+      SightingsTypeProvider.sightingsTypeList[0],
+      bird: Birds.songThrush,
+    ),
+    Sighting(
+      0,
+      DateTime(
+        2020,
+        12,
+        07,
+        10,
+        34,
+        21,
+        32,
+      ),
+      0,
+      'Emily',
+      SightingsTypeProvider.sightingsTypeList[6],
+      bird: Birds.robin,
+    ),
+    Sighting(
+      1,
+      DateTime(
+        2020,
+        12,
+        07,
+        15,
+        34,
+        21,
+        32,
+      ),
+      2,
+      'Emily',
+      SightingsTypeProvider.sightingsTypeList[5],
+      bird: Birds.greatTit,
+    ),
+    Sighting(
+      0,
+      DateTime(
+        2020,
+        12,
+        07,
+        18,
+        34,
+        21,
+        32,
+      ),
+      9,
+      'Emily',
+      SightingsTypeProvider.sightingsTypeList[5],
+      bird: Birds.blackbird,
+    ),
+    // Sighting(
+    //   0,
+    //   DateTime(
+    //     2020,
+    //     12,
+    //     07,
+    //     14,
+    //     34,
+    //     21,
+    //     32,
+    //   ),
+    //   2,
+    //   'Emily',
+    //   3,
+    // ),
+    Sighting(
+      0,
+      DateTime(
+        2020,
+        12,
+        07,
+        13,
+        34,
+        21,
+        32,
+      ),
+      2,
+      'Emily',
+      SightingsTypeProvider.sightingsTypeList[8],
+      bird: Birds.nuthatch,
+    )
   ];
-  List<Sighting> get getSighting {
-    return _sightings;
-  }
-  int getSightingsLenghth(){
-    return _sightings.length;
-  }
-  void enterSighting(Sighting _sighting) {
-
-    _sightings.addAll([_sighting]);
-    print(_sightings);
-    notifyListeners();
-  }
 }
-
-
-
-

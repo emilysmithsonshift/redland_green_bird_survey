@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-
-import 'pages/home.dart';
+import 'package:redland_green_bird_survey/pages/home.dart';
 
 void main() => runApp(MyApp());
 
@@ -13,5 +12,3 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-
-/// This is the stateful widget that the main application instantiates.

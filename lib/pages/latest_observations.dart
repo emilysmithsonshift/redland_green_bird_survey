@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
+import 'package:redland_green_bird_survey/model/main_model.dart';
+import 'package:redland_green_bird_survey/providers/sightings_provider.dart';
 import 'package:redland_green_bird_survey/widgets/page_template.dart';
 
 class LatestObservationsScreen extends StatefulWidget {
@@ -8,87 +11,112 @@ class LatestObservationsScreen extends StatefulWidget {
 }
 
 class _LatestObservationsScreenState extends State<LatestObservationsScreen> {
-  final Widget observation = Padding(
-    padding: EdgeInsets.all(8),
-    child: Row(
-      mainAxisAlignment: MainAxisAlignment.spaceAround,
-      children: [
-        ClipOval(
-          child: SizedBox(
-            width: 30,
-            height: 30,
-            child: Image.asset('assets/bluetit1.png', fit: BoxFit.fill),
-          ),
-        ),
-        SizedBox(width: 8),
-        Column(
-          children: [
-            Text(
-              'Blue Tit',
-              style: TextStyle(fontWeight: FontWeight.bold),
+  Widget observationDetails(Sighting sighting) {
+    return Padding(
+      padding: EdgeInsets.all(8),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        children: [
+          ClipOval(
+            child: SizedBox(
+              height: 70,
+              width: 70,
+              child: sighting.bird.image.length == 0
+                  ? Container(
+                      color: sighting.bird.name == 'None'
+                          ? Colors.grey[400]
+                          : Colors.white,
+                      child: Center(
+                        child: Text(
+                          sighting.bird.name == 'None' ? '' : '?',
+                          style: TextStyle(fontSize: 30),
+                        ),
+                      ),
+                    )
+                  : Image.asset(sighting.bird.image[0], fit: BoxFit.fitHeight),
             ),
-            Text('26th February 8pm'),
-          ],
-        ),
-        Card(
+          ),
+          SizedBox(width: 8),
+          Expanded(
             child: Padding(
-          padding: const EdgeInsets.all(2.0),
-          child: Text('Birdbox: 8'),
-        ))
-      ],
-    ),
-  );
+              padding: const EdgeInsets.all(8.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    sighting.bird.name ?? 'None',
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                  ),
+                  SizedBox(height: 4),
+                  Text(
+                    DateFormat('d MMMM yyyy').format(sighting.dateTime) +
+                        ' ' +
+                        DateFormat.jm().format(sighting.dateTime),
+                  ),
+                  SizedBox(height: 4),
+                  Text(
+                    sighting.sightingType.description,
+                  ),
+                  SizedBox(height: 4),
+                  Text('Observed by: ${sighting.user}',
+                      style: TextStyle(fontWeight: FontWeight.bold))
+                ],
+              ),
+            ),
+          ),
+          ClipOval(
+            child: Container(
+                color: Colors.green[50],
+                height: 70,
+                width: 70,
+                child: Padding(
+                  padding: const EdgeInsets.all(2.0),
+                  child: Center(
+                    child: Text(
+                      'Box no:\n' + sighting.birdBox.toString(),
+                      textAlign: TextAlign.center,
+                    ),
+                  ),
+                )),
+          )
+        ],
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     final widgetList = [
       Hero(
         tag: 'observations',
-        child: Container(
-          margin: EdgeInsets.all(8),
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.all(
-              Radius.circular(20.0),
-            ),
-            color: Colors.green[50],
-            border: Border.all(width: 0.3, color: Colors.grey),
-            boxShadow: [
-              new BoxShadow(
-                color: Colors.grey,
-                offset: new Offset(5.0, 5.0),
-                blurRadius: 5.0,
-              )
-            ],
-          ),
-          child: Column(
-            children: [
-              Icon(Icons.horizontal_rule),
-              SizedBox(
-                height: 30,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    Text(
-                      'Latest',
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 18,
-                      ),
+        child: Column(
+          children: [
+            SizedBox(
+              height: 30,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  Text(
+                    'Latest',
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 18,
                     ),
-                    Text('My Obs',
-                        style: TextStyle(
-                          fontWeight: FontWeight.normal,
-                          fontSize: 18,
-                        )),
-                  ],
-                ),
+                  ),
+                  Text('My Obs',
+                      style: TextStyle(
+                        fontWeight: FontWeight.normal,
+                        fontSize: 18,
+                      )),
+                ],
               ),
-              observation,
-              observation,
-              observation,
-              observation,
-              observation,
-            ],
-          ),
+            ),
+            Column(
+              children: SightingsProvider.sightings.map((sighting) {
+                return observationDetails(sighting);
+              }).toList(),
+            )
+          ],
         ),
       )
     ];

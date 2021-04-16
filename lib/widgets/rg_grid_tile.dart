@@ -25,43 +25,45 @@ class RGGridTile extends StatelessWidget {
       },
       child: Hero(
         tag: heroTag ?? '',
-        child: Container(
-          height: 200,
-          margin: EdgeInsets.all(8),
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.all(
-              Radius.circular(20.0),
-            ),
-            boxShadow: [
-              new BoxShadow(
-                color: Colors.grey,
-                offset: new Offset(5.0, 5.0),
-                blurRadius: 5.0,
-              )
-            ],
-            image: DecorationImage(
-              fit: BoxFit.fitHeight,
-              image: AssetImage(
-                imageAsset,
+        child: Material(
+          color: Colors.green[100],
+          child: Container(
+            height: 200,
+            margin: EdgeInsets.all(8),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.all(
+                Radius.circular(20.0),
               ),
-            ),
-          ),
-          child: Align(
-            alignment: Alignment.bottomCenter,
-            child: Container(
-              height: 50,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.only(
-                  bottomLeft: Radius.circular(20.0),
-                  bottomRight: Radius.circular(20),
+              boxShadow: [
+                new BoxShadow(
+                  color: Colors.grey,
+                  offset: new Offset(5.0, 5.0),
+                  blurRadius: 5.0,
+                )
+              ],
+              image: DecorationImage(
+                fit: BoxFit.fitHeight,
+                image: AssetImage(
+                  imageAsset,
                 ),
-                color: Colors.white60,
               ),
-              width: double.infinity,
-              padding: const EdgeInsets.all(8.0),
-              child: Text(
-                text,
-                textAlign: TextAlign.center,
+            ),
+            child: Align(
+              alignment: Alignment.bottomCenter,
+              child: Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.only(
+                    bottomLeft: Radius.circular(20.0),
+                    bottomRight: Radius.circular(20),
+                  ),
+                  color: Colors.white60,
+                ),
+                width: double.infinity,
+                padding: const EdgeInsets.all(8.0),
+                child: Text(
+                  text,
+                  textAlign: TextAlign.center,
+                ),
               ),
             ),
           ),
