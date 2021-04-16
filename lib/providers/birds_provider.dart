@@ -8,6 +8,8 @@ class Birds {
     'A colourful mix of blue, yellow, white and green makes the blue tit one of our most attractive and most recognisable garden visitors. In winter, family flocks join up with other tits as they search for food. A garden with four or five blue tits at a feeder at any one time may be feeding 20 or more.',
     [
       'assets/greattit_close.png',
+      'assets/greattit.png',
+      'assets/greattit1.png',
     ],
   );
   static final Bird blueTit = Bird('Blue Tit', '', [
@@ -34,10 +36,10 @@ class Birds {
     'assets/dunnock.png',
   ]);
   static final Bird wren = Bird('Wren', '', [
+    'assets/wren3.png',
     'assets/wren_close.png',
     'assets/wren.png',
     'assets/wren2.png',
-    'assets/wren3.png'
   ]);
   static final Bird unknown = Bird(
     'Unknown',
@@ -84,6 +86,7 @@ class Birds {
   ]);
   static final Bird coaltit = Bird('Coaltit', '', [
     'assets/coaltit.png',
+    'assets/coaltit1.png',
   ]);
   static final Bird goldfinch = Bird('GoldFinch', '', [
     'assets/goldfinch.png',
@@ -97,6 +100,8 @@ class Birds {
   ]);
   static final Bird magpie = Bird('Magpie', '', [
     'assets/magpie.png',
+    'assets/magpie1.png',
+    'assets/magpie3.png',
   ]);
   static final Bird woodpecker = Bird('Woodpecker', '', [
     'assets/woodpecker.png',
