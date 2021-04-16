@@ -33,7 +33,7 @@ class _BirdFactPageState extends State<BirdFactPage> {
                   Radius.circular(10),
                 ),
                 image: DecorationImage(
-                  fit: BoxFit.fitHeight,
+                  fit: BoxFit.cover,
                   image: AssetImage(
                     widget.bird.image[i],
                   ),
@@ -65,7 +65,7 @@ class _BirdFactPageState extends State<BirdFactPage> {
                           Radius.circular(20.0),
                         ),
                         image: DecorationImage(
-                          fit: BoxFit.fill,
+                          fit: BoxFit.cover,
                           image: AssetImage(
                             widget.bird.image[imageNumber],
                           ),
@@ -86,22 +86,6 @@ class _BirdFactPageState extends State<BirdFactPage> {
                       Text(widget.bird.name,
                           style: TextStyle(fontWeight: FontWeight.bold)),
                       Text(widget.bird.description),
-                      Text(
-                          'blah blah blahblah blah blahblah blah blahblah blah blahblah blah blah'),
-                      Text(
-                          'blah blah blahblah blah blahblah blah blahblah blah blahblah blah blah'),
-                      Text(
-                          'blah blah blahblah blah blahblah blah blahblah blah blahblah blah blah'),
-                      Text(
-                          'blah blah blahblah blah blahblah blah blahblah blah blahblah blah blah'),
-                      Text(
-                          'blah blah blahblah blah blahblah blah blahblah blah blahblah blah blah'),
-                      Text(
-                          'blah blah blahblah blah blahblah blah blahblah blah blahblah blah blah'),
-                      Text(
-                          'blah blah blahblah blah blahblah blah blahblah blah blahblah blah blah'),
-                      Text(
-                          'blah blah blahblah blah blahblah blah blahblah blah blahblah blah blah'),
                     ],
                   ),
                 ),
