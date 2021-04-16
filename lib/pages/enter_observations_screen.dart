@@ -96,7 +96,7 @@ class _EnterObservationsScreenState extends State<EnterObservationsScreen> {
                     );
                   }).toList()),
                   SizedBox(
-                    height: 60,
+                    height: 80,
                     child: Center(
                       child: _birdbox == -1
                           ? Container(
@@ -157,9 +157,8 @@ class _EnterObservationsScreenState extends State<EnterObservationsScreen> {
                 height: 200,
                 width: double.infinity,
                 child: GridView.builder(
-                  gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
-                    childAspectRatio: 0.8,
-                    maxCrossAxisExtent: 120,
+                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 3,
                   ),
                   itemCount: Birds.birdsList.length,
                   itemBuilder: (context, index) {
@@ -187,41 +186,36 @@ class _EnterObservationsScreenState extends State<EnterObservationsScreen> {
                           borderRadius: BorderRadius.all(
                             Radius.circular(10),
                           ),
+                          image: DecorationImage(
+                            colorFilter: Birds.birdsList[index].image.length ==
+                                    0
+                                ? ColorFilter.mode(Colors.grey, BlendMode.clear)
+                                : ColorFilter.mode(
+                                    Colors.white, BlendMode.colorBurn),
+                            fit: BoxFit.fill,
+                            image: AssetImage(
+                                Birds.birdsList[index].image.length == 0
+                                    ? 'assets/bluetit.png'
+                                    : Birds.birdsList[index].image[0]),
+                          ),
                         ),
-                        child: Column(
-                          children: [
-                            SizedBox(height: 8),
-                            ClipOval(
-                              child: SizedBox(
-                                height: 70,
-                                width: 70,
-                                child: Birds.birdsList[index].image.length == 0
-                                    ? Container(
-                                        color: Birds.birdsList[index].name ==
-                                                'None'
-                                            ? Colors.grey[400]
-                                            : Colors.white,
-                                        child: Center(
-                                          child: Text(
-                                            Birds.birdsList[index].name ==
-                                                    'None'
-                                                ? ''
-                                                : '?',
-                                            style: TextStyle(fontSize: 30),
-                                          ),
-                                        ),
-                                      )
-                                    : Image.asset(
-                                        Birds.birdsList[index].image[0],
-                                        fit: BoxFit.fitHeight),
+                        child: Align(
+                          alignment: Alignment.bottomCenter,
+                          child: Container(
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.only(
+                                bottomLeft: Radius.circular(10.0),
+                                bottomRight: Radius.circular(10),
                               ),
+                              color: Colors.white60,
                             ),
-                            SizedBox(height: 4),
-                            Text(
+                            width: double.infinity,
+                            padding: const EdgeInsets.all(2.0),
+                            child: Text(
                               Birds.birdsList[index].name,
                               textAlign: TextAlign.center,
-                            )
-                          ],
+                            ),
+                          ),
                         ),
                       ),
                     );

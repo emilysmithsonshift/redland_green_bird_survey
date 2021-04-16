@@ -10,6 +10,7 @@ import 'package:redland_green_bird_survey/widgets/rg_list_tile.dart';
 import 'bird_identifier.dart';
 import 'enter_observations_screen.dart';
 import 'latest_observations.dart';
+import 'map_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({key}) : super(key: key);
@@ -31,6 +32,11 @@ class _HomePageState extends State<HomePage> {
           heroTag: 'greattit',
           navigateTo: EnterObservationsScreen(),
           text: 'Enter your own observations ',
+          imageAsset: 'assets/greattit.png'),
+      RGGridTile(
+          heroTag: 'map_page',
+          navigateTo: MapPage(),
+          text: 'Map',
           imageAsset: 'assets/greattit.png'),
     ];
     Widget observationSummary(Sighting sighting) {

@@ -103,6 +103,11 @@ class _LatestObservationsScreenState extends State<LatestObservationsScreen> {
                       fontSize: 18,
                     ),
                   ),
+                  Text('All',
+                      style: TextStyle(
+                        fontWeight: FontWeight.normal,
+                        fontSize: 18,
+                      )),
                   Text('My Obs',
                       style: TextStyle(
                         fontWeight: FontWeight.normal,
