@@ -9,12 +9,12 @@ class RegistrationPage extends StatefulWidget {
 class _RegistrationPageState extends State<RegistrationPage> {
   @override
   Widget build(BuildContext context) {
-    List<Widget> _widgetList = [
+    final List<Widget> _widgetList = [
       Padding(
         padding: const EdgeInsets.all(8.0),
         child: Column(
           children: [
-            SizedBox(
+            const SizedBox(
               width: double.infinity,
               child: Text(
                 'What is your full name?',
@@ -22,14 +22,14 @@ class _RegistrationPageState extends State<RegistrationPage> {
               ),
             ),
             Container(
-              margin: EdgeInsets.all(8),
-              padding: EdgeInsets.all(8),
-              decoration: BoxDecoration(
+              margin: const EdgeInsets.all(8),
+              padding: const EdgeInsets.all(8),
+              decoration: const BoxDecoration(
                 color: Colors.white,
                 boxShadow: [
-                  new BoxShadow(
+                  BoxShadow(
                     color: Colors.grey,
-                    offset: new Offset(5.0, 5.0),
+                    offset: Offset(5.0, 5.0),
                     blurRadius: 5.0,
                   )
                 ],
@@ -39,15 +39,15 @@ class _RegistrationPageState extends State<RegistrationPage> {
                 padding: const EdgeInsets.all(8.0),
                 child: TextFormField(
                   textCapitalization: TextCapitalization.words,
-                  decoration: InputDecoration.collapsed(
+                  decoration: const InputDecoration.collapsed(
                     fillColor: Colors.white,
                     hintText: 'eg John Smith',
                   ),
                 ),
               ),
             ),
-            SizedBox(height: 20),
-            SizedBox(
+            const SizedBox(height: 20),
+            const SizedBox(
               width: double.infinity,
               child: Text(
                 'What is your email address?',
@@ -55,14 +55,14 @@ class _RegistrationPageState extends State<RegistrationPage> {
               ),
             ),
             Container(
-              margin: EdgeInsets.all(8),
-              padding: EdgeInsets.all(8),
-              decoration: BoxDecoration(
+              margin: const EdgeInsets.all(8),
+              padding: const EdgeInsets.all(8),
+              decoration: const BoxDecoration(
                 color: Colors.white,
                 boxShadow: [
-                  new BoxShadow(
+                  BoxShadow(
                     color: Colors.grey,
-                    offset: new Offset(5.0, 5.0),
+                    offset: Offset(5.0, 5.0),
                     blurRadius: 5.0,
                   )
                 ],
@@ -72,15 +72,15 @@ class _RegistrationPageState extends State<RegistrationPage> {
                 padding: const EdgeInsets.all(8.0),
                 child: TextFormField(
                   keyboardType: TextInputType.emailAddress,
-                  decoration: InputDecoration.collapsed(
+                  decoration: const InputDecoration.collapsed(
                     fillColor: Colors.white,
                     hintText: 'eg john_smiths@mail.com',
                   ),
                 ),
               ),
             ),
-            SizedBox(height: 20),
-            SizedBox(
+            const SizedBox(height: 20),
+            const SizedBox(
               width: double.infinity,
               child: Text(
                 'What would you like your nickname to be (this will be visible to the public?',
@@ -88,14 +88,14 @@ class _RegistrationPageState extends State<RegistrationPage> {
               ),
             ),
             Container(
-                margin: EdgeInsets.all(8),
-                padding: EdgeInsets.all(8),
-                decoration: BoxDecoration(
+                margin: const EdgeInsets.all(8),
+                padding: const EdgeInsets.all(8),
+                decoration: const BoxDecoration(
                   color: Colors.white,
                   boxShadow: [
-                    new BoxShadow(
+                    BoxShadow(
                       color: Colors.grey,
-                      offset: new Offset(5.0, 5.0),
+                      offset: Offset(5.0, 5.0),
                       blurRadius: 5.0,
                     )
                   ],
@@ -105,7 +105,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
                   padding: const EdgeInsets.all(8.0),
                   child: TextFormField(
                     textCapitalization: TextCapitalization.words,
-                    decoration: InputDecoration.collapsed(
+                    decoration: const InputDecoration.collapsed(
                       fillColor: Colors.white,
                       hintText: 'eg Johnny',
                     ),

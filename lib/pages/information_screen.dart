@@ -7,11 +7,11 @@ class InformationScreen extends StatefulWidget {
 }
 
 class _InformationScreenState extends State<InformationScreen> {
-  List<Widget> _widgetList = [
+  final List<Widget> _widgetList = [
     Padding(
       padding: const EdgeInsets.all(8.0),
       child: Column(
-        children: [
+        children: const [
           Text(
             'Welcome to the Redland Green Bird Box Survey',
             style: TextStyle(

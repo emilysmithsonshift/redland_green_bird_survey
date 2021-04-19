@@ -13,7 +13,7 @@ class LatestObservationsScreen extends StatefulWidget {
 class _LatestObservationsScreenState extends State<LatestObservationsScreen> {
   Widget observationDetails(Sighting sighting) {
     return Padding(
-      padding: EdgeInsets.all(8),
+      padding: const EdgeInsets.all(8),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
@@ -21,7 +21,7 @@ class _LatestObservationsScreenState extends State<LatestObservationsScreen> {
             child: SizedBox(
               height: 70,
               width: 70,
-              child: sighting.bird.image.length == 0
+              child: sighting.bird.image.isEmpty
                   ? Container(
                       color: sighting.bird.name == 'None'
                           ? Colors.grey[400]
@@ -29,14 +29,14 @@ class _LatestObservationsScreenState extends State<LatestObservationsScreen> {
                       child: Center(
                         child: Text(
                           sighting.bird.name == 'None' ? '' : '?',
-                          style: TextStyle(fontSize: 30),
+                          style: const TextStyle(fontSize: 30),
                         ),
                       ),
                     )
                   : Image.asset(sighting.bird.image[0], fit: BoxFit.fitHeight),
             ),
           ),
-          SizedBox(width: 8),
+          const SizedBox(width: 8),
           Expanded(
             child: Padding(
               padding: const EdgeInsets.all(8.0),
@@ -45,21 +45,19 @@ class _LatestObservationsScreenState extends State<LatestObservationsScreen> {
                 children: [
                   Text(
                     sighting.bird.name ?? 'None',
-                    style: TextStyle(fontWeight: FontWeight.bold),
+                    style: const TextStyle(fontWeight: FontWeight.bold),
                   ),
-                  SizedBox(height: 4),
+                  const SizedBox(height: 4),
                   Text(
-                    DateFormat('d MMMM yyyy').format(sighting.dateTime) +
-                        ' ' +
-                        DateFormat.jm().format(sighting.dateTime),
+                    '${DateFormat('d MMMM yyyy').format(sighting.dateTime)} ${DateFormat.jm().format(sighting.dateTime)}',
                   ),
-                  SizedBox(height: 4),
+                  const SizedBox(height: 4),
                   Text(
                     sighting.sightingType.description,
                   ),
-                  SizedBox(height: 4),
+                  const SizedBox(height: 4),
                   Text('Observed by: ${sighting.user}',
-                      style: TextStyle(fontWeight: FontWeight.bold))
+                      style: const TextStyle(fontWeight: FontWeight.bold))
                 ],
               ),
             ),
@@ -73,7 +71,7 @@ class _LatestObservationsScreenState extends State<LatestObservationsScreen> {
                   padding: const EdgeInsets.all(2.0),
                   child: Center(
                     child: Text(
-                      'Box no:\n' + sighting.birdBox.toString(),
+                      'Box no:\n${sighting.birdBox}',
                       textAlign: TextAlign.center,
                     ),
                   ),
@@ -95,7 +93,7 @@ class _LatestObservationsScreenState extends State<LatestObservationsScreen> {
               height: 30,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
+                children: const [
                   Text(
                     'Latest',
                     style: TextStyle(
@@ -117,7 +115,7 @@ class _LatestObservationsScreenState extends State<LatestObservationsScreen> {
               ),
             ),
             Column(
-              children: SightingsProvider.sightings.map((sighting) {
+              children: sightings.map((sighting) {
                 return observationDetails(sighting);
               }).toList(),
             )

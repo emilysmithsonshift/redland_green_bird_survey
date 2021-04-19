@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>971193985300-t3cslr3suq0ao7323s6e3d7b9ng7pnlh.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.971193985300-t3cslr3suq0ao7323s6e3d7b9ng7pnlh</string>
+	<key>API_KEY</key>
+	<string>AIzaSyAUfQxJlk-Px2b9nEGS7tFuFLAcwM9OYYU</string>
+	<key>GCM_SENDER_ID</key>
+	<string>971193985300</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>org.uk.rgcg.redlandGreenBirdSurvey</string>
+	<key>PROJECT_ID</key>
+	<string>redland-green-bird-surve-3ef37</string>
+	<key>STORAGE_BUCKET</key>
+	<string>redland-green-bird-surve-3ef37.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:971193985300:ios:0f03084edab6ddf047ba01</string>
+</dict>
+</plist>

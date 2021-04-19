@@ -7,8 +7,6 @@ import 'package:redland_green_bird_survey/widgets/page_template.dart';
 // import 'package:user_location/user_location.dart';
 
 class MapPage extends StatefulWidget {
-  MapPage();
-
   @override
   _MapPageState createState() => _MapPageState();
 }
@@ -21,13 +19,13 @@ class _MapPageState extends State<MapPage> {
   bool treeInfoOpen = false;
   proj4.Point point = proj4.Point(x: 65.05166470332148, y: -19.171744826394896);
 
-  List _markers = List<Marker>();
+  final List<Marker> _markers = [];
 
   @override
   void initState() {
-    for (int i = 0; i < BirdBoxes.birdBoxesList.length; i++) {
+    for (int i = 0; i < birdBoxesList.length; i++) {
       _markers.add(Marker(
-          point: BirdBoxes.birdBoxesList[i].location,
+          point: birdBoxesList[i].location,
           builder: (context) {
             return GestureDetector(
                 onTap: () {
@@ -37,7 +35,7 @@ class _MapPageState extends State<MapPage> {
                   //       builder: (context) => BirdBoxInformation(i)),
                   // );
                 },
-                child: Icon(Icons.location_pin));
+                child: const Icon(Icons.location_pin));
           }));
     }
     super.initState();
@@ -92,7 +90,6 @@ class _MapPageState extends State<MapPage> {
                   urlTemplate:
                       'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
                   subdomains: ['a', 'b', 'c'],
-                  tileProvider: NonCachingNetworkTileProvider(),
                 ),
                 MarkerLayerOptions(markers: _markers),
                 // userLocationOptions,

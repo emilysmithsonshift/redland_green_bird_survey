@@ -13,9 +13,9 @@ class EnterObservationsScreen extends StatefulWidget {
 
 class _EnterObservationsScreenState extends State<EnterObservationsScreen> {
   int _currentStep = 0;
-  int _birdbox = -1;
+  int _birdBox = -1;
   int _bird = -1;
-  int _sighting_type = -1;
+  int _sightingType = -1;
   DateTime _dateTime = DateTime.now();
   @override
   Widget build(BuildContext context) {
@@ -46,7 +46,7 @@ class _EnterObservationsScreenState extends State<EnterObservationsScreen> {
                     onPressed: onStepCancel,
                     child: const Text('BACK'),
                   ),
-                SizedBox(width: 20),
+                const SizedBox(width: 20),
                 OutlinedButton(
                   onPressed: onStepContinue,
                   child: const Text('NEXT'),
@@ -57,37 +57,37 @@ class _EnterObservationsScreenState extends State<EnterObservationsScreen> {
           currentStep: _currentStep,
           steps: [
             Step(
-              title: Text('Select the Bird Box Number'),
+              title: const Text('Select the Bird Box Number'),
               content: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
                   Wrap(
-                      children: BirdBoxes.birdBoxesList.map((birdBox) {
+                      children: birdBoxesList.map((birdBox) {
                     return GestureDetector(
                       onTap: () {
                         setState(() {
-                          _birdbox = birdBox.id - 1;
+                          _birdBox = birdBox.id - 1;
                         });
                       },
                       child: ClipOval(
                           child: Container(
                               height: 30,
                               width: 30,
-                              margin: EdgeInsets.all(8),
+                              margin: const EdgeInsets.all(8),
                               decoration: BoxDecoration(
                                 color: Colors.green[50],
-                                borderRadius: BorderRadius.all(
+                                borderRadius: const BorderRadius.all(
                                   Radius.circular(60),
                                 ),
-                                boxShadow: [
-                                  new BoxShadow(
+                                boxShadow: const [
+                                  BoxShadow(
                                     color: Colors.grey,
-                                    offset: new Offset(3.0, 3.0),
+                                    offset: Offset(3.0, 3.0),
                                     blurRadius: 3.0,
                                   )
                                 ],
                                 border: Border.all(
-                                  width: _birdbox == birdBox.id - 1 ? 2.0 : 0.0,
+                                  width: _birdBox == birdBox.id - 1 ? 2.0 : 0.0,
                                   color: Colors.blueAccent,
                                 ),
                               ),
@@ -98,15 +98,15 @@ class _EnterObservationsScreenState extends State<EnterObservationsScreen> {
                   SizedBox(
                     height: 80,
                     child: Center(
-                      child: _birdbox == -1
+                      child: _birdBox == -1
                           ? Container(
-                              padding: EdgeInsets.all(8),
+                              padding: const EdgeInsets.all(8),
                               decoration: BoxDecoration(
                                 color: Colors.green[50],
-                                borderRadius: BorderRadius.all(
+                                borderRadius: const BorderRadius.all(
                                   Radius.circular(20),
                                 ),
-                                boxShadow: [
+                                boxShadow: const [
                                   BoxShadow(
                                     color: Colors.grey,
                                     offset: Offset(3.0, 3.0),
@@ -118,21 +118,20 @@ class _EnterObservationsScreenState extends State<EnterObservationsScreen> {
                                   color: Colors.blueAccent,
                                 ),
                               ),
-                              child: Text(
+                              child: const Text(
                                   'Tap here to see the map of where all the bird boxes are located'))
-                          : Text(BirdBoxes
-                              .birdBoxesList[_birdbox].locationDescription),
+                          : Text(birdBoxesList[_birdBox].locationDescription),
                     ),
                   ),
                 ],
               ),
             ),
             Step(
-              title: Text('Time of Observation'),
-              content: Container(
+              title: const Text('Time of Observation'),
+              content: SizedBox(
                 height: 100,
                 child: CupertinoTheme(
-                  data: CupertinoThemeData(
+                  data: const CupertinoThemeData(
                     textTheme: CupertinoTextThemeData(
                       dateTimePickerTextStyle: TextStyle(
                         fontSize: 18,
@@ -140,7 +139,6 @@ class _EnterObservationsScreenState extends State<EnterObservationsScreen> {
                     ),
                   ),
                   child: CupertinoDatePicker(
-                    mode: CupertinoDatePickerMode.dateAndTime,
                     minimumYear: 2020,
                     initialDateTime: _dateTime,
                     maximumDate: DateTime.now(),
@@ -152,15 +150,15 @@ class _EnterObservationsScreenState extends State<EnterObservationsScreen> {
               ),
             ),
             Step(
-              title: Text('Select which bird you saw'),
+              title: const Text('Select which bird you saw'),
               content: SizedBox(
                 height: 200,
                 width: double.infinity,
                 child: GridView.builder(
-                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 3,
                   ),
-                  itemCount: Birds.birdsList.length,
+                  itemCount: birdsList.length,
                   itemBuilder: (context, index) {
                     return GestureDetector(
                       onTap: () {
@@ -169,40 +167,39 @@ class _EnterObservationsScreenState extends State<EnterObservationsScreen> {
                         });
                       },
                       child: Container(
-                        margin: EdgeInsets.all(6),
+                        margin: const EdgeInsets.all(6),
                         decoration: BoxDecoration(
                           color: Colors.green[50],
                           border: Border.all(
                             width: _bird == index ? 3.0 : 0.0,
                             color: Colors.blueAccent,
                           ),
-                          boxShadow: [
-                            new BoxShadow(
+                          boxShadow: const [
+                            BoxShadow(
                               color: Colors.grey,
-                              offset: new Offset(3.0, 3.0),
+                              offset: Offset(3.0, 3.0),
                               blurRadius: 3.0,
                             )
                           ],
-                          borderRadius: BorderRadius.all(
+                          borderRadius: const BorderRadius.all(
                             Radius.circular(10),
                           ),
                           image: DecorationImage(
-                            colorFilter: Birds.birdsList[index].image.length ==
-                                    0
-                                ? ColorFilter.mode(Colors.grey, BlendMode.clear)
-                                : ColorFilter.mode(
+                            colorFilter: birdsList[index].image.isEmpty
+                                ? const ColorFilter.mode(
+                                    Colors.grey, BlendMode.clear)
+                                : const ColorFilter.mode(
                                     Colors.white, BlendMode.colorBurn),
                             fit: BoxFit.fill,
-                            image: AssetImage(
-                                Birds.birdsList[index].image.length == 0
-                                    ? 'assets/bluetit.png'
-                                    : Birds.birdsList[index].image[0]),
+                            image: AssetImage(birdsList[index].image.isEmpty
+                                ? 'assets/bluetit.png'
+                                : birdsList[index].image[0]),
                           ),
                         ),
                         child: Align(
                           alignment: Alignment.bottomCenter,
                           child: Container(
-                            decoration: BoxDecoration(
+                            decoration: const BoxDecoration(
                               borderRadius: BorderRadius.only(
                                 bottomLeft: Radius.circular(10.0),
                                 bottomRight: Radius.circular(10),
@@ -212,7 +209,7 @@ class _EnterObservationsScreenState extends State<EnterObservationsScreen> {
                             width: double.infinity,
                             padding: const EdgeInsets.all(2.0),
                             child: Text(
-                              Birds.birdsList[index].name,
+                              birdsList[index].name,
                               textAlign: TextAlign.center,
                             ),
                           ),
@@ -224,45 +221,44 @@ class _EnterObservationsScreenState extends State<EnterObservationsScreen> {
               ),
             ),
             Step(
-                title: Text('Which best describes what you saw?'),
-                subtitle: Text(
+                title: const Text('Which best describes what you saw?'),
+                subtitle: const Text(
                     'Should you see more than one, please enter a separate observation.'),
                 content: SizedBox(
                   height: 300,
                   child: ListView.builder(
-                    itemCount: SightingsTypeProvider.sightingsTypeList.length,
+                    itemCount: sightingsTypeList.length,
                     itemBuilder: (context, index) {
                       return GestureDetector(
                         onTap: () {
                           setState(() {
-                            _sighting_type = index;
+                            _sightingType = index;
                           });
                         },
                         child: Container(
                           height: 70,
-                          padding: EdgeInsets.all(8),
-                          margin: EdgeInsets.all(4),
+                          padding: const EdgeInsets.all(8),
+                          margin: const EdgeInsets.all(4),
                           decoration: BoxDecoration(
                             color: Colors.green[50],
-                            borderRadius: BorderRadius.all(
+                            borderRadius: const BorderRadius.all(
                               Radius.circular(20),
                             ),
-                            boxShadow: [
-                              new BoxShadow(
+                            boxShadow: const [
+                              BoxShadow(
                                 color: Colors.grey,
-                                offset: new Offset(3.0, 3.0),
+                                offset: Offset(3.0, 3.0),
                                 blurRadius: 3.0,
                               )
                             ],
                             border: Border.all(
-                              width: _sighting_type == index ? 2.0 : 0.0,
+                              width: _sightingType == index ? 2.0 : 0.0,
                               color: Colors.blueAccent,
                             ),
                           ),
                           child: Center(
                             child: Text(
-                              SightingsTypeProvider
-                                  .sightingsTypeList[index].description,
+                              sightingsTypeList[index].description,
                               textAlign: TextAlign.center,
                             ),
                           ),
@@ -274,7 +270,7 @@ class _EnterObservationsScreenState extends State<EnterObservationsScreen> {
           ],
         ),
       ),
-      SizedBox(
+      const SizedBox(
         height: 400,
       )
     ];

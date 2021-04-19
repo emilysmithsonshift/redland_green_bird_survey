@@ -13,13 +13,20 @@ import 'latest_observations.dart';
 import 'map_page.dart';
 
 class HomePage extends StatefulWidget {
-  const HomePage({key}) : super(key: key);
-
   @override
   _HomePageState createState() => _HomePageState();
 }
 
 class _HomePageState extends State<HomePage> {
+  @override
+  void initState() {
+    // for (int i = 0; i < SightingsProvider.sightings.length; i++) {
+    //   SightingsProvider.addSighting(SightingsProvider.sightings[i]);
+    // }
+    getSightings();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     final List<Widget> _gridList = [
@@ -41,21 +48,19 @@ class _HomePageState extends State<HomePage> {
     ];
     Widget observationSummary(Sighting sighting) {
       return Padding(
-        padding: EdgeInsets.all(8),
+        padding: const EdgeInsets.all(8),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
-            SizedBox(width: 8),
+            const SizedBox(width: 8),
             Column(
               children: [
                 Text(
                   sighting.bird.name ?? 'hi',
-                  style: TextStyle(fontWeight: FontWeight.bold),
+                  style: const TextStyle(fontWeight: FontWeight.bold),
                 ),
                 Text(
-                  DateFormat('d MMM yyyy').format(sighting.dateTime) +
-                      '  ' +
-                      DateFormat.jm().format(sighting.dateTime),
+                  '${DateFormat('d MMM yyyy').format(sighting.dateTime)}  ${DateFormat.jm().format(sighting.dateTime)}',
                 ),
               ],
             ),
@@ -78,7 +83,7 @@ class _HomePageState extends State<HomePage> {
         widget: Padding(
           padding: const EdgeInsets.all(12.0),
           child: Column(
-            children: [
+            children: const [
               Center(
                 child: Text(
                   'Welcome to the Redland Green Bird Box Survey!\n',
@@ -100,8 +105,8 @@ class _HomePageState extends State<HomePage> {
         imageLeft: true,
         widget: Column(
           children: [
-            Padding(
-              padding: const EdgeInsets.all(12.0),
+            const Padding(
+              padding: EdgeInsets.all(12.0),
               child: Center(
                 child: Text(
                   'Latest Observations',
@@ -112,10 +117,9 @@ class _HomePageState extends State<HomePage> {
             ),
             Expanded(
               child: Wrap(
-                direction: Axis.horizontal,
                 spacing: 8.0, // gap between adjacent chips
                 runSpacing: 4.0,
-                children: SightingsProvider.sightings.map((sighting) {
+                children: sightings.map((sighting) {
                   return observationSummary(sighting);
                 }).toList(),
               ),
@@ -125,12 +129,14 @@ class _HomePageState extends State<HomePage> {
       ),
     ];
 
-    return PageTemplate(
-      title: 'Redland Green Bird Survey',
-      image: 'assets/robin1.png',
-      widgetList: _widgetList,
-      gridList: _gridList,
-      heroTag: 'robin1',
+    return Scaffold(
+      body: PageTemplate(
+        title: 'Redland Green Bird Survey',
+        image: 'assets/robin1.png',
+        widgetList: _widgetList,
+        gridList: _gridList,
+        heroTag: 'robin1',
+      ),
     );
   }
 }

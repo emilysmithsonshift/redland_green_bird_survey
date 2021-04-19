@@ -1,167 +1,105 @@
+import 'package:firebase_database/firebase_database.dart';
 import 'package:redland_green_bird_survey/model/main_model.dart';
 import 'package:redland_green_bird_survey/providers/sightings_type_provider.dart';
 
 import 'birds_provider.dart';
 
-class SightingsProvider {
-  static final List<Sighting> sightings = [
-    Sighting(
-      0,
-      DateTime(
-        2020,
-        12,
-        07,
-        12,
-        34,
-        21,
-        32,
-      ),
-      0,
-      'Emily',
-      SightingsTypeProvider.sightingsTypeList[1],
-      bird: Birds.nuthatch,
-    ),
-    Sighting(
-      3,
-      DateTime(
-        2020,
-        12,
-        07,
-        11,
-        34,
-        21,
-        32,
-      ),
-      2,
-      'Neil',
-      SightingsTypeProvider.sightingsTypeList[3],
-      bird: Birds.robin,
-    ),
-    Sighting(
-      0,
-      DateTime(
-        2020,
-        12,
-        07,
-        14,
-        34,
-        21,
-        32,
-      ),
-      5,
-      'Jess',
-      SightingsTypeProvider.sightingsTypeList[5],
-      bird: Birds.blueTit,
-    ),
-    // Sighting(
-    //   5,
-    //   DateTime(
-    //     2020,
-    //     12,
-    //     07,
-    //     16,
-    //     34,
-    //     21,
-    //     32,
-    //   ),
-    //   2,
-    //   'John',
-    //   6,
-    // ),
-    Sighting(
-      2,
-      DateTime(
-        2020,
-        12,
-        07,
-        17,
-        34,
-        21,
-        32,
-      ),
-      7,
-      'Julie',
-      SightingsTypeProvider.sightingsTypeList[0],
-      bird: Birds.songThrush,
-    ),
-    Sighting(
-      0,
-      DateTime(
-        2020,
-        12,
-        07,
-        10,
-        34,
-        21,
-        32,
-      ),
-      0,
-      'Emily',
-      SightingsTypeProvider.sightingsTypeList[6],
-      bird: Birds.robin,
-    ),
-    Sighting(
-      1,
-      DateTime(
-        2020,
-        12,
-        07,
-        15,
-        34,
-        21,
-        32,
-      ),
-      2,
-      'Emily',
-      SightingsTypeProvider.sightingsTypeList[5],
-      bird: Birds.greatTit,
-    ),
-    Sighting(
-      0,
-      DateTime(
-        2020,
-        12,
-        07,
-        18,
-        34,
-        21,
-        32,
-      ),
-      9,
-      'Emily',
-      SightingsTypeProvider.sightingsTypeList[5],
-      bird: Birds.blackbird,
-    ),
-    // Sighting(
-    //   0,
-    //   DateTime(
-    //     2020,
-    //     12,
-    //     07,
-    //     14,
-    //     34,
-    //     21,
-    //     32,
-    //   ),
-    //   2,
-    //   'Emily',
-    //   3,
-    // ),
-    Sighting(
-      0,
-      DateTime(
-        2020,
-        12,
-        07,
-        13,
-        34,
-        21,
-        32,
-      ),
-      2,
-      'Emily',
-      SightingsTypeProvider.sightingsTypeList[8],
-      bird: Birds.nuthatch,
-    )
-  ];
+final List<Sighting> sightings = [
+  // Sighting(
+  //   id: '0',
+  //   dateTime: DateTime(
+  //     2020,
+  //     12,
+  //     07,
+  //     12,
+  //     34,
+  //     21,
+  //     32,
+  //   ),
+  //   birdBox: 0,
+  //   user: 'Emily',
+  //   sightingType: SightingsType.sightingsTypeList[1],
+  //   bird: Birds.nuthatch,
+  // ),
+  // Sighting(
+  //   id: '0',
+  //   dateTime: DateTime(
+  //     2020,
+  //     12,
+  //     07,
+  //     12,
+  //     34,
+  //     21,
+  //     32,
+  //   ),
+  //   birdBox: 0,
+  //   user: 'Emily',
+  //   sightingType: SightingsType.sightingsTypeList[1],
+  //   bird: Birds.nuthatch,
+  // ),
+  // Sighting(
+  //   id: '0',
+  //   dateTime: DateTime(
+  //     2020,
+  //     12,
+  //     07,
+  //     12,
+  //     34,
+  //     21,
+  //     32,
+  //   ),
+  //   birdBox: 0,
+  //   user: 'Emily',
+  //   sightingType: SightingsType.sightingsTypeList[1],
+  //   bird: Birds.nuthatch,
+  // ),
+  // Sighting(
+  //   id: '0',
+  //   dateTime: DateTime(
+  //     2020,
+  //     12,
+  //     07,
+  //     12,
+  //     34,
+  //     21,
+  //     32,
+  //   ),
+  //   birdBox: 0,
+  //   user: 'Emily',
+  //   sightingType: SightingsType.sightingsTypeList[1],
+  //   bird: Birds.nuthatch,
+  // ),
+];
+void addSighting(Sighting _sighting) {
+  final DatabaseReference reference =
+      FirebaseDatabase.instance.reference().child("observations");
+  final String newkey = reference.push().key;
+  reference.child(newkey).set({
+    'user': 'Bob',
+    'date_time': _sighting.dateTime.toIso8601String(),
+    'bird_box': _sighting.birdBox,
+    'sighting_type': _sighting.sightingType.id,
+    'bird': _sighting.bird.name,
+  });
+}
+
+void getSightings() {
+  final DatabaseReference reference =
+      FirebaseDatabase.instance.reference().child("observations");
+  reference.once().then((DataSnapshot snapshot) {
+    final returnedList = snapshot.value;
+    returnedList.forEach((key, value) {
+      sightings.add(
+        Sighting(
+            id: key as String,
+            sightingType: sightingsTypeList[value['sighting_type'] as int],
+            dateTime: DateTime.parse(value['date_time'] as String),
+            user: value['user'] as String,
+            bird: birdsList.firstWhere((bird) {
+              return bird.name == value['bird'];
+            }),
+            birdBox: value['bird_box'] as int),
+      );
+    });
+  });
 }

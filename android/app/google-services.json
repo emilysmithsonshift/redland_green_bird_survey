@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "971193985300",
+    "project_id": "redland-green-bird-surve-3ef37",
+    "storage_bucket": "redland-green-bird-surve-3ef37.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:971193985300:android:b5e7f1aa6a0e141647ba01",
+        "android_client_info": {
+          "package_name": "uk.org.rgcg.redland_green_bird_survey"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "971193985300-1lai2pk4puk3csv6agenu6ts7bfsqnlk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBhwa9VDBFj7_KL5kt7aBg_o-mcsJizwlo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "971193985300-1lai2pk4puk3csv6agenu6ts7bfsqnlk.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

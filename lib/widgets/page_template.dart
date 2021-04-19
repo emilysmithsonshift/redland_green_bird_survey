@@ -31,7 +31,8 @@ class PageTemplate extends StatelessWidget {
               title: Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: FittedBox(
-                  child: Text(title, style: TextStyle(color: Colors.white70)),
+                  child: Text(title,
+                      style: const TextStyle(color: Colors.white70)),
                 ),
               ),
               background: Hero(

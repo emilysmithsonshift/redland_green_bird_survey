@@ -20,7 +20,8 @@ class RGListTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Material(color: Colors.green[100],
+    return Material(
+      color: Colors.green[100],
       child: GestureDetector(
         onTap: () {
           if (navigateTo != null) {
@@ -34,15 +35,15 @@ class RGListTile extends StatelessWidget {
         },
         child: Container(
           height: 200,
-          margin: EdgeInsets.all(8),
-          decoration: BoxDecoration(
+          margin: const EdgeInsets.all(8),
+          decoration: const BoxDecoration(
             borderRadius: BorderRadius.all(
               Radius.circular(20.0),
             ),
             boxShadow: [
-              new BoxShadow(
+              BoxShadow(
                 color: Colors.grey,
-                offset: new Offset(5.0, 5.0),
+                offset: Offset(5.0, 5.0),
                 blurRadius: 5.0,
               )
             ],
@@ -51,12 +52,11 @@ class RGListTile extends StatelessWidget {
             children: [
               if (imageLeft)
                 Flexible(
-                  flex: 1,
                   child: Hero(
                     tag: heroTag ?? '',
                     child: Container(
                       decoration: BoxDecoration(
-                        borderRadius: BorderRadius.only(
+                        borderRadius: const BorderRadius.only(
                           topLeft: Radius.circular(20.0),
                           bottomLeft: Radius.circular(20.0),
                         ),
@@ -87,12 +87,11 @@ class RGListTile extends StatelessWidget {
               ),
               if (!imageLeft)
                 Flexible(
-                  flex: 1,
                   child: Hero(
                     tag: heroTag ?? '',
                     child: Container(
                       decoration: BoxDecoration(
-                        borderRadius: BorderRadius.only(
+                        borderRadius: const BorderRadius.only(
                           topRight: Radius.circular(20.0),
                           bottomRight: Radius.circular(20.0),
                         ),

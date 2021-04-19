@@ -25,11 +25,11 @@ class _BirdFactPageState extends State<BirdFactPage> {
             });
           },
           child: Container(
-              margin: EdgeInsets.all(2),
+              margin: const EdgeInsets.all(2),
               height: 80,
               width: 80,
               decoration: BoxDecoration(
-                borderRadius: BorderRadius.all(
+                borderRadius: const BorderRadius.all(
                   Radius.circular(10),
                 ),
                 image: DecorationImage(
@@ -57,11 +57,11 @@ class _BirdFactPageState extends State<BirdFactPage> {
                 SizedBox(
                   height: MediaQuery.of(context).size.width,
                   child: Hero(
-                    tag: '${widget.bird}1',
+                    tag: '${widget.bird.name}1',
                     child: Container(
-                      margin: EdgeInsets.all(8),
+                      margin: const EdgeInsets.all(8),
                       decoration: BoxDecoration(
-                        borderRadius: BorderRadius.all(
+                        borderRadius: const BorderRadius.all(
                           Radius.circular(20.0),
                         ),
                         image: DecorationImage(
@@ -82,9 +82,9 @@ class _BirdFactPageState extends State<BirdFactPage> {
                         height: 80,
                         child: Wrap(children: photoList),
                       ),
-                      SizedBox(height: 8),
+                      const SizedBox(height: 8),
                       Text(widget.bird.name,
-                          style: TextStyle(fontWeight: FontWeight.bold)),
+                          style: const TextStyle(fontWeight: FontWeight.bold)),
                       Text(widget.bird.description),
                     ],
                   ),
@@ -92,7 +92,7 @@ class _BirdFactPageState extends State<BirdFactPage> {
               ],
             ),
             IconButton(
-              icon: Icon(
+              icon: const Icon(
                 Icons.arrow_back_ios,
                 color: Colors.white,
               ),

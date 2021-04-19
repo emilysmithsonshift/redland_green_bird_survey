@@ -12,8 +12,8 @@ class BirdIdentifierScreen extends StatefulWidget {
 class _BirdIdentifierScreenState extends State<BirdIdentifierScreen> {
   @override
   Widget build(BuildContext context) {
-    final List<Widget> _gridList = Birds.birdsList.map((bird) {
-      if (bird.image.length == 0) {
+    final List<Widget> _gridList = birdsList.map((bird) {
+      if (bird.image.isEmpty) {
         return Container();
       }
       return RGGridTile(

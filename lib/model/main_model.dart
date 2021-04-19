@@ -30,14 +30,19 @@ class User {
 }
 
 class Sighting {
-  int id;
+  String id;
   DateTime dateTime;
   int birdBox;
   Bird bird;
   String user;
   SightingType sightingType;
-  Sighting(this.id, this.dateTime, this.birdBox, this.user, this.sightingType,
-      {this.bird});
+  Sighting(
+      {this.id,
+      this.dateTime,
+      this.birdBox,
+      this.user,
+      this.sightingType,
+      this.bird});
 }
 
 class SightingType {

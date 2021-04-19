@@ -16,15 +16,15 @@ class RGGridTile extends StatelessWidget {
       tag: heroTag ?? '',
       child: Container(
         height: 200,
-        margin: EdgeInsets.all(8),
+        margin: const EdgeInsets.all(8),
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.all(
+          borderRadius: const BorderRadius.all(
             Radius.circular(20.0),
           ),
-          boxShadow: [
-            new BoxShadow(
+          boxShadow: const [
+            BoxShadow(
               color: Colors.grey,
-              offset: new Offset(5.0, 5.0),
+              offset: Offset(5.0, 5.0),
               blurRadius: 5.0,
             )
           ],
@@ -39,7 +39,7 @@ class RGGridTile extends StatelessWidget {
           alignment: Alignment.bottomCenter,
           child: Container(
             height: 30,
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
               borderRadius: BorderRadius.only(
                 bottomLeft: Radius.circular(20.0),
                 bottomRight: Radius.circular(20),
