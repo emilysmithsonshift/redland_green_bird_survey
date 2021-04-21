@@ -24,6 +24,7 @@ class _EnterObservationsScreenState extends State<EnterObservationsScreen> {
   Widget build(BuildContext context) {
     final List<Widget> widgetList = [
       Stepper(
+        physics: const ClampingScrollPhysics(),
         onStepContinue: () {
           switch (_currentStep) {
             case 0:
@@ -299,9 +300,6 @@ class _EnterObservationsScreenState extends State<EnterObservationsScreen> {
               ))
         ],
       ),
-      const SizedBox(
-        height: 400,
-      )
     ];
 
     return PageTemplate(
