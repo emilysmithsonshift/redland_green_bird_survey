@@ -164,7 +164,7 @@ class _LoginPageState extends State<LoginPage> {
     ];
     return PageTemplate(
       title: 'Login Page',
-      image: 'assets/robin.png',
+      image: 'assets/robin1.png',
       widgetList: widgetList,
       heroTag: 'robin',
     );

@@ -21,6 +21,7 @@ class MyApp extends StatelessWidget {
       home: FutureBuilder(
           future: _fbApp,
           builder: (context, snapshot) {
+            FirebaseAuth.instance.signOut();
             if (snapshot.hasError) {
               return const Text('Something went wrong!');
             } else if (snapshot.hasData) {
