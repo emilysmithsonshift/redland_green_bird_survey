@@ -1,6 +1,9 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:redland_green_bird_survey/pages/home.dart';
+import 'package:redland_green_bird_survey/pages/introduction_page.dart';
+
+import 'pages/home.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -21,7 +24,11 @@ class MyApp extends StatelessWidget {
             if (snapshot.hasError) {
               return const Text('Something went wrong!');
             } else if (snapshot.hasData) {
-              return HomePage();
+              if (FirebaseAuth.instance.currentUser == null) {
+                return IntroductionPage();
+              } else {
+                return HomePage();
+              }
             } else {
               return const Center(child: CircularProgressIndicator());
             }

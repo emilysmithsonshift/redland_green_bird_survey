@@ -23,10 +23,17 @@ class Bird {
   Bird(this.name, this.description, this.image);
 }
 
-class User {
-  String firstName;
-  String surname;
+class BirdBoxUser {
+  String name;
   String nickname;
+  String email;
+  bool permission;
+  BirdBoxUser({
+    this.name,
+    this.nickname,
+    this.email,
+    this.permission,
+  });
 }
 
 class Sighting {

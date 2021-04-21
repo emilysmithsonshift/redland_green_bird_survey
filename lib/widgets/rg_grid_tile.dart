@@ -5,22 +5,31 @@ class RGGridTile extends StatelessWidget {
   final String imageAsset;
   final Widget navigateTo;
   final String heroTag;
+  final Function setState;
 
   const RGGridTile(
-      {Key key, this.text, this.imageAsset, this.navigateTo, this.heroTag})
+      {Key key,
+      this.text,
+      this.imageAsset,
+      this.navigateTo,
+      this.heroTag,
+      this.setState})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {
+      onTap: () async {
         if (navigateTo != null) {
-          Navigator.push(
+          await Navigator.push(
             context,
             MaterialPageRoute(
               builder: (context) => navigateTo,
             ),
           );
+          if (setState != null) {
+            setState();
+          }
         }
       },
       child: Hero(

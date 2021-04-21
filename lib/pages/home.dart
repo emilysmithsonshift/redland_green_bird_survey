@@ -18,14 +18,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  @override
-  void initState() {
-    // for (int i = 0; i < SightingsProvider.sightings.length; i++) {
-    //   SightingsProvider.addSighting(SightingsProvider.sightings[i]);
-    // }
-    getSightings();
-    super.initState();
-  }
+  Future<bool> loading;
 
   @override
   Widget build(BuildContext context) {
@@ -38,6 +31,9 @@ class _HomePageState extends State<HomePage> {
       RGGridTile(
           heroTag: 'greattit',
           navigateTo: EnterObservationsScreen(),
+          setState: () {
+            setState(() {});
+          },
           text: 'Enter your own observations ',
           imageAsset: 'assets/greattit.png'),
       RGGridTile(
@@ -103,39 +99,56 @@ class _HomePageState extends State<HomePage> {
         navigateTo: LatestObservationsScreen(),
         heroTag: 'wagtail',
         imageLeft: true,
-        widget: Column(
-          children: [
-            const Padding(
-              padding: EdgeInsets.all(12.0),
-              child: Center(
-                child: Text(
-                  'Latest Observations',
-                  textAlign: TextAlign.center,
-                  style: TextStyle(fontWeight: FontWeight.bold),
-                ),
-              ),
-            ),
-            Expanded(
-              child: Wrap(
-                spacing: 8.0, // gap between adjacent chips
-                runSpacing: 4.0,
-                children: sightings.map((sighting) {
-                  return observationSummary(sighting);
-                }).toList(),
-              ),
-            )
-          ],
-        ),
+        widget: FutureBuilder(
+            future: getSightings(),
+            builder: (context, snapshot) {
+              List<Sighting> _sightingList = sightings
+                  .where((sighting) => sighting.bird.name != 'None')
+                  .toList();
+              if (snapshot.hasData) {
+                return Column(
+                  children: [
+                    const Padding(
+                      padding: EdgeInsets.all(12.0),
+                      child: Center(
+                        child: Text(
+                          'Latest Sightings',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(fontWeight: FontWeight.bold),
+                        ),
+                      ),
+                    ),
+                    Expanded(
+                      child: Wrap(
+                        spacing: 8.0, // gap between adjacent chips
+                        runSpacing: 4.0,
+                        children: _sightingList.map((sighting) {
+                          return observationSummary(sighting);
+                        }).toList(),
+                      ),
+                    )
+                  ],
+                );
+              } else {
+                return const Center(child: CircularProgressIndicator());
+              }
+            }),
       ),
     ];
 
-    return Scaffold(
-      body: PageTemplate(
-        title: 'Redland Green Bird Survey',
-        image: 'assets/robin1.png',
-        widgetList: _widgetList,
-        gridList: _gridList,
-        heroTag: 'robin1',
+    return RefreshIndicator(
+      onRefresh: () async {
+        await getSightings();
+        setState(() {});
+      },
+      child: Scaffold(
+        body: PageTemplate(
+          title: 'Redland Green Bird Survey',
+          image: 'assets/robin1.png',
+          widgetList: _widgetList,
+          gridList: _gridList,
+          heroTag: 'robin1',
+        ),
       ),
     );
   }
