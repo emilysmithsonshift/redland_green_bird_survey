@@ -40,7 +40,7 @@ class _HomePageState extends State<HomePage> {
           heroTag: 'map_page',
           navigateTo: MapPage(),
           text: 'Map',
-          imageAsset: 'assets/greattit.png'),
+          imageAsset: 'assets/longtailedtit.png'),
     ];
     Widget observationSummary(Sighting sighting) {
       return Padding(

@@ -1,11 +1,11 @@
-import 'package:latlong/latlong.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:redland_green_bird_survey/model/main_model.dart';
 
 import 'birdboxtype_provider.dart';
 
 final BirdBox birdBox1 = BirdBox(
     1,
-    LatLng(51.4751350, -2.6099130),
+    const LatLng(51.4751350, -2.6099130),
     seville,
     'This bird box is located in the woodland which runs parallel to Coldharbour Road. '
     "It is just to the left of the end of the path leading down from St Oswald's Road.");

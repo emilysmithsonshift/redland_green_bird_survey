@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_map/flutter_map.dart';
-import 'package:latlong/latlong.dart';
-import 'package:proj4dart/proj4dart.dart' as proj4;
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:redland_green_bird_survey/providers/birdboxes_provider.dart';
-import 'package:redland_green_bird_survey/widgets/page_template.dart';
+
+import 'bird_box_page.dart';
 // import 'package:user_location/user_location.dart';
 
 class MapPage extends StatefulWidget {
@@ -12,90 +11,109 @@ class MapPage extends StatefulWidget {
 }
 
 class _MapPageState extends State<MapPage> {
-  MapController mapController = MapController();
-  // UserLocationOptions userLocationOptions;
-
-  String initText = 'coordinates: ';
-  bool treeInfoOpen = false;
-  proj4.Point point = proj4.Point(x: 65.05166470332148, y: -19.171744826394896);
-
-  final List<Marker> _markers = [];
-
+  final Map<String, Marker> _markers = {};
+  bool mapSatellite = true;
   @override
   void initState() {
     for (int i = 0; i < birdBoxesList.length; i++) {
-      _markers.add(Marker(
-          point: birdBoxesList[i].location,
-          builder: (context) {
-            return GestureDetector(
-                onTap: () {
-                  // Navigator.push(
-                  //   context,
-                  //   MaterialPageRoute(
-                  //       builder: (context) => BirdBoxInformation(i)),
-                  // );
-                },
-                child: const Icon(Icons.location_pin));
-          }));
+      final Marker _marker = Marker(
+        markerId: MarkerId(
+          birdBoxesList[i].id.toString(),
+        ),
+        icon: BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueYellow),
+        // icon: customIcon,
+        infoWindow: InfoWindow(
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => BirdBoxPage(
+                    birdBox: birdBoxesList[i],
+                  ),
+                ),
+              );
+            },
+            title: 'BirdBox ${birdBoxesList[i].id.toString()}',
+            snippet: birdBoxesList[i].locationDescription),
+        position: birdBoxesList[i].location,
+      );
+      _markers[birdBoxesList[i].id.toString()] = _marker;
     }
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
-//    userLocationOptions = UserLocationOptions(
-//      context: context,
-//      mapController: mapController,
-//      markers: markers1,
-//      zoomToCurrentLocationOnLoad: false,
-//      updateMapLocationOnPositionChange: false,
-//      showMoveToCurrentLocationFloatingActionButton: true,
-//    );
-//     userLocationOptions = UserLocationOptions(
-//         context: context,
-//         mapController: mapController,
-//         markers: _markers,
-//         defaultZoom: 17,
-//         zoomToCurrentLocationOnLoad: false,
-//         updateMapLocationOnPositionChange: false);
+    Widget _googleMap() {
+      return GoogleMap(
+        myLocationButtonEnabled: true,
+        myLocationEnabled: true,
+        mapType: mapSatellite ? MapType.hybrid : MapType.normal,
+        markers: _markers.values.toSet(),
+        initialCameraPosition: const CameraPosition(
+          target: LatLng(51.474508, -2.608220),
+          zoom: 17,
+        ),
+      );
+    }
 
-    return PageTemplate(
-        title: 'Map',
-        image: 'assets/robin.png',
-        heroTag: 'map',
-        widgetList: [
-          SizedBox(
-            height: 800,
-            child: FlutterMap(
-              options: MapOptions(
-                // plugins: [
-                //   UserLocationPlugin(),
-                // ],
-                center: LatLng(51.474612, -2.607909),
-                zoom: 16.65,
-                maxZoom: 19,
-                onTap: (p) => setState(() {
-                  initText = 'You clicked at';
-
-                  point = proj4.Point(x: p.latitude, y: p.longitude);
-                  if (treeInfoOpen) {
-                    _markers.removeLast();
-                    treeInfoOpen = false;
-                  }
-                }),
+    return Scaffold(
+        floatingActionButtonLocation: FloatingActionButtonLocation.startDocked,
+        floatingActionButton: FloatingActionButton(
+          backgroundColor: Colors.green[100],
+          onPressed: () {
+            setState(() {
+              mapSatellite = !mapSatellite;
+            });
+          },
+          child: Icon(mapSatellite ? Icons.map_outlined : Icons.satellite,
+              color: Colors.black),
+        ),
+        body: Column(
+          children: [
+            SizedBox(
+              height: 240,
+              child: Stack(
+                children: [
+                  SizedBox(
+                    width: double.infinity,
+                    child: Hero(
+                      tag: 'map_page',
+                      child: Image.asset('assets/longtailedtit.png',
+                          alignment: Alignment.topLeft, fit: BoxFit.cover),
+                    ),
+                  ),
+                  const Align(
+                    alignment: Alignment.bottomCenter,
+                    child: Padding(
+                      padding: EdgeInsets.all(8.0),
+                      child: Text(
+                        'Map',
+                        style: TextStyle(
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white70),
+                      ),
+                    ),
+                  ),
+                  Align(
+                      alignment: Alignment.centerLeft,
+                      child: IconButton(
+                        icon: const Icon(
+                          Icons.arrow_back_ios,
+                          color: Colors.white70,
+                        ),
+                        onPressed: () {
+                          Navigator.of(context).pop();
+                        },
+                      ))
+                ],
               ),
-              mapController: mapController,
-              layers: [
-                TileLayerOptions(
-                  urlTemplate:
-                      'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
-                  subdomains: ['a', 'b', 'c'],
-                ),
-                MarkerLayerOptions(markers: _markers),
-                // userLocationOptions,
-              ],
             ),
-          ),
-        ]);
+            Expanded(
+              child: _googleMap(),
+            ),
+          ],
+        ));
   }
 }
