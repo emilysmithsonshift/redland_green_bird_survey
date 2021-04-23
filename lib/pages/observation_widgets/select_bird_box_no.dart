@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:redland_green_bird_survey/providers/birdboxes_provider.dart';
 
+import '../map_page.dart';
+
 Widget SelectBirdBoxNo(
-  Function onSelect,
   int birdBox,
+  Function onSelect,
+  BuildContext context,
 ) {
   return Column(
     mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -12,7 +15,7 @@ Widget SelectBirdBoxNo(
           children: birdBoxesList.map((_birdBox) {
         return GestureDetector(
           onTap: () {
-            onSelect(_birdBox.id - 1);
+            onSelect(_birdBox.id);
           },
           child: ClipOval(
             child: Container(
@@ -32,7 +35,7 @@ Widget SelectBirdBoxNo(
                   )
                 ],
                 border: Border.all(
-                  width: birdBox == _birdBox.id - 1 ? 2.0 : 0.0,
+                  width: birdBox == _birdBox.id ? 2.0 : 0.0,
                   color: Colors.blueAccent,
                 ),
               ),
@@ -68,9 +71,19 @@ Widget SelectBirdBoxNo(
                       color: Colors.blueAccent,
                     ),
                   ),
-                  child: const Text(
-                      'Tap here to see the map of where all the bird boxes are located'))
-              : Text(birdBoxesList[birdBox].locationDescription),
+                  child: GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (_) => MapPage(),
+                        ),
+                      );
+                    },
+                    child: const Text(
+                        'Tap here to see the map of where all the bird boxes are located'),
+                  ))
+              : Text(birdBoxesList[birdBox - 1].locationDescription),
         ),
       ),
     ],
