@@ -15,6 +15,7 @@ void addSighting(Sighting _sighting) {
     'bird_box': _sighting.birdBox,
     'sighting_type': _sighting.sightingType.id,
     'bird': _sighting.bird.name,
+    'userEmail': _sighting.userEmail,
   });
   getSightings();
 }
@@ -34,6 +35,7 @@ Future<bool> getSightings() async {
           sightingType: sightingsTypeList[value['sighting_type'] as int],
           dateTime: DateTime.parse(value['date_time'] as String),
           user: value['user'] as String,
+          userEmail: value['userEmail'],
           bird: birdsList.firstWhere((bird) {
             return bird.name == value['bird'];
           }),
