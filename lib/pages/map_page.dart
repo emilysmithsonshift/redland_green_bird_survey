@@ -28,7 +28,7 @@ class _MapPageState extends State<MapPage> {
                 context,
                 MaterialPageRoute(
                   builder: (context) => BirdBoxPage(
-                    birdBox: birdBoxesList[i],
+                    birdBox: i + 1,
                   ),
                 ),
               );
