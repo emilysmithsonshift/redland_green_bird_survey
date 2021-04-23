@@ -5,13 +5,12 @@ import 'package:redland_green_bird_survey/providers/sightings_provider.dart';
 import 'package:redland_green_bird_survey/widgets/observation_widget.dart';
 import 'package:redland_green_bird_survey/widgets/page_template.dart';
 
-class LatestObservationsScreen extends StatefulWidget {
+class LatestObservationsPage extends StatefulWidget {
   @override
-  _LatestObservationsScreenState createState() =>
-      _LatestObservationsScreenState();
+  _LatestObservationsPageState createState() => _LatestObservationsPageState();
 }
 
-class _LatestObservationsScreenState extends State<LatestObservationsScreen> {
+class _LatestObservationsPageState extends State<LatestObservationsPage> {
   int _sortList = 0;
 
   @override
@@ -29,7 +28,7 @@ class _LatestObservationsScreenState extends State<LatestObservationsScreen> {
       case 2:
         _sightingList = sightings
             .where((sighting) =>
-                sighting.user == FirebaseAuth.instance.currentUser.displayName)
+                sighting.userEmail == FirebaseAuth.instance.currentUser.email)
             .toList();
         break;
     }
