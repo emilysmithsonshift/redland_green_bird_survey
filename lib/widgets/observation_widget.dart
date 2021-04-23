@@ -3,7 +3,6 @@ import 'package:intl/intl.dart';
 import 'package:redland_green_bird_survey/model/main_model.dart';
 import 'package:redland_green_bird_survey/pages/bird_box_page.dart';
 import 'package:redland_green_bird_survey/pages/bird_fact_page.dart';
-import 'package:redland_green_bird_survey/providers/birdboxes_provider.dart';
 
 Widget observationDetails(
     Sighting sighting, BuildContext context, bool showBoxNo) {
@@ -85,8 +84,7 @@ Widget observationDetails(
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (_) =>
-                      BirdBoxPage(birdBox: birdBoxesList[sighting.birdBox]),
+                  builder: (_) => BirdBoxPage(birdBox: sighting.birdBox),
                 ),
               );
             },
