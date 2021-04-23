@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:redland_green_bird_survey/widgets/page_template.dart';
 
-class InformationScreen extends StatefulWidget {
+class InformationPage extends StatefulWidget {
   @override
-  _InformationScreenState createState() => _InformationScreenState();
+  _InformationPageState createState() => _InformationPageState();
 }
 
-class _InformationScreenState extends State<InformationScreen> {
+class _InformationPageState extends State<InformationPage> {
   final List<Widget> _widgetList = [
     Padding(
       padding: const EdgeInsets.all(8.0),
