@@ -7,10 +7,7 @@ import 'package:redland_green_bird_survey/widgets/page_template.dart';
 import 'package:redland_green_bird_survey/widgets/rg_grid_tile.dart';
 import 'package:redland_green_bird_survey/widgets/rg_list_tile.dart';
 
-import 'bird_identifier.dart';
-import 'enter_observations_screen.dart';
 import 'latest_observations.dart';
-import 'map_page.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -72,7 +69,7 @@ class _HomePageState extends State<HomePage> {
 
     final List<Widget> _widgetList = [
       RGListTile(
-        navigateTo: InformationScreen(),
+        navigateTo: InformationPage(),
         imageAsset: 'assets/bluetit.png',
         heroTag: 'bluetit',
         imageLeft: false,
@@ -96,7 +93,7 @@ class _HomePageState extends State<HomePage> {
       RGListTile(
         imageAsset: 'assets/wagtail.png',
         alignment: Alignment.centerLeft,
-        navigateTo: LatestObservationsScreen(),
+        navigateTo: LatestObservationsPage(),
         heroTag: 'wagtail',
         imageLeft: true,
         widget: FutureBuilder(
