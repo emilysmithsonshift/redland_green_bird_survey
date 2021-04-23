@@ -42,14 +42,18 @@ class Sighting {
   int birdBox;
   Bird bird;
   String user;
+  String userEmail;
   SightingType sightingType;
+  String comment;
   Sighting(
       {this.id,
       this.dateTime,
       this.birdBox,
       this.user,
       this.sightingType,
-      this.bird});
+      this.bird,
+      this.comment,
+      this.userEmail});
 }
 
 class SightingType {
