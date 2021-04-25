@@ -28,7 +28,7 @@ class _MapPageState extends State<MapPage> {
                 context,
                 MaterialPageRoute(
                   builder: (context) => BirdBoxPage(
-                    birdBox: i + 1,
+                    birdBox: birdBoxesList[i],
                   ),
                 ),
               );
@@ -72,13 +72,13 @@ class _MapPageState extends State<MapPage> {
         body: Column(
           children: [
             SizedBox(
-              height: 240,
+              height: 160,
               child: Stack(
                 children: [
-                  SizedBox(
-                    width: double.infinity,
-                    child: Hero(
-                      tag: 'map_page',
+                  Hero(
+                    tag: 'map_page',
+                    child: SizedBox(
+                      width: double.infinity,
                       child: Image.asset('assets/longtailedtit.png',
                           alignment: Alignment.topLeft, fit: BoxFit.cover),
                     ),

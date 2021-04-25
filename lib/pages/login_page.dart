@@ -2,7 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:redland_green_bird_survey/widgets/page_template.dart';
 
-import 'home.dart';
+import 'home_page.dart';
 
 class LoginPage extends StatefulWidget {
   @override
@@ -84,83 +84,91 @@ class _LoginPageState extends State<LoginPage> {
                 ),
               ),
             ),
+            Align(
+              alignment: Alignment.centerRight,
+              child: SizedBox(
+                width: 200,
+                child: ElevatedButton(
+                  onPressed: () async {
+                    final FirebaseAuth _auth = FirebaseAuth.instance;
+
+                    final UserCredential _user =
+                        await _auth.signInWithEmailAndPassword(
+                            email: emailController.value.text,
+                            password: passwordController.value.text);
+                    if (_user != null) {
+                      Navigator.pushAndRemoveUntil(
+                        context,
+                        MaterialPageRoute(
+                          builder: (BuildContext context) => HomePage(),
+                        ),
+                        (Route<dynamic> route) => false,
+                      );
+                    }
+                  },
+                  child: const Text('Submit'),
+                ),
+              ),
+            ),
+            Align(
+              alignment: Alignment.centerRight,
+              child: SizedBox(
+                width: 200,
+                child: OutlineButton(
+                  onPressed: () {
+                    setState(() {
+                      errorMsg = '';
+                    });
+
+                    final FirebaseAuth _auth = FirebaseAuth.instance;
+                    _auth
+                        .sendPasswordResetEmail(
+                            email: emailController.value.text)
+                        .catchError((error) {
+                      if (error.toString() ==
+                          '[firebase_auth/user-not-found] There is no user record corresponding to this identifier. The user may have been deleted.') {
+                        setState(() {
+                          errorMsg =
+                              'There is no record of this email address. The user may have been deleted. Please re-register.';
+                          return;
+                        });
+                      } else if (error.toString().isNotEmpty) {
+                        setState(() {
+                          errorMsg = 'Please enter a valid email address';
+                          return;
+                        });
+                      }
+                      if (error.toString().isEmpty) {
+                        showDialog(
+                          context: context,
+                          builder: (BuildContext context) {
+                            return AlertDialog(
+                              title: const Text(
+                                  "Please check your email for a password reset message"),
+                              content: const Text(
+                                  "Once you have reset your password you should be able to log in here."),
+                              actions: [
+                                ElevatedButton(
+                                  onPressed: () {
+                                    Navigator.pop(context);
+                                  },
+                                  child: const Text('Ok'),
+                                ),
+                              ],
+                            );
+                          },
+                        );
+                      }
+                    });
+                  },
+                  child: const Text('Forgotten Password?',
+                      style: TextStyle(color: Colors.grey)),
+                ),
+              ),
+            ),
           ],
         ),
       ),
-      Row(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
-        children: [
-          ElevatedButton(
-            onPressed: () {
-              setState(() {
-                errorMsg = '';
-              });
-
-              final FirebaseAuth _auth = FirebaseAuth.instance;
-              _auth
-                  .sendPasswordResetEmail(email: emailController.value.text)
-                  .catchError((error) {
-                if (error.toString() ==
-                    '[firebase_auth/user-not-found] There is no user record corresponding to this identifier. The user may have been deleted.') {
-                  setState(() {
-                    errorMsg =
-                        'There is no record of this email address. The user may have been deleted. Please re-register.';
-                    return;
-                  });
-                } else if (error.toString().isNotEmpty) {
-                  setState(() {
-                    errorMsg = 'Please enter a valid email address';
-                    return;
-                  });
-                }
-                if (error.toString().isEmpty) {
-                  showDialog(
-                    context: context,
-                    builder: (BuildContext context) {
-                      return AlertDialog(
-                        title: const Text(
-                            "Please check your email for a password reset message"),
-                        content: const Text(
-                            "Once you have reset your password you should be able to log in here."),
-                        actions: [
-                          ElevatedButton(
-                            onPressed: () {
-                              Navigator.pop(context);
-                            },
-                            child: const Text('Ok'),
-                          ),
-                        ],
-                      );
-                    },
-                  );
-                }
-              });
-            },
-            child: const Text('Forgotten Password'),
-          ),
-          ElevatedButton(
-            onPressed: () async {
-              final FirebaseAuth _auth = FirebaseAuth.instance;
-
-              final UserCredential _user =
-                  await _auth.signInWithEmailAndPassword(
-                      email: emailController.value.text,
-                      password: passwordController.value.text);
-              print(_user.user.displayName);
-              if (_user != null) {
-                Navigator.pop(context);
-                Navigator.pushReplacement(
-                  context,
-                  MaterialPageRoute(
-                    builder: (BuildContext context) => HomePage(),
-                  ),
-                );
-              }
-            },
-            child: const Text('Submit'),
-          ),
-        ],
-      )
     ];
     return PageTemplate(
       title: 'Login Page',

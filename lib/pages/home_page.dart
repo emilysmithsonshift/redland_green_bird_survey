@@ -1,13 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 import 'package:redland_green_bird_survey/model/main_model.dart';
-import 'package:redland_green_bird_survey/pages/information_screen.dart';
+import 'package:redland_green_bird_survey/pages/information_page.dart';
+import 'package:redland_green_bird_survey/pages/my_details_page.dart';
 import 'package:redland_green_bird_survey/providers/sightings_provider.dart';
+import 'package:redland_green_bird_survey/widgets/observation_summary.dart';
 import 'package:redland_green_bird_survey/widgets/page_template.dart';
 import 'package:redland_green_bird_survey/widgets/rg_grid_tile.dart';
 import 'package:redland_green_bird_survey/widgets/rg_list_tile.dart';
 
-import 'latest_observations.dart';
+import 'bird_identifier_page.dart';
+import 'enter_observations_page.dart';
+import 'latest_observations_page.dart';
+import 'map_page.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -27,7 +31,7 @@ class _HomePageState extends State<HomePage> {
           imageAsset: 'assets/nuthatch.png'),
       RGGridTile(
           heroTag: 'greattit',
-          navigateTo: EnterObservationsScreen(),
+          navigateTo: EnterObservationsPage(),
           setState: () {
             setState(() {});
           },
@@ -38,34 +42,12 @@ class _HomePageState extends State<HomePage> {
           navigateTo: MapPage(),
           text: 'Map',
           imageAsset: 'assets/longtailedtit.png'),
+      RGGridTile(
+          heroTag: 'my_details',
+          navigateTo: MyDetailsPage(),
+          text: 'My details',
+          imageAsset: 'assets/coaltit1.png'),
     ];
-    Widget observationSummary(Sighting sighting) {
-      return Padding(
-        padding: const EdgeInsets.all(8),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: [
-            const SizedBox(width: 8),
-            Column(
-              children: [
-                Text(
-                  sighting.bird.name ?? 'hi',
-                  style: const TextStyle(fontWeight: FontWeight.bold),
-                ),
-                Text(
-                  '${DateFormat('d MMM yyyy').format(sighting.dateTime)}  ${DateFormat.jm().format(sighting.dateTime)}',
-                ),
-              ],
-            ),
-            Card(
-                child: Padding(
-              padding: const EdgeInsets.all(2.0),
-              child: Text(sighting.birdBox.toString()),
-            ))
-          ],
-        ),
-      );
-    }
 
     final List<Widget> _widgetList = [
       RGListTile(
@@ -76,11 +58,11 @@ class _HomePageState extends State<HomePage> {
         widget: Padding(
           padding: const EdgeInsets.all(12.0),
           child: Column(
-            children: const [
+            children: [
               Center(
                 child: Text(
                   'Welcome to the Redland Green Bird Box Survey!\n',
-                  style: TextStyle(fontWeight: FontWeight.bold),
+                  style: Theme.of(context).textTheme.headline1,
                 ),
               ),
               Text(
@@ -105,14 +87,12 @@ class _HomePageState extends State<HomePage> {
               if (snapshot.hasData) {
                 return Column(
                   children: [
-                    const Padding(
+                    Padding(
                       padding: EdgeInsets.all(12.0),
                       child: Center(
-                        child: Text(
-                          'Latest Sightings',
-                          textAlign: TextAlign.center,
-                          style: TextStyle(fontWeight: FontWeight.bold),
-                        ),
+                        child: Text('Latest Sightings',
+                            textAlign: TextAlign.center,
+                            style: Theme.of(context).textTheme.headline1),
                       ),
                     ),
                     Expanded(
@@ -120,7 +100,7 @@ class _HomePageState extends State<HomePage> {
                         spacing: 8.0, // gap between adjacent chips
                         runSpacing: 4.0,
                         children: _sightingList.map((sighting) {
-                          return observationSummary(sighting);
+                          return observationSummary(sighting, context);
                         }).toList(),
                       ),
                     )

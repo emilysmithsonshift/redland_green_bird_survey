@@ -33,69 +33,81 @@ class _LatestObservationsPageState extends State<LatestObservationsPage> {
         break;
     }
     final widgetList = [
-      Hero(
-        tag: 'observations',
-        child: Column(
-          children: [
-            SizedBox(
-              height: 30,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  GestureDetector(
+      Column(
+        children: [
+          SizedBox(
+            height: 50,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                Flexible(
+                  child: GestureDetector(
                     onTap: () {
                       setState(() {
                         _sortList = 0;
                       });
                     },
                     child: Text(
-                      'Latest',
-                      style: TextStyle(
-                        fontWeight: _sortList == 0
-                            ? FontWeight.bold
-                            : FontWeight.normal,
-                        fontSize: 18,
-                      ),
+                      'Latest Sightings',
+                      style: Theme.of(context).textTheme.headline1.copyWith(
+                          fontWeight: _sortList == 0
+                              ? FontWeight.bold
+                              : FontWeight.normal,
+                          color: Colors.black),
+                      textAlign: TextAlign.center,
                     ),
                   ),
-                  GestureDetector(
+                ),
+                Flexible(
+                  child: GestureDetector(
                     onTap: () {
                       setState(() {
                         _sortList = 1;
                       });
                     },
-                    child: Text('All',
-                        style: TextStyle(
+                    child: Text(
+                      'All Obs',
+                      style: Theme.of(context).textTheme.headline1.copyWith(
                           fontWeight: _sortList == 1
                               ? FontWeight.bold
                               : FontWeight.normal,
-                          fontSize: 18,
-                        )),
+                          color: Colors.black),
+                      textAlign: TextAlign.center,
+                    ),
                   ),
-                  GestureDetector(
+                ),
+                Flexible(
+                  child: GestureDetector(
                     onTap: () {
                       setState(() {
                         _sortList = 2;
                       });
                     },
-                    child: Text('My Obs',
-                        style: TextStyle(
+                    child: Text(
+                      'My Obs',
+                      style: Theme.of(context).textTheme.headline1.copyWith(
                           fontWeight: _sortList == 2
                               ? FontWeight.bold
                               : FontWeight.normal,
-                          fontSize: 18,
-                        )),
+                          color: Colors.black),
+                      textAlign: TextAlign.center,
+                    ),
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
-            Column(
-              children: _sightingList.map((sighting) {
-                return observationDetails(sighting, context, true);
-              }).toList(),
-            )
-          ],
-        ),
+          ),
+          Column(
+            children: _sightingList.map((sighting) {
+              return observationDetails(
+                sighting: sighting,
+                context: context,
+                showBoxNo: true,
+                showUser: true,
+              );
+            }).toList(),
+          )
+        ],
       )
     ];
     return RefreshIndicator(

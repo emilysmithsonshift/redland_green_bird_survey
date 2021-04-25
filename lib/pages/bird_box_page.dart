@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:redland_green_bird_survey/model/main_model.dart';
+import 'package:redland_green_bird_survey/providers/birdboxes_provider.dart';
 import 'package:redland_green_bird_survey/providers/sightings_provider.dart';
 import 'package:redland_green_bird_survey/widgets/page_template.dart';
 import 'package:redland_green_bird_survey/widgets/rg_grid_tile.dart';
 
 import '../settings.dart';
 import '../widgets/observation_widget.dart';
-import 'enter_observations_screen.dart';
+import 'enter_observations_page.dart';
 
 class BirdBoxPage extends StatefulWidget {
   final BirdBox birdBox;
@@ -23,7 +24,7 @@ class _BirdBoxPageState extends State<BirdBoxPage> {
     List<Sighting> _sightingList = [];
     Widget content() {
       _sightingList = sightings
-          .where((sighting) => sighting.birdBox == widget.birdBox.id - 1)
+          .where((sighting) => sighting.birdBox == widget.birdBox.id)
           .toList();
 
       return Padding(
@@ -44,7 +45,8 @@ class _BirdBoxPageState extends State<BirdBoxPage> {
                         style: TextStyle(fontWeight: FontWeight.bold),
                       ),
                       const SizedBox(height: 12),
-                      Text(widget.birdBox.locationDescription),
+                      Text(birdBoxesList[widget.birdBox.id - 1]
+                          .locationDescription),
                     ],
                   ),
                 ),
@@ -52,7 +54,7 @@ class _BirdBoxPageState extends State<BirdBoxPage> {
               Flexible(
                 child: RGGridTile(
                     heroTag: 'greattit',
-                    navigateTo: EnterObservationsScreen(),
+                    navigateTo: EnterObservationsPage(),
                     setState: () {
                       setState(() {});
                     },
@@ -63,7 +65,11 @@ class _BirdBoxPageState extends State<BirdBoxPage> {
           ),
           Column(
             children: _sightingList.map((Sighting sighting) {
-              return observationDetails(sighting, context, false);
+              return observationDetails(
+                  sighting: sighting,
+                  context: context,
+                  showBoxNo: false,
+                  showUser: true);
             }).toList(),
           )
         ]),

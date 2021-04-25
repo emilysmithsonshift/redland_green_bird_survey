@@ -3,8 +3,9 @@ import 'package:redland_green_bird_survey/model/main_model.dart';
 
 class BirdFactPage extends StatefulWidget {
   final Bird bird;
+  final String heroKey;
 
-  const BirdFactPage({Key key, this.bird}) : super(key: key);
+  const BirdFactPage({Key key, this.bird, this.heroKey}) : super(key: key);
 
   @override
   _BirdFactPageState createState() => _BirdFactPageState();
@@ -57,7 +58,7 @@ class _BirdFactPageState extends State<BirdFactPage> {
                 SizedBox(
                   height: MediaQuery.of(context).size.width,
                   child: Hero(
-                    tag: '${widget.bird.name}1',
+                    tag: widget.heroKey ?? '${widget.bird.name}1',
                     child: Container(
                       margin: const EdgeInsets.all(8),
                       decoration: BoxDecoration(

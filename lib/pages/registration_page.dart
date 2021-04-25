@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:redland_green_bird_survey/pages/home.dart';
+import 'package:redland_green_bird_survey/pages/home_page.dart';
+import 'package:redland_green_bird_survey/pages/login_page.dart';
 import 'package:redland_green_bird_survey/widgets/page_template.dart';
 
 class RegistrationPage extends StatefulWidget {
@@ -10,20 +11,56 @@ class RegistrationPage extends StatefulWidget {
 
 class _RegistrationPageState extends State<RegistrationPage> {
   bool checkBoxValue = true;
-  TextEditingController nameController = TextEditingController();
   TextEditingController emailController = TextEditingController();
+  bool _emailErrorMsg = false;
   TextEditingController passwordController = TextEditingController();
+  bool _passwordErrorMsg = false;
   TextEditingController nickNameController = TextEditingController();
+  bool _nickNameErrorMsg = false;
   int _currentStep = 0;
   @override
   Widget build(BuildContext context) {
     // Example code for registration.
     Future<void> _register() async {
       final FirebaseAuth _auth = FirebaseAuth.instance;
-      final User user = (await _auth.createUserWithEmailAndPassword(
+
+      final User user = (await _auth
+              .createUserWithEmailAndPassword(
         email: emailController.text,
         password: passwordController.text,
-      ))
+      )
+              .catchError((error) {
+        print(error);
+        print(error.toString());
+        if (error.toString() ==
+            '[firebase_auth/email-already-in-use] The email address is already in use by another account.') {
+          showDialog(
+            context: context,
+            builder: (BuildContext context) {
+              return AlertDialog(
+                title: Text('Oh dear'),
+                content: Text(
+                    "The email address ${emailController.value.text} has already been registered. Please log in."),
+                actions: [
+                  ElevatedButton(
+                    onPressed: () {
+                      Navigator.pushAndRemoveUntil(
+                        context,
+                        MaterialPageRoute(
+                          builder: (BuildContext context) => LoginPage(),
+                        ),
+                        (Route<dynamic> route) => false,
+                      );
+                    },
+                    child: const Text('Continue'),
+                  ),
+                ],
+              );
+              ;
+            },
+          );
+        }
+      }))
           .user;
       if (user != null) {
         user.updateProfile(displayName: nickNameController.value.text);
@@ -33,18 +70,19 @@ class _RegistrationPageState extends State<RegistrationPage> {
           context: context,
           builder: (BuildContext context) {
             return AlertDialog(
-              title: const Text("Thank you for registering to use this app"),
+              title: Text(
+                  "Thank you, ${nickNameController.value.text} for registering to use this app"),
               content: const Text(
                   "You will now be able to enter your own observations"),
               actions: [
                 ElevatedButton(
                   onPressed: () {
-                    Navigator.pop(context);
-                    Navigator.pushReplacement(
+                    Navigator.pushAndRemoveUntil(
                       context,
                       MaterialPageRoute(
                         builder: (BuildContext context) => HomePage(),
                       ),
+                      (Route<dynamic> route) => false,
                     );
                   },
                   child: const Text('Continue'),
@@ -60,51 +98,63 @@ class _RegistrationPageState extends State<RegistrationPage> {
     }
 
     final List<Widget> _widgetList = [
+      Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Text(
+            'You need to register in order to use this app. We will never share '
+            'your details with third parties.'),
+      ),
       Stepper(
           currentStep: _currentStep,
           onStepContinue: () async {
             switch (_currentStep) {
               case 0:
-                print(nameController.value.text.isNotEmpty);
-                if (nameController.value.text.length > 2) {
-                  setState(() {
-                    _currentStep++;
-                  });
-                }
-                break;
-              case 1:
                 final String email = emailController.value.text;
                 if (RegExp(
                         r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
                     .hasMatch(email)) {
                   setState(() {
+                    _emailErrorMsg = false;
                     _currentStep++;
+                  });
+                } else {
+                  setState(() {
+                    _emailErrorMsg = true;
+                  });
+                }
+                break;
+              case 1:
+                if (passwordController.value.text.length > 5) {
+                  setState(() {
+                    _passwordErrorMsg = false;
+                    _currentStep++;
+                  });
+                } else {
+                  setState(() {
+                    _passwordErrorMsg = true;
                   });
                 }
                 break;
               case 2:
-                if (passwordController.value.text.length > 5) {
-                  setState(() {
-                    _currentStep++;
-                  });
-                }
-                break;
-              case 3:
                 if (nickNameController.value.text.length > 2) {
                   setState(() {
-                    _currentStep++;
+                    _nickNameErrorMsg = false;
+                  });
+                  _register();
+                } else {
+                  setState(() {
+                    _nickNameErrorMsg = true;
                   });
                 }
-                break;
-              case 4:
-                _register();
-
                 break;
             }
           },
           onStepCancel: () {
             if (_currentStep > 0) {
               setState(() {
+                _passwordErrorMsg = false;
+                _emailErrorMsg = false;
+                _nickNameErrorMsg = false;
                 _currentStep--;
               });
             }
@@ -116,12 +166,12 @@ class _RegistrationPageState extends State<RegistrationPage> {
                 if (_currentStep > 0)
                   ElevatedButton(
                     onPressed: onStepCancel,
-                    child: const Text('BACK'),
+                    child: const Text('Back'),
                   ),
                 const SizedBox(width: 20),
                 ElevatedButton(
                   onPressed: onStepContinue,
-                  child: const Text('NEXT'),
+                  child: Text(_currentStep == 2 ? 'Submit' : 'Next'),
                 ),
               ],
             );
@@ -129,39 +179,14 @@ class _RegistrationPageState extends State<RegistrationPage> {
           steps: [
             Step(
               title: const Text(
-                'Please enter your full name',
-              ),
-              content: Container(
-                margin: const EdgeInsets.all(8),
-                padding: const EdgeInsets.all(8),
-                decoration: const BoxDecoration(
-                  color: Colors.white,
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.grey,
-                      offset: Offset(5.0, 5.0),
-                      blurRadius: 5.0,
-                    )
-                  ],
-                  borderRadius: BorderRadius.all(Radius.circular(10)),
-                ),
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: TextFormField(
-                    controller: nameController,
-                    textCapitalization: TextCapitalization.words,
-                    decoration: const InputDecoration.collapsed(
-                      fillColor: Colors.white,
-                      hintText: 'eg John Smith',
-                    ),
-                  ),
-                ),
-              ),
-            ),
-            Step(
-              title: const Text(
                 'Please enter your email address',
               ),
+              subtitle: _emailErrorMsg
+                  ? Text('Please enter a valid e-mail address',
+                      style: TextStyle(
+                        color: Colors.red,
+                      ))
+                  : Text(''),
               content: Container(
                 margin: const EdgeInsets.all(8),
                 padding: const EdgeInsets.all(8),
@@ -191,7 +216,18 @@ class _RegistrationPageState extends State<RegistrationPage> {
             ),
             Step(
               title: const Text('Please choose a memorable password'),
-              subtitle: const Text('At least 6 characters'),
+              subtitle: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text('At least 6 characters'),
+                  _passwordErrorMsg
+                      ? Text('Please enter a valid password',
+                          style: TextStyle(
+                            color: Colors.red,
+                          ))
+                      : Text(''),
+                ],
+              ),
               content: Container(
                 margin: const EdgeInsets.all(8),
                 padding: const EdgeInsets.all(8),
@@ -223,6 +259,12 @@ class _RegistrationPageState extends State<RegistrationPage> {
               title: const Text(
                 'Please choose a nickname (this will be visible to the public)',
               ),
+              subtitle: _nickNameErrorMsg
+                  ? Text('Please choose a nickname with at least 3 characters.',
+                      style: TextStyle(
+                        color: Colors.red,
+                      ))
+                  : Text(''),
               content: Container(
                 margin: const EdgeInsets.all(8),
                 padding: const EdgeInsets.all(8),
@@ -248,27 +290,6 @@ class _RegistrationPageState extends State<RegistrationPage> {
                     ),
                   ),
                 ),
-              ),
-            ),
-            Step(
-              title: const Text('May we keep in touch?'),
-              subtitle: const Text(
-                'We may wish to get in contact with you to tell you about the results of the survey'
-                ' or about other apps or events on Redland Green. '
-                'We will never pass your details to third parties.  ',
-              ),
-              content: CheckboxListTile(
-                title: checkBoxValue
-                    ? const Text("Yes, please keep me up to date.")
-                    : const Text('No, please do not contact me.'),
-                value: checkBoxValue,
-                onChanged: (newValue) {
-                  setState(() {
-                    checkBoxValue = !checkBoxValue;
-                  });
-                },
-                controlAffinity:
-                    ListTileControlAffinity.leading, //  <-- leading Checkbox
               ),
             ),
           ])

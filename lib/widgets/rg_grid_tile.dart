@@ -23,8 +23,8 @@ class RGGridTile extends StatelessWidget {
         if (navigateTo != null) {
           await Navigator.push(
             context,
-            MaterialPageRoute(
-              builder: (context) => navigateTo,
+            PageRouteBuilder(
+              pageBuilder: (_, __, ___) => navigateTo,
             ),
           );
           if (setState != null) {

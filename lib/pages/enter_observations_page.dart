@@ -1,22 +1,32 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:redland_green_bird_survey/model/main_model.dart';
 import 'package:redland_green_bird_survey/pages/observation_widgets/observation_description.dart';
 import 'package:redland_green_bird_survey/pages/observation_widgets/select_bird.dart';
 import 'package:redland_green_bird_survey/pages/observation_widgets/select_bird_box_no.dart';
 import 'package:redland_green_bird_survey/pages/observation_widgets/time_of_observation.dart';
+import 'package:redland_green_bird_survey/providers/birds_provider.dart';
+import 'package:redland_green_bird_survey/providers/sightings_provider.dart';
+import 'package:redland_green_bird_survey/providers/sightings_type_provider.dart';
 import 'package:redland_green_bird_survey/widgets/page_template.dart';
 import 'package:redland_green_bird_survey/widgets/step.dart';
 import 'package:scrollable_positioned_list/scrollable_positioned_list.dart';
 
+import 'home_page.dart';
 import 'observation_widgets/comments.dart';
 
-class EnterObservationsScreen extends StatefulWidget {
+class EnterObservationsPage extends StatefulWidget {
+  final int birdBox;
+  final Sighting sighting;
+
+  const EnterObservationsPage({this.birdBox, Key key, this.sighting})
+      : super(key: key);
   @override
-  _EnterObservationsScreenState createState() =>
-      _EnterObservationsScreenState();
+  _EnterObservationsPageState createState() => _EnterObservationsPageState();
 }
 
-class _EnterObservationsScreenState extends State<EnterObservationsScreen> {
+class _EnterObservationsPageState extends State<EnterObservationsPage> {
   int _currentStep = 0;
   int _birdBox = -1;
   bool _birdBoxErrorMsg = false;
@@ -27,12 +37,27 @@ class _EnterObservationsScreenState extends State<EnterObservationsScreen> {
   String _comment = '';
 
   DateTime _dateTime = DateTime.now();
-  TextEditingController textEditingController = TextEditingController();
+
+  @override
+  void initState() {
+    if (widget.birdBox != null) {
+      _birdBox = widget.birdBox;
+    }
+    if (widget.sighting != null) {
+      _birdBox = widget.sighting.birdBox;
+      _bird = birdsList
+          .indexWhere((bird) => widget.sighting.bird.name == bird.name);
+      _sightingType = widget.sighting.sightingType.id;
+      _comment = widget.sighting.comment;
+      _dateTime = widget.sighting.dateTime;
+    }
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     ItemScrollController itemScrollController = ItemScrollController();
     void _scrollToNextWidget() {
-      print('should scroll');
       _currentStep++;
       itemScrollController.scrollTo(
           index: _currentStep,
@@ -48,16 +73,16 @@ class _EnterObservationsScreenState extends State<EnterObservationsScreen> {
           curve: Curves.easeIn);
     }
 
-    Widget _step0 = step(
+    Widget _step1 = step(
       context: context,
       stepNumber: 1,
       title: 'Select the Bird Box Number',
-      content: SelectBirdBoxNo((int value) {
+      content: SelectBirdBoxNo(_birdBox, (int value) {
         setState(() {
           _birdErrorMsg = false;
           _birdBox = value;
         });
-      }, _birdBox),
+      }, context),
       showPrevious: false,
       errorMsg: 'Please select one.',
       showErrorMsg: _birdBoxErrorMsg,
@@ -72,7 +97,7 @@ class _EnterObservationsScreenState extends State<EnterObservationsScreen> {
         }
       },
     );
-    Widget _step1 = step(
+    Widget _step2 = step(
       context: context,
       stepNumber: 2,
       showErrorMsg: false,
@@ -92,7 +117,7 @@ class _EnterObservationsScreenState extends State<EnterObservationsScreen> {
         _scrollToNextWidget();
       },
     );
-    Widget _step2 = step(
+    Widget _step3 = step(
       context: context,
       stepNumber: 3,
       showErrorMsg: _birdErrorMsg,
@@ -113,6 +138,9 @@ class _EnterObservationsScreenState extends State<EnterObservationsScreen> {
             _birdErrorMsg = true;
           });
         } else {
+          if (_bird == birdsList.length - 1) {
+            _sightingType = 0;
+          }
           setState(() {
             _birdErrorMsg = false;
             _scrollToNextWidget();
@@ -120,7 +148,7 @@ class _EnterObservationsScreenState extends State<EnterObservationsScreen> {
         }
       },
     );
-    Widget _step3 = step(
+    Widget _step4 = step(
       context: context,
       stepNumber: 4,
       title: 'Which best describes what you saw?',
@@ -152,7 +180,7 @@ class _EnterObservationsScreenState extends State<EnterObservationsScreen> {
         }
       },
     );
-    Widget _step4 = step(
+    Widget _step5 = step(
       showErrorMsg: false,
       context: context,
       stepNumber: 5,
@@ -169,10 +197,38 @@ class _EnterObservationsScreenState extends State<EnterObservationsScreen> {
       onBack: () {
         _scrollToPreviousWidget();
       },
-      onNext: () {},
+      nextButtonText: 'Submit',
+      onNext: () {
+        final Sighting _sighting = Sighting(
+            dateTime: _dateTime,
+            birdBox: _birdBox,
+            userEmail: FirebaseAuth.instance.currentUser.email,
+            user: FirebaseAuth.instance.currentUser.displayName,
+            sightingType: sightingsTypeList[_sightingType],
+            bird: birdsList[_bird],
+            comment: _comment);
+        if (widget.sighting != null) {
+          updateSighting(_sighting, widget.sighting.id);
+        } else {
+          addSighting(_sighting);
+        }
+        Navigator.pushAndRemoveUntil(
+          context,
+          MaterialPageRoute(
+            builder: (BuildContext context) => HomePage(),
+          ),
+          (Route<dynamic> route) => false,
+        );
+      },
     );
 
-    List<Widget> steps = [_step0, _step1, _step2, _step3, _step4];
+    List<Widget> steps = [
+      _step1,
+      _step2,
+      _step3,
+      _step4,
+      _step5,
+    ];
     final List<Widget> widgetList = [
       SizedBox(
         height: MediaQuery.of(context).size.height - 240,

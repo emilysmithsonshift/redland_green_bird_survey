@@ -20,6 +20,20 @@ void addSighting(Sighting _sighting) {
   getSightings();
 }
 
+void updateSighting(Sighting _sighting, String id) {
+  final DatabaseReference reference =
+      FirebaseDatabase.instance.reference().child("observations");
+
+  reference.child(id).update({
+    'user': _sighting.user,
+    'date_time': _sighting.dateTime.toIso8601String(),
+    'bird_box': _sighting.birdBox,
+    'sighting_type': _sighting.sightingType.id,
+    'bird': _sighting.bird.name,
+    'userEmail': _sighting.userEmail,
+  });
+}
+
 Future<bool> getSightings() async {
   print('fetching sightings');
   final DatabaseReference reference =

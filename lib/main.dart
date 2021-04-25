@@ -1,8 +1,9 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:redland_green_bird_survey/pages/enter_observations_screen.dart';
 import 'package:redland_green_bird_survey/pages/introduction_page.dart';
+
+import 'pages/home_page.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -16,6 +17,14 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      theme: ThemeData(
+        textTheme: TextTheme(
+          headline1: TextStyle(
+              fontSize: 16.0, fontWeight: FontWeight.bold, color: Colors.black),
+          headline2: TextStyle(
+              fontSize: 14.0, fontWeight: FontWeight.bold, color: Colors.black),
+        ),
+      ),
       title: 'Redland Green Bird Survey',
       home: FutureBuilder(
           future: _fbApp,
@@ -27,7 +36,7 @@ class MyApp extends StatelessWidget {
               if (FirebaseAuth.instance.currentUser == null) {
                 return IntroductionPage();
               } else {
-                return EnterObservationsScreen();
+                return HomePage();
               }
             } else {
               return const Center(child: CircularProgressIndicator());
