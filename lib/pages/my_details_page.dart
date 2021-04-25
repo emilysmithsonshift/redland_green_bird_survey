@@ -105,18 +105,23 @@ class _MyDetailsPageState extends State<MyDetailsPage> {
           'My observations',
           style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
         ),
-        Column(
-          children: _sightingList.map((Sighting sighting) {
-            return observationDetails(
-                sighting: sighting,
-                context: context,
-                showBoxNo: true,
-                showUser: false,
-                setState: () {
-                  setState(() {});
-                });
-          }).toList(),
-        )
+        _sightingList.isEmpty
+            ? Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Text('You have no observations yet.'),
+              )
+            : Column(
+                children: _sightingList.map((Sighting sighting) {
+                  return observationDetails(
+                      sighting: sighting,
+                      context: context,
+                      showBoxNo: true,
+                      showUser: false,
+                      setState: () {
+                        setState(() {});
+                      });
+                }).toList(),
+              )
       ],
     );
     return PageTemplate(

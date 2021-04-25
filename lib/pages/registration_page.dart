@@ -65,8 +65,8 @@ class _RegistrationPageState extends State<RegistrationPage> {
       if (user != null) {
         user.updateProfile(displayName: nickNameController.value.text);
 
-        // set up the AlertDialog
         showDialog(
+          barrierDismissible: false,
           context: context,
           builder: (BuildContext context) {
             return AlertDialog(

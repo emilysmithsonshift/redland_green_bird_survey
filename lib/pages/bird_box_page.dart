@@ -54,7 +54,9 @@ class _BirdBoxPageState extends State<BirdBoxPage> {
               Flexible(
                 child: RGGridTile(
                     heroTag: 'greattit',
-                    navigateTo: EnterObservationsPage(),
+                    navigateTo: EnterObservationsPage(
+                      birdBox: widget.birdBox.id,
+                    ),
                     setState: () {
                       setState(() {});
                     },

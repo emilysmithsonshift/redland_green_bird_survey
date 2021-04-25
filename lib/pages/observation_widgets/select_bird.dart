@@ -21,13 +21,15 @@ Widget SelectBird(int _bird, Function onSelect) {
                 width: _bird == index ? 3.0 : 0.0,
                 color: Colors.blueAccent,
               ),
-              boxShadow: const [
-                BoxShadow(
-                  color: Colors.grey,
-                  offset: Offset(3.0, 3.0),
-                  blurRadius: 3.0,
-                )
-              ],
+              boxShadow: _bird == index
+                  ? []
+                  : [
+                      BoxShadow(
+                        color: Colors.grey,
+                        offset: Offset(3.0, 3.0),
+                        blurRadius: 3.0,
+                      )
+                    ],
               borderRadius: const BorderRadius.all(
                 Radius.circular(10),
               ),

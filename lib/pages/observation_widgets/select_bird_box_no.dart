@@ -27,16 +27,20 @@ Widget SelectBirdBoxNo(
                 borderRadius: const BorderRadius.all(
                   Radius.circular(60),
                 ),
-                boxShadow: const [
-                  BoxShadow(
-                    color: Colors.grey,
-                    offset: Offset(3.0, 3.0),
-                    blurRadius: 3.0,
-                  )
-                ],
+                boxShadow: birdBox != _birdBox.id
+                    ? [
+                        BoxShadow(
+                          color: Colors.grey,
+                          offset: Offset(3.0, 3.0),
+                          blurRadius: 3.0,
+                        )
+                      ]
+                    : [],
                 border: Border.all(
                   width: birdBox == _birdBox.id ? 2.0 : 0.0,
-                  color: Colors.blueAccent,
+                  color: birdBox == _birdBox.id
+                      ? Colors.blueAccent
+                      : Colors.green[50],
                 ),
               ),
               child: Center(

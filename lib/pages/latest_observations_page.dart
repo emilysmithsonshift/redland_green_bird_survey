@@ -97,16 +97,21 @@ class _LatestObservationsPageState extends State<LatestObservationsPage> {
               ],
             ),
           ),
-          Column(
-            children: _sightingList.map((sighting) {
-              return observationDetails(
-                sighting: sighting,
-                context: context,
-                showBoxNo: true,
-                showUser: true,
-              );
-            }).toList(),
-          )
+          _sightingList.isEmpty
+              ? Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Text('You have no observations yet.'),
+                )
+              : Column(
+                  children: _sightingList.map((sighting) {
+                    return observationDetails(
+                      sighting: sighting,
+                      context: context,
+                      showBoxNo: true,
+                      showUser: true,
+                    );
+                  }).toList(),
+                )
         ],
       )
     ];

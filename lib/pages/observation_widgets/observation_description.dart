@@ -19,13 +19,15 @@ Widget ObservationDescription(Function onSelected, int _sightingType) {
               borderRadius: const BorderRadius.all(
                 Radius.circular(20),
               ),
-              boxShadow: const [
-                BoxShadow(
-                  color: Colors.grey,
-                  offset: Offset(3.0, 3.0),
-                  blurRadius: 3.0,
-                )
-              ],
+              boxShadow: _sightingType == index
+                  ? []
+                  : [
+                      BoxShadow(
+                        color: Colors.grey,
+                        offset: Offset(3.0, 3.0),
+                        blurRadius: 3.0,
+                      )
+                    ],
               border: Border.all(
                 width: _sightingType == index ? 2.0 : 0.0,
                 color: Colors.blueAccent,
