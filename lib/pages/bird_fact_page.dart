@@ -84,8 +84,11 @@ class _BirdFactPageState extends State<BirdFactPage> {
                         child: Wrap(children: photoList),
                       ),
                       const SizedBox(height: 8),
-                      Text(widget.bird.name,
-                          style: const TextStyle(fontWeight: FontWeight.bold)),
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Text(widget.bird.name,
+                            style: Theme.of(context).textTheme.headline1),
+                      ),
                       Text(widget.bird.description),
                     ],
                   ),
