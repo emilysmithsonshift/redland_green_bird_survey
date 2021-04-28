@@ -28,8 +28,8 @@ class _BirdIdentifierScreenState extends State<BirdIdentifierScreen> {
 
     return PageTemplate(
       title: 'Identify Birds on the Green',
-      image: 'assets/nuthatch.png',
-      heroTag: 'nuthatch',
+      image: 'assets/songthrush.png',
+      heroTag: 'songthrush',
       widgetList: _widgetList,
       gridList: _gridList,
       crossAxisCount: 3,

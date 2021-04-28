@@ -25,19 +25,29 @@ class PageTemplate extends StatelessWidget {
         slivers: <Widget>[
           SliverAppBar(
             backgroundColor: Colors.green[100],
-            pinned: true,
+            // pinned: true,
             expandedHeight: 200.0,
             flexibleSpace: FlexibleSpaceBar(
-              title: Padding(
+              titlePadding: EdgeInsets.all(0),
+              title: Container(
+                width: double.infinity,
                 padding: const EdgeInsets.all(8.0),
-                child: FittedBox(
-                  child:
-                      Text(title, style: const TextStyle(color: Colors.white)),
+                color: Colors.white24,
+                child: Text(
+                  title,
+                  textAlign: TextAlign.center,
+                  style: const TextStyle(
+                    color: Colors.black,
+                    fontSize: 18,
+                  ),
                 ),
               ),
               background: Hero(
                 tag: heroTag,
-                child: Image.asset(image, fit: BoxFit.fitWidth),
+                child: Image.asset(
+                  image,
+                  fit: BoxFit.fitWidth,
+                ),
               ),
             ),
           ),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:redland_green_bird_survey/models/sighting.dart';
+import 'package:redland_green_bird_survey/pages/fact_page.dart';
 import 'package:redland_green_bird_survey/pages/information_page.dart';
 import 'package:redland_green_bird_survey/pages/my_details_page.dart';
 import 'package:redland_green_bird_survey/widgets/observation_summary.dart';
@@ -24,10 +25,10 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     final List<Widget> _gridList = [
       RGGridTile(
-          heroTag: 'nuthatch',
+          heroTag: 'songthrush',
           navigateTo: BirdIdentifierScreen(),
           text: 'Identify birds on the green',
-          imageAsset: 'assets/nuthatch.png'),
+          imageAsset: 'assets/songthrush.png'),
       RGGridTile(
           heroTag: 'greattit',
           navigateTo: EnterObservationsPage(),
@@ -46,6 +47,12 @@ class _HomePageState extends State<HomePage> {
           navigateTo: MyDetailsPage(),
           text: 'My details',
           imageAsset: 'assets/coaltit1.png'),
+      RGGridTile(
+        heroTag: 'fact_page',
+        navigateTo: FactPage(),
+        text: 'Fact Page',
+        imageAsset: 'assets/wren3.png',
+      )
     ];
 
     final List<Widget> _widgetList = [

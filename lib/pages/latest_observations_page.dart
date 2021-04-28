@@ -35,7 +35,7 @@ class _LatestObservationsPageState extends State<LatestObservationsPage> {
       Column(
         children: [
           SizedBox(
-            height: 50,
+            height: 60,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
@@ -46,14 +46,17 @@ class _LatestObservationsPageState extends State<LatestObservationsPage> {
                         _sortList = 0;
                       });
                     },
-                    child: Text(
-                      'Latest Sightings',
-                      style: Theme.of(context).textTheme.headline1.copyWith(
-                          fontWeight: _sortList == 0
-                              ? FontWeight.bold
-                              : FontWeight.normal,
-                          color: Colors.black),
-                      textAlign: TextAlign.center,
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Text(
+                        'Latest Sightings',
+                        style: Theme.of(context).textTheme.headline1.copyWith(
+                            fontWeight: _sortList == 0
+                                ? FontWeight.bold
+                                : FontWeight.normal,
+                            color: Colors.black),
+                        textAlign: TextAlign.center,
+                      ),
                     ),
                   ),
                 ),
@@ -64,14 +67,17 @@ class _LatestObservationsPageState extends State<LatestObservationsPage> {
                         _sortList = 1;
                       });
                     },
-                    child: Text(
-                      'All Observations',
-                      style: Theme.of(context).textTheme.headline1.copyWith(
-                          fontWeight: _sortList == 1
-                              ? FontWeight.bold
-                              : FontWeight.normal,
-                          color: Colors.black),
-                      textAlign: TextAlign.center,
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Text(
+                        'All Observations',
+                        style: Theme.of(context).textTheme.headline1.copyWith(
+                            fontWeight: _sortList == 1
+                                ? FontWeight.bold
+                                : FontWeight.normal,
+                            color: Colors.black),
+                        textAlign: TextAlign.center,
+                      ),
                     ),
                   ),
                 ),
@@ -82,14 +88,17 @@ class _LatestObservationsPageState extends State<LatestObservationsPage> {
                         _sortList = 2;
                       });
                     },
-                    child: Text(
-                      'My Observations',
-                      style: Theme.of(context).textTheme.headline1.copyWith(
-                          fontWeight: _sortList == 2
-                              ? FontWeight.bold
-                              : FontWeight.normal,
-                          color: Colors.black),
-                      textAlign: TextAlign.center,
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Text(
+                        'My Observations',
+                        style: Theme.of(context).textTheme.headline1.copyWith(
+                            fontWeight: _sortList == 2
+                                ? FontWeight.bold
+                                : FontWeight.normal,
+                            color: Colors.black),
+                        textAlign: TextAlign.center,
+                      ),
                     ),
                   ),
                 ),
