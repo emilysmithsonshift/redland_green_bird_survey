@@ -60,6 +60,7 @@ class RGGridTile extends StatelessWidget {
             child: Align(
               alignment: Alignment.bottomCenter,
               child: Container(
+                // height: 50,
                 decoration: const BoxDecoration(
                   borderRadius: BorderRadius.only(
                     bottomLeft: Radius.circular(20.0),

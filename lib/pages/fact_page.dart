@@ -7,7 +7,7 @@ class FactPage extends StatelessWidget {
     return PageTemplate(
       title: 'Fact Page',
       image: 'assets/wren3.png',
-      widgetList: [],
+      widgetList: [Text('')],
       heroTag: 'fact_page',
     );
   }

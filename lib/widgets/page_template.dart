@@ -29,17 +29,13 @@ class PageTemplate extends StatelessWidget {
             expandedHeight: 200.0,
             flexibleSpace: FlexibleSpaceBar(
               titlePadding: EdgeInsets.all(0),
-              title: Container(
-                width: double.infinity,
-                padding: const EdgeInsets.all(8.0),
-                color: Colors.white24,
-                child: Text(
-                  title,
-                  textAlign: TextAlign.center,
-                  style: const TextStyle(
-                    color: Colors.black,
-                    fontSize: 18,
-                  ),
+              title: Text(
+                title,
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  color: Colors.white,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 18,
                 ),
               ),
               background: Hero(
