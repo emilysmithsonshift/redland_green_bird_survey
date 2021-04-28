@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:redland_green_bird_survey/model/main_model.dart';
+import 'package:redland_green_bird_survey/models/sighting.dart';
 import 'package:redland_green_bird_survey/pages/information_page.dart';
 import 'package:redland_green_bird_survey/pages/my_details_page.dart';
-import 'package:redland_green_bird_survey/providers/sightings_provider.dart';
 import 'package:redland_green_bird_survey/widgets/observation_summary.dart';
 import 'package:redland_green_bird_survey/widgets/page_template.dart';
 import 'package:redland_green_bird_survey/widgets/rg_grid_tile.dart';
@@ -73,18 +72,41 @@ class _HomePageState extends State<HomePage> {
         ),
       ),
       RGListTile(
-        imageAsset: 'assets/wagtail.png',
+        imageAsset: 'assets/goldfinch4.png',
         alignment: Alignment.centerLeft,
         navigateTo: LatestObservationsPage(),
-        heroTag: 'wagtail',
+        heroTag: 'goldfinch',
         imageLeft: true,
         widget: FutureBuilder(
-            future: getSightings(),
+            future: Sighting.getSightings(),
             builder: (context, snapshot) {
-              List<Sighting> _sightingList = sightings
+              if (snapshot.hasError) {
+                return Center(
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Text(
+                      'Oh dear, we have had trouble downloading the database',
+                      textAlign: TextAlign.center,
+                    ),
+                  ),
+                );
+              }
+              List<Sighting> _sightingList = Sighting.sightings
                   .where((sighting) => sighting.bird.name != 'None')
                   .toList();
               if (snapshot.hasData) {
+                print(_sightingList.length);
+                if (_sightingList.isEmpty) {
+                  return Center(
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Text(
+                        'There are no observations yet.',
+                        textAlign: TextAlign.center,
+                      ),
+                    ),
+                  );
+                }
                 return Column(
                   children: [
                     Padding(
@@ -115,7 +137,7 @@ class _HomePageState extends State<HomePage> {
 
     return RefreshIndicator(
       onRefresh: () async {
-        await getSightings();
+        await Sighting.getSightings();
         setState(() {});
       },
       child: Scaffold(

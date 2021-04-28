@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:redland_green_bird_survey/model/main_model.dart';
+import 'package:redland_green_bird_survey/models/sighting.dart';
 
 Widget observationSummary(Sighting sighting, BuildContext context) {
   return Padding(

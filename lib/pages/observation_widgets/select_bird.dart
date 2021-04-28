@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:redland_green_bird_survey/providers/birds_provider.dart';
+import 'package:redland_green_bird_survey/models/birds.dart';
 
 Widget SelectBird(int _bird, Function onSelect) {
   return Expanded(
@@ -7,7 +7,7 @@ Widget SelectBird(int _bird, Function onSelect) {
       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 3,
       ),
-      itemCount: birdsList.length,
+      itemCount: Bird.birdsList.length,
       itemBuilder: (context, index) {
         return GestureDetector(
           onTap: () {
@@ -34,13 +34,13 @@ Widget SelectBird(int _bird, Function onSelect) {
                 Radius.circular(10),
               ),
               image: DecorationImage(
-                colorFilter: birdsList[index].image.isEmpty
+                colorFilter: Bird.birdsList[index].images.isEmpty
                     ? const ColorFilter.mode(Colors.grey, BlendMode.clear)
                     : const ColorFilter.mode(Colors.white, BlendMode.colorBurn),
                 fit: BoxFit.fill,
-                image: AssetImage(birdsList[index].image.isEmpty
+                image: AssetImage(Bird.birdsList[index].images.isEmpty
                     ? 'assets/bluetit.png'
-                    : birdsList[index].image[0]),
+                    : Bird.birdsList[index].images[0]),
               ),
             ),
             child: Align(
@@ -56,7 +56,7 @@ Widget SelectBird(int _bird, Function onSelect) {
                 width: double.infinity,
                 padding: const EdgeInsets.all(2.0),
                 child: Text(
-                  birdsList[index].name,
+                  Bird.birdsList[index].name,
                   textAlign: TextAlign.center,
                 ),
               ),

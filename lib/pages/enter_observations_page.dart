@@ -1,14 +1,13 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:redland_green_bird_survey/model/main_model.dart';
+import 'package:redland_green_bird_survey/models/birds.dart';
+import 'package:redland_green_bird_survey/models/sighting.dart';
+import 'package:redland_green_bird_survey/models/sighting_type.dart';
 import 'package:redland_green_bird_survey/pages/observation_widgets/observation_description.dart';
 import 'package:redland_green_bird_survey/pages/observation_widgets/select_bird.dart';
 import 'package:redland_green_bird_survey/pages/observation_widgets/select_bird_box_no.dart';
 import 'package:redland_green_bird_survey/pages/observation_widgets/time_of_observation.dart';
-import 'package:redland_green_bird_survey/providers/birds_provider.dart';
-import 'package:redland_green_bird_survey/providers/sightings_provider.dart';
-import 'package:redland_green_bird_survey/providers/sightings_type_provider.dart';
 import 'package:redland_green_bird_survey/widgets/page_template.dart';
 import 'package:redland_green_bird_survey/widgets/step.dart';
 import 'package:scrollable_positioned_list/scrollable_positioned_list.dart';
@@ -45,7 +44,7 @@ class _EnterObservationsPageState extends State<EnterObservationsPage> {
     }
     if (widget.sighting != null) {
       _birdBox = widget.sighting.birdBox;
-      _bird = birdsList
+      _bird = Bird.birdsList
           .indexWhere((bird) => widget.sighting.bird.name == bird.name);
       _sightingType = widget.sighting.sightingType.id;
       _comment = widget.sighting.comment;
@@ -138,7 +137,7 @@ class _EnterObservationsPageState extends State<EnterObservationsPage> {
             _birdErrorMsg = true;
           });
         } else {
-          if (_bird == birdsList.length - 1) {
+          if (_bird == Bird.birdsList.length - 1) {
             _sightingType = 0;
           }
           setState(() {
@@ -204,13 +203,13 @@ class _EnterObservationsPageState extends State<EnterObservationsPage> {
             birdBox: _birdBox,
             userEmail: FirebaseAuth.instance.currentUser.email,
             user: FirebaseAuth.instance.currentUser.displayName,
-            sightingType: sightingsTypeList[_sightingType],
-            bird: birdsList[_bird],
+            sightingType: SightingType.sightingsTypeList[_sightingType],
+            bird: Bird.birdsList[_bird],
             comment: _comment);
         if (widget.sighting != null) {
-          updateSighting(_sighting, widget.sighting.id);
+          Sighting.updateSighting(_sighting, widget.sighting.id);
         } else {
-          addSighting(_sighting);
+          Sighting.addSighting(_sighting);
         }
         Navigator.pushAndRemoveUntil(
           context,

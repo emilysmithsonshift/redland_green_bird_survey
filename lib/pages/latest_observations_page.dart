@@ -1,7 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:redland_green_bird_survey/model/main_model.dart';
-import 'package:redland_green_bird_survey/providers/sightings_provider.dart';
+import 'package:redland_green_bird_survey/models/sighting.dart';
 import 'package:redland_green_bird_survey/widgets/observation_widget.dart';
 import 'package:redland_green_bird_survey/widgets/page_template.dart';
 
@@ -18,15 +17,15 @@ class _LatestObservationsPageState extends State<LatestObservationsPage> {
     List<Sighting> _sightingList = [];
     switch (_sortList) {
       case 0:
-        _sightingList = sightings
+        _sightingList = Sighting.sightings
             .where((sighting) => sighting.bird.name != 'None')
             .toList();
         break;
       case 1:
-        _sightingList = sightings;
+        _sightingList = Sighting.sightings;
         break;
       case 2:
-        _sightingList = sightings
+        _sightingList = Sighting.sightings
             .where((sighting) =>
                 sighting.userEmail == FirebaseAuth.instance.currentUser.email)
             .toList();
@@ -66,7 +65,7 @@ class _LatestObservationsPageState extends State<LatestObservationsPage> {
                       });
                     },
                     child: Text(
-                      'All Obs',
+                      'All Observations',
                       style: Theme.of(context).textTheme.headline1.copyWith(
                           fontWeight: _sortList == 1
                               ? FontWeight.bold
@@ -84,7 +83,7 @@ class _LatestObservationsPageState extends State<LatestObservationsPage> {
                       });
                     },
                     child: Text(
-                      'My Obs',
+                      'My Observations',
                       style: Theme.of(context).textTheme.headline1.copyWith(
                           fontWeight: _sortList == 2
                               ? FontWeight.bold
@@ -117,13 +116,13 @@ class _LatestObservationsPageState extends State<LatestObservationsPage> {
     ];
     return RefreshIndicator(
       onRefresh: () async {
-        await getSightings();
+        await Sighting.getSightings();
         setState(() {});
       },
       child: PageTemplate(
         title: 'Latest Observations',
-        image: 'assets/wagtail.png',
-        heroTag: 'wagtail',
+        image: 'assets/goldfinch4.png',
+        heroTag: 'goldfinch',
         widgetList: widgetList,
       ),
     );

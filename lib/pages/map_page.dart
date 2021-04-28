@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'package:redland_green_bird_survey/providers/birdboxes_provider.dart';
+import 'package:redland_green_bird_survey/models/bird_box.dart';
 
 import 'bird_box_page.dart';
-// import 'package:user_location/user_location.dart';
 
 class MapPage extends StatefulWidget {
   @override
@@ -15,10 +14,10 @@ class _MapPageState extends State<MapPage> {
   bool mapSatellite = true;
   @override
   void initState() {
-    for (int i = 0; i < birdBoxesList.length; i++) {
+    for (int i = 0; i < BirdBox.birdBoxesList.length; i++) {
       final Marker _marker = Marker(
         markerId: MarkerId(
-          birdBoxesList[i].id.toString(),
+          BirdBox.birdBoxesList[i].id.toString(),
         ),
         icon: BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueYellow),
         // icon: customIcon,
@@ -28,16 +27,16 @@ class _MapPageState extends State<MapPage> {
                 context,
                 MaterialPageRoute(
                   builder: (context) => BirdBoxPage(
-                    birdBox: birdBoxesList[i],
+                    birdBox: BirdBox.birdBoxesList[i],
                   ),
                 ),
               );
             },
-            title: 'BirdBox ${birdBoxesList[i].id.toString()}',
-            snippet: birdBoxesList[i].locationDescription),
-        position: birdBoxesList[i].location,
+            title: 'BirdBox ${BirdBox.birdBoxesList[i].id.toString()}',
+            snippet: BirdBox.birdBoxesList[i].locationDescription),
+        position: BirdBox.birdBoxesList[i].location,
       );
-      _markers[birdBoxesList[i].id.toString()] = _marker;
+      _markers[BirdBox.birdBoxesList[i].id.toString()] = _marker;
     }
     super.initState();
   }

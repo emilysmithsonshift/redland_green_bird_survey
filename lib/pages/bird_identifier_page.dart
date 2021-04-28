@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:redland_green_bird_survey/providers/birds_provider.dart';
+import 'package:redland_green_bird_survey/models/birds.dart';
 import 'package:redland_green_bird_survey/widgets/page_template.dart';
 import 'package:redland_green_bird_survey/widgets/rg_grid_tile.dart';
 
@@ -13,13 +13,13 @@ class BirdIdentifierScreen extends StatefulWidget {
 class _BirdIdentifierScreenState extends State<BirdIdentifierScreen> {
   @override
   Widget build(BuildContext context) {
-    final List<Widget> _gridList = birdsList.map((bird) {
-      if (bird.image.isEmpty) {
+    final List<Widget> _gridList = Bird.birdsList.map((bird) {
+      if (bird.images.isEmpty) {
         return Container();
       }
       return RGGridTile(
         navigateTo: BirdFactPage(bird: bird),
-        imageAsset: bird.image[0],
+        imageAsset: bird.images[0],
         text: bird.name,
         heroTag: '${bird.name}1',
       );

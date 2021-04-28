@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:redland_green_bird_survey/model/main_model.dart';
-import 'package:redland_green_bird_survey/providers/birdboxes_provider.dart';
-import 'package:redland_green_bird_survey/providers/sightings_provider.dart';
+import 'package:redland_green_bird_survey/models/bird_box.dart';
+import 'package:redland_green_bird_survey/models/sighting.dart';
 import 'package:redland_green_bird_survey/widgets/page_template.dart';
 import 'package:redland_green_bird_survey/widgets/rg_grid_tile.dart';
 
@@ -23,7 +22,7 @@ class _BirdBoxPageState extends State<BirdBoxPage> {
   Widget build(BuildContext context) {
     List<Sighting> _sightingList = [];
     Widget content() {
-      _sightingList = sightings
+      _sightingList = Sighting.sightings
           .where((sighting) => sighting.birdBox == widget.birdBox.id)
           .toList();
 
@@ -45,7 +44,7 @@ class _BirdBoxPageState extends State<BirdBoxPage> {
                         style: TextStyle(fontWeight: FontWeight.bold),
                       ),
                       const SizedBox(height: 12),
-                      Text(birdBoxesList[widget.birdBox.id - 1]
+                      Text(BirdBox.birdBoxesList[widget.birdBox.id - 1]
                           .locationDescription),
                     ],
                   ),

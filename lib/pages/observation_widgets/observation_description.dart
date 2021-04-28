@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:redland_green_bird_survey/providers/sightings_type_provider.dart';
+import 'package:redland_green_bird_survey/models/sighting_type.dart';
 
 Widget ObservationDescription(Function onSelected, int _sightingType) {
   return Expanded(
     child: ListView.builder(
-      itemCount: sightingsTypeList.length,
+      itemCount: SightingType.sightingsTypeList.length,
       itemBuilder: (context, index) {
         return GestureDetector(
           onTap: () {
@@ -35,7 +35,7 @@ Widget ObservationDescription(Function onSelected, int _sightingType) {
             ),
             child: Center(
               child: Text(
-                sightingsTypeList[index].description,
+                SightingType.sightingsTypeList[index].description,
                 textAlign: TextAlign.center,
               ),
             ),

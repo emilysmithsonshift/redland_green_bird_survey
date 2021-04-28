@@ -56,7 +56,6 @@ class _RegistrationPageState extends State<RegistrationPage> {
                   ),
                 ],
               );
-              ;
             },
           );
         }
@@ -89,7 +88,6 @@ class _RegistrationPageState extends State<RegistrationPage> {
                 ),
               ],
             );
-            ;
           },
         );
       } else {

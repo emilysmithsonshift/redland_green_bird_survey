@@ -1,12 +1,11 @@
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:redland_green_bird_survey/model/main_model.dart';
+import 'package:redland_green_bird_survey/models/bird_box.dart';
+import 'package:redland_green_bird_survey/models/sighting.dart';
 import 'package:redland_green_bird_survey/pages/bird_box_page.dart';
 import 'package:redland_green_bird_survey/pages/bird_fact_page.dart';
 import 'package:redland_green_bird_survey/pages/enter_observations_page.dart';
-import 'package:redland_green_bird_survey/providers/birdboxes_provider.dart';
-import 'package:redland_green_bird_survey/providers/sightings_provider.dart';
 
 Widget observationDetails({
   Sighting sighting,
@@ -55,7 +54,7 @@ Widget observationDetails({
                   child: SizedBox(
                     height: 70,
                     width: 70,
-                    child: sighting.bird.image.isEmpty
+                    child: sighting.bird.images.isEmpty
                         ? Container(
                             color: sighting.bird.name == 'None'
                                 ? Colors.grey[400]
@@ -67,7 +66,7 @@ Widget observationDetails({
                               ),
                             ),
                           )
-                        : Image.asset(sighting.bird.image[0],
+                        : Image.asset(sighting.bird.images[0],
                             fit: BoxFit.fitHeight),
                   ),
                 ),
@@ -107,7 +106,7 @@ Widget observationDetails({
                     context,
                     MaterialPageRoute(
                       builder: (_) => BirdBoxPage(
-                          birdBox: birdBoxesList[sighting.birdBox - 1]),
+                          birdBox: BirdBox.birdBoxesList[sighting.birdBox - 1]),
                     ),
                   );
                 },
@@ -171,7 +170,7 @@ Widget observationDetails({
                               .child("observations");
                           await reference.child(sighting.id).remove();
                           Navigator.pop(context);
-                          await getSightings();
+                          await Sighting.getSightings();
                           setState();
                         },
                         child: const Text('Delete'),
@@ -184,7 +183,6 @@ Widget observationDetails({
                       ),
                     ],
                   );
-                  ;
                 },
               );
             },

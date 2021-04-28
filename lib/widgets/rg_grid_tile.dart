@@ -72,6 +72,7 @@ class RGGridTile extends StatelessWidget {
                 child: Text(
                   text,
                   textAlign: TextAlign.center,
+                  style: TextStyle(fontWeight: FontWeight.bold),
                 ),
               ),
             ),

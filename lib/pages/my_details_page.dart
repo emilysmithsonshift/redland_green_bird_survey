@@ -1,8 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:redland_green_bird_survey/model/main_model.dart';
+import 'package:redland_green_bird_survey/models/sighting.dart';
 import 'package:redland_green_bird_survey/pages/introduction_page.dart';
-import 'package:redland_green_bird_survey/providers/sightings_provider.dart';
 import 'package:redland_green_bird_survey/widgets/observation_widget.dart';
 import 'package:redland_green_bird_survey/widgets/page_template.dart';
 
@@ -16,7 +15,7 @@ class _MyDetailsPageState extends State<MyDetailsPage> {
 
   @override
   Widget build(BuildContext context) {
-    _sightingList = sightings
+    _sightingList = Sighting.sightings
         .where((sighting) =>
             sighting.userEmail == FirebaseAuth.instance.currentUser.email)
         .toList();
@@ -74,7 +73,6 @@ class _MyDetailsPageState extends State<MyDetailsPage> {
                         ),
                       ],
                     );
-                    ;
                   },
                 ).then((value) {
                   setState(() {});
