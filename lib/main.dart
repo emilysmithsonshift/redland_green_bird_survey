@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:redland_green_bird_survey/pages/awaiting_email_verification.dart';
 import 'package:redland_green_bird_survey/pages/introduction_page.dart';
 
 import 'pages/home_page.dart';
@@ -29,17 +30,22 @@ class MyApp extends StatelessWidget {
       home: FutureBuilder(
           future: _fbApp,
           builder: (context, snapshot) {
-            // FirebaseAuth.instance.signOut();
             if (snapshot.hasError) {
               return const Text('Something went wrong!');
             } else if (snapshot.hasData) {
               if (FirebaseAuth.instance.currentUser == null) {
                 return IntroductionPage();
               } else {
-                return HomePage();
+                if (FirebaseAuth.instance.currentUser.emailVerified) {
+                  return HomePage();
+                } else {
+                  return AwaitingEmailVerification();
+                }
               }
             } else {
-              return const Center(child: CircularProgressIndicator());
+              return const Center(
+                child: CircularProgressIndicator(),
+              );
             }
           }),
     );

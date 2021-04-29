@@ -1,8 +1,9 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:redland_green_bird_survey/pages/home_page.dart';
 import 'package:redland_green_bird_survey/pages/login_page.dart';
 import 'package:redland_green_bird_survey/widgets/page_template.dart';
+
+import '../main.dart';
 
 class RegistrationPage extends StatefulWidget {
   @override
@@ -70,16 +71,17 @@ class _RegistrationPageState extends State<RegistrationPage> {
           builder: (BuildContext context) {
             return AlertDialog(
               title: Text(
-                  "Thank you, ${nickNameController.value.text} for registering to use this app"),
+                  "Thank you, ${nickNameController.value.text}, for registering to use this app"),
               content: const Text(
-                  "You will now be able to enter your own observations"),
+                  "You have been sent an email with a verification link. Please click that link to continue."),
               actions: [
                 ElevatedButton(
                   onPressed: () {
+                    user.sendEmailVerification();
                     Navigator.pushAndRemoveUntil(
                       context,
                       MaterialPageRoute(
-                        builder: (BuildContext context) => HomePage(),
+                        builder: (BuildContext context) => MyApp(),
                       ),
                       (Route<dynamic> route) => false,
                     );

@@ -27,6 +27,8 @@ class BirdBoxTypePage extends StatelessWidget {
               ),
               const SizedBox(height: 12),
               Text(boxType.description),
+              const SizedBox(height: 12),
+              Text(BoxType.generalBirdBoxDescription),
             ],
           ),
         ),

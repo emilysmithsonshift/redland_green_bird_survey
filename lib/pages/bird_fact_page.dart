@@ -103,61 +103,177 @@ class _BirdFactPageState extends State<BirdFactPage> {
                         child: Wrap(children: photoList),
                       ),
                       const SizedBox(height: 8),
-                      Container(
-                          margin: const EdgeInsets.all(16.0),
-                          padding: const EdgeInsets.all(8.0),
-                          decoration:
-                              defaultBoxDecoration(color: Colors.green[50]),
-                          child: Column(
-                            children: [
-                              Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: Row(children: [
-                                  Text('Conservation status: ',
+                      Stack(
+                        alignment: Alignment.topRight,
+                        children: [
+                          Container(
+                            margin: const EdgeInsets.all(16.0),
+                            padding: const EdgeInsets.all(8.0),
+                            decoration:
+                                defaultBoxDecoration(color: Colors.green[50]),
+                            child: Column(
+                              children: [
+                                Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Row(children: [
+                                    Text('Conservation status: ',
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .headline2),
+                                    Text(
+                                      widget.bird.conservationStatus ?? '',
                                       style: Theme.of(context)
                                           .textTheme
-                                          .headline2),
-                                  Text(
-                                    widget.bird.conservationStatus ?? '',
-                                    style: Theme.of(context)
-                                        .textTheme
-                                        .headline2
-                                        .copyWith(
-                                          color: widget.bird
-                                                      .conservationStatus ==
-                                                  'Green'
-                                              ? Colors.green
-                                              : widget.bird
-                                                          .conservationStatus ==
-                                                      'Amber'
-                                                  ? Colors.amber
-                                                  : Colors.red,
+                                          .headline2
+                                          .copyWith(
+                                            color: widget.bird
+                                                        .conservationStatus ==
+                                                    'Green'
+                                                ? Colors.green
+                                                : widget.bird
+                                                            .conservationStatus ==
+                                                        'Amber'
+                                                    ? Colors.amber
+                                                    : Colors.red,
+                                          ),
+                                    ),
+                                  ]),
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Row(children: [
+                                    Text('Scientific Name: ',
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .headline2),
+                                    Text(widget.bird.scientificName ?? '')
+                                  ]),
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Row(children: [
+                                    Text('Bird Family: ',
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .headline2),
+                                    Text(widget.bird.birdFamily ?? '')
+                                  ]),
+                                ),
+                              ],
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.all(16.0),
+                            child: IconButton(
+                              icon: Icon(Icons.info_outline),
+                              onPressed: () {
+                                showDialog(
+                                  context: context,
+                                  builder: (BuildContext context) {
+                                    return AlertDialog(
+                                      title: Text('Conservation Status'),
+                                      content: Wrap(
+                                        runSpacing: 10,
+                                        children: [
+                                          Text(
+                                              'The conservation list puts birds and other UK animals into 3 categories:'),
+                                          RichText(
+                                            text: TextSpan(
+                                              text: 'Green: ',
+                                              style: TextStyle(
+                                                  color: Colors.green,
+                                                  fontWeight: FontWeight.bold),
+                                              children: [
+                                                TextSpan(
+                                                  text:
+                                                      'Birds that are not currently of conservation concern.',
+                                                  style: TextStyle(
+                                                    color: Colors.black,
+                                                    fontWeight:
+                                                        FontWeight.normal,
+                                                  ),
+                                                )
+                                              ],
+                                            ),
+                                          ),
+                                          RichText(
+                                            text: TextSpan(
+                                              text: 'Amber: ',
+                                              style: TextStyle(
+                                                color: Colors.amber,
+                                                fontWeight: FontWeight.bold,
+                                              ),
+                                              children: [
+                                                TextSpan(
+                                                  text:
+                                                      'Birds that show a moderate (25-50%) decrease in breeding populations',
+                                                  style: TextStyle(
+                                                    color: Colors.black,
+                                                    fontWeight:
+                                                        FontWeight.normal,
+                                                  ),
+                                                )
+                                              ],
+                                            ),
+                                          ),
+                                          RichText(
+                                            text: TextSpan(
+                                              text: 'Red: ',
+                                              style: TextStyle(
+                                                  color: Colors.red,
+                                                  fontWeight: FontWeight.bold),
+                                              children: [
+                                                TextSpan(
+                                                  text:
+                                                      'Birds that show the greatest (more than 50%) decrease in breeding populations. These need urgent action to reverse their decline.',
+                                                  style: TextStyle(
+                                                    color: Colors.black,
+                                                    fontWeight:
+                                                        FontWeight.normal,
+                                                  ),
+                                                )
+                                              ],
+                                            ),
+                                          ),
+                                          RichText(
+                                            text: TextSpan(
+                                              text:
+                                                  'This is reviewed every five years and the last review showed that  ',
+                                              style: TextStyle(
+                                                  color: Colors.black,
+                                                  fontWeight:
+                                                      FontWeight.normal),
+                                              children: [
+                                                TextSpan(
+                                                  text:
+                                                      '67 species or more than '
+                                                      'a quarter of all UK regularly occuring bird species are now on the red list.',
+                                                  style: TextStyle(
+                                                    color: Colors.black,
+                                                    fontWeight: FontWeight.bold,
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                      actions: [
+                                        ElevatedButton(
+                                          onPressed: () {
+                                            Navigator.pop(context);
+                                          },
+                                          child: const Text('Dismiss'),
                                         ),
-                                  )
-                                ]),
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: Row(children: [
-                                  Text('Scientific Name: ',
-                                      style: Theme.of(context)
-                                          .textTheme
-                                          .headline2),
-                                  Text(widget.bird.scientificName ?? '')
-                                ]),
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: Row(children: [
-                                  Text('Bird Family: ',
-                                      style: Theme.of(context)
-                                          .textTheme
-                                          .headline2),
-                                  Text(widget.bird.birdFamily ?? '')
-                                ]),
-                              ),
-                            ],
-                          )),
+                                      ],
+                                    );
+                                  },
+                                );
+                              },
+                            ),
+                          )
+                        ],
+                      ),
                       Text(widget.bird.description),
                     ],
                   ),

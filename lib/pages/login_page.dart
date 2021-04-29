@@ -2,7 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:redland_green_bird_survey/widgets/page_template.dart';
 
-import 'home_page.dart';
+import '../main.dart';
 
 class LoginPage extends StatefulWidget {
   @override
@@ -14,6 +14,8 @@ class _LoginPageState extends State<LoginPage> {
 
   TextEditingController passwordController = TextEditingController();
 
+  String emailErrorMsg = '';
+  String passwordErrorMsg = '';
   String errorMsg = '';
 
   @override
@@ -27,7 +29,7 @@ class _LoginPageState extends State<LoginPage> {
             const Text('Enter your email address'),
             const SizedBox(height: 8),
             Text(
-              errorMsg,
+              emailErrorMsg,
               style: const TextStyle(color: Colors.red),
             ),
             Container(
@@ -58,6 +60,10 @@ class _LoginPageState extends State<LoginPage> {
             ),
             const SizedBox(height: 20),
             const Text('Enter your password'),
+            Text(
+              passwordErrorMsg,
+              style: const TextStyle(color: Colors.red),
+            ),
             Container(
               margin: const EdgeInsets.all(8),
               padding: const EdgeInsets.all(8),
@@ -84,23 +90,55 @@ class _LoginPageState extends State<LoginPage> {
                 ),
               ),
             ),
+            Text(
+              errorMsg,
+              style: const TextStyle(color: Colors.red),
+            ),
             Align(
               alignment: Alignment.centerRight,
               child: SizedBox(
                 width: 200,
                 child: ElevatedButton(
                   onPressed: () async {
-                    final FirebaseAuth _auth = FirebaseAuth.instance;
+                    final String email = emailController.value.text;
+                    if (RegExp(
+                            r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
+                        .hasMatch(email)) {
+                      setState(() {
+                        emailErrorMsg = '';
+                      });
+                    } else {
+                      setState(() {
+                        emailErrorMsg = 'Please enter a valid e-mail address';
+                      });
+                      return;
+                    }
+                    if (passwordController.value.text.length < 6) {
+                      setState(() {
+                        passwordErrorMsg =
+                            'Please enter your password (at least 6 characters)';
+                      });
+                      return;
+                    } else {
+                      passwordErrorMsg = '';
+                    }
 
-                    final UserCredential _user =
-                        await _auth.signInWithEmailAndPassword(
+                    final FirebaseAuth _auth = FirebaseAuth.instance;
+                    final UserCredential _user = await _auth
+                        .signInWithEmailAndPassword(
                             email: emailController.value.text,
-                            password: passwordController.value.text);
+                            password: passwordController.value.text)
+                        .catchError((error, stacktrace) {
+                      setState(() {
+                        errorMsg = error.message;
+                      });
+                      return;
+                    });
                     if (_user != null) {
                       Navigator.pushAndRemoveUntil(
                         context,
                         MaterialPageRoute(
-                          builder: (BuildContext context) => HomePage(),
+                          builder: (BuildContext context) => MyApp(),
                         ),
                         (Route<dynamic> route) => false,
                       );
@@ -116,8 +154,9 @@ class _LoginPageState extends State<LoginPage> {
                 width: 200,
                 child: OutlineButton(
                   onPressed: () {
+                    FirebaseAuth.instance.signOut();
                     setState(() {
-                      errorMsg = '';
+                      emailErrorMsg = '';
                     });
 
                     final FirebaseAuth _auth = FirebaseAuth.instance;
@@ -128,13 +167,13 @@ class _LoginPageState extends State<LoginPage> {
                       if (error.toString() ==
                           '[firebase_auth/user-not-found] There is no user record corresponding to this identifier. The user may have been deleted.') {
                         setState(() {
-                          errorMsg =
+                          emailErrorMsg =
                               'There is no record of this email address. The user may have been deleted. Please re-register.';
                           return;
                         });
                       } else if (error.toString().isNotEmpty) {
                         setState(() {
-                          errorMsg = 'Please enter a valid email address';
+                          emailErrorMsg = 'Please enter a valid email address';
                           return;
                         });
                       }

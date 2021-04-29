@@ -20,7 +20,7 @@ class IntroductionPage extends StatelessWidget {
               style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
             ),
             const Text(
-                '\nIn 2018 Redland Green Community Group installed 16 bird boxes around the Green'
+                '\nIn 2020 Redland Green Community Group installed 16 bird boxes around the Green'
                 '\n\nThis app has been created to enable the community to monitor the boxes and learn more about the birdlife on Redland Green. '),
             Container(
                 padding: EdgeInsets.all(8),

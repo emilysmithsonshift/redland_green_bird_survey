@@ -70,7 +70,7 @@ class _BirdBoxPageState extends State<BirdBoxPage> {
                     heroTag: 'boxType',
                     navigateTo:
                         BirdBoxTypePage(boxType: widget.birdBox.boxType),
-                    text: 'BoxType: ${widget.birdBox.boxType.name}',
+                    text: '\nBoxType: ${widget.birdBox.boxType.name}',
                     imageAsset: widget.birdBox.boxType.image,
                   ),
                 ),

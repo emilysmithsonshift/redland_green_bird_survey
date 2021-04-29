@@ -20,4 +20,16 @@ class BoxType {
     'assets/bird_boxes/alicante_open.png',
     'assets/bird_boxes/alicante_open.jpg',
   );
+  static final String generalBirdBoxDescription =
+      'These boxes were purchased thanks to a generous grant from RCAS.'
+      '\n\nThese attractive nestboxes are manufactured from WoodStone which is a mix of '
+      'concrete and FSC certified wood fibres. Unlike a traditional wooden nest box, '
+      'these boxes will not rot away or deteriorate and are guaranteed for 10 years. '
+      '\n\nThis robust material safeguards against attacks from predators such as woodpeckers, '
+      'cats and squirrels, whilst also providing a well insulated interior with a more '
+      'consistent internal temperature than an ordinary wooden box. \n\nThis is especially '
+      'important during the breeding season and ensures that young birds have a greater '
+      'chance of survival. Nesting sites have become rare for cavity nesting birds due '
+      'to changes in woodland management practices, so you can provide much-needed space '
+      'for rearing chicks and birds that are roosting overwinter with these durable, long-lasting nest boxes.';
 }

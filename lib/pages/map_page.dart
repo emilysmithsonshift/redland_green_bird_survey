@@ -5,6 +5,9 @@ import 'package:redland_green_bird_survey/models/bird_box.dart';
 import 'bird_box_page.dart';
 
 class MapPage extends StatefulWidget {
+  final int birdBox;
+
+  const MapPage({Key key, this.birdBox}) : super(key: key);
   @override
   _MapPageState createState() => _MapPageState();
 }
@@ -38,6 +41,7 @@ class _MapPageState extends State<MapPage> {
       );
       _markers[BirdBox.birdBoxesList[i].id.toString()] = _marker;
     }
+
     super.initState();
   }
 
@@ -68,51 +72,11 @@ class _MapPageState extends State<MapPage> {
           child: Icon(mapSatellite ? Icons.map_outlined : Icons.satellite,
               color: Colors.black),
         ),
-        body: Column(
-          children: [
-            SizedBox(
-              height: 160,
-              child: Stack(
-                children: [
-                  Hero(
-                    tag: 'map_page',
-                    child: SizedBox(
-                      width: double.infinity,
-                      child: Image.asset('assets/longtailedtit.png',
-                          alignment: Alignment.topLeft, fit: BoxFit.cover),
-                    ),
-                  ),
-                  const Align(
-                    alignment: Alignment.bottomCenter,
-                    child: Padding(
-                      padding: EdgeInsets.all(8.0),
-                      child: Text(
-                        'Map',
-                        style: TextStyle(
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.white70),
-                      ),
-                    ),
-                  ),
-                  Align(
-                      alignment: Alignment.centerLeft,
-                      child: IconButton(
-                        icon: const Icon(
-                          Icons.arrow_back_ios,
-                          color: Colors.white70,
-                        ),
-                        onPressed: () {
-                          Navigator.of(context).pop();
-                        },
-                      ))
-                ],
-              ),
-            ),
-            Expanded(
-              child: _googleMap(),
-            ),
-          ],
-        ));
+        appBar: AppBar(
+          backgroundColor: Colors.green[100].withOpacity(0.6),
+          title: Text('Map'),
+        ),
+        extendBodyBehindAppBar: true,
+        body: _googleMap());
   }
 }

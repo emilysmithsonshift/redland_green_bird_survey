@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:redland_green_bird_survey/models/sighting.dart';
+import 'package:redland_green_bird_survey/pages/bird_box_list_page.dart';
 import 'package:redland_green_bird_survey/pages/fact_page.dart';
 import 'package:redland_green_bird_survey/pages/information_page.dart';
 import 'package:redland_green_bird_survey/pages/my_details_page.dart';
@@ -42,6 +43,11 @@ class _HomePageState extends State<HomePage> {
           navigateTo: MapPage(),
           text: 'Map',
           imageAsset: 'assets/longtailedtit.png'),
+      RGGridTile(
+          heroTag: 'box_list_page',
+          navigateTo: BirdBoxListPage(),
+          text: 'Bird Box List',
+          imageAsset: 'assets/nuthatch.png'),
       RGGridTile(
           heroTag: 'my_details',
           navigateTo: MyDetailsPage(),
