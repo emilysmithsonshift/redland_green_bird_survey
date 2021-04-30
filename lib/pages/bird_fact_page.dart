@@ -100,7 +100,9 @@ class _BirdFactPageState extends State<BirdFactPage> {
                     children: [
                       SizedBox(
                         height: 80,
-                        child: Wrap(children: photoList),
+                        child: ListView(
+                            scrollDirection: Axis.horizontal,
+                            children: photoList),
                       ),
                       const SizedBox(height: 8),
                       Stack(
