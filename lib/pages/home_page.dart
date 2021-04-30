@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:redland_green_bird_survey/models/sighting.dart';
 import 'package:redland_green_bird_survey/pages/bird_box_list_page.dart';
-import 'package:redland_green_bird_survey/pages/fact_page.dart';
 import 'package:redland_green_bird_survey/pages/information_page.dart';
+import 'package:redland_green_bird_survey/pages/interesting_facts.dart';
 import 'package:redland_green_bird_survey/pages/my_details_page.dart';
+import 'package:redland_green_bird_survey/pages/welcome_page.dart';
 import 'package:redland_green_bird_survey/widgets/observation_summary.dart';
 import 'package:redland_green_bird_survey/widgets/page_template.dart';
 import 'package:redland_green_bird_survey/widgets/rg_grid_tile.dart';
@@ -44,6 +45,11 @@ class _HomePageState extends State<HomePage> {
           text: 'Map',
           imageAsset: 'assets/longtailedtit.png'),
       RGGridTile(
+          heroTag: 'information',
+          navigateTo: InformationPage(),
+          text: 'Information Page',
+          imageAsset: 'assets/crow1.png'),
+      RGGridTile(
           heroTag: 'box_list_page',
           navigateTo: BirdBoxListPage(),
           text: 'Bird Box List',
@@ -56,16 +62,16 @@ class _HomePageState extends State<HomePage> {
       RGGridTile(
         heroTag: 'fact_page',
         navigateTo: FactPage(),
-        text: 'Fact Page',
+        text: 'Interesting Facts',
         imageAsset: 'assets/wren3.png',
       )
     ];
 
     final List<Widget> _widgetList = [
       RGListTile(
-        navigateTo: InformationPage(),
+        navigateTo: WelcomePage(),
         imageAsset: 'assets/bluetit.png',
-        heroTag: 'bluetit',
+        heroTag: 'welcome',
         imageLeft: false,
         widget: Padding(
           padding: const EdgeInsets.all(12.0),
@@ -78,7 +84,7 @@ class _HomePageState extends State<HomePage> {
                 ),
               ),
               Text(
-                  'In 2018 Redland Green Community Group installed 20 bird boxes all around the green. '
+                  'In 2018 Redland Green Community Group installed 16 bird boxes all around the green. '
                   '\n\nTap for more information.')
             ],
           ),

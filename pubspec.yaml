@@ -38,6 +38,7 @@ dependencies:
   firebase_auth: any
   google_maps_flutter: any
   scrollable_positioned_list: ^0.1.10
+  url_launcher: any
 #  user_location:
 #    git:
 #      url: https://github.com/igaurab/user_location_plugin.git

@@ -5,7 +5,7 @@ class FactPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return PageTemplate(
-      title: 'Fact Page',
+      title: 'Interesting Facts',
       image: 'assets/wren3.png',
       widgetList: [
         Padding(
