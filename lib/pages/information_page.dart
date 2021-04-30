@@ -34,7 +34,13 @@ class _InformationPageState extends State<InformationPage> {
                   Icon(Icons.photo_camera_rounded)
                 ]),
             _listTile(
-                onTap: () {},
+                onTap: () async {
+                  await canLaunch(
+                          'https://sites.google.com/site/redlandgreencommunity/')
+                      ? await launch(
+                          'https://sites.google.com/site/redlandgreencommunity/')
+                      : throw 'Could not launch https://sites.google.com/site/redlandgreencommunity/';
+                },
                 imageLeft: false,
                 imageAsset: 'assets/crow2.png',
                 content: [
@@ -44,7 +50,6 @@ class _InformationPageState extends State<InformationPage> {
                   Text(
                     'For more information about Redland Green Community Group please visit our website www.rgcg.org.uk',
                   ),
-                  Icon(Icons.web)
                 ]),
             _listTile(
                 onTap: () {},
@@ -66,7 +71,28 @@ class _InformationPageState extends State<InformationPage> {
                   ),
                   Text(
                       'It takes you on a stroll of Redland Green and teaches you to identify 20 of the local trees.'),
-                  Icon(Icons.nature_outlined)
+                  Icon(Icons.nature_rounded)
+                ]),
+            _listTile(
+                onTap: () {
+                  final Uri _emailLaunchUri = Uri(
+                      scheme: 'mailto',
+                      path: 'emily_foulkes@hotmail.com',
+                      queryParameters: {
+                        'subject': 'Redland Green Bird Survey'
+                      });
+
+                  launch(_emailLaunchUri.toString());
+                },
+                imageLeft: true,
+                imageAsset: 'assets/magpie.png',
+                content: [
+                  Text(
+                    'This app was created by Emily Smithson',
+                  ),
+                  Text(
+                      'If you have any comments or suggestions, please e-mail me at emily_foulkes@hotmail.com'),
+                  Icon(Icons.mail_outline_rounded)
                 ]),
             SizedBox(height: 20),
           ],
@@ -75,7 +101,7 @@ class _InformationPageState extends State<InformationPage> {
     ];
     return PageTemplate(
       title: 'Information',
-      image: 'assets/crow1.png',
+      image: 'assets/wagtail.png',
       heroTag: 'information',
       widgetList: _widgetList,
     );

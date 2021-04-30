@@ -37,6 +37,7 @@ class RGGridTile extends StatelessWidget {
         child: Material(
           color: Colors.green[100],
           child: Container(
+            width: 200,
             height: 200,
             margin: const EdgeInsets.all(8),
             decoration: BoxDecoration(

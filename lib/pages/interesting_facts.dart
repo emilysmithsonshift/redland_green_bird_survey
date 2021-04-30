@@ -38,11 +38,14 @@ class FactPage extends StatelessWidget {
                   ),
                   Flexible(
                     flex: 1,
-                    child: ClipRRect(
-                      borderRadius: const BorderRadius.all(
-                        Radius.circular(20.0),
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: ClipRRect(
+                        borderRadius: const BorderRadius.all(
+                          Radius.circular(20.0),
+                        ),
+                        child: Image.asset('assets/blackbird2.png'),
                       ),
-                      child: Image.asset('assets/blackbird2.png'),
                     ),
                   )
                 ],

@@ -67,16 +67,6 @@ Widget BirdBoxWidget({
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  // Text(
-                  //   'Location:',
-                  //   style: const TextStyle(fontWeight: FontWeight.bold),
-                  // ),
-                  // const SizedBox(height: 4),
-                  // Text(
-                  //   birdBox.locationDescription,
-                  //   // '${DateFormat('d MMMM yyyy').format(sighting.dateTime)} ${DateFormat.jm().format(sighting.dateTime)}',
-                  // ),
-                  // const SizedBox(height: 12),
                   Text(
                     'Last Observation:',
                     style: const TextStyle(fontWeight: FontWeight.bold),

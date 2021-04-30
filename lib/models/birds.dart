@@ -71,11 +71,13 @@ class Bird {
     name: 'Blackbird',
     description:
         "One of the most populous birds in the British Isles the blackbird is just as at home "
-        "in a town park, a suburban garden or a remote wood. "
-        "\n\nConfusingly the female blackbird is actually brown. "
+        "in a town park, a suburban garden or a remote wood. It’s estimated there are over 5 million breeding pairs in the UK. "
+        "\n\nMales are black with an orange-yellow beak and eye ring, whilst confusingly "
+        "females are actually dark brown, often with paler streaks and spots on their breasts. "
         "\n\nThe song of the black bird is thought to be the most beautiful and best-loved "
-        "of any British bird."
-        "\n\nThey typically like to sing after rain."
+        "of any British bird. It is a rich song, which is part learned and part improvised."
+        " They typically like to sing after rain. They eat worms, insects, berries and fruit."
+        " \n\nThe birds are 24-25cm in length and weigh between 80-100g"
         "\n\nIt takes a pair of blackbirds between 11 and 14 days to make a nest with most"
         "of the work being done by the female.",
     images: [

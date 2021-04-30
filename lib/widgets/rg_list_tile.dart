@@ -34,6 +34,7 @@ class RGListTile extends StatelessWidget {
           }
         },
         child: Container(
+          constraints: BoxConstraints(maxWidth: 400),
           height: 200,
           margin: const EdgeInsets.all(8),
           decoration: const BoxDecoration(
@@ -73,17 +74,17 @@ class RGListTile extends StatelessWidget {
                 ),
               Flexible(
                 flex: 2,
-                child: Container(
-                    decoration: BoxDecoration(
-                      color: Colors.green[50],
-                      borderRadius: BorderRadius.only(
-                        topRight: Radius.circular(imageLeft ? 20.0 : 0),
-                        bottomRight: Radius.circular(imageLeft ? 20.0 : 0),
-                        topLeft: Radius.circular(imageLeft ? 0.0 : 20),
-                        bottomLeft: Radius.circular(imageLeft ? 0.0 : 20),
-                      ),
+                child: ClipRRect(
+                    borderRadius: BorderRadius.only(
+                      topRight: Radius.circular(imageLeft ? 20.0 : 0),
+                      bottomRight: Radius.circular(imageLeft ? 20.0 : 0),
+                      topLeft: Radius.circular(imageLeft ? 0.0 : 20),
+                      bottomLeft: Radius.circular(imageLeft ? 0.0 : 20),
                     ),
-                    child: widget),
+                    child: Container(
+                        height: double.infinity,
+                        color: Colors.green[50],
+                        child: widget)),
               ),
               if (!imageLeft)
                 Flexible(

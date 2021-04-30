@@ -25,48 +25,6 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    final List<Widget> _gridList = [
-      RGGridTile(
-          heroTag: 'songthrush',
-          navigateTo: BirdIdentifierScreen(),
-          text: 'Identify birds on the green',
-          imageAsset: 'assets/songthrush.png'),
-      RGGridTile(
-          heroTag: 'greattit',
-          navigateTo: EnterObservationsPage(),
-          setState: () {
-            setState(() {});
-          },
-          text: 'Enter your own observations ',
-          imageAsset: 'assets/greattit.png'),
-      RGGridTile(
-          heroTag: 'map_page',
-          navigateTo: MapPage(),
-          text: 'Map',
-          imageAsset: 'assets/longtailedtit.png'),
-      RGGridTile(
-          heroTag: 'information',
-          navigateTo: InformationPage(),
-          text: 'Information Page',
-          imageAsset: 'assets/crow1.png'),
-      RGGridTile(
-          heroTag: 'box_list_page',
-          navigateTo: BirdBoxListPage(),
-          text: 'Bird Box List',
-          imageAsset: 'assets/nuthatch.png'),
-      RGGridTile(
-          heroTag: 'my_details',
-          navigateTo: MyDetailsPage(),
-          text: 'My details',
-          imageAsset: 'assets/coaltit1.png'),
-      RGGridTile(
-        heroTag: 'fact_page',
-        navigateTo: FactPage(),
-        text: 'Interesting Facts',
-        imageAsset: 'assets/wren3.png',
-      )
-    ];
-
     final List<Widget> _widgetList = [
       RGListTile(
         navigateTo: WelcomePage(),
@@ -153,6 +111,47 @@ class _HomePageState extends State<HomePage> {
             }),
       ),
     ];
+    final List<Widget> _gridList = [
+      RGGridTile(
+          heroTag: 'songthrush',
+          navigateTo: BirdIdentifierScreen(),
+          text: 'Identify birds',
+          imageAsset: 'assets/songthrush.png'),
+      RGGridTile(
+          heroTag: 'greattit',
+          navigateTo: EnterObservationsPage(),
+          setState: () {
+            setState(() {});
+          },
+          text: 'Enter observations ',
+          imageAsset: 'assets/greattit.png'),
+      RGGridTile(
+          heroTag: 'map_page',
+          navigateTo: MapPage(),
+          text: 'Map',
+          imageAsset: 'assets/longtailedtit.png'),
+      RGGridTile(
+          heroTag: 'box_list_page',
+          navigateTo: BirdBoxListPage(),
+          text: 'Bird Box List',
+          imageAsset: 'assets/nuthatch.png'),
+      RGGridTile(
+          heroTag: 'my_details',
+          navigateTo: MyDetailsPage(),
+          text: 'My details',
+          imageAsset: 'assets/coaltit1.png'),
+      RGGridTile(
+        heroTag: 'fact_page',
+        navigateTo: FactPage(),
+        text: 'Interesting Facts',
+        imageAsset: 'assets/wren3.png',
+      ),
+      RGGridTile(
+          heroTag: 'information',
+          navigateTo: InformationPage(),
+          text: 'Information Page',
+          imageAsset: 'assets/wagtail.png'),
+    ];
 
     return RefreshIndicator(
       onRefresh: () async {
@@ -163,7 +162,7 @@ class _HomePageState extends State<HomePage> {
         body: PageTemplate(
           title: 'Redland Green Bird Survey',
           image: 'assets/robin1.png',
-          widgetList: _widgetList,
+          listTileList: _widgetList,
           gridList: _gridList,
           heroTag: 'robin1',
         ),
