@@ -28,20 +28,17 @@ dependencies:
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.0
-#  latlng: any
-  intl: any
-  flutter_map: any
-  geolocator: any
-  firebase_core: any
-  firebase_database: any
+  intl: ^0.16.0
+  geolocator: ^6.2.1
+  firebase_core: ^0.7.0
+  firebase_database: ^6.0.0
   lint: ^1.3.0
-  firebase_auth: any
-  google_maps_flutter: any
+  firebase_auth: ^0.20.1
+  google_maps_flutter: ^1.1.1
   scrollable_positioned_list: ^0.1.10
-  url_launcher: any
-#  user_location:
-#    git:
-#      url: https://github.com/igaurab/user_location_plugin.git
+  url_launcher: ^5.7.1
+  animations: ^1.1.2
+
 
 dev_dependencies:
   flutter_test:

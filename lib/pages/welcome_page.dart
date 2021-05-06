@@ -22,14 +22,24 @@ class _WelcomePageState extends State<WelcomePage> {
                 textAlign: TextAlign.center,
                 style: Theme.of(context).textTheme.headline1),
             Text(
-                'In 2020 Redland Green Community Group installed 16 bird nesting boxes all around the green thanks'
-                ' to a generous grant from RCAS.'
-                '\n\nIn early 2021 these boxes were cleaned out and \b7 were found to have completed nests in and 3 '
-                'had partial nests. All were inhabited by blue tits or great tits.'
+                '\nIn 2020 Redland Green Community Group installed 16 bird nesting boxes all around the green thanks'
+                ' to a generous grant from the Redland and Cotham Amenities Society (RCAS).'
+                '\n\nIn early 2021 the boxes were inspected and cleared of the previous year’s nests. '
+                'It’s important to inspect nests annually, after the breeding season has ended, '
+                'and clear the year’s nests out. This reduces the possiblity of diseases and '
+                'the build up of pests and parasites. Small birds build new nests each year, '
+                'so this also gives them a head start. '
+                '\n\nIn the breeding season of 2020, the first '
+                'breeding season after the boxes were installed in Redland Green, 10 of the boxes '
+                'had signs of use: 7 had complete nests and 3 had partial nests. '
+                'All had been used by blue tits or great tits.'
                 '\n\nThis app is designed to use community power to help monitor these bird boxes.\n'),
             Text(
-                'There has been a massive decline in bird species in the UK with up to a quarter of all species '
-                'endangered. Installing bird boxes is one of the best ways of protecting birdlife from predators.'),
+                'There has been a substantial decline in birds (both population numbers and ranges) in the British Isles '
+                'since the end of the second world war, a decline which is still continuing in many species. '
+                '\n\nInstalling bird boxes is one way to help cavity-nesting species: nest boxes provide substitutes '
+                'for natural nesting sites and can offer protection from predators. '
+                'We have chosen nest boxes which have a long life and are resistant to damage by predators.'),
             Container(
               padding: EdgeInsets.all(8),
               margin: EdgeInsets.all(8),
@@ -81,7 +91,7 @@ class _WelcomePageState extends State<WelcomePage> {
                     ),
                   ),
                   Text(
-                      'Only enter an empty observation if you have waited for at least 5 minutes\n'),
+                      'Build your observation record from the activity options provided\n'),
                   SizedBox(height: 8),
                   GestureDetector(
                     onTap: () {

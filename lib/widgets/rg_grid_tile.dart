@@ -7,14 +7,14 @@ class RGGridTile extends StatelessWidget {
   final String heroTag;
   final Function setState;
 
-  const RGGridTile(
-      {Key key,
-      this.text,
-      this.imageAsset,
-      this.navigateTo,
-      this.heroTag,
-      this.setState})
-      : super(key: key);
+  const RGGridTile({
+    Key key,
+    this.text,
+    this.imageAsset,
+    this.navigateTo,
+    this.heroTag,
+    this.setState,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

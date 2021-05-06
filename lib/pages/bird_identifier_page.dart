@@ -32,7 +32,7 @@ class _BirdIdentifierScreenState extends State<BirdIdentifierScreen> {
       heroTag: 'songthrush',
       widgetList: _widgetList,
       gridList: _gridList,
-      crossAxisCount: 3,
+      size: 200,
     );
   }
 }

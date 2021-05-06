@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:redland_green_bird_survey/widgets/list_tile.dart';
 import 'package:redland_green_bird_survey/widgets/page_template.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -15,7 +16,7 @@ class _InformationPageState extends State<InformationPage> {
         padding: const EdgeInsets.all(8.0),
         child: Column(
           children: [
-            _listTile(
+            listTile(
                 onTap: () async {
                   await canLaunch(
                           'https://www.instagram.com/giorgio_pede_photography/')
@@ -23,7 +24,7 @@ class _InformationPageState extends State<InformationPage> {
                           'https://www.instagram.com/giorgio_pede_photography/')
                       : throw 'Could not launch https://www.instagram.com/giorgio_pede_photography/';
                 },
-                imageLeft: true,
+                imageLeft: false,
                 imageAsset: 'assets/jay.png',
                 content: [
                   Text(
@@ -33,47 +34,7 @@ class _InformationPageState extends State<InformationPage> {
                   ),
                   Icon(Icons.photo_camera_rounded)
                 ]),
-            _listTile(
-                onTap: () async {
-                  await canLaunch(
-                          'https://sites.google.com/site/redlandgreencommunity/')
-                      ? await launch(
-                          'https://sites.google.com/site/redlandgreencommunity/')
-                      : throw 'Could not launch https://sites.google.com/site/redlandgreencommunity/';
-                },
-                imageLeft: false,
-                imageAsset: 'assets/crow2.png',
-                content: [
-                  Text(
-                      'This app and the bird boxes would not have been possible without the hard work of '
-                      'Redland Green Community Group, in particular Julie Parker.'),
-                  Text(
-                    'For more information about Redland Green Community Group please visit our website www.rgcg.org.uk',
-                  ),
-                ]),
-            _listTile(
-                onTap: () {},
-                imageLeft: true,
-                imageAsset: 'assets/dunnock.png',
-                content: [
-                  Text(
-                      'If you enjoyed this app, please consider giving it a 5 star rating'),
-                  Text('Tap here to be directed to the app store'),
-                  Icon(Icons.star),
-                ]),
-            _listTile(
-                onTap: () {},
-                imageLeft: false,
-                imageAsset: 'assets/bluetit.png',
-                content: [
-                  Text(
-                    'Why not download the Redland Green Tree Trail?',
-                  ),
-                  Text(
-                      'It takes you on a stroll of Redland Green and teaches you to identify 20 of the local trees.'),
-                  Icon(Icons.nature_rounded)
-                ]),
-            _listTile(
+            listTile(
                 onTap: () {
                   final Uri _emailLaunchUri = Uri(
                       scheme: 'mailto',
@@ -94,104 +55,56 @@ class _InformationPageState extends State<InformationPage> {
                       'If you have any comments or suggestions, please e-mail me at emily_foulkes@hotmail.com'),
                   Icon(Icons.mail_outline_rounded)
                 ]),
+            listTile(
+                onTap: () async {
+                  await canLaunch(
+                          'https://sites.google.com/site/redlandgreencommunity/')
+                      ? await launch(
+                          'https://sites.google.com/site/redlandgreencommunity/')
+                      : throw 'Could not launch https://sites.google.com/site/redlandgreencommunity/';
+                },
+                imageLeft: false,
+                imageAsset: 'assets/crow2.png',
+                content: [
+                  Text(
+                      'This app and the bird boxes would not have been possible without the hard work of '
+                      'Redland Green Community Group, in particular Julie Parker.'),
+                  Text(
+                    'For more information about Redland Green Community Group please visit our website www.rgcg.org.uk',
+                  ),
+                ]),
+            listTile(
+                onTap: () {},
+                imageLeft: true,
+                imageAsset: 'assets/dunnock.png',
+                content: [
+                  Text(
+                      'If you enjoyed this app, please consider giving it a 5 star rating'),
+                  Text('Tap here to be directed to the app store'),
+                  Icon(Icons.star),
+                ]),
+            listTile(
+                onTap: () {},
+                imageLeft: false,
+                imageAsset: 'assets/bluetit.png',
+                content: [
+                  Text(
+                    'Why not download the Redland Green Tree Trail?',
+                  ),
+                  Text(
+                      'It takes you on a stroll of Redland Green and teaches you to identify 20 of the local trees.'),
+                  Icon(Icons.nature_rounded)
+                ]),
             SizedBox(height: 20),
           ],
         ),
       ),
     ];
     return PageTemplate(
-      title: 'Information',
+      title: 'About',
       image: 'assets/wagtail.png',
       heroTag: 'information',
       widgetList: _widgetList,
-    );
-  }
-
-  Widget _listTile(
-      {Function onTap,
-      bool imageLeft,
-      String imageAsset,
-      List<Widget> content}) {
-    return GestureDetector(
-      onTap: () {
-        onTap();
-      },
-      child: Container(
-        margin: EdgeInsets.symmetric(vertical: 8),
-        height: 200,
-        decoration: const BoxDecoration(
-          borderRadius: BorderRadius.all(
-            Radius.circular(20.0),
-          ),
-          boxShadow: [
-            BoxShadow(
-              color: Colors.grey,
-              offset: Offset(5.0, 5.0),
-              blurRadius: 5.0,
-            )
-          ],
-        ),
-        child: Row(
-          children: [
-            if (imageLeft)
-              Flexible(
-                child: Container(
-                  decoration: BoxDecoration(
-                    borderRadius: const BorderRadius.only(
-                      topLeft: Radius.circular(20.0),
-                      bottomLeft: Radius.circular(20.0),
-                    ),
-                    image: DecorationImage(
-                      fit: BoxFit.fitHeight,
-                      image: AssetImage(
-                        imageAsset,
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-            Flexible(
-              flex: 2,
-              child: Container(
-                  decoration: BoxDecoration(
-                    color: Colors.green[50],
-                    borderRadius: BorderRadius.only(
-                      topRight: Radius.circular(imageLeft ? 20.0 : 0),
-                      bottomRight: Radius.circular(imageLeft ? 20.0 : 0),
-                      topLeft: Radius.circular(imageLeft ? 0.0 : 20),
-                      bottomLeft: Radius.circular(imageLeft ? 0.0 : 20),
-                    ),
-                  ),
-                  child: SizedBox(
-                      height: double.infinity,
-                      child: Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.spaceAround,
-                          children: content,
-                        ),
-                      ))),
-            ),
-            if (!imageLeft)
-              Flexible(
-                child: Container(
-                  decoration: BoxDecoration(
-                    borderRadius: const BorderRadius.only(
-                      topRight: Radius.circular(20.0),
-                      bottomRight: Radius.circular(20.0),
-                    ),
-                    image: DecorationImage(
-                      fit: BoxFit.fitHeight,
-                      image: AssetImage(
-                        imageAsset,
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-          ],
-        ),
-      ),
     );
   }
 }

@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:redland_green_bird_survey/widgets/flipcard_widget.dart';
 import 'package:redland_green_bird_survey/widgets/page_template.dart';
 
 class FactPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return PageTemplate(
-      title: 'Interesting Facts',
+      title: 'Did you know?',
       image: 'assets/wren3.png',
       widgetList: [
         Padding(
@@ -13,11 +14,32 @@ class FactPage extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(
-                'Do you know the answers to the questions below?',
-                style: Theme.of(context).textTheme.headline1,
+              FlipCardWidget(
+                image: 'assets/blackbird1.png',
+                question: 'What is sexual dimorphism in a species?',
+                answer:
+                    'Dimorphism means that the two sexes of the same species differ in appearance from each other. '
+                    'This may be in size, weight, colour and markings. It may also include behavioural differences.'
+                    'A blackbird (pictured right) is a class case where the female is actually brown. ',
               ),
-              SizedBox(height: 12),
+              FlipCardWidget(
+                image: 'assets/goldfinch.png',
+                question: 'Are there any kestrels in Redland?',
+                answer:
+                    'There aren’t any known sightings of kestrels in Redland, although kestrels '
+                    'have adapted to live in cities. The kestrel, a member of the falcon family, '
+                    'and with the long, scythe-like wings of that family, hunts by hovering 10-20 '
+                    'metres over grassland, spotting prey with its extremely sharp eyesight and '
+                    'plummeting to the ground in pursuit of a kill. Females are larger than males, '
+                    'and both are slightly smaller than sparrowhawks. Kestrels’ main prey are small '
+                    'mammals such as voles, shrews and mice, although they may also take small birds, '
+                    'lizards and invertebrates. When hovering, the kestrel’s tail is spread into a fan shape. '
+                    'Sparrowhawks do not hover, being ambush predators of mainly birds, so hunting technique '
+                    'is one of the ways of telling these two species apart. Kestrel populations have fallen, '
+                    'and they are now on the amber list of conservation concern. This may because modern farming '
+                    'practices have eliminated wide field margins, therefore also eliminating the habitat of the '
+                    'kestrel’s main prey items. The UK population of kestrels may be as low as 30,000 pairs. ',
+              ),
               Padding(
                 padding: const EdgeInsets.symmetric(vertical: 8.0),
                 child: Text(

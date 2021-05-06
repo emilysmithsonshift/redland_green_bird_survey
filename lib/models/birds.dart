@@ -1,3 +1,5 @@
+enum BirdType { nesting, predator, other }
+
 class Bird {
   String name;
   String scientificName;
@@ -5,14 +7,17 @@ class Bird {
   String conservationStatus;
   String description;
   List<String> images;
+  BirdType birdType;
 
-  Bird(
-      {this.name,
-      this.description,
-      this.images,
-      this.scientificName,
-      this.birdFamily,
-      this.conservationStatus});
+  Bird({
+    this.name,
+    this.description,
+    this.images,
+    this.scientificName,
+    this.birdFamily,
+    this.conservationStatus,
+    this.birdType,
+  });
 
   static final Bird robin = Bird(
       name: 'Robin',
@@ -29,44 +34,49 @@ class Bird {
       ],
       conservationStatus: 'Green',
       scientificName: 'Erithacus rubecula',
-      birdFamily: 'Old World flycatchers and chats');
+      birdFamily: 'Old World flycatchers and chats',
+      birdType: BirdType.nesting);
   static final Bird greatTit = Bird(
-      name: 'Great Tit',
-      description:
-          'The largest UK tit with a colourful mix of blue, yellow, white and green makes the blue tit one of our most attractive and most recognisable garden visitors. '
-          '\n\nIn winter, family flocks join up with other tits as they search for food. '
-          '\n\nThey are woodland birds which have readily adapted to man-made habitats to become a familiar garden visitor.'
-          '\n\nA great tit clutch can have between 5 and 11 eggs with the female doing all the incubation and the male helping with feeding the brood.',
-      images: [
-        'assets/greattit_close.png',
-        'assets/greattit.png',
-        'assets/greattit1.png',
-      ],
-      scientificName: 'Parus major',
-      conservationStatus: 'Green',
-      birdFamily: 'Tits');
+    name: 'Great Tit',
+    description:
+        'The largest UK tit with a colourful mix of blue, yellow, white and green makes the blue tit one of our most attractive and most recognisable garden visitors. '
+        '\n\nIn winter, family flocks join up with other tits as they search for food. '
+        '\n\nThey are woodland birds which have readily adapted to man-made habitats to become a familiar garden visitor.'
+        '\n\nA great tit clutch can have between 5 and 11 eggs with the female doing all the incubation and the male helping with feeding the brood.',
+    images: [
+      'assets/greattit_close.png',
+      'assets/greattit.png',
+      'assets/greattit1.png',
+    ],
+    scientificName: 'Parus major',
+    conservationStatus: 'Green',
+    birdFamily: 'Tits',
+    birdType: BirdType.nesting,
+  );
   static final Bird blueTit = Bird(
-      name: 'Blue tit',
-      description:
-          "A colourful mix of blue yellow, white and green makes the blue tit one of the most recognisable bird in Britain. "
-          "\n\nThey are also one of the most common with around 15 million birds wintering in Britain and they provide a welcome"
-          "sight on a dreary winter's day."
-          "\n\nBlue tit numbers have been increasing in recent years and this may well be down to the provision of bird boxes and feeders"
-          " which they have readily adapted to."
-          "\n\nTheir beautiful plumage is thought to get brighter with every moult"
-          " so they actually get more colourful as they age."
-          "\n\nThey have a fairly distinctive 'teacher-teacher' call but they also have a great"
-          "number of other calls. ",
-      images: [
-        'assets/bluetit_close.png',
-        'assets/bluetit3.png',
-        'assets/bluetit2.png',
-        'assets/bluetit.jpg',
-        'assets/bluetit4.png',
-      ],
-      scientificName: 'Cyanistes caeruleus',
-      conservationStatus: 'Green',
-      birdFamily: 'Tits');
+    name: 'Blue tit',
+    description:
+        "A colourful mix of blue yellow, white and green makes the blue tit one of the most recognisable bird in Britain. "
+        "\n\nThey are also one of the most common with around 15 million birds wintering in Britain and they provide a welcome"
+        "sight on a dreary winter's day."
+        "\n\nBlue tit numbers have been increasing in recent years and this may well be down to the provision of bird boxes and feeders"
+        " which they have readily adapted to."
+        "\n\nTheir beautiful plumage is thought to get brighter with every moult"
+        " so they actually get more colourful as they age."
+        "\n\nThey have a fairly distinctive 'teacher-teacher' call but they also have a great"
+        "number of other calls. ",
+    images: [
+      'assets/bluetit_close.png',
+      'assets/bluetit3.png',
+      'assets/bluetit2.png',
+      'assets/bluetit.jpg',
+      'assets/bluetit4.png',
+    ],
+    scientificName: 'Cyanistes caeruleus',
+    conservationStatus: 'Green',
+    birdFamily: 'Tits',
+    birdType: BirdType.nesting,
+  );
   static final Bird blackbird = Bird(
     name: 'Blackbird',
     description:
@@ -88,44 +98,49 @@ class Bird {
     scientificName: 'Turdus merula',
     birdFamily: 'Thrushes',
     conservationStatus: 'Green',
+    birdType: BirdType.other,
   );
   static final Bird songThrush = Bird(
-      name: 'Song Thrush',
-      description:
-          "Song Thrushes can be distinguished by their beautifully patterned breast. "
-          "\n\nTheir numbers are in huge decline, especially in towns and cities."
-          "\n\nThey like to eat snails which they break by smashing them against a stone with a flick of the head."
-          "\n\nMost song thrush pairs will have two or three broods a season."
-          "\n\nTheir song pattern is quite distinctive as they like to repeat the same phrase"
-          "several times.",
-      images: [
-        'assets/songthrush_close.png',
-        'assets/songthrush.png',
-      ],
-      scientificName: 'Turdus philomelos',
-      conservationStatus: 'Red',
-      birdFamily: 'Thrushes');
+    name: 'Song Thrush',
+    description:
+        "Song Thrushes can be distinguished by their beautifully patterned breast. "
+        "\n\nTheir numbers are in huge decline, especially in towns and cities."
+        "\n\nThey like to eat snails which they break by smashing them against a stone with a flick of the head."
+        "\n\nMost song thrush pairs will have two or three broods a season."
+        "\n\nTheir song pattern is quite distinctive as they like to repeat the same phrase"
+        "several times.",
+    images: [
+      'assets/songthrush_close.png',
+      'assets/songthrush.png',
+    ],
+    scientificName: 'Turdus philomelos',
+    conservationStatus: 'Red',
+    birdFamily: 'Thrushes',
+    birdType: BirdType.other,
+  );
   static final Bird nuthatch = Bird(
-      name: 'Nuthatch',
-      description:
-          "The nuthatch has a distinctive black stripe on its head with a blueish grey"
-          "top and a chestnut underside. "
-          "\n\nTheir name is derived from nut hacker reflecting the bird's method"
-          "of opening up nuts by jamming them into a crevice and then hammering at them."
-          "\n\nThey have adapted to use bird tables and feeders and will take the food they find there"
-          "and store it. This makes them very territorial. "
-          "\n\nThey will readily adapt to bird boxes but they cannot resist plastering mud"
-          "around the entrance hole."
-          "\n\nThey are highly sedentary seldom moving far from where they hatched.",
-      images: [
-        'assets/nuthatch_close.png',
-        'assets/nuthatch1.png',
-        'assets/nuthatch2.png',
-        'assets/nuthatch3.png',
-      ],
-      birdFamily: 'Nuthatches',
-      conservationStatus: 'Green',
-      scientificName: 'Sitta europaea');
+    name: 'Nuthatch',
+    description:
+        "The nuthatch has a distinctive black stripe on its head with a blueish grey"
+        "top and a chestnut underside. "
+        "\n\nTheir name is derived from nut hacker reflecting the bird's method"
+        "of opening up nuts by jamming them into a crevice and then hammering at them."
+        "\n\nThey have adapted to use bird tables and feeders and will take the food they find there"
+        "and store it. This makes them very territorial. "
+        "\n\nThey will readily adapt to bird boxes but they cannot resist plastering mud"
+        "around the entrance hole."
+        "\n\nThey are highly sedentary seldom moving far from where they hatched.",
+    images: [
+      'assets/nuthatch_close.png',
+      'assets/nuthatch1.png',
+      'assets/nuthatch2.png',
+      'assets/nuthatch3.png',
+    ],
+    birdFamily: 'Nuthatches',
+    conservationStatus: 'Green',
+    scientificName: 'Sitta europaea',
+    birdType: BirdType.other,
+  );
   static final Bird dunnock = Bird(
       name: 'Dunnock',
       description:
@@ -141,26 +156,29 @@ class Bird {
       ],
       scientificName: 'Prunella modularis',
       conservationStatus: 'Amber',
-      birdFamily: 'Accentors');
+      birdFamily: 'Accentors',
+      birdType: BirdType.nesting);
   static final Bird wren = Bird(
-      name: 'Wren',
-      description:
-          "Wrens are small, round, plumb birds withe a distinctive small tail which is usually cocked up."
-          "\n\nDuring courtship they fan out their wings and tails."
-          "\n\nThey hunt for insects amoung leaves on the ground  and in cracks in bark of trees."
-          "\n\nFor such a small bird they emit a loud and slightly tremulous 'teet-teet-teet'."
-          "\n\nThey can nest in any type of cavity from ground level upwards but they prefer the side of a tree, steep bank or wall."
-          "\n\nThe nest is built by the male who may build several nests and install a different female in each one. "
-          "\n\nThe nest is a stout dome structure made of leaves, grass and other plant materials which the female lines with feathers.",
-      images: [
-        'assets/wren_close.png',
-        'assets/wren3.png',
-        'assets/wren.png',
-        'assets/wren2.png',
-      ],
-      birdFamily: 'Wrens',
-      conservationStatus: 'Green',
-      scientificName: 'Troglodytes troglodytes');
+    name: 'Wren',
+    description:
+        "Wrens are small, round, plumb birds withe a distinctive small tail which is usually cocked up."
+        "\n\nDuring courtship they fan out their wings and tails."
+        "\n\nThey hunt for insects amoung leaves on the ground  and in cracks in bark of trees."
+        "\n\nFor such a small bird they emit a loud and slightly tremulous 'teet-teet-teet'."
+        "\n\nThey can nest in any type of cavity from ground level upwards but they prefer the side of a tree, steep bank or wall."
+        "\n\nThe nest is built by the male who may build several nests and install a different female in each one. "
+        "\n\nThe nest is a stout dome structure made of leaves, grass and other plant materials which the female lines with feathers.",
+    images: [
+      'assets/wren_close.png',
+      'assets/wren3.png',
+      'assets/wren.png',
+      'assets/wren2.png',
+    ],
+    birdFamily: 'Wrens',
+    conservationStatus: 'Green',
+    scientificName: 'Troglodytes troglodytes',
+    birdType: BirdType.other,
+  );
 
   static final Bird other = Bird(
     name: 'Other',
@@ -195,23 +213,26 @@ class Bird {
     scientificName: 'Sturnus vulgaris',
     birdFamily: 'Starling',
     conservationStatus: 'Red',
+    birdType: BirdType.other,
   );
   static final Bird wagtail = Bird(
-      name: 'Pied Wagtail',
-      description:
-          "The pied wagtail can be seen dashing about on the grass on Redland Green in search of food with, as its name would suggest, "
-          "its tail wagging up and down."
-          "\n\nIts black and white markings make it easy to spot."
-          "\n\nThough pied wagtails are almost exclusively British, they do not like the cold weather. In severe weather large "
-          "numbers of up to 4000 wagtails will join together and roast communally.",
-      images: [
-        'assets/wagtail2.png',
-        'assets/wagtail1.png',
-        'assets/wagtail.png',
-      ],
-      conservationStatus: 'Green',
-      birdFamily: 'Pipits and Wagtails',
-      scientificName: 'Motacilla alba');
+    name: 'Pied Wagtail',
+    description:
+        "The pied wagtail can be seen dashing about on the grass on Redland Green in search of food with, as its name would suggest, "
+        "its tail wagging up and down."
+        "\n\nIts black and white markings make it easy to spot."
+        "\n\nThough pied wagtails are almost exclusively British, they do not like the cold weather. In severe weather large "
+        "numbers of up to 4000 wagtails will join together and roast communally.",
+    images: [
+      'assets/wagtail2.png',
+      'assets/wagtail1.png',
+      'assets/wagtail.png',
+    ],
+    conservationStatus: 'Green',
+    birdFamily: 'Pipits and Wagtails',
+    scientificName: 'Motacilla alba',
+    birdType: BirdType.other,
+  );
   static final Bird crow = Bird(
     name: 'Crow',
     description:
@@ -230,6 +251,7 @@ class Bird {
     conservationStatus: 'Green',
     scientificName: 'Corvus corone',
     birdFamily: 'Crows',
+    birdType: BirdType.predator,
   );
   static final Bird jay = Bird(
     name: 'Jay',
@@ -243,6 +265,7 @@ class Bird {
     scientificName: 'Garrulus glandarius',
     birdFamily: 'Crows',
     conservationStatus: 'Green',
+    birdType: BirdType.other,
   );
   static final Bird coaltit = Bird(
       name: 'Coal tit',
@@ -251,28 +274,31 @@ class Bird {
           "\n\nIn winter they form flocks with other tits."
           "\n\nThey have a song of repeated phrases that are similar to those the great tit but more high pitched.",
       images: [
-        'assets/coaltit.png',
         'assets/coaltit1.png',
+        'assets/coaltit.png',
       ],
       conservationStatus: 'Green',
       scientificName: 'Periparus ater',
-      birdFamily: 'Tits');
+      birdFamily: 'Tits',
+      birdType: BirdType.nesting);
   static final Bird goldfinch = Bird(
-      name: 'GoldFinch',
-      description:
-          "Goldfinches are probably the most exotic birds you'll see on the Green. Thy have a bright red face and yellow wing patch. "
-          "\n\nThey have a delightful twittering song and call."
-          "\n\nTheir long fine beaks enable them to extract seeds from thistles and teasels. "
-          "\n\nThey are increasingly using bird tables and feeders.",
-      images: [
-        'assets/goldfinch.png',
-        'assets/goldfinch2.png',
-        'assets/goldfinch3.png',
-        'assets/goldfinch4.png',
-      ],
-      conservationStatus: 'Green',
-      birdFamily: 'Finches',
-      scientificName: 'Carduelis carduelis');
+    name: 'GoldFinch',
+    description:
+        "Goldfinches are probably the most exotic birds you'll see on the Green. Thy have a bright red face and yellow wing patch. "
+        "\n\nThey have a delightful twittering song and call."
+        "\n\nTheir long fine beaks enable them to extract seeds from thistles and teasels. "
+        "\n\nThey are increasingly using bird tables and feeders.",
+    images: [
+      'assets/goldfinch.png',
+      'assets/goldfinch2.png',
+      'assets/goldfinch3.png',
+      'assets/goldfinch4.png',
+    ],
+    conservationStatus: 'Green',
+    birdFamily: 'Finches',
+    scientificName: 'Carduelis carduelis',
+    birdType: BirdType.other,
+  );
   static final Bird longtailedtit = Bird(
     name: 'Long-tailed Tit',
     description:
@@ -287,6 +313,7 @@ class Bird {
     birdFamily: 'Long-tailed Tits',
     scientificName: 'Aegithalos caudatus',
     conservationStatus: 'Green',
+    birdType: BirdType.other,
   );
   static final Bird magpie = Bird(
     name: 'Magpie',
@@ -301,16 +328,20 @@ class Bird {
     birdFamily: 'Crows',
     scientificName: 'Pica pica',
     conservationStatus: 'Green',
+    birdType: BirdType.predator,
   );
   static final Bird woodpecker = Bird(
-      name: 'Woodpecker',
-      description: '',
-      images: [
-        'assets/woodpecker.png',
-      ],
-      birdFamily: 'Woodpeckers',
-      conservationStatus: 'Green',
-      scientificName: 'Dendrocopos major');
+    name: 'Woodpecker',
+    description: '',
+    images: [
+      'assets/woodpecker.png',
+    ],
+    birdFamily: 'Woodpeckers',
+    conservationStatus: 'Green',
+    scientificName: 'Dendrocopos major',
+    birdType: BirdType.predator,
+  );
+
   // static final Bird pigeon = Bird(
   //   name: 'Pigeon',
   //   description: '',

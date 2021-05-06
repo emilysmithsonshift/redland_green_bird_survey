@@ -37,12 +37,13 @@ class _HomePageState extends State<HomePage> {
             children: [
               Center(
                 child: Text(
-                  'Welcome to the Redland Green Bird Box Survey!\n',
+                  'Welcome!\n',
                   style: Theme.of(context).textTheme.headline1,
                 ),
               ),
               Text(
-                  'In 2018 Redland Green Community Group installed 16 bird boxes all around the green. '
+                  'In 2020, Redland Green Community Group installed 16 bird boxes in trees around the green’'
+                  '\n\nThis app has been created to track the boxes and their inhabitants.'
                   '\n\nTap for more information.')
             ],
           ),
@@ -143,13 +144,13 @@ class _HomePageState extends State<HomePage> {
       RGGridTile(
         heroTag: 'fact_page',
         navigateTo: FactPage(),
-        text: 'Interesting Facts',
+        text: 'Did you know?',
         imageAsset: 'assets/wren3.png',
       ),
       RGGridTile(
           heroTag: 'information',
           navigateTo: InformationPage(),
-          text: 'Information Page',
+          text: 'About',
           imageAsset: 'assets/wagtail.png'),
     ];
 
