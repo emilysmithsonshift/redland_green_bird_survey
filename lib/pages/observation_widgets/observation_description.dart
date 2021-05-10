@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:redland_green_bird_survey/models/sighting_type.dart';
 
-Widget ObservationDescription(Function onSelected, int _sightingType) {
+Widget ObservationDescription({
+  Function onSelected,
+  int sightingType,
+  List sightingTypeList,
+}) {
   return Expanded(
     child: ListView.builder(
-      itemCount: SightingType.sightingsTypeList.length,
+      itemCount: sightingTypeList.length,
       itemBuilder: (context, index) {
         return GestureDetector(
           onTap: () {
@@ -19,7 +22,7 @@ Widget ObservationDescription(Function onSelected, int _sightingType) {
               borderRadius: const BorderRadius.all(
                 Radius.circular(20),
               ),
-              boxShadow: _sightingType == index
+              boxShadow: sightingType == index
                   ? []
                   : [
                       BoxShadow(
@@ -29,13 +32,13 @@ Widget ObservationDescription(Function onSelected, int _sightingType) {
                       )
                     ],
               border: Border.all(
-                width: _sightingType == index ? 2.0 : 0.0,
+                width: sightingType == index ? 2.0 : 0.0,
                 color: Colors.blueAccent,
               ),
             ),
             child: Center(
               child: Text(
-                SightingType.sightingsTypeList[index].description,
+                sightingTypeList[index].description,
                 textAlign: TextAlign.center,
               ),
             ),

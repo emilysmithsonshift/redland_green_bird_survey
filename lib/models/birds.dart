@@ -8,6 +8,7 @@ class Bird {
   String description;
   List<String> images;
   BirdType birdType;
+  int id;
 
   Bird({
     this.name,
@@ -17,25 +18,43 @@ class Bird {
     this.birdFamily,
     this.conservationStatus,
     this.birdType,
+    this.id,
   });
 
+  static final Bird none = Bird(
+    name: 'None',
+    description: '',
+    images: [],
+    id: 0,
+  );
+  static final Bird other = Bird(
+    name: 'Other',
+    description: '',
+    images: [],
+    id: 1,
+  );
+  static final Bird unidentified = Bird(
+    name: 'Unidentified',
+    description: '',
+    images: [],
+    id: 2,
+  );
+
   static final Bird robin = Bird(
-      name: 'Robin',
-      description:
-          "Friendly little birds with their distinctive red breasts and their beautiful song, robins are probably the most recognisable birds in Britain. "
-          "\n\nJuvenile robins have brown breasts - they gain their red breasts after their first moult and each robin has a unique breast pattern."
-          "\n\nThey are members of the thrush family and related to blackbirds and nightingales."
-          "\n\nThey are territorial, do not usually travel far from where they were hatched and prefer to nest in open fronted bird boxes. "
-          "\n\nA pair of robins can raise between three and five broods of chicks a year.",
-      images: [
-        'assets/robin_close.png',
-        'assets/robin1.png',
-        'assets/robin.png'
-      ],
-      conservationStatus: 'Green',
-      scientificName: 'Erithacus rubecula',
-      birdFamily: 'Old World flycatchers and chats',
-      birdType: BirdType.nesting);
+    name: 'Robin',
+    description:
+        "Friendly little birds with their distinctive red breasts and their beautiful song, robins are probably the most recognisable birds in Britain. "
+        "\n\nJuvenile robins have brown breasts - they gain their red breasts after their first moult and each robin has a unique breast pattern."
+        "\n\nThey are members of the thrush family and related to blackbirds and nightingales."
+        "\n\nThey are territorial, do not usually travel far from where they were hatched and prefer to nest in open fronted bird boxes. "
+        "\n\nA pair of robins can raise between three and five broods of chicks a year.",
+    images: ['assets/robin_close.png', 'assets/robin1.png', 'assets/robin.png'],
+    conservationStatus: 'Green',
+    scientificName: 'Erithacus rubecula',
+    birdFamily: 'Old World flycatchers and chats',
+    birdType: BirdType.nesting,
+    id: 3,
+  );
   static final Bird greatTit = Bird(
     name: 'Great Tit',
     description:
@@ -52,6 +71,7 @@ class Bird {
     conservationStatus: 'Green',
     birdFamily: 'Tits',
     birdType: BirdType.nesting,
+    id: 4,
   );
   static final Bird blueTit = Bird(
     name: 'Blue tit',
@@ -76,6 +96,7 @@ class Bird {
     conservationStatus: 'Green',
     birdFamily: 'Tits',
     birdType: BirdType.nesting,
+    id: 5,
   );
   static final Bird blackbird = Bird(
     name: 'Blackbird',
@@ -98,7 +119,8 @@ class Bird {
     scientificName: 'Turdus merula',
     birdFamily: 'Thrushes',
     conservationStatus: 'Green',
-    birdType: BirdType.other,
+    birdType: BirdType.nesting,
+    id: 6,
   );
   static final Bird songThrush = Bird(
     name: 'Song Thrush',
@@ -116,7 +138,8 @@ class Bird {
     scientificName: 'Turdus philomelos',
     conservationStatus: 'Red',
     birdFamily: 'Thrushes',
-    birdType: BirdType.other,
+    birdType: BirdType.nesting,
+    id: 7,
   );
   static final Bird nuthatch = Bird(
     name: 'Nuthatch',
@@ -139,7 +162,8 @@ class Bird {
     birdFamily: 'Nuthatches',
     conservationStatus: 'Green',
     scientificName: 'Sitta europaea',
-    birdType: BirdType.other,
+    birdType: BirdType.nesting,
+    id: 8,
   );
   static final Bird dunnock = Bird(
       name: 'Dunnock',
@@ -157,7 +181,8 @@ class Bird {
       scientificName: 'Prunella modularis',
       conservationStatus: 'Amber',
       birdFamily: 'Accentors',
-      birdType: BirdType.nesting);
+      birdType: BirdType.other,
+      id: 9);
   static final Bird wren = Bird(
     name: 'Wren',
     description:
@@ -177,24 +202,10 @@ class Bird {
     birdFamily: 'Wrens',
     conservationStatus: 'Green',
     scientificName: 'Troglodytes troglodytes',
-    birdType: BirdType.other,
+    birdType: BirdType.nesting,
+    id: 10,
   );
 
-  static final Bird other = Bird(
-    name: 'Other',
-    description: '',
-    images: [],
-  );
-  static final Bird unidentified = Bird(
-    name: 'Unidentified',
-    description: '',
-    images: [],
-  );
-  static final Bird none = Bird(
-    name: 'None',
-    description: '',
-    images: [],
-  );
   static final Bird starling = Bird(
     name: 'Starling',
     description:
@@ -214,6 +225,7 @@ class Bird {
     birdFamily: 'Starling',
     conservationStatus: 'Red',
     birdType: BirdType.other,
+    id: 11,
   );
   static final Bird wagtail = Bird(
     name: 'Pied Wagtail',
@@ -231,7 +243,8 @@ class Bird {
     conservationStatus: 'Green',
     birdFamily: 'Pipits and Wagtails',
     scientificName: 'Motacilla alba',
-    birdType: BirdType.other,
+    birdType: BirdType.nesting,
+    id: 12,
   );
   static final Bird crow = Bird(
     name: 'Crow',
@@ -252,6 +265,7 @@ class Bird {
     scientificName: 'Corvus corone',
     birdFamily: 'Crows',
     birdType: BirdType.predator,
+    id: 13,
   );
   static final Bird jay = Bird(
     name: 'Jay',
@@ -265,7 +279,8 @@ class Bird {
     scientificName: 'Garrulus glandarius',
     birdFamily: 'Crows',
     conservationStatus: 'Green',
-    birdType: BirdType.other,
+    birdType: BirdType.predator,
+    id: 14,
   );
   static final Bird coaltit = Bird(
       name: 'Coal tit',
@@ -280,7 +295,8 @@ class Bird {
       conservationStatus: 'Green',
       scientificName: 'Periparus ater',
       birdFamily: 'Tits',
-      birdType: BirdType.nesting);
+      birdType: BirdType.other,
+      id: 15);
   static final Bird goldfinch = Bird(
     name: 'GoldFinch',
     description:
@@ -298,6 +314,7 @@ class Bird {
     birdFamily: 'Finches',
     scientificName: 'Carduelis carduelis',
     birdType: BirdType.other,
+    id: 16,
   );
   static final Bird longtailedtit = Bird(
     name: 'Long-tailed Tit',
@@ -314,6 +331,7 @@ class Bird {
     scientificName: 'Aegithalos caudatus',
     conservationStatus: 'Green',
     birdType: BirdType.other,
+    id: 17,
   );
   static final Bird magpie = Bird(
     name: 'Magpie',
@@ -329,6 +347,7 @@ class Bird {
     scientificName: 'Pica pica',
     conservationStatus: 'Green',
     birdType: BirdType.predator,
+    id: 18,
   );
   static final Bird woodpecker = Bird(
     name: 'Woodpecker',
@@ -340,6 +359,7 @@ class Bird {
     conservationStatus: 'Green',
     scientificName: 'Dendrocopos major',
     birdType: BirdType.predator,
+    id: 19,
   );
 
   // static final Bird pigeon = Bird(

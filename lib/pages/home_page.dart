@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:jiffy/jiffy.dart';
+import 'package:redland_green_bird_survey/models/news.dart';
 import 'package:redland_green_bird_survey/models/sighting.dart';
 import 'package:redland_green_bird_survey/pages/bird_box_list_page.dart';
 import 'package:redland_green_bird_survey/pages/information_page.dart';
 import 'package:redland_green_bird_survey/pages/interesting_facts.dart';
 import 'package:redland_green_bird_survey/pages/my_details_page.dart';
+import 'package:redland_green_bird_survey/pages/news_page.dart';
 import 'package:redland_green_bird_survey/pages/welcome_page.dart';
 import 'package:redland_green_bird_survey/widgets/observation_summary.dart';
 import 'package:redland_green_bird_survey/widgets/page_template.dart';
@@ -70,7 +73,7 @@ class _HomePageState extends State<HomePage> {
                 );
               }
               List<Sighting> _sightingList = Sighting.sightings
-                  .where((sighting) => sighting.bird.name != 'None')
+                  .where((sighting) => sighting.bird != 0)
                   .toList();
               if (snapshot.hasData) {
                 print(_sightingList.length);
@@ -111,12 +114,97 @@ class _HomePageState extends State<HomePage> {
               }
             }),
       ),
+      RGListTile(
+        imageAsset: 'assets/dunnock.png',
+        alignment: Alignment.center,
+        navigateTo: NewsPage(),
+        heroTag: 'latestNews',
+        imageLeft: false,
+        widget: FutureBuilder(
+            future: Sighting.getSightings(),
+            builder: (context, snapshot) {
+              if (snapshot.hasError) {
+                return Center(
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Text(
+                      'Oh dear, we have had trouble downloading the database',
+                      textAlign: TextAlign.center,
+                    ),
+                  ),
+                );
+              }
+              List<Sighting> _sightingList = Sighting.sightings
+                  .where((sighting) => sighting.bird != 0)
+                  .toList();
+              if (snapshot.hasData) {
+                if (_sightingList.isEmpty) {
+                  return Center(
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Text(
+                        'There are no observations yet.',
+                        textAlign: TextAlign.center,
+                      ),
+                    ),
+                  );
+                }
+                return Column(
+                  children: [
+                    Padding(
+                      padding: EdgeInsets.all(12.0),
+                      child: Center(
+                        child: Text('Latest News',
+                            textAlign: TextAlign.center,
+                            style: Theme.of(context).textTheme.headline1),
+                      ),
+                    ),
+                    Expanded(
+                      child: Wrap(
+                        spacing: 8.0, // gap between adjacent chips
+                        runSpacing: 4.0,
+                        children: News.newsList.map((news) {
+                          return Padding(
+                            padding:
+                                const EdgeInsets.symmetric(horizontal: 8.0),
+                            child: Column(
+                              children: [
+                                SizedBox(
+                                  width: double.infinity,
+                                  child: Text(
+                                    Jiffy([
+                                      news.dateTime.year,
+                                      news.dateTime.month,
+                                      news.dateTime.day
+                                    ]).format('MMM do yyyy'),
+                                    style:
+                                        Theme.of(context).textTheme.headline2,
+                                    textAlign: TextAlign.start,
+                                  ),
+                                ),
+                                Text(news.headline),
+                                SizedBox(
+                                  height: 12,
+                                ),
+                              ],
+                            ),
+                          );
+                        }).toList(),
+                      ),
+                    )
+                  ],
+                );
+              } else {
+                return const Center(child: CircularProgressIndicator());
+              }
+            }),
+      ),
     ];
     final List<Widget> _gridList = [
       RGGridTile(
           heroTag: 'songthrush',
           navigateTo: BirdIdentifierScreen(),
-          text: 'Identify birds',
+          text: 'Redland Green Birds',
           imageAsset: 'assets/songthrush.png'),
       RGGridTile(
           heroTag: 'greattit',

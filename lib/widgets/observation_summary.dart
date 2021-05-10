@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:redland_green_bird_survey/models/birds.dart';
 import 'package:redland_green_bird_survey/models/sighting.dart';
 
 Widget observationSummary(Sighting sighting, BuildContext context) {
@@ -12,7 +13,9 @@ Widget observationSummary(Sighting sighting, BuildContext context) {
         Column(
           children: [
             Text(
-              sighting.bird.name ?? 'hi',
+              Bird.birdsList
+                  .firstWhere((bird) => sighting.bird == bird.id)
+                  .name,
               style: Theme.of(context).textTheme.headline2,
             ),
             Text(

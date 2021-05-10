@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:redland_green_bird_survey/models/birds.dart';
+import 'package:redland_green_bird_survey/models/further_details_options.dart';
 import 'package:redland_green_bird_survey/models/sighting.dart';
 import 'package:redland_green_bird_survey/models/sighting_type.dart';
 import 'package:redland_green_bird_survey/pages/observation_widgets/observation_description.dart';
@@ -11,6 +12,7 @@ import 'package:redland_green_bird_survey/pages/observation_widgets/time_of_obse
 import 'package:redland_green_bird_survey/widgets/page_template.dart';
 import 'package:redland_green_bird_survey/widgets/step.dart';
 import 'package:scrollable_positioned_list/scrollable_positioned_list.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import 'home_page.dart';
 import 'observation_widgets/comments.dart';
@@ -21,6 +23,7 @@ class EnterObservationsPage extends StatefulWidget {
 
   const EnterObservationsPage({this.birdBox, Key key, this.sighting})
       : super(key: key);
+
   @override
   _EnterObservationsPageState createState() => _EnterObservationsPageState();
 }
@@ -34,23 +37,94 @@ class _EnterObservationsPageState extends State<EnterObservationsPage> {
   int _sightingType = -1;
   bool sightingTypeErrorMsg = false;
   String _comment = '';
-
+  int _furtherDetailstype = -1;
   DateTime _dateTime = DateTime.now();
+  bool showModal = true;
+
+  void checkShowModal() async {
+    final prefs = await SharedPreferences.getInstance();
+    showModal = prefs.getBool('showModal') ?? true;
+    print(showModal);
+  }
 
   @override
   void initState() {
+    initialise();
+    super.initState();
+  }
+
+  Future initialise() async {
+    await checkShowModal();
     if (widget.birdBox != null) {
       _birdBox = widget.birdBox;
     }
     if (widget.sighting != null) {
       _birdBox = widget.sighting.birdBox;
-      _bird = Bird.birdsList
-          .indexWhere((bird) => widget.sighting.bird.name == bird.name);
-      _sightingType = widget.sighting.sightingType.id;
+      _bird =
+          Bird.birdsList.indexWhere((bird) => widget.sighting.bird == bird.id);
+      _sightingType = widget.sighting.sightingType;
+      _furtherDetailstype = widget.sighting.furtherDetailsOption;
       _comment = widget.sighting.comment;
       _dateTime = widget.sighting.dateTime;
     }
-    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) => showMod());
+  }
+
+  void showMod() async {
+    print(showModal);
+    if (showModal) {
+      showDialog<void>(
+          context: context,
+          builder: (BuildContext context) {
+            return AlertDialog(
+                title: Text("How to take a bird box observation:"),
+                actions: <Widget>[
+                  TextButton(
+                    child: const Text('Don\'t show this again'),
+                    onPressed: () async {
+                      showModal = false;
+                      final prefs = await SharedPreferences.getInstance();
+                      prefs.setBool('showModal', false);
+                      Navigator.of(context).pop();
+                    },
+                  ),
+                  TextButton(
+                    child: const Text('OK'),
+                    onPressed: () => Navigator.of(context).pop(),
+                  )
+                ],
+                content: SingleChildScrollView(
+                  child: Column(
+                    children: <Widget>[
+                      Text(
+                          "1. Stand quietly, close enough to be able to identify the bird, but not so close as to disturb them. Use binoculars if you have them."
+                          "\n\n2. Watch the box until you see a bird entering or leaving the box, or for at least 5 minutes."
+                          "\n\n3. Provide observations for as many or as few boxes as you wish, and if possible, repeat the observation over as many days as you can."),
+                      Text('\n\nFrequently Asked Questions',
+                          style: Theme.of(context).textTheme.headline1),
+                      Text(
+                          '\nWhen is the best time of year to spot birds nesting?',
+                          style: Theme.of(context).textTheme.headline1),
+                      Text(
+                          "Birds nest in the spring and summer, so these months are the best times to record activity."
+                          " Some birds, such as wrens, might also use nest boxes as winter night time roosts – you need to be around at dawn or dusk to see any evidence of this! You could also use this app to report winter roosts."),
+                      Text('\nHow long should I wait at each box?',
+                          style: Theme.of(context).textTheme.headline1),
+                      Text(
+                          "When birds are feeding young, you are more likely to see activity at the nest fairly quickly. "
+                          "If you are taking an observation before the young have hatched, "
+                          "it may take longer to see if the nest is being used, so wait quietly for at least 5 minutes "
+                          'before recording \'no bird seen at box.\''),
+                      Text(
+                          '\nI did not see any activity at all, should I log this?',
+                          style: Theme.of(context).textTheme.headline1),
+                      Text(
+                          "Absolutely! If you have watched a box for at least five minutes, and have not seen any birds entering or leaving the nest, or any activity near to the nest, this is still a valuable record, as it tells us which boxes might not be used at that time. It helps us to decide if we should move the box to a different location. Please submit such findings!"),
+                    ],
+                  ),
+                ));
+          });
+    }
   }
 
   @override
@@ -116,9 +190,86 @@ class _EnterObservationsPageState extends State<EnterObservationsPage> {
         _scrollToNextWidget();
       },
     );
+
     Widget _step3 = step(
       context: context,
       stepNumber: 3,
+      title: 'Which best describes what you saw?',
+      showErrorMsg: sightingTypeErrorMsg,
+      errorMsg: 'Please select one.',
+      subtitle:
+          'If you have more than one observation, please make a separate observation record for each one.'
+          '\n\nIf you didn\’t seen a bird at the box, this is also important to know: just choose the first option ‘no bird seen at box’. However, only use this option if you have observed the box continually for at least 5 minutes.',
+      content: ObservationDescription(
+        onSelected: (int index) {
+          setState(() {
+            _sightingType = index;
+          });
+        },
+        sightingType: _sightingType,
+        sightingTypeList: SightingType.sightingsTypeList,
+      ),
+      showPrevious: true,
+      onBack: () {
+        _scrollToPreviousWidget();
+      },
+      onNext: () {
+        if (_sightingType == -1) {
+          setState(() {
+            sightingTypeErrorMsg = true;
+          });
+        } else {
+          sightingTypeErrorMsg = false;
+          if (_sightingType == 0) {
+            _bird = 0;
+            setState(() {
+              _scrollToNextWidget();
+              _scrollToNextWidget();
+              _scrollToNextWidget();
+            });
+          }
+          setState(
+            () {
+              _scrollToNextWidget();
+            },
+          );
+        }
+      },
+    );
+    Widget _step4 = step(
+      context: context,
+      stepNumber: 4,
+      title: 'Can you provide any more detail?',
+      showErrorMsg: sightingTypeErrorMsg,
+      errorMsg: '',
+      subtitle:
+          'If you can provide more detail on what you saw, select one of the following'
+          'options, otherwise move on to the last question.'
+          '\n\nOnce the young birds have fledged, they don’t go back into the box again. If you were lucky'
+          'enough to see a young bird leaving the nest (fledging), select the box below. Otherwise, leave this section blank.',
+      content: ObservationDescription(
+        onSelected: (int index) {
+          setState(() {
+            _furtherDetailstype = index;
+          });
+        },
+        sightingType: _furtherDetailstype,
+        sightingTypeList: FurtherDetailsOptions.furtherDetailsOptionsList,
+      ),
+      showPrevious: true,
+      onBack: () {
+        _scrollToPreviousWidget();
+      },
+      onNext: () {
+        sightingTypeErrorMsg = false;
+        setState(() {
+          _scrollToNextWidget();
+        });
+      },
+    );
+    Widget _step5 = step(
+      context: context,
+      stepNumber: 5,
       showErrorMsg: _birdErrorMsg,
       errorMsg: 'Please select a bird',
       title: 'Select which bird you saw',
@@ -137,9 +288,6 @@ class _EnterObservationsPageState extends State<EnterObservationsPage> {
             _birdErrorMsg = true;
           });
         } else {
-          if (_bird == Bird.birdsList.length - 1) {
-            _sightingType = 0;
-          }
           setState(() {
             _birdErrorMsg = false;
             _scrollToNextWidget();
@@ -147,42 +295,10 @@ class _EnterObservationsPageState extends State<EnterObservationsPage> {
         }
       },
     );
-    Widget _step4 = step(
-      context: context,
-      stepNumber: 4,
-      title: 'Which best describes what you saw?',
-      showErrorMsg: sightingTypeErrorMsg,
-      errorMsg: 'Please select one.',
-      subtitle:
-          'Should you see more than one, please enter a separate observation.',
-      content: ObservationDescription((int index) {
-        setState(() {
-          _sightingType = index;
-        });
-      }, _sightingType),
-      showPrevious: true,
-      onBack: () {
-        _scrollToPreviousWidget();
-      },
-      onNext: () {
-        if (_sightingType == -1) {
-          setState(() {
-            sightingTypeErrorMsg = true;
-          });
-        } else {
-          setState(
-            () {
-              sightingTypeErrorMsg = false;
-              _scrollToNextWidget();
-            },
-          );
-        }
-      },
-    );
-    Widget _step5 = step(
+    Widget _step6 = step(
       showErrorMsg: false,
       context: context,
-      stepNumber: 5,
+      stepNumber: 6,
       title: 'Any comments (Optional)',
       content: Comments(
         onChanged: (value) {
@@ -195,17 +311,24 @@ class _EnterObservationsPageState extends State<EnterObservationsPage> {
       showPrevious: true,
       onBack: () {
         _scrollToPreviousWidget();
+        if (_sightingType == 0) {
+          _scrollToPreviousWidget();
+          _scrollToPreviousWidget();
+          _scrollToPreviousWidget();
+        }
       },
       nextButtonText: 'Submit',
       onNext: () {
         final Sighting _sighting = Sighting(
-            dateTime: _dateTime,
-            birdBox: _birdBox,
-            userEmail: FirebaseAuth.instance.currentUser.email,
-            user: FirebaseAuth.instance.currentUser.displayName,
-            sightingType: SightingType.sightingsTypeList[_sightingType],
-            bird: Bird.birdsList[_bird],
-            comment: _comment);
+          dateTime: _dateTime,
+          birdBox: _birdBox,
+          userEmail: FirebaseAuth.instance.currentUser.email,
+          user: FirebaseAuth.instance.currentUser.displayName,
+          sightingType: SightingType.sightingsTypeList[_sightingType].id,
+          bird: _bird,
+          comment: _comment,
+          furtherDetailsOption: _furtherDetailstype,
+        );
         if (widget.sighting != null) {
           Sighting.updateSighting(_sighting, widget.sighting.id);
         } else {
@@ -227,17 +350,35 @@ class _EnterObservationsPageState extends State<EnterObservationsPage> {
       _step3,
       _step4,
       _step5,
+      _step6,
     ];
     final List<Widget> widgetList = [
       SizedBox(
         height: MediaQuery.of(context).size.height - 240,
-        child: ScrollablePositionedList.builder(
-            physics: const NeverScrollableScrollPhysics(),
-            itemScrollController: itemScrollController,
-            itemCount: steps.length,
-            itemBuilder: (context, index) {
-              return steps[index];
-            }),
+        child: Scaffold(
+          floatingActionButtonLocation:
+              FloatingActionButtonLocation.startDocked,
+          floatingActionButton: Padding(
+            padding: const EdgeInsets.only(bottom: 16.0),
+            child: FloatingActionButton(
+              onPressed: () {
+                showModal = true;
+                showMod();
+              },
+              child: Text(
+                '?',
+                style: TextStyle(fontSize: 30),
+              ),
+            ),
+          ),
+          body: ScrollablePositionedList.builder(
+              physics: const NeverScrollableScrollPhysics(),
+              itemScrollController: itemScrollController,
+              itemCount: steps.length,
+              itemBuilder: (context, index) {
+                return steps[index];
+              }),
+        ),
       )
     ];
 

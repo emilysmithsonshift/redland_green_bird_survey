@@ -161,6 +161,25 @@ class _BirdFactPageState extends State<BirdFactPage> {
                                     Text(widget.bird.birdFamily ?? '')
                                   ]),
                                 ),
+                                if (widget.bird.birdType == BirdType.nesting)
+                                  Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: Text(
+                                      'This species might use one of the nest boxes.',
+                                    ),
+                                  ),
+                                if (widget.bird.birdType == BirdType.other)
+                                  Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: Text(
+                                        'This species might be seen on the green, but is not one of the species that will use a nest box'),
+                                  ),
+                                if (widget.bird.birdType == BirdType.predator)
+                                  Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: Text(
+                                        'This species is a potential predator of eggs or young birds in the bird boxes.'),
+                                  ),
                               ],
                             ),
                           ),

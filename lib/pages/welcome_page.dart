@@ -24,15 +24,6 @@ class _WelcomePageState extends State<WelcomePage> {
             Text(
                 '\nIn 2020 Redland Green Community Group installed 16 bird nesting boxes all around the green thanks'
                 ' to a generous grant from the Redland and Cotham Amenities Society (RCAS).'
-                '\n\nIn early 2021 the boxes were inspected and cleared of the previous year’s nests. '
-                'It’s important to inspect nests annually, after the breeding season has ended, '
-                'and clear the year’s nests out. This reduces the possiblity of diseases and '
-                'the build up of pests and parasites. Small birds build new nests each year, '
-                'so this also gives them a head start. '
-                '\n\nIn the breeding season of 2020, the first '
-                'breeding season after the boxes were installed in Redland Green, 10 of the boxes '
-                'had signs of use: 7 had complete nests and 3 had partial nests. '
-                'All had been used by blue tits or great tits.'
                 '\n\nThis app is designed to use community power to help monitor these bird boxes.\n'),
             Text(
                 'There has been a substantial decline in birds (both population numbers and ranges) in the British Isles '

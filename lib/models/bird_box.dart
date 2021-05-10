@@ -2,85 +2,140 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 import 'box_type.dart';
 
+enum BoxState {
+  partNest,
+  noNest,
+  unidentifiedNest,
+  greatTitNest,
+  blueTitNest,
+}
+
 class BirdBox {
   int id;
   LatLng location;
   String locationDescription;
   BoxType boxType;
-  BirdBox(this.id, this.location, this.boxType, this.locationDescription);
+  BoxState boxState;
+
+  BirdBox(
+      {this.id,
+      this.location,
+      this.boxType,
+      this.locationDescription,
+      this.boxState});
+
   static final BirdBox birdBox1 = BirdBox(
-      1,
-      const LatLng(51.4751350, -2.6099130),
-      BoxType.seville,
-      'This bird box is located in the woodland which runs parallel to Coldharbour Road. '
-      "It is just to the left of the end of the path leading down from St Oswald's Road.");
+      id: 1,
+      location: const LatLng(51.4751350, -2.6099130),
+      boxType: BoxType.seville,
+      locationDescription:
+          'Approaching from St Oswald’s Rd, this box is the first box encountered in the woodland running parallel to Coldharbour Rd. It is in a sycamore tree about 6 metres above the litter bin that’s towards the end of the path.',
+      boxState: BoxState.partNest);
   static final BirdBox birdBox2 = BirdBox(
-      2,
-      LatLng(51.4752550, -2.6096700),
-      BoxType.alicante,
-      'This bird box is located in the woodland which runs parallel to Coldharbour Road. '
-      "If you walk down the path from St Oswald's Road, it is just beyond the path to the left.'");
+      id: 2,
+      location: LatLng(51.4752550, -2.6096700),
+      boxType: BoxType.alicante,
+      locationDescription:
+          'Approaching from St Oswald’s Rd, this oval box is the second box encountered in the woodland running parallel to Coldharbour Rd. It is in a sycamore tree which is about 7 metres above the end of the St Oswald’s Road path.',
+      boxState: BoxState.partNest);
   static final BirdBox birdBox3 = BirdBox(
-      3,
-      LatLng(51.4754010, -2.6095980),
-      BoxType.alicanteOpen,
-      "If you walk down the path from St Oswald's Road, it is beyond the path to the left.");
+      id: 3,
+      location: LatLng(51.4754010, -2.6095980),
+      boxType: BoxType.alicanteOpen,
+      locationDescription:
+          'Approaching from St Oswald’s Rd, this box is the third box encountered in the woodland running parallel to Coldharbour Rd. It is about high up in the woodland hill 3 metres below the garages, not visible outside the woodland, and about 20 metres towards Cossins Rd from box 2.',
+      boxState: BoxState.noNest);
   static final BirdBox birdBox4 = BirdBox(
-      4,
-      LatLng(51.4753810, -2.6095150),
-      BoxType.seville,
-      "If you walk down the path from St Oswald's Road, it is beyond the path to the left.");
+      id: 4,
+      location: LatLng(51.4753810, -2.6095150),
+      boxType: BoxType.seville,
+      locationDescription:
+          'Approaching from St Oswald’s Rd, this box is the fourth box encountered in the woodland running parallel to Coldharbour Rd. It is in a sycamore tree high up in the woodland, 7 metres below the garages, 3-4 metres from box 3, and about 20 metres from box 2. It is not visible outside the woodland.',
+      boxState: BoxState.unidentifiedNest);
   static final BirdBox birdBox5 = BirdBox(
-      5,
-      LatLng(51.4755210, -2.6094810),
-      BoxType.seville,
-      "If you walk down the path from St Oswald's Road, it is in the woodland on your left.");
+      id: 5,
+      location: LatLng(51.4755210, -2.6094810),
+      boxType: BoxType.seville,
+      locationDescription:
+          'Approaching from St Oswald’s Rd, this is the fifth box encountered in the woodland running parallel to Coldharbour Rd. It is in an ivy-covered cherry tree high up in the woodland, 7 metres below the garages and about 10 metres from boxes 3 and 4 going towards Cossins Rd. It is not visible outside the woodland.',
+      boxState: BoxState.noNest);
   static final BirdBox birdBox6 = BirdBox(
-      6,
-      LatLng(51.4748, -2.609345),
-      BoxType.alicanteOpen,
-      "On the front of two trees between St Oswald's Road near the memorial stone.");
-  static final BirdBox birdBox7 = BirdBox(7, LatLng(51.4754220, -2.6090510),
-      BoxType.alicante, 'Located opposite number 6 Cossins Road.');
-  static final BirdBox birdBox8 = BirdBox(8, LatLng(51.4752940, -2.6089000),
-      BoxType.seville, 'Located opposite number 8 Cossins Road.');
+      id: 6,
+      location: LatLng(51.4748, -2.609345),
+      boxType: BoxType.alicanteOpen,
+      locationDescription:
+          'This box is located high on the trunk of a maple tree, the left of two trees near to the memorial stone to Philippa Harradine, behind the St Oswald’s Road properties.',
+      boxState: BoxState.noNest);
+  static final BirdBox birdBox7 = BirdBox(
+      id: 7,
+      location: LatLng(51.4754220, -2.6090510),
+      boxType: BoxType.alicante,
+      locationDescription:
+          'This box is located in the ash tree opposite 6 Cossins Road.',
+      boxState: BoxState.noNest);
+  static final BirdBox birdBox8 = BirdBox(
+      id: 8,
+      location: LatLng(51.4752940, -2.6089000),
+      boxType: BoxType.seville,
+      locationDescription:
+          'This box is located in the ash tree opposite 8 Cossins Road',
+      boxState: BoxState.greatTitNest);
   static final BirdBox birdBox9 = BirdBox(
-      9,
-      LatLng(51.4749720, -2.6084250),
-      BoxType.alicante,
-      'Located on the tree below the steps down from Cossins Road');
+      id: 9,
+      location: LatLng(51.4749720, -2.6084250),
+      boxType: BoxType.alicante,
+      locationDescription:
+          'This box is located in the Norway maple below the steps from Cossins Road',
+      boxState: BoxState.partNest);
   static final BirdBox birdBox10 = BirdBox(
-      10,
-      LatLng(51.474508, -2.608220),
-      BoxType.alicanteOpen,
-      "Located on the Veteran Ash Tree at the back of St Oswald's Road");
+      id: 10,
+      location: LatLng(51.474508, -2.608220),
+      boxType: BoxType.alicanteOpen,
+      locationDescription:
+          "This box is located in the veteran ash tree on the boundary of the green and a St Oswald’s Road property. It is hidden behind the leaves of an elder tree and very difficult to see.",
+      boxState: BoxState.noNest);
   static final BirdBox birdBox11 = BirdBox(
-      11,
-      LatLng(51.4742220, -2.6069800),
-      BoxType.alicante,
-      'On the oak tree opposite the dell above the Veteran Ash Trees');
+      id: 11,
+      location: LatLng(51.4742220, -2.6069800),
+      boxType: BoxType.alicante,
+      locationDescription:
+          'This box is located in the oak tree beside the steep hill of the cycle/pedestrian path running through the green, opposite the Dell.',
+      boxState: BoxState.blueTitNest);
   static final BirdBox birdBox12 = BirdBox(
-      12,
-      LatLng(51.4745460, -2.6069240),
-      BoxType.alicanteOpen,
-      'In the dell on a large tree near the Metford Road allotment fence where the fence turns away from the main path');
+      id: 12,
+      location: LatLng(51.4745460, -2.6069240),
+      boxType: BoxType.alicanteOpen,
+      locationDescription:
+          'This box is located amongst ivy in the large field maple tree near the Metford Road allotment fence, about 10 metres below the lower path which runs through the green.',
+      boxState: BoxState.noNest);
   static final BirdBox birdBox13 = BirdBox(
-      13,
-      LatLng(51.4745780, -2.6066050),
-      BoxType.seville,
-      'In the dell on the beech tree by the Metford Road Allotment fence');
-  static final BirdBox birdBox14 = BirdBox(14, LatLng(51.4743460, -2.6065850),
-      BoxType.seville, 'In the dell on the oak tree by the path');
+      id: 13,
+      location: LatLng(51.4745780, -2.6066050),
+      boxType: BoxType.seville,
+      locationDescription:
+          'This box is located in a young beech tree in the Dell,near to the Metford Road allotment fence, and about 20 metres below the lower path in the green.',
+      boxState: BoxState.unidentifiedNest);
+  static final BirdBox birdBox14 = BirdBox(
+      id: 14,
+      location: LatLng(51.4743460, -2.6065850),
+      boxType: BoxType.seville,
+      locationDescription:
+          'This box is located in the Dell, in the oak tree nearest to the lower of the two paths running through the green.',
+      boxState: BoxState.unidentifiedNest);
   static final BirdBox birdBox15 = BirdBox(
-      15,
-      LatLng(51.4733320, -2.6067980),
-      BoxType.seville,
-      'On the first tree to the right of the triangle of grass by the tennis court');
+      id: 15,
+      location: LatLng(51.4733320, -2.6067980),
+      boxType: BoxType.seville,
+      locationDescription:
+          'This box is located in a sycamore tree, which is the first tree to the right of the triangle of grass next to the tennis courts and opposite the bowls club.',
+      boxState: BoxState.greatTitNest);
   static final BirdBox birdBox16 = BirdBox(
-      16,
-      LatLng(51.4734230, -2.6061690),
-      BoxType.seville,
-      'On the Plane tree second closest to the playground by the bowling club fence.');
+      id: 16,
+      location: LatLng(51.4734230, -2.6061690),
+      boxType: BoxType.seville,
+      locationDescription:
+          'This box is located in the second tree from the playground, opposite its main gate, and close to the bowls club fence.',
+      boxState: BoxState.blueTitNest);
 
   static final List<BirdBox> birdBoxesList = [
     birdBox1,

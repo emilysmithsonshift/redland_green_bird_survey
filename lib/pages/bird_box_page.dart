@@ -42,8 +42,34 @@ class _BirdBoxPageState extends State<BirdBoxPage> {
                   style: TextStyle(fontWeight: FontWeight.bold),
                 ),
                 const SizedBox(height: 12),
-                Text(BirdBox
-                    .birdBoxesList[widget.birdBox.id - 1].locationDescription),
+                Text(widget.birdBox.locationDescription),
+              ],
+            ),
+          ),
+          Container(
+            margin: const EdgeInsets.all(8),
+            padding: const EdgeInsets.all(16),
+            // height: 100,
+            decoration: defaultBoxDecoration(color: Colors.green[50]),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Text(
+                  'All the bird boxes were cleaned out in February 2021.',
+                  textAlign: TextAlign.start,
+                ),
+                if (widget.birdBox.boxState == BoxState.noNest)
+                  Text(
+                      'This box showed no sign of having been used. If it is not used this year we shall consider moving it.'),
+                if (widget.birdBox.boxState == BoxState.blueTitNest)
+                  Text('This box contained a fully formed blue tit nest.'),
+                if (widget.birdBox.boxState == BoxState.greatTitNest)
+                  Text('This box contained a fully formed great tit nest.'),
+                if (widget.birdBox.boxState == BoxState.partNest)
+                  Text(
+                      'This box contained a partly formed nest which implies the bird was disturbed before they managed to complete nesting.'),
+                if (widget.birdBox.boxState == BoxState.unidentifiedNest)
+                  Text('This box contained a fully formed nest.'),
               ],
             ),
           ),

@@ -2,7 +2,10 @@ import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:redland_green_bird_survey/models/bird_box.dart';
+import 'package:redland_green_bird_survey/models/birds.dart';
+import 'package:redland_green_bird_survey/models/further_details_options.dart';
 import 'package:redland_green_bird_survey/models/sighting.dart';
+import 'package:redland_green_bird_survey/models/sighting_type.dart';
 import 'package:redland_green_bird_survey/pages/bird_box_page.dart';
 import 'package:redland_green_bird_survey/pages/bird_fact_page.dart';
 import 'package:redland_green_bird_survey/pages/enter_observations_page.dart';
@@ -14,6 +17,7 @@ Widget observationDetails({
   bool showUser,
   Function setState,
 }) {
+  Bird bird = Bird.birdsList.firstWhere((bird) => sighting.bird == bird.id);
   UniqueKey heroKey = UniqueKey();
   return Stack(
     children: [
@@ -42,7 +46,7 @@ Widget observationDetails({
                   context,
                   MaterialPageRoute(
                     builder: (context) => BirdFactPage(
-                      bird: sighting.bird,
+                      bird: bird,
                       heroKey: heroKey.toString(),
                     ),
                   ),
@@ -54,20 +58,19 @@ Widget observationDetails({
                   child: SizedBox(
                     height: 70,
                     width: 70,
-                    child: sighting.bird.images.isEmpty
+                    child: bird.images.isEmpty
                         ? Container(
-                            color: sighting.bird.name == 'None'
+                            color: bird.name == 'None'
                                 ? Colors.grey[400]
                                 : Colors.white,
                             child: Center(
                               child: Text(
-                                sighting.bird.name == 'None' ? '' : '?',
+                                bird.name == 'None' ? '' : '?',
                                 style: const TextStyle(fontSize: 30),
                               ),
                             ),
                           )
-                        : Image.asset(sighting.bird.images[0],
-                            fit: BoxFit.fitHeight),
+                        : Image.asset(bird.images[0], fit: BoxFit.fitHeight),
                   ),
                 ),
               ),
@@ -80,7 +83,7 @@ Widget observationDetails({
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      sighting.bird.name ?? 'None',
+                      bird.name ?? 'None',
                       style: const TextStyle(fontWeight: FontWeight.bold),
                     ),
                     const SizedBox(height: 4),
@@ -89,8 +92,18 @@ Widget observationDetails({
                     ),
                     const SizedBox(height: 4),
                     Text(
-                      sighting.sightingType.description,
+                      SightingType.sightingsTypeList
+                          .firstWhere((sightingType) =>
+                              sightingType.id == sighting.sightingType)
+                          .description,
                     ),
+                    if (sighting.furtherDetailsOption != -1)
+                      SizedBox(height: 4),
+                    if (sighting.furtherDetailsOption != -1)
+                      Text(FurtherDetailsOptions
+                          .furtherDetailsOptionsList[
+                              sighting.furtherDetailsOption]
+                          .description),
                     const SizedBox(height: 4),
                     if (showUser)
                       Text('Observed by: ${sighting.user}',

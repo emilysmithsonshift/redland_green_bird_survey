@@ -2,26 +2,30 @@ import 'package:flutter/material.dart';
 import 'package:redland_green_bird_survey/models/birds.dart';
 
 Widget SelectBird(int _bird, Function onSelect) {
+  List<Bird> birdList =
+      Bird.birdsList.where((bird) => bird.birdType != BirdType.other).toList();
+
   return Expanded(
     child: GridView.builder(
       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 3,
       ),
-      itemCount: Bird.birdsList.length,
+      itemCount: birdList.length,
       itemBuilder: (context, index) {
         return GestureDetector(
           onTap: () {
-            onSelect(index);
+            print(birdList[index].id);
+            onSelect(birdList[index].id);
           },
           child: Container(
             margin: const EdgeInsets.all(6),
             decoration: BoxDecoration(
               color: Colors.green[50],
               border: Border.all(
-                width: _bird == index ? 3.0 : 0.0,
+                width: _bird == birdList[index].id ? 3.0 : 0.0,
                 color: Colors.blueAccent,
               ),
-              boxShadow: _bird == index
+              boxShadow: _bird == birdList[index].id
                   ? []
                   : [
                       BoxShadow(
@@ -34,13 +38,13 @@ Widget SelectBird(int _bird, Function onSelect) {
                 Radius.circular(10),
               ),
               image: DecorationImage(
-                colorFilter: Bird.birdsList[index].images.isEmpty
+                colorFilter: birdList[index].images.isEmpty
                     ? const ColorFilter.mode(Colors.grey, BlendMode.clear)
                     : const ColorFilter.mode(Colors.white, BlendMode.colorBurn),
                 fit: BoxFit.fill,
-                image: AssetImage(Bird.birdsList[index].images.isEmpty
+                image: AssetImage(birdList[index].images.isEmpty
                     ? 'assets/bluetit.png'
-                    : Bird.birdsList[index].images[0]),
+                    : birdList[index].images[0]),
               ),
             ),
             child: Align(
@@ -56,7 +60,7 @@ Widget SelectBird(int _bird, Function onSelect) {
                 width: double.infinity,
                 padding: const EdgeInsets.all(2.0),
                 child: Text(
-                  Bird.birdsList[index].name,
+                  birdList[index].name,
                   textAlign: TextAlign.center,
                 ),
               ),

@@ -17,35 +17,38 @@ Widget SelectBirdBoxNo(
           onTap: () {
             onSelect(_birdBox.id);
           },
-          child: ClipOval(
-            child: Container(
-              height: 30,
-              width: 30,
-              margin: const EdgeInsets.all(8),
-              decoration: BoxDecoration(
-                color: Colors.green[50],
-                borderRadius: const BorderRadius.all(
-                  Radius.circular(60),
+          child: Padding(
+            padding: const EdgeInsets.all(4.0),
+            child: ClipOval(
+              child: Container(
+                height: 40,
+                width: 40,
+                margin: const EdgeInsets.all(8),
+                decoration: BoxDecoration(
+                  color: Colors.green[50],
+                  borderRadius: const BorderRadius.all(
+                    Radius.circular(60),
+                  ),
+                  boxShadow: birdBox != _birdBox.id
+                      ? [
+                          BoxShadow(
+                            color: Colors.grey,
+                            offset: Offset(3.0, 3.0),
+                            blurRadius: 3.0,
+                          )
+                        ]
+                      : [],
+                  border: Border.all(
+                    width: birdBox == _birdBox.id ? 2.0 : 0.0,
+                    color: birdBox == _birdBox.id
+                        ? Colors.blueAccent
+                        : Colors.green[50],
+                  ),
                 ),
-                boxShadow: birdBox != _birdBox.id
-                    ? [
-                        BoxShadow(
-                          color: Colors.grey,
-                          offset: Offset(3.0, 3.0),
-                          blurRadius: 3.0,
-                        )
-                      ]
-                    : [],
-                border: Border.all(
-                  width: birdBox == _birdBox.id ? 2.0 : 0.0,
-                  color: birdBox == _birdBox.id
-                      ? Colors.blueAccent
-                      : Colors.green[50],
-                ),
-              ),
-              child: Center(
-                child: Text(
-                  _birdBox.id.toString(),
+                child: Center(
+                  child: Text(
+                    _birdBox.id.toString(),
+                  ),
                 ),
               ),
             ),

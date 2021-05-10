@@ -1,26 +1,26 @@
 import 'package:firebase_database/firebase_database.dart';
 
-import 'birds.dart';
-import 'sighting_type.dart';
-
 class Sighting {
   String id;
   DateTime dateTime;
   int birdBox;
-  Bird bird;
+  int bird;
   String user;
   String userEmail;
-  SightingType sightingType;
+  int sightingType;
   String comment;
-  Sighting(
-      {this.id,
-      this.dateTime,
-      this.birdBox,
-      this.user,
-      this.sightingType,
-      this.bird,
-      this.comment,
-      this.userEmail});
+  int furtherDetailsOption;
+  Sighting({
+    this.id,
+    this.dateTime,
+    this.birdBox,
+    this.user,
+    this.sightingType,
+    this.bird,
+    this.comment,
+    this.userEmail,
+    this.furtherDetailsOption,
+  });
   static final List<Sighting> sightings = [];
 
   static void addSighting(Sighting _sighting) {
@@ -31,9 +31,10 @@ class Sighting {
       'user': _sighting.user,
       'date_time': _sighting.dateTime.toIso8601String(),
       'bird_box': _sighting.birdBox,
-      'sighting_type': _sighting.sightingType.id,
-      'bird': _sighting.bird.name,
+      'sighting_type': _sighting.sightingType,
+      'bird': _sighting.bird,
       'userEmail': _sighting.userEmail,
+      'furtherObservation': _sighting.furtherDetailsOption,
     });
     getSightings();
   }
@@ -46,9 +47,10 @@ class Sighting {
       'user': _sighting.user,
       'date_time': _sighting.dateTime.toIso8601String(),
       'bird_box': _sighting.birdBox,
-      'sighting_type': _sighting.sightingType.id,
-      'bird': _sighting.bird.name,
+      'sighting_type': _sighting.sightingType,
+      'bird': _sighting.bird,
       'userEmail': _sighting.userEmail,
+      'furtherObservation': _sighting.furtherDetailsOption,
     });
   }
 
@@ -66,14 +68,12 @@ class Sighting {
       sightings.add(
         Sighting(
             id: key as String,
-            sightingType:
-                SightingType.sightingsTypeList[value['sighting_type'] as int],
+            sightingType: value['sighting_type'] as int,
             dateTime: DateTime.parse(value['date_time'] as String),
             user: value['user'] as String,
             userEmail: value['userEmail'],
-            bird: Bird.birdsList.firstWhere((bird) {
-              return bird.name == value['bird'];
-            }),
+            bird: value['bird'],
+            furtherDetailsOption: value['furtherObservation'] as int,
             birdBox: value['bird_box'] as int),
       );
 
