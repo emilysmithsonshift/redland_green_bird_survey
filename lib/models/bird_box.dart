@@ -41,7 +41,7 @@ class BirdBox {
   static final BirdBox birdBox3 = BirdBox(
       id: 3,
       location: LatLng(51.4754010, -2.6095980),
-      boxType: BoxType.alicanteOpen,
+      boxType: BoxType.seville,
       locationDescription:
           'Approaching from St Oswald’s Rd, this box is the third box encountered in the woodland running parallel to Coldharbour Rd. It is about high up in the woodland hill 3 metres below the garages, not visible outside the woodland, and about 20 metres towards Cossins Rd from box 2.',
       boxState: BoxState.noNest);
@@ -55,7 +55,7 @@ class BirdBox {
   static final BirdBox birdBox5 = BirdBox(
       id: 5,
       location: LatLng(51.4755210, -2.6094810),
-      boxType: BoxType.seville,
+      boxType: BoxType.alicanteOpen,
       locationDescription:
           'Approaching from St Oswald’s Rd, this is the fifth box encountered in the woodland running parallel to Coldharbour Rd. It is in an ivy-covered cherry tree high up in the woodland, 7 metres below the garages and about 10 metres from boxes 3 and 4 going towards Cossins Rd. It is not visible outside the woodland.',
       boxState: BoxState.noNest);

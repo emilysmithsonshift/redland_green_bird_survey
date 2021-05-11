@@ -18,11 +18,11 @@ Widget SelectBirdBoxNo(
             onSelect(_birdBox.id);
           },
           child: Padding(
-            padding: const EdgeInsets.all(4.0),
+            padding: const EdgeInsets.all(2.0),
             child: ClipOval(
               child: Container(
-                height: 40,
-                width: 40,
+                height: 30,
+                width: 30,
                 margin: const EdgeInsets.all(8),
                 decoration: BoxDecoration(
                   color: Colors.green[50],
@@ -56,7 +56,7 @@ Widget SelectBirdBoxNo(
         );
       }).toList()),
       SizedBox(
-        height: 200,
+        height: 100,
         child: Center(
           child: birdBox == -1
               ? Container(

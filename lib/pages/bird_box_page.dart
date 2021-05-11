@@ -173,6 +173,10 @@ class _BirdBoxPageState extends State<BirdBoxPage> {
               ],
             ),
           ),
+          Text(
+            'Latest Observations',
+            style: Theme.of(context).textTheme.headline1,
+          ),
           _sightingList.isEmpty
               ? Padding(
                   padding: const EdgeInsets.all(16.0),

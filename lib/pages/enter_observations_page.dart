@@ -38,8 +38,10 @@ class _EnterObservationsPageState extends State<EnterObservationsPage> {
   bool sightingTypeErrorMsg = false;
   String _comment = '';
   int _furtherDetailstype = -1;
-  DateTime _dateTime = DateTime.now();
+  DateTime _dateTime;
   bool showModal = true;
+  DateTime maxDate;
+  bool isLoading = true;
 
   void checkShowModal() async {
     final prefs = await SharedPreferences.getInstance();
@@ -60,14 +62,27 @@ class _EnterObservationsPageState extends State<EnterObservationsPage> {
       });
     }
     if (widget.sighting != null) {
-      _birdBox = widget.sighting.birdBox;
-      _bird =
-          Bird.birdsList.indexWhere((bird) => widget.sighting.bird == bird.id);
-      _sightingType = widget.sighting.sightingType;
-      _furtherDetailstype = widget.sighting.furtherDetailsOption;
-      _comment = widget.sighting.comment;
-      _dateTime = widget.sighting.dateTime;
+      setState(() {
+        _birdBox = widget.sighting.birdBox;
+        _bird = Bird.birdsList
+            .indexWhere((bird) => widget.sighting.bird == bird.id);
+        _sightingType = widget.sighting.sightingType;
+        _furtherDetailstype =
+            FurtherDetailsOptions.furtherDetailsOptionsList.indexWhere(
+          (element) => element.id == widget.sighting.furtherDetailsOption,
+        );
+        _comment = widget.sighting.comment;
+        _furtherDetailstype = widget.sighting.furtherDetailsOption;
+        _dateTime = widget.sighting.dateTime;
+      });
+    } else {
+      _dateTime = DateTime.now();
     }
+    maxDate = DateTime.now();
+    setState(() {
+      isLoading = false;
+    });
+
     WidgetsBinding.instance.addPostFrameCallback((_) => showMod());
   }
 
@@ -126,6 +141,11 @@ class _EnterObservationsPageState extends State<EnterObservationsPage> {
                       Text(
                           "We do monitor the comments but we do not publish them to the public in order to safeguard from anything inappropriate."
                           " Rest assured that your comments will be read by the Redland Green Community Group. "),
+                      Text('\nI made a mistake, what should I do?',
+                          style: Theme.of(context).textTheme.headline1),
+                      Text(
+                          "Don't panic! Simply go back to the home page and tap on 'My Details'. "
+                          "You can see, edit or delete any of your observations there."),
                     ],
                   ),
                 ));
@@ -181,13 +201,16 @@ class _EnterObservationsPageState extends State<EnterObservationsPage> {
       stepNumber: 2,
       showErrorMsg: false,
       title: 'Time of Observation',
-      content: TimeOfObservation(
-          dateTime: _dateTime,
-          onSelected: (DateTime dateTime) {
-            setState(() {
-              _dateTime = dateTime;
-            });
-          }),
+      content: isLoading
+          ? CircularProgressIndicator()
+          : TimeOfObservation(
+              maxDate: maxDate,
+              dateTime: _dateTime,
+              onSelected: (DateTime dateTime) {
+                setState(() {
+                  _dateTime = dateTime;
+                });
+              }),
       showPrevious: true,
       onBack: () {
         _scrollToPreviousWidget();
@@ -204,8 +227,7 @@ class _EnterObservationsPageState extends State<EnterObservationsPage> {
       showErrorMsg: sightingTypeErrorMsg,
       errorMsg: 'Please select one.',
       subtitle:
-          'If you have more than one observation, please make a separate observation record for each one.'
-          '\n\nIf you didn\’t seen a bird at the box, this is also important to know: just choose the first option ‘no bird seen at box’. However, only use this option if you have observed the box continually for at least 5 minutes.',
+          'If you have more than one observation, please make a separate observation record for each one.',
       content: ObservationDescription(
         onSelected: (int index) {
           setState(() {
@@ -250,9 +272,7 @@ class _EnterObservationsPageState extends State<EnterObservationsPage> {
       errorMsg: '',
       subtitle:
           'If you can provide more detail on what you saw, select one of the following'
-          'options, otherwise move on to the last question.'
-          '\n\nOnce the young birds have fledged, they don’t go back into the box again. If you were lucky'
-          'enough to see a young bird leaving the nest (fledging), select the box below. Otherwise, leave this section blank.',
+          'options, otherwise move on to the last question.',
       content: ObservationDescription(
         onSelected: (int index) {
           setState(() {
@@ -333,7 +353,10 @@ class _EnterObservationsPageState extends State<EnterObservationsPage> {
           sightingType: SightingType.sightingsTypeList[_sightingType].id,
           bird: _bird,
           comment: _comment,
-          furtherDetailsOption: _furtherDetailstype,
+          furtherDetailsOption: _furtherDetailstype == -1
+              ? 0
+              : FurtherDetailsOptions
+                  .furtherDetailsOptionsList[_furtherDetailstype].id,
         );
         if (widget.sighting != null) {
           Sighting.updateSighting(_sighting, widget.sighting.id);
@@ -366,15 +389,13 @@ class _EnterObservationsPageState extends State<EnterObservationsPage> {
               FloatingActionButtonLocation.startDocked,
           floatingActionButton: Padding(
             padding: const EdgeInsets.only(bottom: 16.0),
-            child: FloatingActionButton(
+            child: IconButton(
+              color: Colors.blue,
               onPressed: () {
                 showModal = true;
                 showMod();
               },
-              child: Text(
-                '?',
-                style: TextStyle(fontSize: 30),
-              ),
+              icon: Icon(Icons.help_outline),
             ),
           ),
           body: ScrollablePositionedList.builder(

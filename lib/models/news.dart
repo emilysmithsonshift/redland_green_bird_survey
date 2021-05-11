@@ -100,7 +100,6 @@ class News {
   }
 
   static Future<bool> getNews() async {
-    print('getting news');
     final DatabaseReference reference =
         FirebaseDatabase.instance.reference().child("news");
     final DataSnapshot snapshot = await reference.once();
@@ -110,7 +109,7 @@ class News {
       print('null');
       return true;
     }
-    // print(snapshot)
+
     final returnedList = snapshot.value;
     returnedList.forEach((key, value) {
       newsList.add(
@@ -126,7 +125,6 @@ class News {
       );
     });
     newsList.sort((News a, News b) => b.dateTime.compareTo(a.dateTime));
-    print(newsList.length);
     return true;
   }
 }

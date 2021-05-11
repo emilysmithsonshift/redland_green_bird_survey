@@ -31,7 +31,7 @@ class NewsWidget extends StatelessWidget {
                         news.dateTime.year,
                         news.dateTime.month,
                         news.dateTime.day
-                      ]).format('MMM do yyyy'),
+                      ]).format('do MMMM yyyy'),
                       // style: Theme.of(context).textTheme.headline2,
                       textAlign: TextAlign.end,
                     ),

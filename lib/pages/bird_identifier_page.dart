@@ -23,22 +23,30 @@ class _BirdIdentifierScreenState extends State<BirdIdentifierScreen> {
         .where((bird) => bird.birdType == BirdType.other)
         .toList();
 
-    List<Widget> gridList(List<Bird> birdsList) {
-      return birdsList.map((bird) {
-        if (bird.images.isEmpty) {
-          return Container();
-        }
-        return Container(
-          height: 130,
-          width: 130,
-          child: RGGridTile(
-            navigateTo: BirdFactPage(bird: bird),
-            imageAsset: bird.images[0],
-            text: bird.name,
-            heroTag: '${bird.name}1',
+    Widget gridList(List<Bird> birdsList) {
+      return GridView.builder(
+          physics: NeverScrollableScrollPhysics(),
+          shrinkWrap: true,
+          gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
+            maxCrossAxisExtent: 160,
+            childAspectRatio: 1,
           ),
-        );
-      }).toList();
+          itemCount: birdsList.length,
+          itemBuilder: (context, index) {
+            if (birdsList[index].images.isEmpty) {
+              return Container();
+            }
+            return Container(
+              height: 130,
+              width: 130,
+              child: RGGridTile(
+                navigateTo: BirdFactPage(bird: birdsList[index]),
+                imageAsset: birdsList[index].images[0],
+                text: birdsList[index].name,
+                heroTag: '${birdsList[index].name}1',
+              ),
+            );
+          });
     }
 
     Widget content = Padding(
@@ -46,48 +54,19 @@ class _BirdIdentifierScreenState extends State<BirdIdentifierScreen> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          SizedBox(height: 20),
+          SizedBox(height: 8),
+          Text('Birds that are likely to nest in the bird boxes',
+              style: Theme.of(context).textTheme.headline2),
+          gridList(nestingBirds),
+          SizedBox(height: 24),
           Text(
-            'Birds that are likely to nest in the bird boxes',
-            style: TextStyle(
-              fontSize: 18,
-            ),
-          ),
-          SizedBox(
-            width: double.infinity,
-            child: Wrap(
-              alignment: WrapAlignment.spaceBetween,
-              children: gridList(nestingBirds),
-            ),
-          ),
-          SizedBox(height: 40),
-          Text(
-            'Birds that are potential predators of eggs or young birds in the bird boxes.',
-            style: TextStyle(
-              fontSize: 18,
-            ),
-          ),
-          SizedBox(
-            width: double.infinity,
-            child: Wrap(
-              alignment: WrapAlignment.spaceBetween,
-              children: gridList(predatorBirds),
-            ),
-          ),
-          SizedBox(height: 40),
-          Text(
-            'Other birds you may see on the green',
-            style: TextStyle(
-              fontSize: 18,
-            ),
-          ),
-          SizedBox(
-            width: double.infinity,
-            child: Wrap(
-              alignment: WrapAlignment.spaceBetween,
-              children: gridList(otherBirds),
-            ),
-          ),
+              'Birds that are potential predators of eggs or young birds in the bird boxes.',
+              style: Theme.of(context).textTheme.headline2),
+          gridList(predatorBirds),
+          SizedBox(height: 24),
+          Text('Some of the other birds that you may see on the green',
+              style: Theme.of(context).textTheme.headline2),
+          gridList(otherBirds),
         ],
       ),
     );

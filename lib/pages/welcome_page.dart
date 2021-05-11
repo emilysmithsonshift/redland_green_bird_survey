@@ -25,12 +25,6 @@ class _WelcomePageState extends State<WelcomePage> {
                 '\nIn 2020 Redland Green Community Group installed 16 bird nesting boxes all around the green thanks'
                 ' to a generous grant from the Redland and Cotham Amenities Society (RCAS).'
                 '\n\nThis app is designed to use community power to help monitor these bird boxes.\n'),
-            Text(
-                'There has been a substantial decline in birds (both population numbers and ranges) in the British Isles '
-                'since the end of the second world war, a decline which is still continuing in many species. '
-                '\n\nInstalling bird boxes is one way to help cavity-nesting species: nest boxes provide substitutes '
-                'for natural nesting sites and can offer protection from predators. '
-                'We have chosen nest boxes which have a long life and are resistant to damage by predators.'),
             Container(
               padding: EdgeInsets.all(8),
               margin: EdgeInsets.all(8),
@@ -121,6 +115,13 @@ class _WelcomePageState extends State<WelcomePage> {
                 ],
               ),
             ),
+            SizedBox(height: 12),
+            Text(
+                'There has been a substantial decline in birds (both population numbers and ranges) in the British Isles '
+                'since the end of the second world war, a decline which is still continuing in many species. '
+                '\n\nInstalling bird boxes is one way to help cavity-nesting species: nest boxes provide substitutes '
+                'for natural nesting sites and can offer protection from predators. '
+                'We have chosen nest boxes which have a long life and are resistant to damage by predators.'),
             SizedBox(height: 20),
           ],
         ),

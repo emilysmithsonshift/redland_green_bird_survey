@@ -48,8 +48,8 @@ class _LatestObservationsPageState extends State<LatestObservationsPage> {
                     child: Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: Text(
-                        'Latest Sightings',
-                        style: Theme.of(context).textTheme.headline1.copyWith(
+                        'Latest Bird Sightings',
+                        style: Theme.of(context).textTheme.headline2.copyWith(
                             fontWeight: _sortList == 0
                                 ? FontWeight.bold
                                 : FontWeight.normal,
@@ -70,7 +70,7 @@ class _LatestObservationsPageState extends State<LatestObservationsPage> {
                       padding: const EdgeInsets.all(8.0),
                       child: Text(
                         'All Observations',
-                        style: Theme.of(context).textTheme.headline1.copyWith(
+                        style: Theme.of(context).textTheme.headline2.copyWith(
                             fontWeight: _sortList == 1
                                 ? FontWeight.bold
                                 : FontWeight.normal,
@@ -91,7 +91,7 @@ class _LatestObservationsPageState extends State<LatestObservationsPage> {
                       padding: const EdgeInsets.all(8.0),
                       child: Text(
                         'My Observations',
-                        style: Theme.of(context).textTheme.headline1.copyWith(
+                        style: Theme.of(context).textTheme.headline2.copyWith(
                             fontWeight: _sortList == 2
                                 ? FontWeight.bold
                                 : FontWeight.normal,

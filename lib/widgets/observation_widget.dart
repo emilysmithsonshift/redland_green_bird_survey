@@ -18,6 +18,7 @@ Widget observationDetails({
   Function setState,
 }) {
   Bird bird = Bird.birdsList.firstWhere((bird) => sighting.bird == bird.id);
+
   UniqueKey heroKey = UniqueKey();
   return Stack(
     children: [
@@ -83,7 +84,7 @@ Widget observationDetails({
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      bird.name ?? 'None',
+                      bird.name ?? 'No bird seen.',
                       style: const TextStyle(fontWeight: FontWeight.bold),
                     ),
                     const SizedBox(height: 4),
@@ -97,13 +98,20 @@ Widget observationDetails({
                               sightingType.id == sighting.sightingType)
                           .description,
                     ),
-                    if (sighting.furtherDetailsOption != -1)
+                    if (sighting.furtherDetailsOption != -1 &&
+                        sighting.furtherDetailsOption != 0)
                       SizedBox(height: 4),
-                    if (sighting.furtherDetailsOption != -1)
-                      Text(FurtherDetailsOptions
-                          .furtherDetailsOptionsList[
-                              sighting.furtherDetailsOption]
-                          .description),
+                    if (sighting.furtherDetailsOption != -1 &&
+                        sighting.furtherDetailsOption != 0)
+                      Text(
+                        FurtherDetailsOptions.furtherDetailsOptionsList
+                            .firstWhere(
+                              (furtherDetails) =>
+                                  furtherDetails.id ==
+                                  sighting.furtherDetailsOption,
+                            )
+                            .description,
+                      ),
                     const SizedBox(height: 4),
                     if (showUser)
                       Text('Observed by: ${sighting.user}',

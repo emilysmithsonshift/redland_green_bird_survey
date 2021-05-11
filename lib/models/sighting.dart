@@ -76,10 +76,9 @@ class Sighting {
             furtherDetailsOption: value['furtherObservation'] as int,
             birdBox: value['bird_box'] as int),
       );
-
-      sightings
-          .sort((Sighting a, Sighting b) => b.dateTime.compareTo(a.dateTime));
     });
+    sightings
+        .sort((Sighting a, Sighting b) => b.dateTime.compareTo(a.dateTime));
     return true;
   }
 }

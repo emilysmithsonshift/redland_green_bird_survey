@@ -91,7 +91,7 @@ class _HomePageState extends State<HomePage> {
                     Padding(
                       padding: EdgeInsets.all(12.0),
                       child: Center(
-                        child: Text('Latest Sightings',
+                        child: Text('Recent Bird Sightings',
                             textAlign: TextAlign.center,
                             style: Theme.of(context).textTheme.headline1),
                       ),
@@ -174,7 +174,7 @@ class _HomePageState extends State<HomePage> {
                                       news.dateTime.year,
                                       news.dateTime.month,
                                       news.dateTime.day
-                                    ]).format('MMM do yyyy'),
+                                    ]).format('do MMMM yyyy'),
                                     style:
                                         Theme.of(context).textTheme.headline2,
                                     textAlign: TextAlign.start,
