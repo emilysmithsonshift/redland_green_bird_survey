@@ -36,7 +36,7 @@ Widget listTile(
                     bottomLeft: Radius.circular(20.0),
                   ),
                   image: DecorationImage(
-                    fit: BoxFit.fitHeight,
+                    fit: BoxFit.cover,
                     image: AssetImage(
                       imageAsset,
                     ),
@@ -75,7 +75,7 @@ Widget listTile(
                     bottomRight: Radius.circular(20.0),
                   ),
                   image: DecorationImage(
-                    fit: BoxFit.fitHeight,
+                    fit: BoxFit.cover,
                     image: AssetImage(
                       imageAsset,
                     ),

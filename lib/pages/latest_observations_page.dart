@@ -17,14 +17,15 @@ class _LatestObservationsPageState extends State<LatestObservationsPage> {
     List<Sighting> _sightingList = [];
     switch (_sortList) {
       case 0:
-        _sightingList =
-            Sighting.sightings.where((sighting) => sighting.bird != 0).toList();
+        _sightingList = Sighting.observations
+            .where((sighting) => sighting.bird != 0)
+            .toList();
         break;
       case 1:
-        _sightingList = Sighting.sightings;
+        _sightingList = Sighting.observations;
         break;
       case 2:
-        _sightingList = Sighting.sightings
+        _sightingList = Sighting.observations
             .where((sighting) =>
                 sighting.userEmail == FirebaseAuth.instance.currentUser.email)
             .toList();

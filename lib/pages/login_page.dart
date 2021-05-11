@@ -17,6 +17,7 @@ class _LoginPageState extends State<LoginPage> {
   String emailErrorMsg = '';
   String passwordErrorMsg = '';
   String errorMsg = '';
+  bool isLoading = false;
 
   @override
   Widget build(BuildContext context) {
@@ -100,21 +101,27 @@ class _LoginPageState extends State<LoginPage> {
                 width: 200,
                 child: ElevatedButton(
                   onPressed: () async {
+                    setState(() {
+                      isLoading = true;
+                    });
                     final String email = emailController.value.text;
                     if (RegExp(
                             r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
                         .hasMatch(email)) {
                       setState(() {
+                        isLoading = false;
                         emailErrorMsg = '';
                       });
                     } else {
                       setState(() {
+                        isLoading = false;
                         emailErrorMsg = 'Please enter a valid e-mail address';
                       });
                       return;
                     }
                     if (passwordController.value.text.length < 6) {
                       setState(() {
+                        isLoading = false;
                         passwordErrorMsg =
                             'Please enter your password (at least 6 characters)';
                       });
@@ -130,6 +137,7 @@ class _LoginPageState extends State<LoginPage> {
                             password: passwordController.value.text)
                         .catchError((error, stacktrace) {
                       setState(() {
+                        isLoading = false;
                         errorMsg = error.message;
                       });
                       return;
@@ -144,7 +152,8 @@ class _LoginPageState extends State<LoginPage> {
                       );
                     }
                   },
-                  child: const Text('Submit'),
+                  child:
+                      isLoading ? CircularProgressIndicator() : Text('Submit'),
                 ),
               ),
             ),

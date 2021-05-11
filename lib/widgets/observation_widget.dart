@@ -61,17 +61,20 @@ Widget observationDetails({
                     width: 70,
                     child: bird.images.isEmpty
                         ? Container(
-                            color: bird.name == 'None'
+                            color: bird.name == 'No bird seen'
                                 ? Colors.grey[400]
                                 : Colors.white,
                             child: Center(
                               child: Text(
-                                bird.name == 'None' ? '' : '?',
+                                bird.name == 'No bird seen' ? '' : '?',
                                 style: const TextStyle(fontSize: 30),
                               ),
                             ),
                           )
-                        : Image.asset(bird.images[0], fit: BoxFit.fitHeight),
+                        : Image.asset(
+                            bird.images[0],
+                            fit: BoxFit.cover,
+                          ),
                   ),
                 ),
               ),

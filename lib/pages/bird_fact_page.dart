@@ -79,15 +79,22 @@ class _BirdFactPageState extends State<BirdFactPage> {
                         child: Align(
                           alignment: Alignment.bottomCenter,
                           child: Container(
+                              decoration: BoxDecoration(
+                                color: Colors.white30,
+                                borderRadius: BorderRadius.only(
+                                    bottomLeft: Radius.circular(20),
+                                    bottomRight: Radius.circular(20)),
+                              ),
                               width: double.infinity,
                               height: 60,
-                              color: Colors.white30,
                               child: Center(
-                                child: Text(widget.bird.name,
-                                    style: TextStyle(
-                                      fontSize: 32,
-                                      fontWeight: FontWeight.bold,
-                                    )),
+                                child: FittedBox(
+                                  child: Text(widget.bird.name,
+                                      style: TextStyle(
+                                        fontSize: 32,
+                                        fontWeight: FontWeight.bold,
+                                      )),
+                                ),
                               )),
                         ),
                       ),
@@ -154,11 +161,15 @@ class _BirdFactPageState extends State<BirdFactPage> {
                                 Padding(
                                   padding: const EdgeInsets.all(8.0),
                                   child: Row(children: [
-                                    Text('Bird Family: ',
-                                        style: Theme.of(context)
-                                            .textTheme
-                                            .headline2),
-                                    Text(widget.bird.birdFamily ?? '')
+                                    Expanded(
+                                      child: Text('Bird Family: ',
+                                          style: Theme.of(context)
+                                              .textTheme
+                                              .headline2),
+                                    ),
+                                    Expanded(
+                                        child:
+                                            Text(widget.bird.birdFamily ?? ''))
                                   ]),
                                 ),
                                 if (widget.bird.birdType == BirdType.nesting)

@@ -363,6 +363,7 @@ class _EnterObservationsPageState extends State<EnterObservationsPage> {
         } else {
           Sighting.addSighting(_sighting);
         }
+
         Navigator.pushAndRemoveUntil(
           context,
           MaterialPageRoute(

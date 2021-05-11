@@ -22,7 +22,7 @@ class Bird {
   });
 
   static final Bird none = Bird(
-    name: 'None',
+    name: 'No bird seen',
     description: '',
     images: [],
     id: 0,
@@ -43,25 +43,18 @@ class Bird {
   static final Bird robin = Bird(
     name: 'Robin',
     description:
-        "Friendly little birds with their distinctive red breasts and their beautiful song, robins are probably the most recognisable birds in Britain. "
-        "\n\nJuvenile robins have brown breasts - they gain their red breasts after their first moult and each robin has a unique breast pattern."
-        "\n\nThey are members of the thrush family and related to blackbirds and nightingales."
-        "\n\nThey are territorial, do not usually travel far from where they were hatched and prefer to nest in open fronted bird boxes. "
-        "\n\nA pair of robins can raise between three and five broods of chicks a year.",
+        "The robin’s red breast, beautiful song and inquisitive behaviour make it one of the UK’s favourite birds. \n\nMales and females have the same appearance, and sing for most of the year in order to protect their territories, only ceasing to sing briefly in late summer, when they are moulting. They are extremely territorial and don’t tolerate intruders to their territories. They will also sing at night near street lights.\n\nJuveniles have speckled golden brown breasts, and gain their red breasts after their first moult. Each robin has an unique breast pattern.\n\nAbout 14cm long and 14-21g in weight, robins eat insects and invertebrates, worms, seeds and fruit. Robins and dunnocks have similar diets. In winter, when food is scarce, this results in competition between them. The robin will therefore often chase the dunnock out of its territory. \n\nRobins can have up to three, and maybe even four broods in a year, but each time they build a new nest, and so they will probably only use a nest box once in the same year. They are most likely to use an open-fronted nest box.\n\nIt’s estimated there are over 6.7 million breeding territories in the UK.",
     images: ['assets/robin_close.png', 'assets/robin1.png', 'assets/robin.png'],
     conservationStatus: 'Green',
     scientificName: 'Erithacus rubecula',
-    birdFamily: 'Old World flycatchers and chats',
+    birdFamily: 'Muscicapidae (Old World flycatchers & chats)',
     birdType: BirdType.nesting,
     id: 3,
   );
   static final Bird greatTit = Bird(
     name: 'Great Tit',
     description:
-        'The largest UK tit with a colourful mix of blue, yellow, white and green makes the blue tit one of our most attractive and most recognisable garden visitors. '
-        '\n\nIn winter, family flocks join up with other tits as they search for food. '
-        '\n\nThey are woodland birds which have readily adapted to man-made habitats to become a familiar garden visitor.'
-        '\n\nA great tit clutch can have between 5 and 11 eggs with the female doing all the incubation and the male helping with feeding the brood.',
+        "At 14cm long and weighing 18g, the great tit is the largest of the UK’s eight tit species. Males and females are alike, with blue grey wings and green backs. They have white cheeks and glossy black heads. The black continues as a thick stripe down the centre of their yellow chests and abdomen. The male’s stripe is thicker than the female’s, whose stripe is often discontinuous. The thicker the male’s stripe, the more attractive he is to the female as it indicates how good a father the bird will be.\n\nGreat tits eat insects, caterpillars, seeds and nuts. Like other tits, they prefer not to be out in the open for long: they are a woodland bird, but have readily moved into the gardens of built-up areas and have become familiar visitors to bird feeders. \n\nThe great tit has up to 40 types of calls and songs. The “teacher, teacher” call, used to assert a territory, is one of the most familiar. The female rarely calls. Individual males with large repertoires of songs and calls are more dominant birds, and also more successful breeders.\n\nNests are made from moss and grass, and lined with hair and feathers. Great tits will also readily use nest boxes. A clutch can be up to 15 eggs. Eggs, laid in April or May, are incubated by the female for about 2 weeks. Both parents feed the young after fledging. Occasionally great tits will have a second brood in the breeding season. Nests may sometimes contain blue tit eggs. It’s thought this might be because the great tit evicted a blue tit from a good nesting site, or perhaps it could be that a blue tit without a nest of its own has managed to lay eggs there. \n\nThere are estimated to be around 2.5 million breeding territories in the UK.",
     images: [
       'assets/greattit_close.png',
       'assets/greattit.png',
@@ -69,55 +62,38 @@ class Bird {
     ],
     scientificName: 'Parus major',
     conservationStatus: 'Green',
-    birdFamily: 'Tits',
+    birdFamily: 'Paridae (tits)',
     birdType: BirdType.nesting,
     id: 4,
   );
   static final Bird blueTit = Bird(
     name: 'Blue tit',
     description:
-        "A colourful mix of blue yellow, white and green makes the blue tit one of the most recognisable bird in Britain. "
-        "\n\nThey are also one of the most common with around 15 million birds wintering in Britain and they provide a welcome"
-        "sight on a dreary winter's day."
-        "\n\nBlue tit numbers have been increasing in recent years and this may well be down to the provision of bird boxes and feeders"
-        " which they have readily adapted to."
-        "\n\nTheir beautiful plumage is thought to get brighter with every moult"
-        " so they actually get more colourful as they age."
-        "\n\nThey have a fairly distinctive 'teacher-teacher' call but they also have a great"
-        "number of other calls. ",
+        "Blue tits are among the most frequent visitors to our bird feeders and are also quite gregarious, visiting feeders in small groups. They eat insects, spiders, caterpillars, seeds and nuts. They are 12cm in length and 11g in weight – up to half the weight of robins. \n\nMales and females are striking birds, with their colourful mix of blue, yellow, white and green feathers. The blue cap on their head can be raised into a little crest. \n\nBlue tits are notable for their acrobatic skills, often hanging upside down while searching for food. \n\nLike all tits, blue tits usually nest in tree holes. They start prospecting for a place to nest as early as January. The female makes the nest from moss, grass, leaves, hair and spiders’ webs, lining them with feathers, fur or wool. Up to 16 eggs are usually laid from mid-April. The female incubates the eggs alone for 12-15 days, and the male brings her food. Both parents feed the young after fledging. A pair usually has only one brood in the year, but if food is plentiful, they may have a second brood. Sometimes, great tit eggs are found in blue tit nests.\n\nThe breeding population of the British Isles is around 3.5 million breeding territories, and the number of birds may increase to 15 million birds with over-wintering European blue tits. Blue tit numbers have been increasing in recent years, and this may be the result of bird boxes and feeders, to which they have readily adapted. Blue tits are probably the most common bird found in nest boxes.",
     images: [
       'assets/bluetit_close.png',
       'assets/bluetit3.png',
-      'assets/bluetit2.png',
       'assets/bluetit.jpg',
       'assets/bluetit4.png',
+      'assets/bluetit.png'
     ],
     scientificName: 'Cyanistes caeruleus',
     conservationStatus: 'Green',
-    birdFamily: 'Tits',
+    birdFamily: 'Paridae (tits)',
     birdType: BirdType.nesting,
     id: 5,
   );
   static final Bird blackbird = Bird(
     name: 'Blackbird',
     description:
-        "One of the most populous birds in the British Isles the blackbird is just as at home "
-        "in a town park, a suburban garden or a remote wood. It’s estimated there are over 5 million breeding pairs in the UK. "
-        "\n\nMales are black with an orange-yellow beak and eye ring, whilst confusingly "
-        "females are actually dark brown, often with paler streaks and spots on their breasts. "
-        "\n\nThe song of the black bird is thought to be the most beautiful and best-loved "
-        "of any British bird. It is a rich song, which is part learned and part improvised."
-        " They typically like to sing after rain. They eat worms, insects, berries and fruit."
-        " \n\nThe birds are 24-25cm in length and weigh between 80-100g"
-        "\n\nIt takes a pair of blackbirds between 11 and 14 days to make a nest with most"
-        "of the work being done by the female.",
+        "One of the most populous birds in the British Isles, the blackbird is just at home in a town park, a suburban garden, or woodland. They eat worms, insects, berries and fruit, and can often be seen on lawns with their heads tilted to one side as they listen for earthworms.\n\nThe blackbird has a beautiful rich song, which is part learned and part improvised. Typically, they like to sing after rain, and sometimes sing at night, particularly if they are near street lights.\n\nMales are black with an orange-yellow beak and eye ring, while females are dark brown, often with paler streaks and spots on their breasts. The birds are 24-25cm in length and weigh between 80-100g. \n\nBlackbirds rear 2-3 broods a season, and may attempt a fourth brood in a good year. The same nest, made of plant material lined with mud and grass, is sometimes used for successive broods. A clutch is normally 3-5 eggs, and is incubated by the female. Hatching takes place 13-14 days after laying. Only the female broods the chicks, but both parents feed them.\n\nIt’s estimated there are over 5 million breeding pairs in the British Isles. In the autumn months, blackbird numbers are swelled by migrant blackbirds from Scandinavia and continental Europe. Some stay here for the winter; others continue further south.",
     images: [
       'assets/blackbird_close.png',
       'assets/blackbird1.png',
       'assets/blackbird2.png',
     ],
     scientificName: 'Turdus merula',
-    birdFamily: 'Thrushes',
+    birdFamily: 'Turdidae (Thrushes)',
     conservationStatus: 'Green',
     birdType: BirdType.nesting,
     id: 6,
@@ -125,19 +101,14 @@ class Bird {
   static final Bird songThrush = Bird(
     name: 'Song Thrush',
     description:
-        "Song Thrushes can be distinguished by their beautifully patterned breast. "
-        "\n\nTheir numbers are in huge decline, especially in towns and cities."
-        "\n\nThey like to eat snails which they break by smashing them against a stone with a flick of the head."
-        "\n\nMost song thrush pairs will have two or three broods a season."
-        "\n\nTheir song pattern is quite distinctive as they like to repeat the same phrase"
-        "several times.",
+        "The song thrush is about 23cm in length and 65-100g in weight. Both sexes have a rich brown head, wings and back, and a creamy breast covered in dark brown spots. \n\nAs the bird’s name suggests, their song is rich and beautiful, with a series of repeated phrases. Some males have up to 100 different phrases, partly learned from parents and partly acquired through mimicry, and so each bird’s song is different. They start singing in late winter and continue through into June or July. They are also one of the earliest birds to start singing in the morning, perhaps starting at around 3am. They sing again at dusk, and like to sing on prominent branches high up in a tree.\n\nSong thrushes eat invertebrates, earthworms, soft fruit and berries. When the earth is too hard to enable them to extract worms, they also eat snails, using a stone “anvil” to crack open the shell. This is a behaviour unique to the song thrush. \n\nWhile song thrushes will take food that is put out for them, such as windfall apples and mealworms, they are timid birds, easily chased away by birds such as the blackbird.\n\nSong thrush can have 2-3 broods a year, between March and August. They nest in trees and shrubs or among creepers on walls and often using the same nest for successive broods in the season. The nest, built by the female, is cup-shaped and, if in a tree, built close to the trunk. Nests are made of twigs, grass and moss, and are bonded together and lined with mud, dun, leaves and rotten wood. They can take three weeks to complete. \n\nThe female lays 3-5 eggs, at the rate of one per day. She starts to incubate after the last egg is laid, and broods until the chicks hatch after 13-15 days. Both parents feed the young. The chicks are ready to leave the nest at about 13-14 days old. Parents continue to feed the young birds until they can fend for themselves, about 3 weeks after fledging.\n\nIt’s thought there are about 1.2 million breeding territories in the UK, and the birds tend to stay in them the year round. The population declined more than 50% between 1970 and 1995, probably because of loss of habitat. More recently, there’s been a slight recovery in their numbers.",
     images: [
       'assets/songthrush_close.png',
       'assets/songthrush.png',
     ],
     scientificName: 'Turdus philomelos',
     conservationStatus: 'Red',
-    birdFamily: 'Thrushes',
+    birdFamily: 'Turdidae (Thrushes)',
     birdType: BirdType.nesting,
     id: 7,
   );
@@ -186,20 +157,14 @@ class Bird {
   static final Bird wren = Bird(
     name: 'Wren',
     description:
-        "Wrens are small, round, plumb birds withe a distinctive small tail which is usually cocked up."
-        "\n\nDuring courtship they fan out their wings and tails."
-        "\n\nThey hunt for insects amoung leaves on the ground  and in cracks in bark of trees."
-        "\n\nFor such a small bird they emit a loud and slightly tremulous 'teet-teet-teet'."
-        "\n\nThey can nest in any type of cavity from ground level upwards but they prefer the side of a tree, steep bank or wall."
-        "\n\nThe nest is built by the male who may build several nests and install a different female in each one. "
-        "\n\nThe nest is a stout dome structure made of leaves, grass and other plant materials which the female lines with feathers.",
+        "The wren is a tiny 9-10cm in length and 7-12g in weight, though it’s not the UK’s smallest bird. \n\nIt is dark barred brown on the upper side and a lighter barred brown on the underside, with a pale, creamy eyebrow. Its short tail is frequently held upwards and often flicked. \n\nThey eat spiders and insects and use their long thin bill to probe crevices. This characteristic is what their name, troglodites (=cave-dweller) refers to. \n\nThe wren is more often heard than seen: it has a very loud voice for such a small bird, and doesn’t venture out into the open very much. \n\nWrens are cavity nesters, and will use both open-fronted and tit nest boxes for both nesting and winter roosting. The nest is dome or globe shaped, and made from leaves, twigs, grass and moss, lined with feathers. Wrens lay 5-8 eggs and may have a second brood. \n\nThey are resident year around. Severe winters may cause high mortality, but numbers generally recover as their breeding rates are high.\n\nIt’s estimated that there are over 8.6 million breeding territories in the UK which makes it the UK’s most common breeding bird.",
     images: [
       'assets/wren_close.png',
       'assets/wren3.png',
       'assets/wren.png',
       'assets/wren2.png',
     ],
-    birdFamily: 'Wrens',
+    birdFamily: 'Troglodytidae (Wrens)',
     conservationStatus: 'Green',
     scientificName: 'Troglodytes troglodytes',
     birdType: BirdType.nesting,
@@ -217,7 +182,6 @@ class Bird {
     images: [
       'assets/starling.png',
       'assets/starling2.png',
-      'assets/starling3.png',
       'assets/starling4.png',
       'assets/starling5.png',
     ],
@@ -230,18 +194,14 @@ class Bird {
   static final Bird wagtail = Bird(
     name: 'Pied Wagtail',
     description:
-        "The pied wagtail can be seen dashing about on the grass on Redland Green in search of food with, as its name would suggest, "
-        "its tail wagging up and down."
-        "\n\nIts black and white markings make it easy to spot."
-        "\n\nThough pied wagtails are almost exclusively British, they do not like the cold weather. In severe weather large "
-        "numbers of up to 4000 wagtails will join together and roast communally.",
+        "Pied wagtails, elegant and graceful, are 18cm long and 20-27g in weight, little bigger than a great tit. They are resident in the UK all year round. Their most distinctive characteristic is the wagging up and down of their long tails. \n\nIn the breeding season, male wagtails are striking birds with a black chest and back, and black and white head, wings and tail; however, males in non-breeding months are more grey, resembling the females. \n\nPied wagtails feed mainly on insects, especially caterpillars and flies, can be seen dashing around on grass and lawns in search of prey. They have become quite a common sight in retail car parks, also searching for food. They either catch insects on the ground, or as the insect embarks upon flight.\n\nOutside the breeding season, pied wagtails will roost communally at warm roost sites such as reed beds, or trees or bushes in cities. Some roosts contain up to 4000 birds.\n\nPied wagtails nest in holes in a wide variety of places, such as walls and buildings, under roofs and ivy and sometimes in very unlikely places such as farm machinery. The females build the nests out of mosses and grass, and line them with feathers, wool or hair. Normally, there are two broods per season, with 5-6 eggs. These are incubated mostly by the female, and hatch after about 13 days. \n\nThere are an estimated 470,000 breeding pairs in the UK.",
     images: [
       'assets/wagtail2.png',
       'assets/wagtail1.png',
       'assets/wagtail.png',
     ],
     conservationStatus: 'Green',
-    birdFamily: 'Pipits and Wagtails',
+    birdFamily: 'Motacillidae (Pipits and wagtails)',
     scientificName: 'Motacilla alba',
     birdType: BirdType.nesting,
     id: 12,
@@ -249,35 +209,28 @@ class Bird {
   static final Bird crow = Bird(
     name: 'Crow',
     description:
-        "The all black carrion crow is one of the cleverest, most adaptable British birds."
-        "\n\nTheir intellect is even thought to be comparable to chimpanzees."
-        "\n\nThey make a very distinctive hoarse, cawing sound."
-        "\n\nThey build big nests out of twigs, rags, bones and anything else they can find."
-        "\n\nThey are generally solitary birds but the do work collectively to provide protection from predators and other intruders.",
+        "The carrion crow, or simply ‘crow’, is generally a solitary bird, seen alone or in pairs, and while generally fearless, it is wary of humans. It is about 45-47cm long and weighs 370-650g. Crows are entirely black, including their beaks, feet and legs, though the feathers on their heads, wings and backs have green and purple iridescences. Their thighs are neatly feathered.\n\nCrows are found in a wide variety of habitats, from woodlands to wetland and heathlands. They are intelligent, opportunistic and adaptable birds and have colonised cities readily. \n\nThey eat a range of foods including carrion, fruit, grain, invertebrates, small mammals, frogs, and the eggs and chicks of other birds. Their diet changes across the seasons, with predation upon eggs and chicks tending to be related to the need to feed their own young. As crows have only one clutch of eggs a season, predation on other birds is in general limited to the breeding season. However, crows will occasionally hunt together to predate other birds, sometimes catching them in flight. They will also harass other birds, or animals such as foxes, for their kills. Studies have found a crow’s diet can consist of over 1000 different food items.\n\nCarrion crows generally pair for life. They breed between late March and early June. Both birds build the nest, which may be in a variety of places (tree forks, old buildings, cliffs, and elsewhere) using an assortment of materials including twigs, bones and even wire. They reinforce the nests with mud, and line them with bark, wool, feathers, grass, paper, hair and other materials. They generally lay 3-4 eggs, which are incubated by the female for 18-20 days. The male feeds her during incubation. Both parents bring food to the chicks. The chicks fledge 4-5 weeks after hatching, and are dependent upon their parents for several more weeks.\n\nWhile crows have large territories centred upon their nests, neighbouring crows will sometimes co-operate to ‘mob’ or chase away potential predators or intruders. Crows maintain their territories year round, although they may depart overnight for communal roosts in winter. \n\nIt’s estimated that there are around 1 million breeding pairs in the UK, although they aren’t found in north and west Scotland or in Northern Ireland.",
     images: [
       'assets/crow.png',
-      'assets/crow1.png',
       'assets/crow2.png',
       'assets/crow3.png',
       'assets/crow4.png',
     ],
     conservationStatus: 'Green',
     scientificName: 'Corvus corone',
-    birdFamily: 'Crows',
+    birdFamily: 'Corvidae (crows)',
     birdType: BirdType.predator,
     id: 13,
   );
   static final Bird jay = Bird(
     name: 'Jay',
-    description: 'Jays are the most colourful members of the crow family. '
-        '\n\nThey are shy woodland birds rarely moving far from cover. '
-        '\n\nThey make a distinctive screaming call when they are on the move.'
-        '\n\nThey are particularly fond of acorns and in the autumn you can catch them burying their acorns ready for winter.',
+    description:
+        "The jay differs from other corvids in being extremely colourful. It has a pinkish body, black and white wings with a striking patch of banded blues, a white rump, black tail, black ‘moustache’ and pale chin. Its crown feathers are streaked black and white, and when it is displaying or excited, it can raise the feathers into a crest. Its length is around 35cm and weight 140-190g.\n\nThey are woodland birds, and shy of humans, preferring not to be seen. However, they are sociable and have many different calls, many of which mimic other birds, particularly other corvids. The call we are most likely to be familiar with is their harsh alarm call.\n\nJays have a mixed diet, eating seeds such as acorns and beech mast, fruit, insects, small rodents, bats, newts, birds’ eggs and young birds.\n\nJays are well known for caching food in autumn, particularly acorns, to eat in winter. They have good memories and are capable of retrieving several thousand acorns.\n\nMales and females usually pair for life. Both birds build a rather untidy nest of twigs in a tree or shrub, and line it with hairs, fibres and roots. They have one clutch of 4-5 eggs, which are incubated by the female. Both parents feed the young, which fledge at around 19-20 days. \n\nIt is estimated that there are 170,000 territories in the UK.",
     images: [
       'assets/jay.png',
     ],
     scientificName: 'Garrulus glandarius',
-    birdFamily: 'Crows',
+    birdFamily: 'Corvidae (crows)',
     conservationStatus: 'Green',
     birdType: BirdType.predator,
     id: 14,
@@ -336,22 +289,22 @@ class Bird {
   static final Bird magpie = Bird(
     name: 'Magpie',
     description:
-        'Magpies are easily recognisable as fairly large black and white birds. '
-        '\n\nUp close their plumage is very beautiful with a purplish blue iridescent sheen to the wing feathers and green gloss to the tail.',
+        "The magpie (or Eurasian magpie) is a very distinctive and handsome bird and one of the easiest corvids to identify. It is a pied, or black and white bird whose wing and tail feathers feature blue and blue-green-purple iridescence. Males and females look alike, but the female is slightly smaller. They are 44-46cm long with the tail accounting for over half of this length, and weigh 200-250g. They are very sociable and vocal birds.\n\nHowever, possibly more than any other bird, the magpie is associated with a range of mostly negative superstitions both across ages and in many different cultures. This could be because as scavengers, magpies have been associated with death, and because of that, with bad luck. The Victorians feared the magpie, and hunted it almost to extinction. It is also disliked because it predates the nests of other birds, particularly song birds.\n\nMagpies are omnivorous, and as well as predating nests and feeding on carrion and road kill, they eat invertebrates, fruit and berries and small mammals. They hoard food when it is scarce, hiding the food in a hole in the ground which they cover with leaves or grass.\n\nBoth birds make the nest, with the male collecting most of the materials for it. The nest is a large cup of twigs, grass, hair and mud, surrounded by a dome made from larger twigs, and with one or two entrances, although some birds don’t bother with domes. The nest, located in dense bushes or high up in trees, may take 5-6 weeks to make. The female lays around 5-8 eggs, which she incubates for around 19 days. The male feeds the female while she is brooding. The young fledge after about four weeks and continue to be fed by the parents for up to a month. The family stays together as a unit until the autumn. Young birds may form flocks, and feed and roost together.\n\nBreeding magpies maintain their territories all year round. As there are more individuals in an area than there are nesting sites available, many birds do not breed.\n\nIt’s estimated there are around 600,000 breeding territories in the UK.es are easily recognisable as fairly large black and white birds.\n\nUp close their plumage is very beautiful with a purplish blue iridescent sheen to the wing feathers and green gloss to the tail.'",
     images: [
       'assets/magpie.png',
       'assets/magpie1.png',
       'assets/magpie3.png',
     ],
-    birdFamily: 'Crows',
+    birdFamily: 'Corvidae (crows)',
     scientificName: 'Pica pica',
     conservationStatus: 'Green',
     birdType: BirdType.predator,
     id: 18,
   );
   static final Bird woodpecker = Bird(
-    name: 'Woodpecker',
-    description: '',
+    name: 'Great Spotted Woodpecker',
+    description:
+        "The great spotted woodpecker one of three woodpeckers native to Britain. It is a bird that is shy of humans, and so can be difficult to see. It is more commonly heard than seen.\n\nThis species is a broadleaved woodland specialist, but is very adaptable, and is also found in coniferous woodland, and parks and gardens where trees are plentiful. They particularly like oak and horn beam trees.\n\nThe great spotted woodpecker is a pied (black and white) woodpecker. At 21-23 cm long, it is about starling sized. It weights about 85 grams. The male and female are very similar, with a white underside, white and black back and wings and white cheeks and shoulder patches. Both male and female have a bright red underside at the base of the tail, but only the male has a red patch at the back of his neck. The nape of the female’s neck is white. Juveniles may be seen in summer: they are distinguished from their parents by having a red cap, which disappears after their first moult.\n\nThey have very strong claws for gripping the bark, and also use their stiff tail feathers as support when hopping up trees and gripping while chiselling and drumming. They have two toes which point frontwards, and two pointing backwards.\n\nThe great spotted woodpecker flight pattern is undulating. This is because it folds its wings against its body every few wing flaps.\n\nDead trees, rich in insect life, are an important location of food for them. The woodpecker probes both living and dead trees for larvae and insects, uses its powerful beak to hammer holes in the bark. Their extremely long and sticky tongues assist in extracting insects, spiders and caterpillars from crevices and holes. In winter they feed on nuts and berries, and will visit bird feeders for suet, peanuts and seeds throughout the year. Woodpeckers will take eggs and nestlings from nests, including from nest boxes. If nest boxes are made of wood, they will enlarge the size of the hole to gain entry.\n\nThe woodpecker is known for its drumming. This is a rapid hammering on a trunk of up to 20 times per second, which lasts a few seconds. Drumming serves several functions. It may be used to maintain contact between a pair, but its main function is to establish and proclaim a territory. The species is strongly territorial. The bird chooses a healthy tree on which to drum, in order to make the loudest sound. Both males and females drum from the late winter. The male drums more frequently than the female. Drumming usually ceases after the young have fledged.\n\nTerritorial and contact drumming are a more rapid drumming than that which characterises the bird’s nest-making chiselling.\n\nThe great spotted woodpecker nests in mature and old trees, excavating a hole in the trunk or branch by chiselling a cavity, and lining it with wood chip. It can take up to four weeks for a pair to chisel out a cavity, but the work is shared equally between male and female. The woodpeckers make a new nest hole every year, which means they have a significant ecological role in leaving many potential nest sites for other birds and animals. They may also use old holes as night time roosts.\n\nGreat spotted woodpeckers are monogamous in a breeding season, but may have different partners in different seasons.\n\nBreeding starts in mid-April. 3-8 eggs are laid, and there’s generally just one clutch in a breeding season. Both parents incubate and feed the young. Incubation takes around 2 weeks, and fledging occurs about 3 weeks after hatching. After fledging, the adults continue to feed the young for another 10 or so days.\n\nIt’s estimated that there are around 140,000 breeding pairs, mostly in England and Wales.",
     images: [
       'assets/woodpecker.png',
     ],

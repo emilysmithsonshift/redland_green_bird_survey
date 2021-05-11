@@ -1,4 +1,5 @@
 import 'package:firebase_database/firebase_database.dart';
+import 'package:flutter/material.dart';
 
 class Sighting {
   String id;
@@ -21,7 +22,9 @@ class Sighting {
     this.userEmail,
     this.furtherDetailsOption,
   });
-  static final List<Sighting> sightings = [];
+  static final ValueNotifier<int> observationsNotifier = ValueNotifier<int>(0);
+  static final List<Sighting> observations = [];
+  static List<Sighting> sightings = [];
 
   static void addSighting(Sighting _sighting) {
     final DatabaseReference reference =
@@ -42,7 +45,6 @@ class Sighting {
   static void updateSighting(Sighting _sighting, String id) {
     final DatabaseReference reference =
         FirebaseDatabase.instance.reference().child("observations");
-
     reference.child(id).update({
       'user': _sighting.user,
       'date_time': _sighting.dateTime.toIso8601String(),
@@ -52,6 +54,7 @@ class Sighting {
       'userEmail': _sighting.userEmail,
       'furtherObservation': _sighting.furtherDetailsOption,
     });
+    getSightings();
   }
 
   static Future<bool> getSightings() async {
@@ -59,13 +62,13 @@ class Sighting {
         FirebaseDatabase.instance.reference().child("observations");
     final DataSnapshot snapshot = await reference.once();
 
-    sightings.clear();
+    observations.clear();
     if (snapshot.value == null) {
       return true;
     }
     final returnedList = snapshot.value;
     returnedList.forEach((key, value) {
-      sightings.add(
+      observations.add(
         Sighting(
             id: key as String,
             sightingType: value['sighting_type'] as int,
@@ -77,8 +80,10 @@ class Sighting {
             birdBox: value['bird_box'] as int),
       );
     });
-    sightings
+    observations
         .sort((Sighting a, Sighting b) => b.dateTime.compareTo(a.dateTime));
+    sightings = observations.where((sighting) => sighting.bird != 0).toList();
+    observationsNotifier.value++;
     return true;
   }
 }

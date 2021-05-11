@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:redland_green_bird_survey/widgets/list_tile.dart';
 import 'package:redland_green_bird_survey/widgets/page_template.dart';
@@ -74,7 +76,20 @@ class _InformationPageState extends State<InformationPage> {
                   ),
                 ]),
             listTile(
-                onTap: () {},
+                onTap: () async {
+                  String url;
+                  if (Platform.isAndroid) {
+                    url =
+                        'https://play.google.com/store/apps/details?id=uk.org.rgcg.redland_green_bird_surveyail';
+                  } else {
+                    url =
+                        'https://apps.apple.com/gb/app/org.uk.rgcg.redlandGreenBirdSurvey/1565525766';
+                  }
+
+                  await canLaunch(url)
+                      ? await launch(url)
+                      : throw 'Could not launch $url';
+                },
                 imageLeft: true,
                 imageAsset: 'assets/dunnock.png',
                 content: [
@@ -84,7 +99,20 @@ class _InformationPageState extends State<InformationPage> {
                   Icon(Icons.star),
                 ]),
             listTile(
-                onTap: () {},
+                onTap: () async {
+                  String url;
+                  if (Platform.isAndroid) {
+                    url =
+                        'https://play.google.com/store/apps/details?id=com.flutterdevelopper.redland_green_trail';
+                  } else {
+                    url =
+                        'https://apps.apple.com/gb/app/redland-green-tree-trail/id1511416301';
+                  }
+
+                  await canLaunch(url)
+                      ? await launch(url)
+                      : throw 'Could not launch $url';
+                },
                 imageLeft: false,
                 imageAsset: 'assets/bluetit.png',
                 content: [

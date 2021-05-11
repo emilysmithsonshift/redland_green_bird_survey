@@ -62,7 +62,7 @@ class RGListTile extends StatelessWidget {
                           bottomLeft: Radius.circular(20.0),
                         ),
                         image: DecorationImage(
-                          fit: BoxFit.fitHeight,
+                          fit: BoxFit.cover,
                           alignment: alignment ?? Alignment.center,
                           image: AssetImage(
                             imageAsset,
@@ -97,7 +97,7 @@ class RGListTile extends StatelessWidget {
                           bottomRight: Radius.circular(20.0),
                         ),
                         image: DecorationImage(
-                          fit: BoxFit.fitHeight,
+                          fit: BoxFit.cover,
                           image: AssetImage(
                             imageAsset,
                           ),

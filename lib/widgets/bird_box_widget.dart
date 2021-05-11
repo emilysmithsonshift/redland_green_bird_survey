@@ -14,13 +14,13 @@ class BirdBoxWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Sighting _latestObservation;
-    _latestObservation = Sighting.sightings.firstWhere(
+    _latestObservation = Sighting.observations.firstWhere(
         (Sighting sighting) => sighting.birdBox == birdBox.id,
         orElse: () => null);
 
     Sighting _latestSighting;
 
-    _latestSighting = Sighting.sightings.firstWhere(
+    _latestSighting = Sighting.observations.firstWhere(
         (Sighting sighting) =>
             (sighting.birdBox == birdBox.id && sighting.sightingType != 0),
         orElse: () => null);

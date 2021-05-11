@@ -19,6 +19,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
   TextEditingController nickNameController = TextEditingController();
   bool _nickNameErrorMsg = false;
   int _currentStep = 0;
+  bool isLoading = false;
   @override
   Widget build(BuildContext context) {
     // Example code for registration.
@@ -59,9 +60,12 @@ class _RegistrationPageState extends State<RegistrationPage> {
               );
             },
           );
+        } else {
+          print(error.toString());
         }
       }))
           .user;
+
       if (user != null) {
         user.updateProfile(displayName: nickNameController.value.text);
 
@@ -140,6 +144,9 @@ class _RegistrationPageState extends State<RegistrationPage> {
                   setState(() {
                     _nickNameErrorMsg = false;
                   });
+                  setState(() {
+                    isLoading == true;
+                  });
                   _register();
                 } else {
                   setState(() {
@@ -171,7 +178,11 @@ class _RegistrationPageState extends State<RegistrationPage> {
                 const SizedBox(width: 20),
                 ElevatedButton(
                   onPressed: onStepContinue,
-                  child: Text(_currentStep == 2 ? 'Submit' : 'Next'),
+                  child: _currentStep == 2
+                      ? isLoading == false
+                          ? Text('Submit')
+                          : CircularProgressIndicator()
+                      : Text('Next'),
                 ),
               ],
             );

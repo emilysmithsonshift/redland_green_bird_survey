@@ -42,7 +42,7 @@ class _BirdBoxPageState extends State<BirdBoxPage> {
   Widget build(BuildContext context) {
     List<Sighting> _sightingList = [];
     Widget content() {
-      _sightingList = Sighting.sightings
+      _sightingList = Sighting.observations
           .where((sighting) => sighting.birdBox == widget.birdBox.id)
           .toList();
 

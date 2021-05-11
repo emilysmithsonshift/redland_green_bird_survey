@@ -52,7 +52,7 @@ class RGGridTile extends StatelessWidget {
                 )
               ],
               image: DecorationImage(
-                fit: BoxFit.fitHeight,
+                fit: BoxFit.cover,
                 image: AssetImage(
                   imageAsset,
                 ),

@@ -15,7 +15,7 @@ class _MyDetailsPageState extends State<MyDetailsPage> {
 
   @override
   Widget build(BuildContext context) {
-    _sightingList = Sighting.sightings
+    _sightingList = Sighting.observations
         .where((sighting) =>
             sighting.userEmail == FirebaseAuth.instance.currentUser.email)
         .toList();
