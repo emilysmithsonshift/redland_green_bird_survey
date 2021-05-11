@@ -7,7 +7,7 @@ class FurtherDetailsOptions {
     this.description,
   );
 
-  static final furtherDetailType0 = FurtherDetailsOptions(-1, 'Not sure.');
+  static final furtherDetailType0 = FurtherDetailsOptions(-1, 'I am not sure.');
 
   static final furtherDetailType1 =
       FurtherDetailsOptions(1, 'The bird had nesting material in its beak.');

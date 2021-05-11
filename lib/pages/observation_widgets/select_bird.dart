@@ -14,7 +14,6 @@ Widget SelectBird(int _bird, Function onSelect) {
       itemBuilder: (context, index) {
         return GestureDetector(
           onTap: () {
-            print(birdList[index].id);
             onSelect(birdList[index].id);
           },
           child: Container(

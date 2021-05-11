@@ -53,9 +53,12 @@ class _BirdIdentifierScreenState extends State<BirdIdentifierScreen> {
               fontSize: 18,
             ),
           ),
-          Wrap(
-            children: gridList(nestingBirds),
-            direction: Axis.horizontal,
+          SizedBox(
+            width: double.infinity,
+            child: Wrap(
+              alignment: WrapAlignment.spaceBetween,
+              children: gridList(nestingBirds),
+            ),
           ),
           SizedBox(height: 40),
           Text(
@@ -64,9 +67,12 @@ class _BirdIdentifierScreenState extends State<BirdIdentifierScreen> {
               fontSize: 18,
             ),
           ),
-          Wrap(
-            children: gridList(predatorBirds),
-            direction: Axis.horizontal,
+          SizedBox(
+            width: double.infinity,
+            child: Wrap(
+              alignment: WrapAlignment.spaceBetween,
+              children: gridList(predatorBirds),
+            ),
           ),
           SizedBox(height: 40),
           Text(
@@ -75,9 +81,12 @@ class _BirdIdentifierScreenState extends State<BirdIdentifierScreen> {
               fontSize: 18,
             ),
           ),
-          Wrap(
-            children: gridList(otherBirds),
-            direction: Axis.horizontal,
+          SizedBox(
+            width: double.infinity,
+            child: Wrap(
+              alignment: WrapAlignment.spaceBetween,
+              children: gridList(otherBirds),
+            ),
           ),
         ],
       ),

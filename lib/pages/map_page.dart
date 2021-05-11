@@ -17,7 +17,8 @@ class _MapPageState extends State<MapPage> {
   bool mapSatellite = true;
   @override
   void initState() {
-    for (int i = 0; i < BirdBox.birdBoxesList.length; i++) {
+    if (widget.birdBox != null) {
+      int i = widget.birdBox;
       final Marker _marker = Marker(
         markerId: MarkerId(
           BirdBox.birdBoxesList[i].id.toString(),
@@ -40,6 +41,32 @@ class _MapPageState extends State<MapPage> {
         position: BirdBox.birdBoxesList[i].location,
       );
       _markers[BirdBox.birdBoxesList[i].id.toString()] = _marker;
+    } else {
+      for (int i = 0; i < BirdBox.birdBoxesList.length; i++) {
+        final Marker _marker = Marker(
+          markerId: MarkerId(
+            BirdBox.birdBoxesList[i].id.toString(),
+          ),
+          icon:
+              BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueYellow),
+          // icon: customIcon,
+          infoWindow: InfoWindow(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => BirdBoxPage(
+                      birdBox: BirdBox.birdBoxesList[i],
+                    ),
+                  ),
+                );
+              },
+              title: 'BirdBox ${BirdBox.birdBoxesList[i].id.toString()}',
+              snippet: BirdBox.birdBoxesList[i].locationDescription),
+          position: BirdBox.birdBoxesList[i].location,
+        );
+        _markers[BirdBox.birdBoxesList[i].id.toString()] = _marker;
+      }
     }
 
     super.initState();
@@ -48,14 +75,17 @@ class _MapPageState extends State<MapPage> {
   @override
   Widget build(BuildContext context) {
     Widget _googleMap() {
-      return GoogleMap(
-        myLocationButtonEnabled: true,
-        myLocationEnabled: true,
-        mapType: mapSatellite ? MapType.hybrid : MapType.normal,
-        markers: _markers.values.toSet(),
-        initialCameraPosition: const CameraPosition(
-          target: LatLng(51.474508, -2.608220),
-          zoom: 17,
+      return Hero(
+        tag: 'map',
+        child: GoogleMap(
+          myLocationButtonEnabled: true,
+          myLocationEnabled: true,
+          mapType: mapSatellite ? MapType.hybrid : MapType.normal,
+          markers: _markers.values.toSet(),
+          initialCameraPosition: const CameraPosition(
+            target: LatLng(51.474508, -2.608220),
+            zoom: 17,
+          ),
         ),
       );
     }

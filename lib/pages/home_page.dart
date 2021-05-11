@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:jiffy/jiffy.dart';
 import 'package:redland_green_bird_survey/models/news.dart';
 import 'package:redland_green_bird_survey/models/sighting.dart';
-import 'package:redland_green_bird_survey/pages/bird_box_list_page.dart';
 import 'package:redland_green_bird_survey/pages/information_page.dart';
 import 'package:redland_green_bird_survey/pages/interesting_facts.dart';
 import 'package:redland_green_bird_survey/pages/my_details_page.dart';
@@ -36,7 +35,7 @@ class _HomePageState extends State<HomePage> {
         imageLeft: false,
         widget: Padding(
           padding: const EdgeInsets.all(12.0),
-          child: Column(
+          child: Wrap(
             children: [
               Center(
                 child: Text(
@@ -45,7 +44,7 @@ class _HomePageState extends State<HomePage> {
                 ),
               ),
               Text(
-                  'In 2020, Redland Green Community Group installed 16 bird boxes in trees around the green’'
+                  'In 2020, Redland Green Community Group installed 16 bird boxes in trees around the green.'
                   '\n\nThis app has been created to track the boxes and their inhabitants.'
                   '\n\nTap for more information.')
             ],
@@ -76,7 +75,6 @@ class _HomePageState extends State<HomePage> {
                   .where((sighting) => sighting.bird != 0)
                   .toList();
               if (snapshot.hasData) {
-                print(_sightingList.length);
                 if (_sightingList.isEmpty) {
                   return Center(
                     child: Padding(
@@ -121,14 +119,14 @@ class _HomePageState extends State<HomePage> {
         heroTag: 'latestNews',
         imageLeft: false,
         widget: FutureBuilder(
-            future: Sighting.getSightings(),
+            future: News.getNews(),
             builder: (context, snapshot) {
               if (snapshot.hasError) {
                 return Center(
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Text(
-                      'Oh dear, we have had trouble downloading the database',
+                      'Unable to load the latest news at this time.',
                       textAlign: TextAlign.center,
                     ),
                   ),
@@ -182,7 +180,13 @@ class _HomePageState extends State<HomePage> {
                                     textAlign: TextAlign.start,
                                   ),
                                 ),
-                                Text(news.headline),
+                                SizedBox(
+                                  width: double.infinity,
+                                  child: Text(
+                                    news.headline,
+                                    textAlign: TextAlign.start,
+                                  ),
+                                ),
                                 SizedBox(
                                   height: 12,
                                 ),
@@ -219,11 +223,11 @@ class _HomePageState extends State<HomePage> {
           navigateTo: MapPage(),
           text: 'Map',
           imageAsset: 'assets/longtailedtit.png'),
-      RGGridTile(
-          heroTag: 'box_list_page',
-          navigateTo: BirdBoxListPage(),
-          text: 'Bird Box List',
-          imageAsset: 'assets/nuthatch.png'),
+      // RGGridTile(
+      //     heroTag: 'box_list_page',
+      //     navigateTo: BirdBoxListPage(),
+      //     text: 'Bird Box List',
+      //     imageAsset: 'assets/nuthatch.png'),
       RGGridTile(
           heroTag: 'my_details',
           navigateTo: MyDetailsPage(),

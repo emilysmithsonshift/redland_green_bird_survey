@@ -44,7 +44,6 @@ class _EnterObservationsPageState extends State<EnterObservationsPage> {
   void checkShowModal() async {
     final prefs = await SharedPreferences.getInstance();
     showModal = prefs.getBool('showModal') ?? true;
-    print(showModal);
   }
 
   @override
@@ -56,7 +55,9 @@ class _EnterObservationsPageState extends State<EnterObservationsPage> {
   Future initialise() async {
     await checkShowModal();
     if (widget.birdBox != null) {
-      _birdBox = widget.birdBox;
+      setState(() {
+        _birdBox = widget.birdBox;
+      });
     }
     if (widget.sighting != null) {
       _birdBox = widget.sighting.birdBox;
@@ -71,7 +72,6 @@ class _EnterObservationsPageState extends State<EnterObservationsPage> {
   }
 
   void showMod() async {
-    print(showModal);
     if (showModal) {
       showDialog<void>(
           context: context,
@@ -103,6 +103,11 @@ class _EnterObservationsPageState extends State<EnterObservationsPage> {
                       Text('\n\nFrequently Asked Questions',
                           style: Theme.of(context).textTheme.headline1),
                       Text(
+                          '\nI did not see any activity at all, should I log this?',
+                          style: Theme.of(context).textTheme.headline1),
+                      Text(
+                          "Absolutely! If you have watched a box for at least five minutes, and have not seen any birds entering or leaving the nest, or any activity near to the nest, this is still a valuable record, as it tells us which boxes might not be used at that time. It helps us to decide if we should move the box to a different location. Please submit such findings!"),
+                      Text(
                           '\nWhen is the best time of year to spot birds nesting?',
                           style: Theme.of(context).textTheme.headline1),
                       Text(
@@ -116,10 +121,11 @@ class _EnterObservationsPageState extends State<EnterObservationsPage> {
                           "it may take longer to see if the nest is being used, so wait quietly for at least 5 minutes "
                           'before recording \'no bird seen at box.\''),
                       Text(
-                          '\nI did not see any activity at all, should I log this?',
+                          '\nI entered a comment but it did not show up in my observation. Why?',
                           style: Theme.of(context).textTheme.headline1),
                       Text(
-                          "Absolutely! If you have watched a box for at least five minutes, and have not seen any birds entering or leaving the nest, or any activity near to the nest, this is still a valuable record, as it tells us which boxes might not be used at that time. It helps us to decide if we should move the box to a different location. Please submit such findings!"),
+                          "We do monitor the comments but we do not publish them to the public in order to safeguard from anything inappropriate."
+                          " Rest assured that your comments will be read by the Redland Green Community Group. "),
                     ],
                   ),
                 ));

@@ -14,7 +14,7 @@ class _NewsPageState extends State<NewsPage> {
     return PageTemplate(
       title: 'Latest News',
       image: 'assets/dunnock.png',
-      heroTag: 'welcome',
+      heroTag: 'latestNews',
       widgetList:
           News.newsList.map((News news) => NewsWidget(news: news)).toList(),
     );

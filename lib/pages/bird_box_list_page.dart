@@ -14,13 +14,12 @@ class _BirdBoxListPageState extends State<BirdBoxListPage> {
     return PageTemplate(
       title: 'Bird Box List',
       image: 'assets/nuthatch.png',
+      size: 150,
       widgetList: BirdBox.birdBoxesList.map((BirdBox birdBox) {
         return BirdBoxWidget(
           birdBox: birdBox,
-          context: context,
         );
       }).toList(),
-      gridList: [],
       heroTag: 'box_list_page',
     );
   }
