@@ -40,102 +40,35 @@ class FactPage extends StatelessWidget {
                     'practices have eliminated wide field margins, therefore also eliminating the habitat of the '
                     'kestrel’s main prey items. The UK population of kestrels may be as low as 30,000 pairs. ',
               ),
-              Padding(
-                padding: const EdgeInsets.symmetric(vertical: 8.0),
-                child: Text(
-                  'What is sexual dimorphism in a species?',
-                  style: Theme.of(context).textTheme.headline1,
-                ),
+              FlipCardWidget(
+                image: 'assets/dunnock.png',
+                question:
+                    'What sorts of trees are likely to have holes and cavities that birds can nest in?',
+                answer: 'Holes are found mainly in old trees. '
+                    'This is one of many reasons why old trees are so important to protect, '
+                    'as they provide habitat for a huge range of species in addition to birds. '
+                    'There are many reasons holes develop. Holes may develop as the result of '
+                    'injury caused by forces such as wind or lightening, or attacks by insects, bacteria or fungi. '
+                    'Holes can take a long time to form, and can vary in size, depth, shape, insulation and size '
+                    'of entrance hole, making them suitable for many different animals. ',
               ),
-              Row(
-                children: [
-                  Flexible(
-                    flex: 3,
-                    child: Text(
-                      'Dimorphism means that the two sexes of the same species differ in appearance from each other. '
-                      'This may be in size, weight, colour and markings. It may also include behavioural differences.'
-                      'A blackbird (pictured right) is a class case where the female is actually brown. ',
-                      style: Theme.of(context).textTheme.bodyText1,
-                    ),
-                  ),
-                  Flexible(
-                    flex: 1,
-                    child: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: ClipRRect(
-                        borderRadius: const BorderRadius.all(
-                          Radius.circular(20.0),
-                        ),
-                        child: Image.asset('assets/blackbird2.png'),
-                      ),
-                    ),
-                  )
-                ],
+              FlipCardWidget(
+                image: 'assets/bluetit4.png',
+                question:
+                    'What causes the chest and abdomen of some blue tits to be a brighter sulphur yellow than others?',
+                answer:
+                    'Brightness varies according to how many yellow-green caterpillars are eaten, '
+                    'as such caterpillars contain high levels of the carotene (red, orange, yellow) pigments.',
               ),
-              SizedBox(height: 12),
-              Padding(
-                padding: const EdgeInsets.symmetric(vertical: 8.0),
-                child: Text(
-                  'What sorts of trees are likely to have holes and cavities that birds can nest in?',
-                  style: Theme.of(context).textTheme.headline1,
-                ),
-              ),
-              Text(
-                'Holes are found mainly in old trees. '
-                'This is one of many reasons why old trees are so important to protect, '
-                'as they provide habitat for a huge range of species in addition to birds. '
-                'There are many reasons holes develop. Holes may develop as the result of '
-                'injury caused by forces such as wind or lightening, or attacks by insects, bacteria or fungi. '
-                'Holes can take a long time to form, and can vary in size, depth, shape, insulation and size '
-                'of entrance hole, making them suitable for many different animals. ',
-                style: Theme.of(context).textTheme.bodyText1,
-              ),
-              SizedBox(height: 12),
-              Padding(
-                padding: const EdgeInsets.symmetric(vertical: 8.0),
-                child: Text(
-                  'What causes the chest and abdomen of some blue tits to be a brighter sulphur yellow than others?',
-                  style: Theme.of(context).textTheme.headline1,
-                ),
-              ),
-              Row(
-                children: [
-                  Flexible(
-                    flex: 1,
-                    child: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: ClipRRect(
-                        borderRadius: const BorderRadius.all(
-                          Radius.circular(20.0),
-                        ),
-                        child: Image.asset('assets/bluetit1.png'),
-                      ),
-                    ),
-                  ),
-                  Flexible(
-                    flex: 3,
-                    child: Text(
-                      'Brightness varies according to how many yellow-green caterpillars are eaten, '
-                      'as such caterpillars contain high levels of the carotene (red, orange, yellow) pigments.',
-                      style: Theme.of(context).textTheme.bodyText1,
-                    ),
-                  ),
-                ],
-              ),
-              SizedBox(height: 12),
-              Padding(
-                padding: const EdgeInsets.symmetric(vertical: 8.0),
-                child: Text(
-                  'The brighter the yellow chest of the great tit, the more attractive he is to female great tits. Why might this be??',
-                  style: Theme.of(context).textTheme.headline1,
-                ),
-              ),
-              Text(
-                'Brighter yellow chests are caused by the presence of carotenoids, which are red, '
-                'orange and yellow pigments produced by some plants. Carotenoids cannot be made by the bird, '
-                'and have to be obtained from food. A bright yellow chest signifies to the female that '
-                'the male is healthy and well fed, and will therefore also be able to feed his young brood.',
-                style: Theme.of(context).textTheme.bodyText1,
+              FlipCardWidget(
+                question:
+                    'The brighter the yellow chest of the great tit, the more attractive he is to female great tits. Why might this be??',
+                answer:
+                    'Brighter yellow chests are caused by the presence of carotenoids, which are red, '
+                    'orange and yellow pigments produced by some plants. Carotenoids cannot be made by the bird, '
+                    'and have to be obtained from food. A bright yellow chest signifies to the female that '
+                    'the male is healthy and well fed, and will therefore also be able to feed his young brood.',
+                image: 'assets/greattit.png',
               ),
               SizedBox(height: 12),
               Padding(
