@@ -1,16 +1,15 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:redland_green_bird_survey/models/dyk.dart';
 
 import '../settings.dart';
 
 class FlipCardWidget extends StatefulWidget {
-  final String question;
-  final String answer;
-  final String image;
+  final DYK dyk;
 
-  const FlipCardWidget({Key key, this.question, this.answer, this.image})
-      : super(key: key);
+  const FlipCardWidget({Key key, this.dyk}) : super(key: key);
+
   @override
   _FlipCardWidgetState createState() => _FlipCardWidgetState();
 }
@@ -27,7 +26,9 @@ class _FlipCardWidgetState extends State<FlipCardWidget>
       vsync: this,
       duration: Duration(seconds: 1),
     );
-    _animation = Tween<double>(end: 1, begin: 0).animate(_animationController)
+    _animation = Tween<double>(end: 1, begin: 0).animate(
+      _animationController,
+    )
       ..addListener(() {
         setState(() {});
       })
@@ -41,8 +42,8 @@ class _FlipCardWidgetState extends State<FlipCardWidget>
     return Container(
       decoration: defaultBoxDecoration(),
       margin: EdgeInsets.symmetric(vertical: 8),
-      width: 400,
-      height: 200,
+      width: double.infinity,
+      height: MediaQuery.of(context).size.width / 2,
       child: (_animation.value < 0.5)
           ? ClipRRect(
               borderRadius: BorderRadius.all(
@@ -54,7 +55,10 @@ class _FlipCardWidgetState extends State<FlipCardWidget>
                     child: SizedBox(
                       width: double.infinity,
                       height: double.infinity,
-                      child: Image.asset(widget.image, fit: BoxFit.cover),
+                      child: Image.asset(
+                        widget.dyk.image,
+                        fit: BoxFit.cover,
+                      ),
                     ),
                   ),
                   Flexible(
@@ -62,14 +66,13 @@ class _FlipCardWidgetState extends State<FlipCardWidget>
                       color: Colors.green[50],
                       width: double.infinity,
                       height: double.infinity,
+                      padding: EdgeInsets.all(8),
                       child: Center(
-                          child: Padding(
-                        padding: const EdgeInsets.all(8.0),
                         child: Text(
-                          widget.question,
+                          widget.dyk.question,
                           style: Theme.of(context).textTheme.headline1,
                         ),
-                      )),
+                      ),
                     ),
                   ),
                 ],
@@ -92,7 +95,9 @@ class _FlipCardWidgetState extends State<FlipCardWidget>
                     transform: Matrix4.identity()..rotateY(pi),
                     child: Transform.scale(
                       scale: 1,
-                      child: Text(widget.answer),
+                      child: SingleChildScrollView(
+                        child: Text(widget.dyk.answer),
+                      ),
                     ),
                   ),
                 ),
@@ -112,9 +117,7 @@ class _FlipCardWidgetState extends State<FlipCardWidget>
         }
       },
       child: Transform(
-          transform: Matrix4.identity()
-            // ..setEntry(3, 2, 0.02)
-            ..rotateY(pi * _animation.value),
+          transform: Matrix4.identity()..rotateY(pi * _animation.value),
           alignment: FractionalOffset.center,
           child: _widget()),
     );

@@ -25,6 +25,7 @@ class TimeOfObservation extends StatelessWidget {
         child: CupertinoDatePicker(
           minimumYear: 2020,
           initialDateTime: dateTime,
+          minimumDate: DateTime(2021),
           maximumDate: maxDate,
           onDateTimeChanged: (DateTime newDateTime) {
             onSelected(newDateTime);

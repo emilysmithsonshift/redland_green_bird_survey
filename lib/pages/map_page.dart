@@ -75,17 +75,14 @@ class _MapPageState extends State<MapPage> {
   @override
   Widget build(BuildContext context) {
     Widget _googleMap() {
-      return Hero(
-        tag: 'map',
-        child: GoogleMap(
-          myLocationButtonEnabled: true,
-          myLocationEnabled: true,
-          mapType: mapSatellite ? MapType.hybrid : MapType.normal,
-          markers: _markers.values.toSet(),
-          initialCameraPosition: const CameraPosition(
-            target: LatLng(51.474508, -2.608220),
-            zoom: 17,
-          ),
+      return GoogleMap(
+        myLocationButtonEnabled: true,
+        myLocationEnabled: true,
+        mapType: mapSatellite ? MapType.hybrid : MapType.normal,
+        markers: _markers.values.toSet(),
+        initialCameraPosition: const CameraPosition(
+          target: LatLng(51.474508, -2.608220),
+          zoom: 17,
         ),
       );
     }

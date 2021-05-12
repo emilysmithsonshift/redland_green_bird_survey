@@ -180,11 +180,6 @@ class _HomePageState extends State<HomePage> {
           navigateTo: MapPage(),
           text: 'Map',
           imageAsset: 'assets/longtailedtit.png'),
-      // RGGridTile(
-      //     heroTag: 'box_list_page',
-      //     navigateTo: BirdBoxListPage(),
-      //     text: 'Bird Box List',
-      //     imageAsset: 'assets/nuthatch.png'),
       RGGridTile(
           heroTag: 'my_details',
           navigateTo: MyDetailsPage(),
@@ -194,7 +189,7 @@ class _HomePageState extends State<HomePage> {
         heroTag: 'fact_page',
         navigateTo: FactPage(),
         text: 'Did you know?',
-        imageAsset: 'assets/wren3.png',
+        imageAsset: 'assets/nuthatch_close.png',
       ),
       RGGridTile(
           heroTag: 'information',
