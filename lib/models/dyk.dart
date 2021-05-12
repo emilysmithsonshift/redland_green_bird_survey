@@ -159,7 +159,7 @@ class DYK {
       answer:
           "The blue tit used to be known as ‘Tom titmouse’ or ‘tom tit’, or, more remotely ‘pickcheese’. Birds in the tit family, Paridae, used to be known as ‘titmouses’ (or ‘titmice’) and occasionally today the full name ‘titmouse’ is still used, as in ‘blue titmouse’ or ‘great titmouse’. The ‘tit’ component is of Norse origin, and means ‘small object or creature’, although an alternative view is that the word might have evolved in the fourteenth century as an echo of the bird’s song. ‘Mouse’, evolved from a Norse word ‘mose’ meaning “small bird”. The name ‘titomose’ first appeared in the fourteenth century and gradually evolved into ‘titmouse’. ",
       type: DYKType.birdNames,
-      image: 'assets/bluetit1.png',
+      image: 'assets/bluetit.png',
     ),
     DYK(
       question: "What bird used to be known as a ‘mud dabbler’?",
@@ -201,7 +201,7 @@ class DYK {
       answer:
           "While some birds have extremely long lives (for example, most species of albatross live for over 50 years), many birds, including the passerines (‘songbirds’ or ‘perching birds’ - see the question ‘What is a passerine?’) have quite short lives. Robins, wrens, nuthatches, pied flycatchers and pied wagtails live on average for two years. Blackbirds and song thrushes, the house sparrow, and blue and great tits average three years. However, sometimes individuals greatly exceed the average lifespan. The oldest known pied flycatcher was over 16 years old and one pied wagtail reached 11. A house sparrow was recorded as over 13 years old. The oldest known robin reached 19, and the oldest known blackbird made it to 20 years old!",
       type: DYKType.passerines,
-      image: 'assets/nuthatch2.png',
+      image: 'assets/wren3.png',
     ),
     DYK(
       question:
@@ -209,7 +209,14 @@ class DYK {
       answer:
           "Brightness varies according to how many yellow-green caterpillars are eaten, as such caterpillars contain high levels of the carotene (red, orange, yellow) pigments.",
       type: DYKType.passerines,
-      image: 'assets/bluetit1.png',
+      image: 'assets/bluetit.png',
+    ),
+    DYK(
+      question: "What do goldfinches eat?",
+      answer:
+          "Gold finches, with their long beaks, are seed specialists, and prefer the seeds of thistles, teasels, ragwort, dandelion and groundsels. Their scientific name (Carduelis carduelis) derives from the Latin for thistle (Cardus). In recent years, goldfinch have frequented gardens more often, to take advantage of the sunflower or nyger seeds often put in bird feeders. Males tend to have longer beaks than females, and this means that only males can extract seeds from teasels. After hatching, chicks are fed on insects and seeds, but as the chicks grow, the parents reduce proportion of insects in their diet.",
+      type: DYKType.passerines,
+      image: 'assets/goldfinch4.png',
     ),
     DYK(
       question:
@@ -242,27 +249,15 @@ class DYK {
       type: DYKType.passerines,
       image: 'assets/goldfinch3.png',
     ),
-    DYK(
-      question: "What do goldfinches eat?",
-      answer:
-          "Gold finches, with their long beaks, are seed specialists, and prefer the seeds of thistles, teasels, ragwort, dandelion and groundsels. Their scientific name (Carduelis carduelis) derives from the Latin for thistle (Cardus). In recent years, goldfinch have frequented gardens more often, to take advantage of the sunflower or nyger seeds often put in bird feeders. Males tend to have longer beaks than females, and this means that only males can extract seeds from teasels. After hatching, chicks are fed on insects and seeds, but as the chicks grow, the parents reduce proportion of insects in their diet.",
-      type: DYKType.passerines,
-      image: 'assets/goldfinch4.png',
-    ),
+
     DYK(
       question: "How can you tell a dunnock from a house sparrow?",
       answer:
           "From a distance, dunnocks can be mistaken for house sparrows, as at 14cm long they are a similar size and have similar colours. The most significant difference in appearance is that they have a fine pointed bill like a robin, not the thick bill of the sparrow. Another clue is that house sparrows congregate in flocks, while dunnocks are usually seen alone or in pairs. While having a superficial resemblance to sparrows, they are not related to them, and belong to a different family. Dunnocks are common, and often found in gardens. However, they are shy birds, not venturing much out into the open, and so may not be noticed. They spend a lot of time near to the ground, and usually search for invertebrates and seeds on the ground. They generally fly at a low level. ",
       type: DYKType.passerines,
-      image: 'assets/dunnock_close.png',
+      image: 'assets/sparrow.png',
     ),
-    DYK(
-      question: "What is the mating behaviour of dunnocks?",
-      answer:
-          "Dunnocks are unlike most other song birds in that they have a variety of mating systems, and which may differ from one breeding season to another. In polyandry, females mate with two or more males. In polygyny, two or more females mate with one male, and only that male. They also practice polygynandry, in which males and females both mate with two or more mates, and monogamy (the female and male mate only with each other) in a breeding season. The system that is adopted depends upon a multiplicity of factors. One is the ratio of females to males in an area; another is the degree to which territories overlap. Monogamy is likely if one female and one male territory overlap. If two or three female territories overlap one male territory, the birds are likely to be polygamous. If two males co-operate to defend a territory that has several females, they will adopt polygynandry. Polyandry is the most common breeding system overall. With respect to an individual bird’s success in passing on its genes, polygyny favours males, and polyandry favours females. Another factor that influences breeding behaviour is the availability of food. Female territories reduce in size if food is plentiful. This makes it easier for males to have exclusive access to females. These factors mean that different mating behaviours will be adopted by the same birds in different breeding seasons.",
-      type: DYKType.passerines,
-      image: 'assets/dunnock.png',
-    ),
+
     DYK(
       question: "Why do pied wagtails wag their tails up and down?",
       answer:
@@ -283,6 +278,13 @@ class DYK {
           "Red feathers make birds much more vulnerable to predation, so it seems strange that robins have such bright chests. It’s thought, however, that the males’ red breasts could signal fitness and good survival skills to female robins, making them attractive potential mates. Adding support to this theory, it’s also been found that the older a male robin is, the larger the area of red on his chest. This also signals to other robins that the bird is a capable survivor. The larger area of red of older males may also signal to juveniles that they would be wise not to intrude into the bird’s territory. They are likely to lose any fight they take on! In many bird species, females are much less colourful than the males. This makes them harder to spot when they are incubating eggs – a clear survival strategy. When female robins incubate their eggs, their breast is normally out of view, facing downwards in close contact with the eggs. Only her brown back is showing – and this is excellent camouflage. Females also defend their territories, and so their red breast acts as a signal to other robins to keep out of their territory.",
       type: DYKType.passerines,
       image: 'assets/robin.png',
+    ),
+    DYK(
+      question: "What is the mating behaviour of dunnocks?",
+      answer:
+          "Dunnocks are unlike most other song birds in that they have a variety of mating systems, and which may differ from one breeding season to another. In polyandry, females mate with two or more males. In polygyny, two or more females mate with one male, and only that male. They also practice polygynandry, in which males and females both mate with two or more mates, and monogamy (the female and male mate only with each other) in a breeding season. The system that is adopted depends upon a multiplicity of factors. One is the ratio of females to males in an area; another is the degree to which territories overlap. Monogamy is likely if one female and one male territory overlap. If two or three female territories overlap one male territory, the birds are likely to be polygamous. If two males co-operate to defend a territory that has several females, they will adopt polygynandry. Polyandry is the most common breeding system overall. With respect to an individual bird’s success in passing on its genes, polygyny favours males, and polyandry favours females. Another factor that influences breeding behaviour is the availability of food. Female territories reduce in size if food is plentiful. This makes it easier for males to have exclusive access to females. These factors mean that different mating behaviours will be adopted by the same birds in different breeding seasons.",
+      type: DYKType.passerines,
+      image: 'assets/dunnock.png',
     ),
     DYK(
       question: "Why do robins feature so often on Christmas cards?",
@@ -333,6 +335,13 @@ class DYK {
           "Although sparrowhawks predate small birds, the short answer is “no, they don’t”. That’s because the number of sparrowhawks in a given area is limited by the “carrying capacity” of the habitat, which means that the amount of food and availability of nesting sites constrain how many individuals can survive. Young birds don’t pair and breed until there is vacant territory and plentiful food. This means that there is a close relationship between the number of small birds and sparrowhawks. Both increases and decreases in small bird populations are mirrored by corresponding changes in the number of sparrowhawks. Sparrowhawks are therefore indicators of the health of an ecosystem.",
       type: DYKType.birdsOfPrey,
       image: 'assets/jay.png',
+    ),
+    DYK(
+      question: "Are there tawny owls in Redland?",
+      answer:
+          "Yes. Tawny owls can be heard in several places around Redland, including the green. The female’s ‘ke-wick’ and the male’s answering ‘hoo hoo’ can be heard at night. Tawnies favour deciduous woodland and nest in tree cavities and old buildings. Their main prey are mice and voles, but they also eat frogs and invertebrates, and sometimes small birds. They are ambush predators, and typically watch for prey from a perch, hunting at dusk and during the night. Females typically weigh about 500g and males rather less than 400g.There are estimated to be 50,000 breeding pairs in the UK. Their conservation status is amber. ",
+      type: DYKType.birdsOfPrey,
+      image: 'assets/owl.png',
     ),
   ];
 }
