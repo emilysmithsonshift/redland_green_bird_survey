@@ -364,13 +364,27 @@ class _EnterObservationsPageState extends State<EnterObservationsPage> {
           Sighting.addSighting(_sighting);
         }
 
-        Navigator.pushAndRemoveUntil(
-          context,
-          MaterialPageRoute(
-            builder: (BuildContext context) => HomePage(),
-          ),
-          (Route<dynamic> route) => false,
-        );
+        showDialog<void>(
+            context: context,
+            builder: (BuildContext context) {
+              return AlertDialog(
+                title: Text("Thank you for entering an observation."),
+                actions: <Widget>[
+                  TextButton(
+                    child: const Text('OK'),
+                    onPressed: () => Navigator.pushAndRemoveUntil(
+                      context,
+                      MaterialPageRoute(
+                        builder: (BuildContext context) => HomePage(),
+                      ),
+                      (Route<dynamic> route) => false,
+                    ),
+                  )
+                ],
+                content: Text(
+                    'Your observations will help us better understand how the bird boxes are used.'),
+              );
+            });
       },
     );
 
@@ -384,7 +398,7 @@ class _EnterObservationsPageState extends State<EnterObservationsPage> {
     ];
     final List<Widget> widgetList = [
       SizedBox(
-        height: MediaQuery.of(context).size.height - 240,
+        height: MediaQuery.of(context).size.height * 0.75,
         child: Scaffold(
           floatingActionButtonLocation:
               FloatingActionButtonLocation.startDocked,
@@ -404,7 +418,12 @@ class _EnterObservationsPageState extends State<EnterObservationsPage> {
               itemScrollController: itemScrollController,
               itemCount: steps.length,
               itemBuilder: (context, index) {
-                return steps[index];
+                return SizedBox(
+                    height: MediaQuery.of(context).size.height * 0.75,
+                    child: Padding(
+                      padding: const EdgeInsets.only(bottom: 12.0),
+                      child: steps[index],
+                    ));
               }),
         ),
       )

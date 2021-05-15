@@ -11,50 +11,53 @@ Widget SelectBirdBoxNo(
   return Column(
     mainAxisAlignment: MainAxisAlignment.spaceAround,
     children: [
-      Wrap(
+      GridView.count(
+          shrinkWrap: true,
+          crossAxisCount: 6,
+          childAspectRatio: 1,
           children: BirdBox.birdBoxesList.map((_birdBox) {
-        return GestureDetector(
-          onTap: () {
-            onSelect(_birdBox.id);
-          },
-          child: Padding(
-            padding: const EdgeInsets.all(2.0),
-            child: ClipOval(
-              child: Container(
-                height: 30,
-                width: 30,
-                margin: const EdgeInsets.all(8),
-                decoration: BoxDecoration(
-                  color: Colors.green[50],
-                  borderRadius: const BorderRadius.all(
-                    Radius.circular(60),
-                  ),
-                  boxShadow: birdBox != _birdBox.id
-                      ? [
-                          BoxShadow(
-                            color: Colors.grey,
-                            offset: Offset(3.0, 3.0),
-                            blurRadius: 3.0,
-                          )
-                        ]
-                      : [],
-                  border: Border.all(
-                    width: birdBox == _birdBox.id ? 2.0 : 0.0,
-                    color: birdBox == _birdBox.id
-                        ? Colors.blueAccent
-                        : Colors.green[50],
-                  ),
-                ),
-                child: Center(
-                  child: Text(
-                    _birdBox.id.toString(),
+            return GestureDetector(
+              onTap: () {
+                onSelect(_birdBox.id);
+              },
+              child: Padding(
+                padding: const EdgeInsets.all(2.0),
+                child: ClipOval(
+                  child: Container(
+                    height: 30,
+                    width: 30,
+                    margin: const EdgeInsets.all(8),
+                    decoration: BoxDecoration(
+                      color: Colors.green[50],
+                      borderRadius: const BorderRadius.all(
+                        Radius.circular(60),
+                      ),
+                      boxShadow: birdBox != _birdBox.id
+                          ? [
+                              BoxShadow(
+                                color: Colors.grey,
+                                offset: Offset(3.0, 3.0),
+                                blurRadius: 3.0,
+                              )
+                            ]
+                          : [],
+                      border: Border.all(
+                        width: birdBox == _birdBox.id ? 2.0 : 0.0,
+                        color: birdBox == _birdBox.id
+                            ? Colors.blueAccent
+                            : Colors.green[50],
+                      ),
+                    ),
+                    child: Center(
+                      child: Text(
+                        _birdBox.id.toString(),
+                      ),
+                    ),
                   ),
                 ),
               ),
-            ),
-          ),
-        );
-      }).toList()),
+            );
+          }).toList()),
       SizedBox(
         height: 100,
         child: Center(
