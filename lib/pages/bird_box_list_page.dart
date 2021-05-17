@@ -1,6 +1,7 @@
 import 'package:animations/animations.dart';
 import 'package:flutter/material.dart';
 import 'package:redland_green_bird_survey/models/bird_box.dart';
+import 'package:redland_green_bird_survey/settings.dart';
 import 'package:redland_green_bird_survey/widgets/bird_box_widget.dart';
 import 'package:redland_green_bird_survey/widgets/page_template.dart';
 
@@ -18,18 +19,27 @@ class _BirdBoxListPageState extends State<BirdBoxListPage> {
       size: MediaQuery.of(context).size.width / 3,
       title: 'Bird Box List',
       image: 'assets/jay.png',
-      // size: 150,
       gridList: BirdBox.birdBoxesList.map((BirdBox birdBox) {
-        return OpenContainer(
-          closedColor: Colors.green[100],
-          closedBuilder: (context, action) {
-            return BirdBoxWidget(
-              birdBox: birdBox,
-            );
-          },
-          openBuilder: (context, action) {
-            return BirdBoxPage(birdBox: birdBox);
-          },
+        return Container(
+          decoration: defaultBoxDecoration(),
+          margin: EdgeInsets.all(8),
+          child: OpenContainer(
+            transitionDuration: Duration(milliseconds: 750),
+            closedShape: RoundedRectangleBorder(
+              borderRadius: const BorderRadius.all(
+                Radius.circular(20.0),
+              ),
+            ),
+            closedColor: Colors.green[50],
+            closedBuilder: (context, action) {
+              return BirdBoxWidget(
+                birdBox: birdBox,
+              );
+            },
+            openBuilder: (context, action) {
+              return BirdBoxPage(birdBox: birdBox);
+            },
+          ),
         );
       }).toList(),
       heroTag: 'box_list_page',

@@ -1,4 +1,7 @@
+import 'package:animations/animations.dart';
 import 'package:flutter/material.dart';
+
+import '../settings.dart';
 
 class RGListTile extends StatelessWidget {
   final String imageAsset;
@@ -20,96 +23,97 @@ class RGListTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Material(
-      color: Colors.green[100],
-      child: GestureDetector(
-        onTap: () {
-          if (navigateTo != null) {
-            Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) => navigateTo,
-              ),
-            );
-          }
-        },
-        child: Container(
-          constraints: BoxConstraints(maxWidth: 400),
-          height: 200,
-          margin: const EdgeInsets.all(8),
-          decoration: const BoxDecoration(
-            borderRadius: BorderRadius.all(
+    return Container(
+      decoration: defaultBoxDecoration(),
+      margin: const EdgeInsets.all(8.0),
+      child: OpenContainer(
+          closedShape: RoundedRectangleBorder(
+            borderRadius: const BorderRadius.all(
               Radius.circular(20.0),
             ),
-            boxShadow: [
-              BoxShadow(
-                color: Colors.grey,
-                offset: Offset(5.0, 5.0),
-                blurRadius: 5.0,
-              )
-            ],
           ),
-          child: Row(
-            children: [
-              if (imageLeft)
-                Flexible(
-                  child: Hero(
-                    tag: heroTag ?? '',
-                    child: Container(
-                      decoration: BoxDecoration(
-                        borderRadius: const BorderRadius.only(
-                          topLeft: Radius.circular(20.0),
-                          bottomLeft: Radius.circular(20.0),
-                        ),
-                        image: DecorationImage(
-                          fit: BoxFit.cover,
-                          alignment: alignment ?? Alignment.center,
-                          image: AssetImage(
-                            imageAsset,
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
+          transitionDuration: Duration(milliseconds: 750),
+          closedColor: Colors.green[100],
+          openBuilder: (context, action) {
+            return navigateTo;
+          },
+          closedBuilder: (context, action) {
+            return Container(
+              constraints: BoxConstraints(maxWidth: 400),
+              height: 200,
+              decoration: const BoxDecoration(
+                borderRadius: BorderRadius.all(
+                  Radius.circular(20.0),
                 ),
-              Flexible(
-                flex: 2,
-                child: ClipRRect(
-                    borderRadius: BorderRadius.only(
-                      topRight: Radius.circular(imageLeft ? 20.0 : 0),
-                      bottomRight: Radius.circular(imageLeft ? 20.0 : 0),
-                      topLeft: Radius.circular(imageLeft ? 0.0 : 20),
-                      bottomLeft: Radius.circular(imageLeft ? 0.0 : 20),
-                    ),
-                    child: Container(
-                        height: double.infinity,
-                        color: Colors.green[50],
-                        child: widget)),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.grey,
+                    offset: Offset(5.0, 5.0),
+                    blurRadius: 5.0,
+                  )
+                ],
               ),
-              if (!imageLeft)
-                Flexible(
-                  child: Hero(
-                    tag: heroTag ?? '',
-                    child: Container(
-                      decoration: BoxDecoration(
-                        borderRadius: const BorderRadius.only(
-                          topRight: Radius.circular(20.0),
-                          bottomRight: Radius.circular(20.0),
-                        ),
-                        image: DecorationImage(
-                          fit: BoxFit.cover,
-                          image: AssetImage(
-                            imageAsset,
+              child: Row(
+                children: [
+                  if (imageLeft)
+                    Flexible(
+                      child: Hero(
+                        tag: heroTag ?? '',
+                        child: Container(
+                          decoration: BoxDecoration(
+                            borderRadius: const BorderRadius.only(
+                              topLeft: Radius.circular(20.0),
+                              bottomLeft: Radius.circular(20.0),
+                            ),
+                            image: DecorationImage(
+                              fit: BoxFit.cover,
+                              alignment: alignment ?? Alignment.center,
+                              image: AssetImage(
+                                imageAsset,
+                              ),
+                            ),
                           ),
                         ),
                       ),
                     ),
+                  Flexible(
+                    flex: 2,
+                    child: ClipRRect(
+                        borderRadius: BorderRadius.only(
+                          topRight: Radius.circular(imageLeft ? 20.0 : 0),
+                          bottomRight: Radius.circular(imageLeft ? 20.0 : 0),
+                          topLeft: Radius.circular(imageLeft ? 0.0 : 20),
+                          bottomLeft: Radius.circular(imageLeft ? 0.0 : 20),
+                        ),
+                        child: Container(
+                            height: double.infinity,
+                            color: Colors.green[50],
+                            child: widget)),
                   ),
-                ),
-            ],
-          ),
-        ),
-      ),
+                  if (!imageLeft)
+                    Flexible(
+                      child: Hero(
+                        tag: heroTag ?? '',
+                        child: Container(
+                          decoration: BoxDecoration(
+                            borderRadius: const BorderRadius.only(
+                              topRight: Radius.circular(20.0),
+                              bottomRight: Radius.circular(20.0),
+                            ),
+                            image: DecorationImage(
+                              fit: BoxFit.cover,
+                              image: AssetImage(
+                                imageAsset,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                ],
+              ),
+            );
+          }),
     );
   }
 }

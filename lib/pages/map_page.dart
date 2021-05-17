@@ -1,5 +1,8 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:permission_handler/permission_handler.dart';
 import 'package:redland_green_bird_survey/models/bird_box.dart';
 
 import 'bird_box_page.dart';
@@ -15,8 +18,20 @@ class MapPage extends StatefulWidget {
 class _MapPageState extends State<MapPage> {
   final Map<String, Marker> _markers = {};
   bool mapSatellite = true;
+  bool permissionGranted = false;
+
+  Future<void> requestPermission() async {
+    PermissionStatus permissionStatus = await Permission.location.request();
+    if (permissionStatus.isGranted) {
+      setState(() {
+        permissionGranted = true;
+      });
+    }
+  }
+
   @override
   void initState() {
+    requestPermission();
     if (widget.birdBox != null) {
       int i = widget.birdBox;
       final Marker _marker = Marker(
@@ -76,8 +91,8 @@ class _MapPageState extends State<MapPage> {
   Widget build(BuildContext context) {
     Widget _googleMap() {
       return GoogleMap(
-        myLocationButtonEnabled: true,
-        myLocationEnabled: true,
+        myLocationButtonEnabled: permissionGranted,
+        myLocationEnabled: permissionGranted,
         mapType: mapSatellite ? MapType.hybrid : MapType.normal,
         markers: _markers.values.toSet(),
         initialCameraPosition: const CameraPosition(
@@ -103,7 +118,7 @@ class _MapPageState extends State<MapPage> {
           backgroundColor: Colors.green[100].withOpacity(0.6),
           title: Text('Map'),
         ),
-        extendBodyBehindAppBar: true,
+        extendBodyBehindAppBar: Platform.isIOS,
         body: _googleMap());
   }
 }

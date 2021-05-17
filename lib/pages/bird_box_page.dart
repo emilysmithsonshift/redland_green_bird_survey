@@ -1,3 +1,4 @@
+import 'package:animations/animations.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
@@ -49,39 +50,38 @@ class _BirdBoxPageState extends State<BirdBoxPage> {
       return Padding(
         padding: const EdgeInsets.all(8.0),
         child: Column(children: [
-          GestureDetector(
-            onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (_) => MapPage(birdBox: widget.birdBox.id),
+          Container(
+            decoration: defaultBoxDecoration(),
+            margin: const EdgeInsets.all(8.0),
+            child: OpenContainer(
+              transitionDuration: Duration(milliseconds: 750),
+              closedShape: RoundedRectangleBorder(
+                borderRadius: const BorderRadius.all(
+                  Radius.circular(20.0),
                 ),
-              );
-            },
-            child: Container(
-              margin: const EdgeInsets.all(8),
-              padding: const EdgeInsets.all(0),
-              // height: 100,
-              decoration: defaultBoxDecoration(color: Colors.green[50]),
-              child: Column(
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.all(12.0),
-                    child: Column(
-                      children: [
-                        const Text(
-                          'Location',
-                          style: TextStyle(fontWeight: FontWeight.bold),
-                        ),
-                        const SizedBox(height: 12),
-                        Text(widget.birdBox.locationDescription),
-                      ],
+              ),
+              closedColor: Colors.green[50],
+              openBuilder: (context, action) {
+                return MapPage(birdBox: widget.birdBox.id);
+              },
+              closedBuilder: (context, action) {
+                return Column(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Column(
+                        children: [
+                          const Text(
+                            'Location',
+                            style: TextStyle(fontWeight: FontWeight.bold),
+                          ),
+                          const SizedBox(height: 12),
+                          Text(widget.birdBox.locationDescription),
+                        ],
+                      ),
                     ),
-                  ),
-                  SizedBox(
-                    height: 150,
-                    child: Hero(
-                      tag: 'map',
+                    SizedBox(
+                      height: 150,
                       child: ClipRRect(
                         borderRadius: BorderRadius.only(
                           bottomLeft: Radius.circular(20),
@@ -106,15 +106,15 @@ class _BirdBoxPageState extends State<BirdBoxPage> {
                           ),
                         ),
                       ),
-                    ),
-                  )
-                ],
-              ),
+                    )
+                  ],
+                );
+              },
             ),
           ),
           Container(
             margin: const EdgeInsets.all(8),
-            padding: const EdgeInsets.all(16),
+            padding: const EdgeInsets.all(8),
             // height: 100,
             decoration: defaultBoxDecoration(color: Colors.green[50]),
             child: Column(
@@ -179,7 +179,7 @@ class _BirdBoxPageState extends State<BirdBoxPage> {
           ),
           _sightingList.isEmpty
               ? Padding(
-                  padding: const EdgeInsets.all(16.0),
+                  padding: const EdgeInsets.all(8.0),
                   child: Text(
                     'No observations have been made for this bird box yet.'
                     '\n\nTo enter one, tap the obervations button above',

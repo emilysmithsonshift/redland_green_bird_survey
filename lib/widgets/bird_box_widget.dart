@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:redland_green_bird_survey/models/bird_box.dart';
 
-import '../settings.dart';
-
 class BirdBoxWidget extends StatelessWidget {
   final BirdBox birdBox;
 
@@ -11,8 +9,6 @@ class BirdBoxWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: defaultBoxDecoration(color: Colors.green[50]),
-      padding: EdgeInsets.all(8),
       margin: const EdgeInsets.all(8),
       child: AspectRatio(
         aspectRatio: 1,
