@@ -51,7 +51,7 @@ class _FactPageState extends State<FactPage> {
         child: Container(
           padding: EdgeInsets.all(8),
           width: 100,
-          height: 60,
+          height: 70,
           margin: EdgeInsets.all(8),
           decoration: BoxDecoration(
             color: Colors.green[50],
@@ -89,8 +89,8 @@ class _FactPageState extends State<FactPage> {
                   optionContainer('General', 0),
                   optionContainer('Nest Boxes', 1),
                   optionContainer('Bird Names', 2),
-                  optionContainer('Passerines', 3),
-                  optionContainer('Corvids', 4),
+                  optionContainer('Song Birds (Passerines)', 3),
+                  optionContainer('The Crow Family (Corvids)', 4),
                   optionContainer('Birds of Prey', 5),
                 ],
               ),

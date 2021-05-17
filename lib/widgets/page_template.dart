@@ -31,15 +31,22 @@ class PageTemplate extends StatelessWidget {
             expandedHeight: MediaQuery.of(context).size.height * 0.25,
             flexibleSpace: FlexibleSpaceBar(
               titlePadding: EdgeInsets.all(0),
-              title: SizedBox(
-                width: double.infinity,
-                child: Text(
-                  title,
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontWeight: FontWeight.bold,
-                    fontSize: 18,
+              title: ConstrainedBox(
+                constraints: BoxConstraints(
+                  maxWidth: double.infinity,
+                ),
+                child: FittedBox(
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 2.0),
+                    child: Text(
+                      title,
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 18,
+                      ),
+                    ),
                   ),
                 ),
               ),

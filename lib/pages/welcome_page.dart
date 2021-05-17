@@ -22,8 +22,7 @@ class _WelcomePageState extends State<WelcomePage> {
                 textAlign: TextAlign.center,
                 style: Theme.of(context).textTheme.headline1),
             Text(
-                '\nIn 2020 Redland Green Community Group installed 16 bird nesting boxes all around the green thanks'
-                ' to a generous grant from the Redland and Cotham Amenities Society (RCAS).'
+                '\nIn 2020, Redland Green Community Group erected 16 nest boxes in trees around the green.'
                 '\n\nThis app is designed to use community power to help monitor these bird boxes.\n'),
             Container(
               padding: EdgeInsets.all(8),
@@ -76,7 +75,7 @@ class _WelcomePageState extends State<WelcomePage> {
                     ),
                   ),
                   Text(
-                      'Build your observation record from the activity options provided\n'),
+                      'Build your observation record from the activity options provided.\n'),
                   SizedBox(height: 8),
                   GestureDetector(
                     onTap: () {
@@ -88,7 +87,7 @@ class _WelcomePageState extends State<WelcomePage> {
                       );
                     },
                     child: Text(
-                      '3. Enter your observation into the app',
+                      '3. Enter your observation into the app.',
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
                       ),

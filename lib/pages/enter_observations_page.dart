@@ -1,8 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:redland_green_bird_survey/models/beak_options.dart';
 import 'package:redland_green_bird_survey/models/birds.dart';
-import 'package:redland_green_bird_survey/models/further_details_options.dart';
 import 'package:redland_green_bird_survey/models/sighting.dart';
 import 'package:redland_green_bird_survey/models/sighting_type.dart';
 import 'package:redland_green_bird_survey/pages/observation_widgets/observation_description.dart';
@@ -42,6 +42,7 @@ class _EnterObservationsPageState extends State<EnterObservationsPage> {
   bool showModal = true;
   DateTime maxDate;
   bool isLoading = true;
+  bool _fledgling = false;
 
   void checkShowModal() async {
     final prefs = await SharedPreferences.getInstance();
@@ -118,7 +119,7 @@ class _EnterObservationsPageState extends State<EnterObservationsPage> {
                       Text('\n\nFrequently Asked Questions',
                           style: Theme.of(context).textTheme.headline1),
                       Text(
-                          '\nI did not see any activity at all, should I log this?',
+                          '\nI didn’t see any activity at all. Should I log this?',
                           style: Theme.of(context).textTheme.headline1),
                       Text(
                           "Absolutely! If you have watched a box for at least five minutes, and have not seen any birds entering or leaving the nest, or any activity near to the nest, this is still a valuable record, as it tells us which boxes might not be used at that time. It helps us to decide if we should move the box to a different location. Please submit such findings!"),
@@ -141,7 +142,7 @@ class _EnterObservationsPageState extends State<EnterObservationsPage> {
                       Text(
                           "We do monitor the comments but we do not publish them to the public in order to safeguard from anything inappropriate."
                           " Rest assured that your comments will be read by the Redland Green Community Group. "),
-                      Text('\nI made a mistake, what should I do?',
+                      Text('\nI made a mistake. What should I do?',
                           style: Theme.of(context).textTheme.headline1),
                       Text(
                           "Don't panic! Simply go back to the home page and tap on 'My Details'. "
@@ -254,6 +255,7 @@ class _EnterObservationsPageState extends State<EnterObservationsPage> {
               _scrollToNextWidget();
               _scrollToNextWidget();
               _scrollToNextWidget();
+              _scrollToNextWidget();
             });
           }
           setState(
@@ -267,35 +269,6 @@ class _EnterObservationsPageState extends State<EnterObservationsPage> {
     Widget _step4 = step(
       context: context,
       stepNumber: 4,
-      title: 'Can you provide any more detail?',
-      showErrorMsg: sightingTypeErrorMsg,
-      errorMsg: '',
-      subtitle:
-          'If you can provide more detail on what you saw, select one of the following'
-          'options, otherwise move on to the last question.',
-      content: ObservationDescription(
-        onSelected: (int index) {
-          setState(() {
-            _furtherDetailstype = index;
-          });
-        },
-        sightingType: _furtherDetailstype,
-        sightingTypeList: FurtherDetailsOptions.furtherDetailsOptionsList,
-      ),
-      showPrevious: true,
-      onBack: () {
-        _scrollToPreviousWidget();
-      },
-      onNext: () {
-        sightingTypeErrorMsg = false;
-        setState(() {
-          _scrollToNextWidget();
-        });
-      },
-    );
-    Widget _step5 = step(
-      context: context,
-      stepNumber: 5,
       showErrorMsg: _birdErrorMsg,
       errorMsg: 'Please select a bird',
       title: 'Select which bird you saw',
@@ -321,10 +294,73 @@ class _EnterObservationsPageState extends State<EnterObservationsPage> {
         }
       },
     );
+    Widget _step5 = step(
+      context: context,
+      stepNumber: 5,
+      title: 'Did the bird have anything in its beak? (Optional)',
+      showErrorMsg: sightingTypeErrorMsg,
+      errorMsg: '',
+      subtitle: '',
+      content: ObservationDescription(
+        onSelected: (int index) {
+          setState(() {
+            _furtherDetailstype = index;
+          });
+        },
+        sightingType: _furtherDetailstype,
+        sightingTypeList: FurtherDetailsOptions.furtherDetailsOptionsList,
+      ),
+      showPrevious: true,
+      onBack: () {
+        _scrollToPreviousWidget();
+      },
+      onNext: () {
+        sightingTypeErrorMsg = false;
+        setState(() {
+          _scrollToNextWidget();
+        });
+      },
+    );
     Widget _step6 = step(
-      showErrorMsg: false,
       context: context,
       stepNumber: 6,
+      title: 'Was the bird Fledgling?',
+      showErrorMsg: sightingTypeErrorMsg,
+      errorMsg: '',
+      subtitle:
+          'Once the young birds have fledged, they don’t go back into the box again. If you were lucky'
+          ' enough to see a young bird leaving the nest (fledging), select the box below. Otherwise, leave this option blank.',
+      content: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Row(
+          children: [
+            Text('The bird was fledgling'),
+            Checkbox(
+                value: _fledgling,
+                onChanged: (value) {
+                  setState(() {
+                    _fledgling = value;
+                  });
+                })
+          ],
+        ),
+      ),
+      showPrevious: true,
+      onBack: () {
+        _scrollToPreviousWidget();
+      },
+      onNext: () {
+        sightingTypeErrorMsg = false;
+        setState(() {
+          _scrollToNextWidget();
+        });
+      },
+    );
+
+    Widget _step7 = step(
+      showErrorMsg: false,
+      context: context,
+      stepNumber: 7,
       title: 'Any comments (Optional)',
       content: Comments(
         onChanged: (value) {
@@ -341,6 +377,7 @@ class _EnterObservationsPageState extends State<EnterObservationsPage> {
           _scrollToPreviousWidget();
           _scrollToPreviousWidget();
           _scrollToPreviousWidget();
+          _scrollToPreviousWidget();
         }
       },
       nextButtonText: 'Submit',
@@ -352,6 +389,7 @@ class _EnterObservationsPageState extends State<EnterObservationsPage> {
           user: FirebaseAuth.instance.currentUser.displayName,
           sightingType: SightingType.sightingsTypeList[_sightingType].id,
           bird: _bird,
+          fledgling: _fledgling,
           comment: _comment,
           furtherDetailsOption: _furtherDetailstype == -1
               ? 0
@@ -395,6 +433,7 @@ class _EnterObservationsPageState extends State<EnterObservationsPage> {
       _step4,
       _step5,
       _step6,
+      _step7,
     ];
     final List<Widget> widgetList = [
       SizedBox(
@@ -403,7 +442,7 @@ class _EnterObservationsPageState extends State<EnterObservationsPage> {
           floatingActionButtonLocation:
               FloatingActionButtonLocation.startDocked,
           floatingActionButton: Padding(
-            padding: const EdgeInsets.only(bottom: 16.0),
+            padding: const EdgeInsets.only(bottom: 18.0),
             child: IconButton(
               color: Colors.blue,
               onPressed: () {

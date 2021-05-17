@@ -69,11 +69,11 @@ class _InformationPageState extends State<InformationPage> {
                 imageAsset: 'assets/crow2.png',
                 content: [
                   Text(
-                      'This app and the bird boxes would not have been possible without the hard work of '
-                      'Redland Green Community Group, in particular Julie Parker.'),
+                      'Julie Parker from the Redland Green Community Group contributed to the content of this app.'),
                   Text(
-                    'For more information about Redland Green Community Group please visit our website www.rgcg.org.uk',
+                    'For more information please visit our website www.rgcg.org.uk',
                   ),
+                  Icon(Icons.navigate_next),
                 ]),
             listTile(
                 onTap: () async {
@@ -108,7 +108,6 @@ class _InformationPageState extends State<InformationPage> {
                     url =
                         'https://apps.apple.com/gb/app/redland-green-tree-trail/id1511416301';
                   }
-
                   await canLaunch(url)
                       ? await launch(url)
                       : throw 'Could not launch $url';
@@ -122,6 +121,25 @@ class _InformationPageState extends State<InformationPage> {
                   Text(
                       'It takes you on a stroll of Redland Green and teaches you to identify 20 of the local trees.'),
                   Icon(Icons.nature_rounded)
+                ]),
+            listTile(
+                onTap: () async {
+                  String url = 'https://rcas.org.uk';
+
+                  await canLaunch(url)
+                      ? await launch(url)
+                      : throw 'Could not launch $url';
+                },
+                imageLeft: true,
+                imageAsset: 'assets/pigeon.png',
+                content: [
+                  Text(
+                    'We are indebted to Redland and Cotham Amenities Society (rcas.org.uk) who funded the purchase of the nest boxes.',
+                  ),
+                  SizedBox(
+                      width: double.infinity,
+                      child: Text('Tap here for more information')),
+                  Icon(Icons.navigate_next),
                 ]),
             SizedBox(height: 20),
           ],

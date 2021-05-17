@@ -186,28 +186,27 @@ class _LoginPageState extends State<LoginPage> {
                           return;
                         });
                       }
-                      if (error.toString().isEmpty) {
-                        showDialog(
-                          context: context,
-                          builder: (BuildContext context) {
-                            return AlertDialog(
-                              title: const Text(
-                                  "Please check your email for a password reset message"),
-                              content: const Text(
-                                  "Once you have reset your password you should be able to log in here."),
-                              actions: [
-                                ElevatedButton(
-                                  onPressed: () {
-                                    Navigator.pop(context);
-                                  },
-                                  child: const Text('Ok'),
-                                ),
-                              ],
-                            );
-                          },
-                        );
-                      }
                     });
+                    showDialog(
+                      context: context,
+                      builder: (BuildContext context) {
+                        return AlertDialog(
+                          title: const Text(
+                              "Please check your email for a password reset message"),
+                          content: const Text(
+                              "Once you have reset your password you should be able to log in here."
+                              "\n\nBe sure to check your junk mail."),
+                          actions: [
+                            ElevatedButton(
+                              onPressed: () {
+                                Navigator.pop(context);
+                              },
+                              child: const Text('Ok'),
+                            ),
+                          ],
+                        );
+                      },
+                    );
                   },
                   child: const Text('Forgotten Password?',
                       style: TextStyle(color: Colors.grey)),

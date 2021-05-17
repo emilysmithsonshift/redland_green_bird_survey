@@ -18,6 +18,13 @@ class DYK {
 
   static List<DYK> DYKList = [
     DYK(
+      question: 'What birds might I see (or hear) around Redland Green?',
+      answer:
+          'Redland Green and the adjacent allotments harbour a wide variety of species. These include tits (coal tit, long-tailed tit, blue tit, great tit), goldfinches, robins, wrens, blackbirds and song thrush, starlings, corvids (carrion crows, jackdaw, magpies and jays), woodpeckers (great spotted and green), nuthatch and wood pigeons. Seasonal visitors include swifts, house martins and chiffchaff (spring and summer) and fieldfare, redwing and blackcaps in the winter (though some blackcaps have become year round residents). You might also hear or see sparrowhawks and tawny owls. \n\nWe owe this considerable variety of species to the varied habitats offered by the Green and the allotments, particularly afforded by the veteran ash and oak trees in both places, which provide nesting sites and food. Bird tables in gardens also support some bird populations, although they could not do so without the habitat needed for nesting and roosting.',
+      type: DYKType.general,
+      image: 'assets/wagtail.png',
+    ),
+    DYK(
       question: 'What is sexual dimorphism in a species?',
       answer:
           "Dimorphism means that the two sexes of the same species differ in appearance from each other. This may be in size, weight, colour and markings. It may also include behavioural differences. The black male blackbird and the brown female blackbird are an example of dimorphism.",
@@ -52,13 +59,7 @@ class DYK {
       type: DYKType.general,
       image: 'assets/starling4.png',
     ),
-    DYK(
-      question: 'What birds might I see (or hear) around Redland Green?',
-      answer:
-          'Redland Green and the adjacent allotments harbour a wide variety of species. These include tits (coal tit, long-tailed tit, blue tit, great tit), goldfinches, robins, wrens, blackbirds and song thrush, starlings, corvids (carrion crows, jackdaw, magpies and jays), woodpeckers (great spotted and green), nuthatch and wood pigeons. Seasonal visitors include swifts, house martins and chiffchaff (spring and summer) and fieldfare, redwing and blackcaps in the winter (though some blackcaps have become year round residents). You might also hear or see sparrowhawks and tawny owls. \n\nWe owe this considerable variety of species to the varied habitats offered by the Green and the allotments, particularly afforded by the veteran ash and oak trees in both places, which provide nesting sites and food. Bird tables in gardens also support some bird populations, although they could not do so without the habitat needed for nesting and roosting.',
-      type: DYKType.general,
-      image: 'assets/wagtail.png',
-    ),
+
     DYK(
       question: 'What are the red, amber and green lists?',
       answer:
@@ -220,14 +221,6 @@ class DYK {
     ),
     DYK(
       question:
-          "If a blue tit is raised in a nest of great tits, what is its future?",
-      answer:
-          "Initially, the bird is likely to be confused about its species. However, it will recover from this. It is likely to go on to breed.",
-      type: DYKType.passerines,
-      image: 'assets/greattit_close.png',
-    ),
-    DYK(
-      question:
           "The brighter the yellow chest of the male great tit, the more attractive he is to female great tits. Why might this be?",
       answer:
           "Brighter yellow chests are caused by the presence of carotenoids, which are red, orange and yellow pigments produced by some plants. Carotenoids cannot be made by the bird, and have to be obtained from food. A bright yellow chest signifies to the female that the male is healthy and well fed, and will therefore also be able to feed his young brood. Colours also change after the annual moult.More dominant males also tend to have thicker stripes running down the middle of their undersides.",
@@ -236,11 +229,20 @@ class DYK {
     ),
     DYK(
       question:
+          "If a blue tit is raised in a nest of great tits, what is its future?",
+      answer:
+          "Initially, the bird is likely to be confused about its species. However, it will recover from this. It is likely to go on to breed.",
+      type: DYKType.passerines,
+      image: 'assets/bluetit3.png',
+    ),
+
+    DYK(
+      question:
           "If a great tit is raised in a nest of blue tits, what is its future?",
       answer:
           "The great tit is likely to be successfully raised along with the rest of the brood, but it will be confused about its species. It won’t recover from this, and will not be able to breed.",
       type: DYKType.passerines,
-      image: 'assets/bluetit3.png',
+      image: 'assets/greattit_close.png',
     ),
     DYK(
       question: "Why did Victorians keep goldfinches as cage birds?",
@@ -255,7 +257,7 @@ class DYK {
       answer:
           "From a distance, dunnocks can be mistaken for house sparrows, as at 14cm long they are a similar size and have similar colours. The most significant difference in appearance is that they have a fine pointed bill like a robin, not the thick bill of the sparrow. Another clue is that house sparrows congregate in flocks, while dunnocks are usually seen alone or in pairs. While having a superficial resemblance to sparrows, they are not related to them, and belong to a different family. Dunnocks are common, and often found in gardens. However, they are shy birds, not venturing much out into the open, and so may not be noticed. They spend a lot of time near to the ground, and usually search for invertebrates and seeds on the ground. They generally fly at a low level. ",
       type: DYKType.passerines,
-      image: 'assets/sparrow.png',
+      image: 'assets/dunnock.png',
     ),
 
     DYK(
@@ -287,6 +289,13 @@ class DYK {
       image: 'assets/dunnock.png',
     ),
     DYK(
+      question: "What is the most widely distributed bird in the world?",
+      answer:
+          "The house sparrow. While native to most of Europe and part of Asia, it has been both deliberately and accidentally introduced to many other parts of the world, including Australasia, the Americas and Africa.",
+      type: DYKType.passerines,
+      image: 'assets/sparrow.png',
+    ),
+    DYK(
       question: "Why do robins feature so often on Christmas cards?",
       answer:
           "In the Victorian era, postmen wore red jackets. The tradition of sending cards began in the same era. The Victorians were very fond of robins, and robins began to feature on Christmas cards, delivering letters like tiny postmen. And so it was that postmen acquired the nickname of “robins”, thus beginning this long association.",
@@ -304,7 +313,7 @@ class DYK {
       question:
           "Which birds on Redland Green are members of the corvid family?",
       answer:
-          "On Redland Green, resident corvids, or members of the crow family, include carrion crows, jackdaws, jays and magpies. But occasionally, if you’re lucky, you might see or hear a raven (Corvus corax) flying high above the green. Ravens used to be common residents of towns and cities, but persecution reduced their numbers to just 1,000 pairs, most of which were far from urban areas. Ravens have more recently been expanding their range once again, and they now number around 12,000 breeding pairs in the UK, a rare conservation success story. While they have not in general returned to urban areas, ravens now breed in the Avon Gorge. The raven is the largest of the corvids in the UK with a wingspan of 120-150cm: bigger than that of a buzzard. It has a thick neck with shaggy throat feathers, a thick black bill, and a long, diamond or wedge-shaped tail. The raven’s call is very distinctive: a deep “cronk”. By contrast, the carrion crow, the bird most likely to be confused with a raven, has a wingspan of 93-104cm. Its tail has a rounded fan-like shape, and its call is a higher pitched “caw caw”.",
+          "On Redland Green, resident corvids, or members of the crow family, include carrion crows, jackdaws, jays and magpies. But occasionally, if you’re lucky, you might see or hear a raven (Corvus corax) flying high above the green. \n\nRavens used to be common residents of towns and cities, but persecution reduced their numbers to just 1,000 pairs, most of which were far from urban areas. Ravens have more recently been expanding their range once again, and they now number around 12,000 breeding pairs in the UK, a rare conservation success story. \n\nWhile they have not in general returned to urban areas, ravens now breed in the Avon Gorge. The raven is the largest of the corvids in the UK with a wingspan of 120-150cm: bigger than that of a buzzard. \n\nIt has a thick neck with shaggy throat feathers, a thick black bill, and a long, diamond or wedge-shaped tail. \n\nThe raven’s call is very distinctive: a deep “cronk”. By contrast, the carrion crow, the bird most likely to be confused with a raven, has a wingspan of 93-104cm. Its tail has a rounded fan-like shape, and its call is a higher pitched “caw caw”.",
       type: DYKType.corvids,
       image: 'assets/crow.png',
     ),
@@ -320,7 +329,7 @@ class DYK {
       answer:
           "On average, carrion crows, hooded crows and jays live for 4 years. Magpies and jackdaws average 5, rooks 6, and chough 7 years. Ravens live 10-15 years. However, as with other birds, there is great variability. The oldest known magpie lived for over 21 years, and a carrion crow lived to be 20.",
       type: DYKType.corvids,
-      image: 'assets/crow3.png',
+      image: 'assets/magpie.png',
     ),
     DYK(
       question: "Does the jay have any predators in Redland Green?",

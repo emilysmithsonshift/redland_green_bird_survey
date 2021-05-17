@@ -1,9 +1,9 @@
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:redland_green_bird_survey/models/beak_options.dart';
 import 'package:redland_green_bird_survey/models/bird_box.dart';
 import 'package:redland_green_bird_survey/models/birds.dart';
-import 'package:redland_green_bird_survey/models/further_details_options.dart';
 import 'package:redland_green_bird_survey/models/sighting.dart';
 import 'package:redland_green_bird_survey/models/sighting_type.dart';
 import 'package:redland_green_bird_survey/pages/bird_box_page.dart';

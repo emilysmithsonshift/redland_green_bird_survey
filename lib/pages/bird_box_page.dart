@@ -200,7 +200,7 @@ class _BirdBoxPageState extends State<BirdBoxPage> {
 
     return PageTemplate(
       title: 'Bird Box ${widget.birdBox.id}',
-      image: 'assets/bluetit.png',
+      image: widget.birdBox.boxType.image,
       widgetList: [content()],
       gridList: [],
       heroTag: 'starling',

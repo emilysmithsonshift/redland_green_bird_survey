@@ -13,6 +13,7 @@ import 'package:redland_green_bird_survey/widgets/page_template.dart';
 import 'package:redland_green_bird_survey/widgets/rg_grid_tile.dart';
 import 'package:redland_green_bird_survey/widgets/rg_list_tile.dart';
 
+import 'bird_box_list_page.dart';
 import 'enter_observations_page.dart';
 import 'latest_observations_page.dart';
 import 'map_page.dart';
@@ -79,7 +80,7 @@ class _HomePageState extends State<HomePage> {
                         Padding(
                           padding: EdgeInsets.all(12.0),
                           child: Center(
-                            child: Text('Recent Bird Sightings',
+                            child: Text('Recent Bird Sightings at Boxes',
                                 textAlign: TextAlign.center,
                                 style: Theme.of(context).textTheme.headline1),
                           ),
@@ -181,6 +182,11 @@ class _HomePageState extends State<HomePage> {
           text: 'Map',
           imageAsset: 'assets/longtailedtit.png'),
       RGGridTile(
+          heroTag: 'bird_box_list',
+          navigateTo: BirdBoxListPage(),
+          text: 'Bird Box List',
+          imageAsset: 'assets/jay.png'),
+      RGGridTile(
           heroTag: 'my_details',
           navigateTo: MyDetailsPage(),
           text: 'My details',
@@ -205,7 +211,7 @@ class _HomePageState extends State<HomePage> {
       },
       child: Scaffold(
         body: PageTemplate(
-          title: 'Redland Green Bird Survey',
+          title: 'Redland Green Bird Box Survey',
           image: 'assets/robin1.png',
           listTileList: _widgetList,
           gridList: _gridList,

@@ -11,6 +11,7 @@ class Sighting {
   int sightingType;
   String comment;
   int furtherDetailsOption;
+  bool fledgling;
   Sighting({
     this.id,
     this.dateTime,
@@ -21,6 +22,7 @@ class Sighting {
     this.comment,
     this.userEmail,
     this.furtherDetailsOption,
+    this.fledgling,
   });
   static final ValueNotifier<int> observationsNotifier = ValueNotifier<int>(0);
   static final List<Sighting> observations = [];
@@ -38,6 +40,7 @@ class Sighting {
       'bird': _sighting.bird,
       'userEmail': _sighting.userEmail,
       'furtherObservation': _sighting.furtherDetailsOption,
+      'fledgling': _sighting.fledgling,
     });
     getSightings();
   }
@@ -53,6 +56,7 @@ class Sighting {
       'bird': _sighting.bird,
       'userEmail': _sighting.userEmail,
       'furtherObservation': _sighting.furtherDetailsOption,
+      'fledgling': _sighting.fledgling ?? false,
     });
     getSightings();
   }
@@ -77,7 +81,8 @@ class Sighting {
             userEmail: value['userEmail'],
             bird: value['bird'],
             furtherDetailsOption: value['furtherObservation'] as int,
-            birdBox: value['bird_box'] as int),
+            birdBox: value['bird_box'] as int,
+            fledgling: value['fledgling'] as bool),
       );
     });
     observations

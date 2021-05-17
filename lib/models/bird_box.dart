@@ -113,7 +113,7 @@ class BirdBox {
       location: LatLng(51.4745780, -2.6066050),
       boxType: BoxType.seville,
       locationDescription:
-          'This box is located in a young beech tree in the Dell,near to the Metford Road allotment fence, and about 20 metres below the lower path in the green.',
+          'This box is located in a young beech tree in the Dell, near to the Metford Road allotment fence, and about 20 metres below the lower path in the green.',
       boxState: BoxState.unidentifiedNest);
   static final BirdBox birdBox14 = BirdBox(
       id: 14,
