@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:redland_green_bird_survey/pages/awaiting_email_verification.dart';
 import 'package:redland_green_bird_survey/pages/introduction_page.dart';
 
+import 'models/version.dart';
 import 'pages/home_page.dart';
 
 Future<void> main() async {
@@ -18,8 +19,6 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  final Future<FirebaseApp> _fbApp = Firebase.initializeApp();
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -32,27 +31,48 @@ class _MyAppState extends State<MyApp> {
         ),
       ),
       title: 'Redland Green Bird Survey',
-      home: FutureBuilder(
-          future: _fbApp,
-          builder: (context, snapshot) {
-            if (snapshot.hasError) {
-              return const Text('Something went wrong!');
-            } else if (snapshot.hasData) {
-              if (FirebaseAuth.instance.currentUser == null) {
-                return IntroductionPage();
-              } else {
-                if (FirebaseAuth.instance.currentUser.emailVerified) {
-                  return HomePage();
-                } else {
-                  return AwaitingEmailVerification();
-                }
-              }
+      home: InitialPage(),
+    );
+  }
+}
+
+class InitialPage extends StatefulWidget {
+  @override
+  _InitialPageState createState() => _InitialPageState();
+}
+
+class _InitialPageState extends State<InitialPage> {
+  final Future<FirebaseApp> _fbApp = Firebase.initializeApp();
+
+  @override
+  void initState() {
+    Version.checkVersion(context);
+    super.initState();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return FutureBuilder(
+      future: _fbApp,
+      builder: (context, snapshot) {
+        if (snapshot.hasError) {
+          return const Text('Something went wrong!');
+        } else if (snapshot.hasData) {
+          if (FirebaseAuth.instance.currentUser == null) {
+            return IntroductionPage();
+          } else {
+            if (FirebaseAuth.instance.currentUser.emailVerified) {
+              return HomePage();
             } else {
-              return const Center(
-                child: CircularProgressIndicator(),
-              );
+              return AwaitingEmailVerification();
             }
-          }),
+          }
+        } else {
+          return const Center(
+            child: CircularProgressIndicator(),
+          );
+        }
+      },
     );
   }
 }

@@ -19,10 +19,8 @@ class BirdBoxWidget extends StatelessWidget {
               flex: 2,
               child: Padding(
                 padding: const EdgeInsets.all(2.0),
-                child: FittedBox(
-                  child: ClipOval(
-                    child: Image.asset(birdBox.boxType.image),
-                  ),
+                child: ClipOval(
+                  child: Image.asset(birdBox.boxType.image),
                 ),
               ),
             ),

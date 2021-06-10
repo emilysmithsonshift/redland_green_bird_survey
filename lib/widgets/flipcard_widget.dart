@@ -122,4 +122,10 @@ class _FlipCardWidgetState extends State<FlipCardWidget>
           child: _widget()),
     );
   }
+
+  @override
+  void dispose() {
+    _animationController.dispose();
+    super.dispose();
+  }
 }
