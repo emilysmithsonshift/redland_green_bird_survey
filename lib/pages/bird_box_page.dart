@@ -1,7 +1,7 @@
 import 'package:animations/animations.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:flutter_map/flutter_map.dart';
 import 'package:redland_green_bird_survey/models/bird_box.dart';
 import 'package:redland_green_bird_survey/models/sighting.dart';
 import 'package:redland_green_bird_survey/pages/bird_box_type_page.dart';
@@ -23,18 +23,15 @@ class BirdBoxPage extends StatefulWidget {
 }
 
 class _BirdBoxPageState extends State<BirdBoxPage> {
-  final Map<String, Marker> _markers = {};
+  List<Marker> _markers = [];
 
   @override
   void initState() {
-    final Marker _marker = Marker(
-      markerId: MarkerId(
-        widget.birdBox.id.toString(),
-      ),
-      icon: BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueYellow),
-      position: widget.birdBox.location,
-    );
-    _markers[widget.birdBox.id.toString()] = _marker;
+    _markers = [
+      Marker(
+        point: widget.birdBox.location,
+      )
+    ];
 
     super.initState();
   }
@@ -83,29 +80,36 @@ class _BirdBoxPageState extends State<BirdBoxPage> {
                     SizedBox(
                       height: 150,
                       child: ClipRRect(
-                        borderRadius: BorderRadius.only(
-                          bottomLeft: Radius.circular(20),
-                          bottomRight: Radius.circular(20),
-                        ),
-                        child: GoogleMap(
-                          onTap: (_) {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (_) =>
-                                    MapPage(birdBox: widget.birdBox.id),
-                              ),
-                            );
-                          },
-                          myLocationButtonEnabled: false,
-                          mapType: MapType.hybrid,
-                          markers: _markers.values.toSet(),
-                          initialCameraPosition: CameraPosition(
-                            target: widget.birdBox.location,
-                            zoom: 17,
+                          borderRadius: BorderRadius.only(
+                            bottomLeft: Radius.circular(20),
+                            bottomRight: Radius.circular(20),
                           ),
-                        ),
-                      ),
+                          child: FlutterMap(
+                            options: MapOptions(
+                                onTap: (_) {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (_) =>
+                                          MapPage(birdBox: widget.birdBox.id),
+                                    ),
+                                  );
+                                },
+                                zoom: 17,
+                                center: widget.birdBox.location),
+                            layers: [
+                              TileLayerOptions(
+                                  urlTemplate:
+                                      "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+                                  subdomains: ['a', 'b', 'c']),
+                              MarkerLayerOptions(markers: [
+                                Marker(
+                                  builder: (_) => Icon(Icons.location_pin),
+                                  point: widget.birdBox.location,
+                                )
+                              ])
+                            ],
+                          )),
                     )
                   ],
                 );

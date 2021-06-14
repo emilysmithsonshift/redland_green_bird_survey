@@ -1,4 +1,4 @@
-import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:latlong/latlong.dart';
 
 import 'box_type.dart';
 
@@ -26,7 +26,7 @@ class BirdBox {
 
   static final BirdBox birdBox1 = BirdBox(
       id: 1,
-      location: const LatLng(51.4751350, -2.6099130),
+      location: LatLng(51.4751350, -2.6099130),
       boxType: BoxType.seville,
       locationDescription:
           'Approaching from St Oswald’s Rd, this box is the first box encountered in the woodland running parallel to Coldharbour Rd. It is in a sycamore tree about 6 metres above the litter bin that’s towards the end of the path.',
