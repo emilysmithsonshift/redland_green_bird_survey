@@ -16,7 +16,8 @@ class _BirdIdentifierScreenState extends State<BirdIdentifierScreen> {
     List<Bird> birdList = Bird.birdsList
         .where((bird) =>
             bird.birdType == BirdType.nesting ||
-            bird.birdType == BirdType.predator)
+            bird.birdType == BirdType.predator ||
+            bird.birdType == BirdType.other)
         .toList();
 
     return PageTemplate(
