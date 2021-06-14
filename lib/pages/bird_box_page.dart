@@ -80,37 +80,40 @@ class _BirdBoxPageState extends State<BirdBoxPage> {
                     SizedBox(
                       height: 150,
                       child: ClipRRect(
-                          borderRadius: BorderRadius.only(
-                            bottomLeft: Radius.circular(20),
-                            bottomRight: Radius.circular(20),
-                          ),
-                          child: FlutterMap(
-                            options: MapOptions(
-                                onTap: (_) {
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                      builder: (_) =>
-                                          MapPage(birdBox: widget.birdBox.id),
-                                    ),
-                                  );
-                                },
-                                zoom: 17,
-                                center: widget.birdBox.location),
-                            layers: [
-                              TileLayerOptions(
-                                  urlTemplate:
-                                      "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
-                                  subdomains: ['a', 'b', 'c']),
-                              MarkerLayerOptions(markers: [
+                        borderRadius: BorderRadius.only(
+                          bottomLeft: Radius.circular(20),
+                          bottomRight: Radius.circular(20),
+                        ),
+                        child: FlutterMap(
+                          options: MapOptions(
+                              onTap: (_) {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (_) =>
+                                        MapPage(birdBox: widget.birdBox.id),
+                                  ),
+                                );
+                              },
+                              zoom: 17,
+                              center: widget.birdBox.location),
+                          layers: [
+                            TileLayerOptions(
+                                urlTemplate:
+                                    "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+                                subdomains: ['a', 'b', 'c']),
+                            MarkerLayerOptions(
+                              markers: [
                                 Marker(
                                   builder: (_) => Icon(Icons.location_pin),
                                   point: widget.birdBox.location,
                                 )
-                              ])
-                            ],
-                          )),
-                    )
+                              ],
+                            )
+                          ],
+                        ),
+                      ),
+                    ),
                   ],
                 );
               },

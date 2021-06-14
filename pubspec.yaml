@@ -48,6 +48,7 @@ dependencies:
     git:
       url: git://github.com/rorystephenson/flutter_map_marker_cluster.git
       ref: master
+  flutter_map_location_marker: any
 
 dev_dependencies:
   flutter_test:

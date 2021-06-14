@@ -2,11 +2,14 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
+import 'package:flutter_map_location_marker/flutter_map_location_marker.dart';
 import 'package:flutter_map_marker_cluster/flutter_map_marker_cluster.dart';
 import 'package:flutter_map_marker_popup/flutter_map_marker_popup.dart';
 import 'package:latlong/latlong.dart';
 import 'package:redland_green_bird_survey/models/bird_box.dart';
 import 'package:redland_green_bird_survey/pages/bird_box_page.dart';
+
+bool mapSatellite = false;
 
 class MapPage extends StatefulWidget {
   final int birdBox;
@@ -19,7 +22,7 @@ class MapPage extends StatefulWidget {
 class _MapPageState extends State<MapPage> {
   final List<Marker> _markers = [];
   MapController mapController = MapController();
-  bool mapSatellite = false;
+
   bool permissionGranted = false;
   final PopupController _popupController = PopupController();
 
@@ -49,7 +52,11 @@ class _MapPageState extends State<MapPage> {
           onTap: (_) {
             _popupController.hidePopup();
           },
-          plugins: [PopupMarkerPlugin(), MarkerClusterPlugin()],
+          plugins: [
+            PopupMarkerPlugin(),
+            MarkerClusterPlugin(),
+            LocationMarkerPlugin(),
+          ],
           center: widget.birdBox != null
               ? BirdBox.birdBoxesList[widget.birdBox].location
               : LatLng(51.474508, -2.608220),
@@ -67,6 +74,7 @@ class _MapPageState extends State<MapPage> {
                     "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
                 subdomains: ['a', 'b', 'c']),
           MarkerLayerOptions(markers: _markers),
+          LocationMarkerLayerOptions(),
           MarkerClusterLayerOptions(
             maxClusterRadius: 0,
             markers: _markers,
@@ -118,7 +126,7 @@ class MapMarker extends Marker {
           point: birdBox.location,
           builder: (BuildContext ctx) => Icon(
             Icons.location_pin,
-            color: Colors.green,
+            color: mapSatellite ? Colors.green : Colors.black,
           ),
         );
 }

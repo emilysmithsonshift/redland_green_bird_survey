@@ -82,7 +82,7 @@ class _SelectBirdBoxNoState extends State<SelectBirdBoxNo> {
                 ? Container(
                     padding: const EdgeInsets.all(8),
                     decoration: BoxDecoration(
-                      color: Colors.green[50],
+                      color: Colors.green[100],
                       borderRadius: const BorderRadius.all(
                         Radius.circular(20),
                       ),

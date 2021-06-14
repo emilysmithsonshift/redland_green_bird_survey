@@ -42,7 +42,7 @@ class _BirdBoxListPageState extends State<BirdBoxListPage> {
           ),
         );
       }).toList(),
-      heroTag: 'box_list_page',
+      heroTag: 'bird_box_list',
     );
   }
 }

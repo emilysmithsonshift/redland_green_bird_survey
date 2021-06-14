@@ -24,12 +24,18 @@ Widget observationSummary(Sighting sighting, BuildContext context) {
           ],
         ),
         Container(
-            height: 24,
-            width: 24,
-            decoration: BoxDecoration(
-                color: Colors.green[100],
-                borderRadius: BorderRadius.circular(100)),
-            child: Center(child: Text(sighting.birdBox.toString())))
+          height: 24,
+          width: 24,
+          decoration: BoxDecoration(
+            color: Colors.green[100],
+            borderRadius: BorderRadius.circular(100),
+          ),
+          child: Center(
+            child: Text(
+              sighting.birdBox.toString(),
+            ),
+          ),
+        )
       ],
     ),
   );

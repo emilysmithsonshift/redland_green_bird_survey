@@ -19,112 +19,119 @@ class _EnterObservationsPageState extends State<EnterObservationsPage> {
   DateTime _dateTime = DateTime.now();
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Container(
-          height: MediaQuery.of(context).size.height * 0.25,
-          decoration: BoxDecoration(
-            image: DecorationImage(
-              image: AssetImage(
-                'assets/greattit.png',
+    return Scaffold(
+      body: Column(
+        children: [
+          Hero(
+            tag: 'greattit',
+            child: Material(
+              child: Container(
+                height: MediaQuery.of(context).size.height * 0.25,
+                decoration: BoxDecoration(
+                  image: DecorationImage(
+                    image: AssetImage(
+                      'assets/greattit.png',
+                    ),
+                    fit: BoxFit.fill,
+                  ),
+                ),
+                child: Stack(
+                  children: [
+                    Align(
+                      alignment: Alignment.centerLeft,
+                      child: IconButton(
+                        icon: Icon(Icons.arrow_back_ios, color: Colors.white),
+                        onPressed: () {
+                          Navigator.of(context).pop();
+                        },
+                      ),
+                    ),
+                    Align(
+                      alignment: Alignment.bottomCenter,
+                      child: FittedBox(
+                        child: Text(
+                          'Enter Observations',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 24,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
               ),
-              fit: BoxFit.fill,
             ),
           ),
-          child: Stack(
-            children: [
-              Align(
-                alignment: Alignment.centerLeft,
-                child: IconButton(
-                  icon: Icon(Icons.arrow_back_ios, color: Colors.white),
-                  onPressed: () {
-                    Navigator.of(context).pop();
-                  },
-                ),
-              ),
-              Align(
-                alignment: Alignment.bottomCenter,
-                child: FittedBox(
-                  child: Text(
-                    'Enter Observations',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 24,
+          Expanded(
+            child: CustomStepper(
+              customStepList: [
+                CustomStep(
+                    stepNumber: 1,
+                    title: 'Select the bird box number',
+                    content: SelectBirdBoxNo(
+                      birdBox: _birdBox,
+                      context: context,
+                      onSelect: (int birdBox) {
+                        setState(() {
+                          _birdBox = birdBox;
+                        });
+                      },
                     ),
-                  ),
-                ),
-              ),
-            ],
-          ),
-        ),
-        Expanded(
-          child: CustomStepper(
-            customStepList: [
-              CustomStep(
-                  stepNumber: 1,
-                  title: 'Select the bird box number',
-                  content: SelectBirdBoxNo(
-                    birdBox: _birdBox,
-                    context: context,
-                    onSelect: (int birdBox) {
-                      setState(() {
-                        _birdBox = birdBox;
-                      });
+                    proceed: _birdBox != -1,
+                    onNext: () {
+                      if (_birdBox == -1) {
+                        return;
+                      }
                     },
+                    isLast: false,
+                    isFirst: true,
+                    errorMsg: 'Please select a box.'),
+                CustomStep(
+                  stepNumber: 2,
+                  title: 'Time of Observation',
+                  content: TimeOfObservation(
+                    dateTime: _dateTime,
+                    onSelected: (DateTime dateTime) {
+                      _dateTime = dateTime;
+                    },
+                    maxDate: DateTime.now(),
                   ),
-                  proceed: _birdBox != -1,
-                  onNext: () {
-                    if (_birdBox == -1) {
-                      return;
-                    }
-                  },
+                  onNext: () {},
                   isLast: false,
-                  isFirst: true,
-                  errorMsg: 'Please select a box.'),
-              CustomStep(
-                stepNumber: 2,
-                title: 'Time of Observation',
-                content: TimeOfObservation(
-                  dateTime: _dateTime,
-                  onSelected: (DateTime dateTime) {
-                    _dateTime = dateTime;
-                  },
-                  maxDate: DateTime.now(),
+                  isFirst: false,
+                  proceed: true,
                 ),
-                onNext: () {},
-                isLast: false,
-                isFirst: false,
-                proceed: true,
-              ),
-              CustomStep(
-                stepNumber: 1,
-                title: 'Please select the bird box',
-                content: Text('hi'),
-                onNext: () {},
-                isLast: false,
-                isFirst: false,
-              ),
-              CustomStep(
-                stepNumber: 1,
-                title: 'Please select the bird box',
-                content: Text('hi'),
-                onNext: () {},
-                isLast: false,
-                isFirst: false,
-              ),
-              CustomStep(
-                stepNumber: 1,
-                title: 'Please select the bird box',
-                content: Text('hi'),
-                onNext: () {},
-                isLast: false,
-                isFirst: false,
-              ),
-            ],
+                CustomStep(
+                  stepNumber: 1,
+                  title: 'Please select the bird box',
+                  content: Text('hi'),
+                  onNext: () {},
+                  isLast: false,
+                  isFirst: false,
+                ),
+                CustomStep(
+                  stepNumber: 1,
+                  title: 'Please select the bird box',
+                  content: Text('hi'),
+                  onNext: () {},
+                  isLast: false,
+                  isFirst: false,
+                ),
+                CustomStep(
+                  stepNumber: 1,
+                  title: 'Please select the bird box',
+                  content: Text('hi'),
+                  onNext: () {},
+                  isLast: false,
+                  isFirst: false,
+                ),
+              ],
+            ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }
