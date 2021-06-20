@@ -21,7 +21,9 @@ class RGGridTile extends StatelessWidget {
     return GestureDetector(
       onTap: () {
         Navigator.push(
-            context, MaterialPageRoute(builder: (context) => navigateTo));
+          context,
+          MaterialPageRoute(builder: (context) => navigateTo),
+        );
       },
       child: Hero(
         tag: heroTag,

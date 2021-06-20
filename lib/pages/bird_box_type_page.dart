@@ -33,7 +33,7 @@ class BirdBoxTypePage extends StatelessWidget {
           ),
         ),
       ],
-      heroTag: 'boxType',
+      heroTag: 'bird_box_type',
     );
   }
 }

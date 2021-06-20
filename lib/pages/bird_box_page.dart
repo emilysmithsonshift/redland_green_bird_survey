@@ -168,7 +168,7 @@ class _BirdBoxPageState extends State<BirdBoxPage> {
                 ),
                 Flexible(
                   child: RGGridTile(
-                    heroTag: 'boxType',
+                    heroTag: 'bird_box_type',
                     navigateTo:
                         BirdBoxTypePage(boxType: widget.birdBox.boxType),
                     text: '\nBoxType: ${widget.birdBox.boxType.name}',
