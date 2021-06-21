@@ -208,7 +208,7 @@ class _BirdBoxPageState extends State<BirdBoxPage> {
       image: widget.birdBox.boxType.image,
       widgetList: [content()],
       gridList: [],
-      heroTag: 'starling',
+      heroTag: 'birdbox ${widget.birdBox.id}',
     );
   }
 }

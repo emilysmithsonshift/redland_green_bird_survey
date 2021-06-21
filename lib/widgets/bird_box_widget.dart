@@ -9,7 +9,10 @@ class BirdBoxWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.all(8),
+      decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.all(Radius.circular(20))),
+      // margin: const EdgeInsets.all(8),
       child: AspectRatio(
         aspectRatio: 1,
         child: Column(
@@ -18,9 +21,12 @@ class BirdBoxWidget extends StatelessWidget {
             Flexible(
               flex: 2,
               child: Padding(
-                padding: const EdgeInsets.all(2.0),
+                padding: const EdgeInsets.all(6.0),
                 child: ClipOval(
-                  child: Image.asset(birdBox.boxType.image),
+                  child: Hero(
+                    tag: "birdbox ${birdBox.id}",
+                    child: Image.asset(birdBox.boxType.image),
+                  ),
                 ),
               ),
             ),

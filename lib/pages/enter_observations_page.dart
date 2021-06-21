@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:redland_green_bird_survey/models/sighting.dart';
+import 'package:redland_green_bird_survey/pages/observation_widgets/select_bird.dart';
 import 'package:redland_green_bird_survey/pages/observation_widgets/select_bird_box_no.dart';
 import 'package:redland_green_bird_survey/pages/observation_widgets/step.dart';
 import 'package:redland_green_bird_survey/pages/observation_widgets/time_of_observation.dart';
@@ -16,6 +17,7 @@ class EnterObservationsPage extends StatefulWidget {
 
 class _EnterObservationsPageState extends State<EnterObservationsPage> {
   int _birdBox = -1;
+  int _bird = -1;
   DateTime _dateTime = DateTime.now();
   @override
   Widget build(BuildContext context) {
@@ -104,25 +106,13 @@ class _EnterObservationsPageState extends State<EnterObservationsPage> {
                   proceed: true,
                 ),
                 CustomStep(
-                  stepNumber: 1,
-                  title: 'Please select the bird box',
-                  content: Text('hi'),
-                  onNext: () {},
-                  isLast: false,
-                  isFirst: false,
-                ),
-                CustomStep(
-                  stepNumber: 1,
-                  title: 'Please select the bird box',
-                  content: Text('hi'),
-                  onNext: () {},
-                  isLast: false,
-                  isFirst: false,
-                ),
-                CustomStep(
-                  stepNumber: 1,
-                  title: 'Please select the bird box',
-                  content: Text('hi'),
+                  stepNumber: 3,
+                  title: 'Please select which bird you saw',
+                  content: SelectBird(_bird, (int bird) {
+                    setState(() {
+                      _bird = bird;
+                    });
+                  }),
                   onNext: () {},
                   isLast: false,
                   isFirst: false,

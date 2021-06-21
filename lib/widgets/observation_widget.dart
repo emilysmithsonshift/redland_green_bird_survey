@@ -1,4 +1,3 @@
-import 'package:animations/animations.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
@@ -73,7 +72,7 @@ Widget observationDetails({
                             ),
                           )
                         : Image.asset(
-                            bird.images[0],
+                            bird.images[0].asset,
                             fit: BoxFit.cover,
                           ),
                   ),
@@ -125,40 +124,32 @@ Widget observationDetails({
               ),
             ),
             if (showBoxNo)
-              OpenContainer(
-                closedShape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.all(
-                    Radius.circular(40),
-                  ),
-                ),
-                openBuilder: (context, close) {
-                  return BirdBoxPage(
-                      birdBox: BirdBox.birdBoxesList[sighting.birdBox - 1]);
-                },
-                closedColor: Colors.green[100],
-                closedBuilder: (context, open) {
-                  return GestureDetector(
-                    onTap: () {
-                      open();
-                    },
-                    child: ClipOval(
-                      child: Container(
-                          color: Colors.green[100],
-                          height: 70,
-                          width: 70,
-                          child: Padding(
-                            padding: const EdgeInsets.all(2.0),
-                            child: Center(
-                              child: Text(
-                                'Box no:\n${sighting.birdBox}',
-                                textAlign: TextAlign.center,
-                              ),
-                            ),
-                          )),
+              GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => BirdBoxPage(
+                          birdBox: BirdBox.birdBoxesList[sighting.birdBox - 1]),
                     ),
                   );
                 },
-              )
+                child: ClipOval(
+                  child: Container(
+                      color: Colors.green[100],
+                      height: 70,
+                      width: 70,
+                      child: Padding(
+                        padding: const EdgeInsets.all(2.0),
+                        child: Center(
+                          child: Text(
+                            'Box no:\n${sighting.birdBox}',
+                            textAlign: TextAlign.center,
+                          ),
+                        ),
+                      )),
+                ),
+              ),
           ],
         ),
       ),

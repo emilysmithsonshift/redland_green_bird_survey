@@ -38,7 +38,7 @@ class _BirdFactPageState extends State<BirdFactPage> {
                 image: DecorationImage(
                   fit: BoxFit.cover,
                   image: AssetImage(
-                    widget.bird.images[i],
+                    widget.bird.images[i].asset,
                   ),
                 ),
               )),
@@ -72,7 +72,7 @@ class _BirdFactPageState extends State<BirdFactPage> {
                           image: DecorationImage(
                             fit: BoxFit.cover,
                             image: AssetImage(
-                              widget.bird.images[imageNumber],
+                              widget.bird.images[imageNumber].asset,
                             ),
                           ),
                         ),
