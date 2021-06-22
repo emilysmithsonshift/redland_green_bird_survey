@@ -70,6 +70,9 @@ class _SelectBirdBoxNoState extends State<SelectBirdBoxNo> {
                       child: Center(
                         child: Text(
                           _birdBox.id.toString(),
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
                       ),
                     ),

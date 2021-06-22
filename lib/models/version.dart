@@ -5,18 +5,16 @@ import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class Version {
-  static final String currentVersion = '1.0.4+5';
+  static final String currentVersion = '1.0.5+6';
 
   static Future checkVersion(BuildContext context) async {
     final DatabaseReference reference =
         FirebaseDatabase.instance.reference().child("version");
     final DataSnapshot snapshot = await reference.once();
     if (snapshot.value == null) {
-      print('null');
       return true;
     }
     final String latestVersion = snapshot.value;
-    print(latestVersion);
     if (latestVersion != currentVersion) {
       showDialog(
         context: context,
