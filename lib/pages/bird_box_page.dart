@@ -23,7 +23,7 @@ class BirdBoxPage extends StatefulWidget {
 }
 
 class _BirdBoxPageState extends State<BirdBoxPage> {
-  List<Marker> _markers = [];
+  List<Marker> _markers;
 
   @override
   void initState() {

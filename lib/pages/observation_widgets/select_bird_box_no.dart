@@ -19,6 +19,10 @@ class _SelectBirdBoxNoState extends State<SelectBirdBoxNo> {
   Widget build(BuildContext context) {
     return Column(
       children: [
+        Text(
+            'This section is only for observing birds that are using our bird boxes. '
+            'If you spot anything else you would like to share, '
+            'please email emily_foulkes@hotmail.com'),
         Container(
           child: GridView.builder(
             padding: const EdgeInsets.all(0),

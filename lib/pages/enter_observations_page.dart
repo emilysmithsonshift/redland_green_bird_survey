@@ -3,7 +3,9 @@ import 'package:redland_green_bird_survey/models/sighting.dart';
 import 'package:redland_green_bird_survey/pages/observation_widgets/select_bird.dart';
 import 'package:redland_green_bird_survey/pages/observation_widgets/select_bird_box_no.dart';
 import 'package:redland_green_bird_survey/pages/observation_widgets/step.dart';
-import 'package:redland_green_bird_survey/pages/observation_widgets/time_of_observation.dart';
+
+import 'observation_widgets/comments.dart';
+import 'observation_widgets/time_of_observation.dart';
 
 class EnterObservationsPage extends StatefulWidget {
   final int birdBox;
@@ -106,15 +108,25 @@ class _EnterObservationsPageState extends State<EnterObservationsPage> {
                   proceed: true,
                 ),
                 CustomStep(
-                  stepNumber: 3,
-                  title: 'Please select which bird you saw',
-                  content: SelectBird(_bird, (int bird) {
-                    setState(() {
-                      _bird = bird;
-                    });
-                  }),
+                    stepNumber: 3,
+                    title: 'Please select which bird you saw',
+                    content: SelectBird(_bird, (int bird) {
+                      setState(() {
+                        _bird = bird;
+                      });
+                    }),
+                    onNext: () {},
+                    errorMsg: 'Please select one.',
+                    isLast: false,
+                    isFirst: false,
+                    proceed: _bird != -1),
+                CustomStep(
+                  stepNumber: 4,
+                  title:
+                      'Thank you for your submission. If you have any comments please enter them here.',
+                  content: SizedBox(height: 400, child: Comments()),
                   onNext: () {},
-                  isLast: false,
+                  isLast: true,
                   isFirst: false,
                 ),
               ],

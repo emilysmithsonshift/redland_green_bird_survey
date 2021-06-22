@@ -115,7 +115,7 @@ class _CustomStepperState extends State<CustomStepper> {
                   child: Row(
                     children: [
                       Text(step.isLast ? 'Submit' : 'Next'),
-                      Icon(Icons.keyboard_arrow_down),
+                      if (!step.isLast) Icon(Icons.keyboard_arrow_down),
                     ],
                   ),
                 ),
