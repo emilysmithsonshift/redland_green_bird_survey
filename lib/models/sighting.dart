@@ -8,21 +8,16 @@ class Sighting {
   int bird;
   String user;
   String userEmail;
-  int sightingType;
   String comment;
-  int furtherDetailsOption;
-  bool fledgling;
+
   Sighting({
     this.id,
     this.dateTime,
     this.birdBox,
     this.user,
-    this.sightingType,
     this.bird,
     this.comment,
     this.userEmail,
-    this.furtherDetailsOption,
-    this.fledgling,
   });
   static final ValueNotifier<int> observationsNotifier = ValueNotifier<int>(0);
   static final List<Sighting> observations = [];
@@ -36,11 +31,8 @@ class Sighting {
       'user': _sighting.user,
       'date_time': _sighting.dateTime.toIso8601String(),
       'bird_box': _sighting.birdBox,
-      'sighting_type': _sighting.sightingType,
       'bird': _sighting.bird,
       'userEmail': _sighting.userEmail,
-      'furtherObservation': _sighting.furtherDetailsOption,
-      'fledgling': _sighting.fledgling,
     });
     getSightings();
   }
@@ -52,11 +44,8 @@ class Sighting {
       'user': _sighting.user,
       'date_time': _sighting.dateTime.toIso8601String(),
       'bird_box': _sighting.birdBox,
-      'sighting_type': _sighting.sightingType,
       'bird': _sighting.bird,
       'userEmail': _sighting.userEmail,
-      'furtherObservation': _sighting.furtherDetailsOption,
-      'fledgling': _sighting.fledgling ?? false,
     });
     getSightings();
   }
@@ -74,15 +63,13 @@ class Sighting {
     returnedList.forEach((key, value) {
       observations.add(
         Sighting(
-            id: key as String,
-            sightingType: value['sighting_type'] as int,
-            dateTime: DateTime.parse(value['date_time'] as String),
-            user: value['user'] as String,
-            userEmail: value['userEmail'],
-            bird: value['bird'],
-            furtherDetailsOption: value['furtherObservation'] as int,
-            birdBox: value['bird_box'] as int,
-            fledgling: value['fledgling'] as bool),
+          id: key as String,
+          dateTime: DateTime.parse(value['date_time'] as String),
+          user: value['user'] as String,
+          userEmail: value['userEmail'],
+          bird: value['bird'],
+          birdBox: value['bird_box'] as int,
+        ),
       );
     });
     observations

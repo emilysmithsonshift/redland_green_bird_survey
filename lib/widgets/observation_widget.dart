@@ -1,11 +1,9 @@
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:redland_green_bird_survey/models/beak_options.dart';
 import 'package:redland_green_bird_survey/models/bird_box.dart';
 import 'package:redland_green_bird_survey/models/birds.dart';
 import 'package:redland_green_bird_survey/models/sighting.dart';
-import 'package:redland_green_bird_survey/models/sighting_type.dart';
 import 'package:redland_green_bird_survey/pages/bird_box_page.dart';
 import 'package:redland_green_bird_survey/pages/bird_fact_page.dart';
 import 'package:redland_green_bird_survey/pages/enter_observations_page.dart';
@@ -94,27 +92,6 @@ Widget observationDetails({
                     Text(
                       '${DateFormat('d MMMM yyyy').format(sighting.dateTime)} ${DateFormat.jm().format(sighting.dateTime)}',
                     ),
-                    const SizedBox(height: 4),
-                    Text(
-                      SightingType.sightingsTypeList
-                          .firstWhere((sightingType) =>
-                              sightingType.id == sighting.sightingType)
-                          .description,
-                    ),
-                    if (sighting.furtherDetailsOption != -1 &&
-                        sighting.furtherDetailsOption != 0)
-                      SizedBox(height: 4),
-                    if (sighting.furtherDetailsOption != -1 &&
-                        sighting.furtherDetailsOption != 0)
-                      Text(
-                        FurtherDetailsOptions.furtherDetailsOptionsList
-                            .firstWhere(
-                              (furtherDetails) =>
-                                  furtherDetails.id ==
-                                  sighting.furtherDetailsOption,
-                            )
-                            .description,
-                      ),
                     const SizedBox(height: 4),
                     if (showUser)
                       Text('Observed by: ${sighting.user}',

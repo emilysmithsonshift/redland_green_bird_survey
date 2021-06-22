@@ -75,11 +75,12 @@ class _CustomStepperState extends State<CustomStepper> {
                 style: TextStyle(color: Colors.red),
               ),
             Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              mainAxisAlignment: MainAxisAlignment.end,
               children: [
                 Visibility(
                   visible: !step.isFirst,
                   child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(primary: Colors.green[100]),
                     onPressed: () {
                       currentPage--;
                       controller.animateToPage(
@@ -89,23 +90,33 @@ class _CustomStepperState extends State<CustomStepper> {
                       );
                     },
                     child: Row(
-                      children: [Text('Back'), Icon(Icons.keyboard_arrow_up)],
+                      children: [
+                        Text(
+                          'Back',
+                          style: TextStyle(color: Colors.black),
+                        ),
+                        Icon(Icons.keyboard_arrow_up, color: Colors.black)
+                      ],
                     ),
                   ),
                 ),
+                SizedBox(width: 20),
                 ElevatedButton(
+                  style: ElevatedButton.styleFrom(primary: Colors.green[100]),
                   onPressed: () {
                     if (step.proceed) {
                       setState(() {
                         showErrorMsg = false;
                       });
-
-                      currentPage++;
-                      controller.animateToPage(
-                        currentPage,
-                        duration: Duration(seconds: 1),
-                        curve: Curves.easeIn,
-                      );
+                      widget.customStepList[currentPage].onNext();
+                      if (!widget.customStepList[currentPage].isLast) {
+                        currentPage++;
+                        controller.animateToPage(
+                          currentPage,
+                          duration: Duration(seconds: 1),
+                          curve: Curves.easeIn,
+                        );
+                      }
                     } else {
                       setState(() {
                         showErrorMsg = true;
@@ -114,8 +125,16 @@ class _CustomStepperState extends State<CustomStepper> {
                   },
                   child: Row(
                     children: [
-                      Text(step.isLast ? 'Submit' : 'Next'),
-                      if (!step.isLast) Icon(Icons.keyboard_arrow_down),
+                      Text(
+                        step.isLast ? 'Submit' : 'Next',
+                        style: TextStyle(color: Colors.black),
+                      ),
+                      step.isLast
+                          ? SizedBox(width: 30)
+                          : Icon(
+                              Icons.keyboard_arrow_down,
+                              color: Colors.black,
+                            ),
                     ],
                   ),
                 ),
