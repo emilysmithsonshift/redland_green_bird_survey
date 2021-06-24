@@ -334,11 +334,11 @@ class Bird {
     description: "",
     images: [
       Photo(
-        'assets/sparrowhawk_1.png',
+        'assets/sparrowhawk_2.png',
         keith,
       ),
       Photo(
-        'assets/sparrowhawk_2.png',
+        'assets/sparrowhawk_1.png',
         keith,
       ),
       Photo(
@@ -346,14 +346,14 @@ class Bird {
         keith,
       ),
     ],
-    birdFamily: '',
-    conservationStatus: '',
-    scientificName: '',
+    birdFamily: 'Kites, Hawks and Eagles',
+    conservationStatus: 'Green',
+    scientificName: 'Accipiter Nisus',
     birdType: BirdType.predator,
     id: 20,
   );
   static final Bird sparrow = Bird(
-    name: 'Sparrow',
+    name: 'House Sparrow',
     description: "",
     images: [
       Photo(
@@ -373,10 +373,10 @@ class Bird {
         keith,
       ),
     ],
-    birdFamily: '',
-    conservationStatus: '',
-    scientificName: '',
-    birdType: BirdType.predator,
+    birdFamily: 'Old World Sparrows',
+    conservationStatus: 'Red',
+    scientificName: 'Passer Domesticus',
+    birdType: BirdType.other,
     id: 21,
   );
   static final Bird piedFlycatcher = Bird(
@@ -392,9 +392,9 @@ class Bird {
         keith,
       ),
     ],
-    birdFamily: '',
-    conservationStatus: '',
-    scientificName: '',
+    birdFamily: 'Old World Flycatchers and Chats',
+    conservationStatus: 'Red',
+    scientificName: 'Ficedula Hypoleuca',
     birdType: BirdType.predator,
     id: 22,
   );
@@ -403,17 +403,17 @@ class Bird {
     description: "",
     images: [
       Photo(
-        'assets/jackdaw.png',
-        keith,
-      ),
-      Photo(
         'assets/jackdaw_1.png',
         giorgio,
       ),
+      Photo(
+        'assets/jackdaw.png',
+        keith,
+      ),
     ],
-    birdFamily: '',
-    conservationStatus: '',
-    scientificName: '',
+    birdFamily: 'Crows',
+    conservationStatus: 'Green',
+    scientificName: 'Corvus Monedula',
     birdType: BirdType.predator,
     id: 22,
   );
@@ -434,9 +434,9 @@ class Bird {
         keith,
       ),
     ],
-    birdFamily: '',
-    conservationStatus: '',
-    scientificName: '',
+    birdFamily: 'Falcons',
+    conservationStatus: 'Amber',
+    scientificName: 'Falco Tinnunculus',
     birdType: BirdType.predator,
     id: 22,
   );

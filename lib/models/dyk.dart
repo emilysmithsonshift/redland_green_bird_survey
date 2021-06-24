@@ -59,7 +59,6 @@ class DYK {
       type: DYKType.general,
       image: 'assets/starling4.png',
     ),
-
     DYK(
       question: 'What are the red, amber and green lists?',
       answer:
@@ -235,7 +234,6 @@ class DYK {
       type: DYKType.passerines,
       image: 'assets/bluetit3.png',
     ),
-
     DYK(
       question:
           "If a great tit is raised in a nest of blue tits, what is its future?",
@@ -251,7 +249,6 @@ class DYK {
       type: DYKType.passerines,
       image: 'assets/goldfinch3.png',
     ),
-
     DYK(
       question: "How can you tell a dunnock from a house sparrow?",
       answer:
@@ -259,7 +256,6 @@ class DYK {
       type: DYKType.passerines,
       image: 'assets/dunnock.png',
     ),
-
     DYK(
       question: "Why do pied wagtails wag their tails up and down?",
       answer:
@@ -267,13 +263,13 @@ class DYK {
       type: DYKType.passerines,
       image: 'assets/wagtail.png',
     ),
-    // DYK(
-    //   question: "What is the most widely distributed bird in the world?",
-    //   answer:
-    //       "The house sparrow. While native to most of Europe and part of Asia, it has been both deliberately and accidentally introduced to many other parts of the world, including Australasia, the Americas and Africa.",
-    //   type: DYKType.passerines,
-    //   image: 'assets/.png',
-    // ),
+    DYK(
+      question: "What is the most widely distributed bird in the world?",
+      answer:
+          "The house sparrow. While native to most of Europe and part of Asia, it has been both deliberately and accidentally introduced to many other parts of the world, including Australasia, the Americas and Africa.",
+      type: DYKType.passerines,
+      image: 'assets/sparrow_3.png',
+    ),
     DYK(
       question: "Why does the robin have such a brightly coloured breast?",
       answer:
@@ -339,18 +335,34 @@ class DYK {
       image: 'assets/jay.png',
     ),
     DYK(
-      question: "Do sparrowhawks control how many small birds are in an area?",
-      answer:
-          "Although sparrowhawks predate small birds, the short answer is “no, they don’t”. That’s because the number of sparrowhawks in a given area is limited by the “carrying capacity” of the habitat, which means that the amount of food and availability of nesting sites constrain how many individuals can survive. Young birds don’t pair and breed until there is vacant territory and plentiful food. This means that there is a close relationship between the number of small birds and sparrowhawks. Both increases and decreases in small bird populations are mirrored by corresponding changes in the number of sparrowhawks. Sparrowhawks are therefore indicators of the health of an ecosystem.",
-      type: DYKType.birdsOfPrey,
-      image: 'assets/jay.png',
-    ),
-    DYK(
       question: "Are there tawny owls in Redland?",
       answer:
           "Yes. Tawny owls can be heard in several places around Redland, including the green. The female’s ‘ke-wick’ and the male’s answering ‘hoo hoo’ can be heard at night. Tawnies favour deciduous woodland and nest in tree cavities and old buildings. Their main prey are mice and voles, but they also eat frogs and invertebrates, and sometimes small birds. They are ambush predators, and typically watch for prey from a perch, hunting at dusk and during the night. Females typically weigh about 500g and males rather less than 400g.There are estimated to be 50,000 breeding pairs in the UK. Their conservation status is amber. ",
       type: DYKType.birdsOfPrey,
       image: 'assets/owl.png',
+    ),
+    DYK(
+      question: "Do sparrowhawks control how many small birds are in an area?",
+      answer:
+          "Although sparrowhawks predate small birds, the short answer is “no, they don’t”. That’s because the number of sparrowhawks in a given area is limited by the “carrying capacity” of the habitat, which means that the amount of food and availability of nesting sites constrain how many individuals can survive. Young birds don’t pair and breed until there is vacant territory and plentiful food. This means that there is a close relationship between the number of small birds and sparrowhawks. Both increases and decreases in small bird populations are mirrored by corresponding changes in the number of sparrowhawks. Sparrowhawks are therefore indicators of the health of an ecosystem.",
+      type: DYKType.birdsOfPrey,
+      image: 'assets/sparrowhawk_2.png',
+    ),
+    DYK(
+      question: "What’s the average lifespan of a sparrowhawk?",
+      answer:
+          "Sparrowhawks live on average for 4 years, but the oldest known sparrowhawk was over 20 years old when it died.",
+      type: DYKType.birdsOfPrey,
+      image: 'assets/sparrowhawk_3.png',
+    ),
+    DYK(
+      question: "Are there any kestrels in Redland?",
+      answer:
+          "There aren’t any known sightings of kestrels in Redland, although kestrels have adapted to live in cities. The kestrel, a member of the falcon family, and with the long, scythe-like wings of that family, hunts by hovering 10-20 metres over grassland, spotting prey with its extremely sharp eyesight and plummeting to the ground in pursuit of a kill. Females are larger than males. Kestrels’ main prey are small mammals such as voles, shrews and mice, although they may also take small birds, lizards and invertebrates. When hovering, the kestrel’s tail is spread into a fan shape. Sparrowhawks do not hover, being ambush predators of mainly birds, so hunting technique is one of the ways of telling these two species apart."
+          "\n\nKestrel populations have fallen, and they are now on the "
+          "amber list of conservation concern. This may because modern farming practices have eliminated wide field margins, therefore also eliminating the habitat of the kestrel’s main prey items. The UK population of kestrels may be as low as 30,000 pairs. ",
+      type: DYKType.birdsOfPrey,
+      image: 'assets/kestrel.png',
     ),
   ];
 }
