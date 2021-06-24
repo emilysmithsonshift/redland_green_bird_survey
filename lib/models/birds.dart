@@ -6,7 +6,8 @@ class Photographer {
   Photographer(this.firstName, this.lastName);
 }
 
-Photographer giorgio = Photographer('giorgio', 'Pede');
+Photographer giorgio = Photographer('Giorgio', 'Pede');
+Photographer keith = Photographer('Kieth', 'Williams');
 
 class Photo {
   String asset;
@@ -61,7 +62,8 @@ class Bird {
     images: [
       Photo('assets/robin_close.png', giorgio),
       Photo('assets/robin1.png', giorgio),
-      Photo('assets/robin.png', giorgio)
+      Photo('assets/robin.png', giorgio),
+      Photo('assets/robin_2.png', giorgio),
     ],
     conservationStatus: 'Green',
     scientificName: 'Erithacus rubecula',
@@ -109,6 +111,7 @@ class Bird {
       Photo('assets/blackbird_close.png', giorgio),
       Photo('assets/blackbird1.png', giorgio),
       Photo('assets/blackbird2.png', giorgio),
+      Photo('assets/blackbird_3.png', giorgio),
     ],
     scientificName: 'Turdus merula',
     birdFamily: 'Turdidae (Thrushes)',
@@ -123,6 +126,7 @@ class Bird {
     images: [
       Photo('assets/songthrush_close.png', giorgio),
       Photo('assets/songthrush.png', giorgio),
+      Photo('assets/songthrush_2.png', giorgio),
     ],
     scientificName: 'Turdus philomelos',
     conservationStatus: 'Red',
@@ -173,6 +177,7 @@ class Bird {
       Photo('assets/wren3.png', giorgio),
       Photo('assets/wren.png', giorgio),
       Photo('assets/wren2.png', giorgio),
+      Photo('assets/wren_4.png', giorgio),
     ],
     birdFamily: 'Troglodytidae (Wrens)',
     conservationStatus: 'Green',
@@ -324,6 +329,117 @@ class Bird {
     birdType: BirdType.predator,
     id: 19,
   );
+  static final Bird sparrowhawk = Bird(
+    name: 'Sparrowhawk',
+    description: "",
+    images: [
+      Photo(
+        'assets/sparrowhawk_1.png',
+        keith,
+      ),
+      Photo(
+        'assets/sparrowhawk_2.png',
+        keith,
+      ),
+      Photo(
+        'assets/sparrowhawk_3.png',
+        keith,
+      ),
+    ],
+    birdFamily: '',
+    conservationStatus: '',
+    scientificName: '',
+    birdType: BirdType.predator,
+    id: 20,
+  );
+  static final Bird sparrow = Bird(
+    name: 'Sparrow',
+    description: "",
+    images: [
+      Photo(
+        'assets/sparrow_3.png',
+        giorgio,
+      ),
+      Photo(
+        'assets/sparrow.png',
+        keith,
+      ),
+      Photo(
+        'assets/sparrow_1.png',
+        keith,
+      ),
+      Photo(
+        'assets/sparrow_2.png',
+        keith,
+      ),
+    ],
+    birdFamily: '',
+    conservationStatus: '',
+    scientificName: '',
+    birdType: BirdType.predator,
+    id: 21,
+  );
+  static final Bird piedFlycatcher = Bird(
+    name: 'Pied Flycatcher',
+    description: "",
+    images: [
+      Photo(
+        'assets/pied_flycatcher.png',
+        keith,
+      ),
+      Photo(
+        'assets/pied_flycatcher_1.png',
+        keith,
+      ),
+    ],
+    birdFamily: '',
+    conservationStatus: '',
+    scientificName: '',
+    birdType: BirdType.predator,
+    id: 22,
+  );
+  static final Bird jackdaw = Bird(
+    name: 'Jackdaw',
+    description: "",
+    images: [
+      Photo(
+        'assets/jackdaw.png',
+        keith,
+      ),
+      Photo(
+        'assets/jackdaw_1.png',
+        giorgio,
+      ),
+    ],
+    birdFamily: '',
+    conservationStatus: '',
+    scientificName: '',
+    birdType: BirdType.predator,
+    id: 22,
+  );
+  static final Bird kestrel = Bird(
+    name: 'Kestrel',
+    description: "",
+    images: [
+      Photo(
+        'assets/kestrel.png',
+        keith,
+      ),
+      Photo(
+        'assets/kestrel_1.png',
+        keith,
+      ),
+      Photo(
+        'assets/kestrel_2.png',
+        keith,
+      ),
+    ],
+    birdFamily: '',
+    conservationStatus: '',
+    scientificName: '',
+    birdType: BirdType.predator,
+    id: 22,
+  );
 
   // static final Bird pigeon = Bird(
   //   name: 'Pigeon',
@@ -351,6 +467,11 @@ class Bird {
     woodpecker,
     wagtail,
     wren,
+    sparrow,
+    sparrowhawk,
+    jackdaw,
+    piedFlycatcher,
+    kestrel,
     other,
     unidentified,
     none
