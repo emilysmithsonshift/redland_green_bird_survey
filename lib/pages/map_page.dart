@@ -2,10 +2,9 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
-import 'package:flutter_map_location_marker/flutter_map_location_marker.dart';
 import 'package:flutter_map_marker_cluster/flutter_map_marker_cluster.dart';
 import 'package:flutter_map_marker_popup/flutter_map_marker_popup.dart';
-import 'package:latlong/latlong.dart';
+import 'package:latlong2/latlong.dart';
 import 'package:redland_green_bird_survey/models/bird_box.dart';
 import 'package:redland_green_bird_survey/pages/bird_box_page.dart';
 
@@ -53,9 +52,9 @@ class _MapPageState extends State<MapPage> {
             _popupController.hidePopup();
           },
           plugins: [
-            PopupMarkerPlugin(),
+            // PopupMarkerPlugin(),
             MarkerClusterPlugin(),
-            LocationMarkerPlugin(),
+            // LocationMarkerPlugin(),
           ],
           center: widget.birdBox != null
               ? BirdBox.birdBoxesList[widget.birdBox].location
@@ -74,7 +73,6 @@ class _MapPageState extends State<MapPage> {
                     "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
                 subdomains: ['a', 'b', 'c']),
           MarkerLayerOptions(markers: _markers),
-          LocationMarkerLayerOptions(),
           MarkerClusterLayerOptions(
             maxClusterRadius: 0,
             markers: _markers,

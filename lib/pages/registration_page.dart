@@ -67,7 +67,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
           .user;
 
       if (user != null) {
-        user.updateProfile(displayName: nickNameController.value.text);
+        user.updateDisplayName(nickNameController.value.text);
 
         showDialog(
           barrierDismissible: false,

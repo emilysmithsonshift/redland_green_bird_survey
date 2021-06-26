@@ -65,8 +65,7 @@ class _MyDetailsPageState extends State<MyDetailsPage> {
                         ElevatedButton(
                           onPressed: () async {
                             await FirebaseAuth.instance.currentUser
-                                .updateProfile(
-                                    displayName: controller.value.text);
+                                .updateDisplayName(controller.value.text);
                             Navigator.pop(context);
                           },
                           child: const Text('Ok'),

@@ -284,7 +284,7 @@ class _EnterObservationsPageState extends State<EnterObservationsPage> {
                                   setState(() {
                                     _birdBox = -1;
                                     _bird = -1;
-                                    DateTime _dateTime = DateTime.now();
+                                    _dateTime = DateTime.now();
                                     _comment = '';
                                   });
 

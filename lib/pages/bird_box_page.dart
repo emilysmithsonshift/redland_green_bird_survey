@@ -23,14 +23,14 @@ class BirdBoxPage extends StatefulWidget {
 }
 
 class _BirdBoxPageState extends State<BirdBoxPage> {
-  List<Marker> _markers;
+  List<Marker> _markers = [];
 
   @override
   void initState() {
     _markers = [
       Marker(
-        point: widget.birdBox.location,
-      )
+          point: widget.birdBox.location,
+          builder: (context) => Icon(Icons.location_pin))
     ];
 
     super.initState();

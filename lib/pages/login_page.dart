@@ -140,7 +140,7 @@ class _LoginPageState extends State<LoginPage> {
                         isLoading = false;
                         errorMsg = error.message;
                       });
-                      return;
+                      return null;
                     });
                     if (_user != null) {
                       Navigator.pushAndRemoveUntil(
@@ -161,7 +161,7 @@ class _LoginPageState extends State<LoginPage> {
               alignment: Alignment.centerRight,
               child: SizedBox(
                 width: 200,
-                child: OutlineButton(
+                child: OutlinedButton(
                   onPressed: () {
                     FirebaseAuth.instance.signOut();
                     setState(() {
