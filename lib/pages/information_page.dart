@@ -124,13 +124,35 @@ class _InformationPageState extends State<InformationPage> {
                 ]),
             listTile(
                 onTap: () async {
-                  String url = 'https://rcas.org.uk';
+                  String url;
+
+                  url = 'https://bristolornithologicalclub.co.uk';
 
                   await canLaunch(url)
                       ? await launch(url)
                       : throw 'Could not launch $url';
                 },
                 imageLeft: true,
+                imageAsset: 'assets/sparrowhawk_1.png',
+                content: [
+                  Text(
+                    'Huge thanks to Keith Williams of the Bristol '
+                    'Ornithological Club for providing us with some '
+                    'additional photos.',
+                  ),
+                  Text('For more information about the club, '
+                      'please visit their website. '),
+                  Icon(Icons.link),
+                ]),
+            listTile(
+                onTap: () async {
+                  String url = 'https://rcas.org.uk';
+
+                  await canLaunch(url)
+                      ? await launch(url)
+                      : throw 'Could not launch $url';
+                },
+                imageLeft: false,
                 imageAsset: 'assets/pigeon.png',
                 content: [
                   Text(

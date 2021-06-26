@@ -47,24 +47,26 @@ Widget listTile(
           Flexible(
             flex: photoRatio ?? 2,
             child: Container(
-                decoration: BoxDecoration(
-                  color: Colors.green[50],
-                  borderRadius: BorderRadius.only(
-                    topRight: Radius.circular(imageLeft ? 20.0 : 0),
-                    bottomRight: Radius.circular(imageLeft ? 20.0 : 0),
-                    topLeft: Radius.circular(imageLeft ? 0.0 : 20),
-                    bottomLeft: Radius.circular(imageLeft ? 0.0 : 20),
+              decoration: BoxDecoration(
+                color: Colors.green[50],
+                borderRadius: BorderRadius.only(
+                  topRight: Radius.circular(imageLeft ? 20.0 : 0),
+                  bottomRight: Radius.circular(imageLeft ? 20.0 : 0),
+                  topLeft: Radius.circular(imageLeft ? 0.0 : 20),
+                  bottomLeft: Radius.circular(imageLeft ? 0.0 : 20),
+                ),
+              ),
+              child: SizedBox(
+                height: double.infinity,
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: content,
                   ),
                 ),
-                child: SizedBox(
-                    height: double.infinity,
-                    child: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.spaceAround,
-                        children: content,
-                      ),
-                    ))),
+              ),
+            ),
           ),
           if (!imageLeft)
             Flexible(

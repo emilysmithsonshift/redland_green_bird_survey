@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
+import 'package:flutter_map_location_marker/flutter_map_location_marker.dart';
 import 'package:flutter_map_marker_cluster/flutter_map_marker_cluster.dart';
 import 'package:flutter_map_marker_popup/flutter_map_marker_popup.dart';
 import 'package:latlong2/latlong.dart';
@@ -21,12 +22,19 @@ class MapPage extends StatefulWidget {
 class _MapPageState extends State<MapPage> {
   final List<Marker> _markers = [];
   MapController mapController = MapController();
-
+  LatLngBounds _bounds;
   bool permissionGranted = false;
   final PopupController _popupController = PopupController();
 
+  _fetchBounds() {
+    _bounds = LatLngBounds.fromPoints(
+        BirdBox.birdBoxesList.map((birdBox) => birdBox.location).toList());
+  }
+
   @override
   void initState() {
+    _fetchBounds();
+
     if (widget.birdBox != null) {
       int i = widget.birdBox;
       final Marker _marker = MapMarker(birdBox: BirdBox.birdBoxesList[i]);
@@ -51,10 +59,18 @@ class _MapPageState extends State<MapPage> {
           onTap: (_) {
             _popupController.hidePopup();
           },
+          bounds: _bounds,
+          boundsOptions: const FitBoundsOptions(
+            padding: EdgeInsets.only(
+              top: 38.0,
+              left: 20,
+              right: 20,
+              bottom: 8,
+            ),
+          ),
           plugins: [
-            // PopupMarkerPlugin(),
             MarkerClusterPlugin(),
-            // LocationMarkerPlugin(),
+            LocationMarkerPlugin(),
           ],
           center: widget.birdBox != null
               ? BirdBox.birdBoxesList[widget.birdBox].location
@@ -73,6 +89,7 @@ class _MapPageState extends State<MapPage> {
                     "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
                 subdomains: ['a', 'b', 'c']),
           MarkerLayerOptions(markers: _markers),
+          LocationMarkerLayerOptions(),
           MarkerClusterLayerOptions(
             maxClusterRadius: 0,
             markers: _markers,
