@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class Version {
-  static final String currentVersion = '1.0.5+6';
+  static final String currentVersion = '1.0.6+7';
 
   static Future checkVersion(BuildContext context) async {
     final DatabaseReference reference =
