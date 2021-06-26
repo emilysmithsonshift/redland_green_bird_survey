@@ -67,7 +67,7 @@ class _CustomStepperState extends State<CustomStepper> {
               ),
             ),
             Expanded(
-              child: SingleChildScrollView(child: step.content),
+              child: step.content,
             ),
             if (showErrorMsg)
               Text(

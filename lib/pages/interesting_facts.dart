@@ -84,21 +84,25 @@ class _FactPageState extends State<FactPage> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  optionContainer('General', 0),
-                  optionContainer('Nest Boxes', 1),
-                  optionContainer('Bird Names', 2),
-                ],
+              FittedBox(
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    optionContainer('General', 0),
+                    optionContainer('Nest Boxes', 1),
+                    optionContainer('Bird Names', 2),
+                  ],
+                ),
               ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  optionContainer('Song Birds (Passerines)', 3),
-                  optionContainer('The Crow Family (Corvids)', 4),
-                  optionContainer('Birds of Prey', 5),
-                ],
+              FittedBox(
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    optionContainer('Song Birds (Passerines)', 3),
+                    optionContainer('The Crow Family (Corvids)', 4),
+                    optionContainer('Birds of Prey', 5),
+                  ],
+                ),
               ),
               Column(
                 children: _dykList

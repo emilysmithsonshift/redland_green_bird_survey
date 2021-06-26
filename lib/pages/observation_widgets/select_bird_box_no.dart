@@ -23,63 +23,65 @@ class _SelectBirdBoxNoState extends State<SelectBirdBoxNo> {
             'This section is only for observing birds that are using our bird boxes. '
             'If you spot anything else you would like to share, '
             'please email emily_foulkes@hotmail.com'),
-        Container(
-          child: GridView.builder(
-            padding: const EdgeInsets.all(0),
-            physics: NeverScrollableScrollPhysics(),
-            shrinkWrap: true,
-            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 5,
-              childAspectRatio: 1.0,
-            ),
-            itemCount: BirdBox.birdBoxesList.length,
-            itemBuilder: (context, index) {
-              BirdBox _birdBox = BirdBox.birdBoxesList[index];
-              return GestureDetector(
-                onTap: () {
-                  widget.onSelect(index + 1);
-                },
-                child: Padding(
-                  padding: const EdgeInsets.all(6.0),
-                  child: ClipOval(
-                    child: Container(
-                      height: 40,
-                      width: 40,
-                      margin: const EdgeInsets.all(8),
-                      decoration: BoxDecoration(
-                        color: Colors.green[100],
-                        borderRadius: const BorderRadius.all(
-                          Radius.circular(60),
+        Expanded(
+          child: Center(
+            child: GridView.builder(
+              padding: const EdgeInsets.all(0),
+              // physics: NeverScrollableScrollPhysics(),
+              shrinkWrap: true,
+              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 5,
+                childAspectRatio: 1.0,
+              ),
+              itemCount: BirdBox.birdBoxesList.length,
+              itemBuilder: (context, index) {
+                BirdBox _birdBox = BirdBox.birdBoxesList[index];
+                return GestureDetector(
+                  onTap: () {
+                    widget.onSelect(index + 1);
+                  },
+                  child: Padding(
+                    padding: const EdgeInsets.all(6.0),
+                    child: ClipOval(
+                      child: Container(
+                        height: 40,
+                        width: 40,
+                        margin: const EdgeInsets.all(8),
+                        decoration: BoxDecoration(
+                          color: Colors.green[100],
+                          borderRadius: const BorderRadius.all(
+                            Radius.circular(60),
+                          ),
+                          boxShadow: widget.birdBox != _birdBox.id
+                              ? [
+                                  BoxShadow(
+                                    color: Colors.grey,
+                                    offset: Offset(3.0, 3.0),
+                                    blurRadius: 3.0,
+                                  )
+                                ]
+                              : [],
+                          border: Border.all(
+                            width: widget.birdBox == _birdBox.id ? 2.0 : 0.0,
+                            color: widget.birdBox == _birdBox.id
+                                ? Colors.blueAccent
+                                : Colors.green[50],
+                          ),
                         ),
-                        boxShadow: widget.birdBox != _birdBox.id
-                            ? [
-                                BoxShadow(
-                                  color: Colors.grey,
-                                  offset: Offset(3.0, 3.0),
-                                  blurRadius: 3.0,
-                                )
-                              ]
-                            : [],
-                        border: Border.all(
-                          width: widget.birdBox == _birdBox.id ? 2.0 : 0.0,
-                          color: widget.birdBox == _birdBox.id
-                              ? Colors.blueAccent
-                              : Colors.green[50],
-                        ),
-                      ),
-                      child: Center(
-                        child: Text(
-                          _birdBox.id.toString(),
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
+                        child: Center(
+                          child: Text(
+                            _birdBox.id.toString(),
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                            ),
                           ),
                         ),
                       ),
                     ),
                   ),
-                ),
-              );
-            },
+                );
+              },
+            ),
           ),
         ),
         SizedBox(

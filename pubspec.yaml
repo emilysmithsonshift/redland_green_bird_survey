@@ -40,7 +40,7 @@ dependencies:
   shared_preferences: 2.0.6
   jiffy: ^4.1.0
   transparent_image: ^2.0.0
-  flutter_native_splash: ^1.2.0
+#  flutter_native_splash: ^1.2.0
 #  permission_handler: ^5.1.0+2
   flutter_map: ^0.13.1
   flutter_map_marker_popup: ^1.0.0+1
