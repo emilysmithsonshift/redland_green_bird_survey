@@ -133,8 +133,8 @@ class _LoginPageState extends State<LoginPage> {
                     final FirebaseAuth _auth = FirebaseAuth.instance;
                     final UserCredential _user = await _auth
                         .signInWithEmailAndPassword(
-                            email: emailController.value.text,
-                            password: passwordController.value.text)
+                            email: emailController.value.text ?? '',
+                            password: passwordController.value.text ?? '')
                         .catchError((error, stacktrace) {
                       setState(() {
                         isLoading = false;
@@ -171,7 +171,7 @@ class _LoginPageState extends State<LoginPage> {
                     final FirebaseAuth _auth = FirebaseAuth.instance;
                     _auth
                         .sendPasswordResetEmail(
-                            email: emailController.value.text)
+                            email: emailController.value.text ?? '')
                         .catchError((error) {
                       if (error.toString() ==
                           '[firebase_auth/user-not-found] There is no user record corresponding to this identifier. The user may have been deleted.') {

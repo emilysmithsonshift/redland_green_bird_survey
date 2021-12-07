@@ -42,10 +42,10 @@ dependencies:
   flutter_map_marker_popup: ^1.0.0+1
   flutter_map_marker_cluster: ^0.4.0
   latlong2: ^0.8.0
-  flutter_map_location_marker: any
+  flutter_map_location_marker: 1.0.0-nullsafety.0
 dev_dependencies:
-  flutter_test:
-    sdk: flutter
+#  flutter_test:
+#    sdk: flutter
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

@@ -28,8 +28,8 @@ class _RegistrationPageState extends State<RegistrationPage> {
 
       final User user = (await _auth
               .createUserWithEmailAndPassword(
-        email: emailController.text,
-        password: passwordController.text,
+        email: emailController.text ?? '',
+        password: passwordController.text ?? '',
       )
               .catchError((error) {
         print(error);
