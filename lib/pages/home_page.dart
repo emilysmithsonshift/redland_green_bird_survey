@@ -35,6 +35,26 @@ class _HomePageState extends State<HomePage> {
       ..then((_) {
         setState(() {});
       });
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: new Text("Warning"),
+            content: new Text(
+                "This is a preview of the app. Not all functionality is included or works as expected. \n\nFor a full version please download the app for free from the app store."),
+            actions: <Widget>[
+              TextButton(
+                child: new Text("OK"),
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+              ),
+            ],
+          );
+        },
+      );
+    });
 
     super.initState();
   }
@@ -65,48 +85,48 @@ class _HomePageState extends State<HomePage> {
           ),
         ),
       ),
-      ValueListenableBuilder(
-          valueListenable: Sighting.observationsNotifier,
-          builder: (context, value, child) {
-            return RGListTile(
-              imageAsset: 'assets/goldfinch4.png',
-              alignment: Alignment.centerLeft,
-              navigateTo: LatestObservationsPage(),
-              heroTag: 'goldfinch',
-              imageLeft: true,
-              widget: Sighting.observations.isNotEmpty
-                  ? Column(
-                      children: [
-                        Padding(
-                          padding: EdgeInsets.all(12.0),
-                          child: Center(
-                            child: Text('Recent Bird Sightings at Boxes',
-                                textAlign: TextAlign.center,
-                                style: Theme.of(context).textTheme.headline1),
-                          ),
-                        ),
-                        Expanded(
-                          child: Wrap(
-                            spacing: 8.0, // gap between adjacent chips
-                            runSpacing: 4.0,
-                            children: Sighting.sightings.map((sighting) {
-                              return observationSummary(sighting, context);
-                            }).toList(),
-                          ),
-                        )
-                      ],
-                    )
-                  : Center(
-                      child: CircularProgressIndicator(),
-                    ),
-            );
-          }),
+      // ValueListenableBuilder(
+      //     valueListenable: Sighting.observationsNotifier,
+      //     builder: (context, value, child) {
+      //       return RGListTile(
+      //         imageAsset: 'assets/goldfinch4.png',
+      //         alignment: Alignment.centerLeft,
+      //         navigateTo: LatestObservationsPage(),
+      //         heroTag: 'goldfinch',
+      //         imageLeft: true,
+      //         widget: Sighting.observations.isNotEmpty
+      //             ? Column(
+      //                 children: [
+      //                   Padding(
+      //                     padding: EdgeInsets.all(12.0),
+      //                     child: Center(
+      //                       child: Text('Recent Bird Sightings at Boxes',
+      //                           textAlign: TextAlign.center,
+      //                           style: Theme.of(context).textTheme.headline1),
+      //                     ),
+      //                   ),
+      //                   Expanded(
+      //                     child: Wrap(
+      //                       spacing: 8.0, // gap between adjacent chips
+      //                       runSpacing: 4.0,
+      //                       children: Sighting.sightings.map((sighting) {
+      //                         return observationSummary(sighting, context);
+      //                       }).toList(),
+      //                     ),
+      //                   )
+      //                 ],
+      //               )
+      //             : Center(
+      //                 child: CircularProgressIndicator(),
+      //               ),
+      //       );
+      //     }),
       RGListTile(
         imageAsset: 'assets/dunnock.png',
         alignment: Alignment.center,
         navigateTo: NewsPage(),
         heroTag: 'latestNews',
-        imageLeft: false,
+        imageLeft: true,
         widget: News.newsList.isEmpty
             ? CircularProgressIndicator()
             : Column(
@@ -175,21 +195,21 @@ class _HomePageState extends State<HomePage> {
           },
           text: 'Enter observations ',
           imageAsset: 'assets/greattit.png'),
-      RGGridTile(
-          heroTag: 'map_page',
-          navigateTo: MapPage(),
-          text: 'Map',
-          imageAsset: 'assets/longtailedtit.png'),
+      // RGGridTile(
+      //     heroTag: 'map_page',
+      //     navigateTo: MapPage(),
+      //     text: 'Map',
+      //     imageAsset: 'assets/longtailedtit.png'),
       RGGridTile(
           heroTag: 'bird_box_list',
           navigateTo: BirdBoxListPage(),
           text: 'Bird Box List',
           imageAsset: 'assets/jay.png'),
-      RGGridTile(
-          heroTag: 'my_details',
-          navigateTo: MyDetailsPage(),
-          text: 'My details',
-          imageAsset: 'assets/coaltit1.png'),
+      // RGGridTile(
+      //     heroTag: 'my_details',
+      //     navigateTo: MyDetailsPage(),
+      //     text: 'My details',
+      //     imageAsset: 'assets/coaltit1.png'),
       RGGridTile(
         heroTag: 'fact_page',
         navigateTo: FactPage(),
