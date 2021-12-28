@@ -86,7 +86,7 @@ class News {
   ];
   static void addNews(News _news) {
     final DatabaseReference reference =
-        FirebaseDatabase.instance.reference().child("news");
+        FirebaseDatabase.instance.ref().child("news");
     final String newkey = reference.push().key;
     reference.child(newkey).set({
       'title': _news.title,
@@ -101,16 +101,15 @@ class News {
 
   static Future<bool> getNews() async {
     final DatabaseReference reference =
-        FirebaseDatabase.instance.reference().child("news");
-    final DataSnapshot snapshot = await reference.once();
-
+        FirebaseDatabase.instance.ref().child("news");
+    final DatabaseEvent databaseEvent = await reference.once();
+    final Map<dynamic, dynamic> returnedList = databaseEvent.snapshot.value;
     newsList.clear();
-    if (snapshot.value == null) {
+    if (returnedList == null) {
       print('null');
       return true;
     }
 
-    final returnedList = snapshot.value;
     returnedList.forEach((key, value) {
       newsList.add(
         News(

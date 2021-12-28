@@ -1,12 +1,13 @@
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:redland_green_bird_survey/models/bird_box.dart';
-import 'package:redland_green_bird_survey/models/birds.dart';
-import 'package:redland_green_bird_survey/models/sighting.dart';
-import 'package:redland_green_bird_survey/pages/bird_box_page.dart';
-import 'package:redland_green_bird_survey/pages/bird_fact_page.dart';
-import 'package:redland_green_bird_survey/pages/enter_observations_page.dart';
+
+import '../models/bird_box.dart';
+import '../models/birds.dart';
+import '../models/sighting.dart';
+import '../pages/bird_box_page.dart';
+import '../pages/bird_fact_page.dart';
+import '../pages/enter_observations_page.dart';
 
 Widget observationDetails({
   Sighting sighting,
@@ -167,7 +168,7 @@ Widget observationDetails({
                         onPressed: () async {
                           final DatabaseReference reference = FirebaseDatabase
                               .instance
-                              .reference()
+                              .ref()
                               .child("observations");
                           await reference.child(sighting.id).remove();
                           Navigator.pop(context);

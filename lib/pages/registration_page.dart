@@ -166,27 +166,27 @@ class _RegistrationPageState extends State<RegistrationPage> {
               });
             }
           },
-          controlsBuilder: (BuildContext context,
-              {onStepContinue, onStepCancel}) {
-            return Row(
-              children: <Widget>[
-                if (_currentStep > 0)
-                  ElevatedButton(
-                    onPressed: onStepCancel,
-                    child: const Text('Back'),
-                  ),
-                const SizedBox(width: 20),
-                ElevatedButton(
-                  onPressed: onStepContinue,
-                  child: _currentStep == 2
-                      ? isLoading == false
-                          ? Text('Submit')
-                          : CircularProgressIndicator()
-                      : Text('Next'),
-                ),
-              ],
-            );
-          },
+          // controlsBuilder: (BuildContext context,
+          //     {onStepContinue, onStepCancel}) {
+          //   return Row(
+          //     children: <Widget>[
+          //       if (_currentStep > 0)
+          //         ElevatedButton(
+          //           onPressed: onStepCancel,
+          //           child: const Text('Back'),
+          //         ),
+          //       const SizedBox(width: 20),
+          //       ElevatedButton(
+          //         onPressed: onStepContinue,
+          //         child: _currentStep == 2
+          //             ? isLoading == false
+          //                 ? Text('Submit')
+          //                 : CircularProgressIndicator()
+          //             : Text('Next'),
+          //       ),
+          //     ],
+          //   );
+          // },
           steps: [
             Step(
               title: const Text(
