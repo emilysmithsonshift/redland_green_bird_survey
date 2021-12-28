@@ -1,22 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:jiffy/jiffy.dart';
-import 'package:redland_green_bird_survey/models/news.dart';
-import 'package:redland_green_bird_survey/models/sighting.dart';
-import 'package:redland_green_bird_survey/pages/bird_identifier_page.dart';
-import 'package:redland_green_bird_survey/pages/information_page.dart';
-import 'package:redland_green_bird_survey/pages/interesting_facts.dart';
-import 'package:redland_green_bird_survey/pages/my_details_page.dart';
-import 'package:redland_green_bird_survey/pages/news_page.dart';
-import 'package:redland_green_bird_survey/pages/welcome_page.dart';
-import 'package:redland_green_bird_survey/widgets/observation_summary.dart';
-import 'package:redland_green_bird_survey/widgets/page_template.dart';
-import 'package:redland_green_bird_survey/widgets/rg_grid_tile.dart';
-import 'package:redland_green_bird_survey/widgets/rg_list_tile.dart';
 
+import '../models/news.dart';
+import '../models/sighting.dart';
+import '../widgets/page_template.dart';
+import '../widgets/rg_grid_tile.dart';
+import '../widgets/rg_list_tile.dart';
 import 'bird_box_list_page.dart';
+import 'bird_identifier_page.dart';
 import 'enter_observations_page.dart';
-import 'latest_observations_page.dart';
-import 'map_page.dart';
+import 'information_page.dart';
+import 'interesting_facts.dart';
+import 'news_page.dart';
+import 'welcome_page.dart';
 
 class HomePage extends StatefulWidget {
   @override
