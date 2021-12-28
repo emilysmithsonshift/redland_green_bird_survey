@@ -9,7 +9,7 @@ import 'pages/home_page.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp();
+  // await Firebase.initializeApp();
   runApp(MyApp());
 }
 
@@ -31,7 +31,7 @@ class _MyAppState extends State<MyApp> {
         ),
       ),
       title: 'Redland Green Bird Survey',
-      home: InitialPage(),
+      home: HomePage(),
     );
   }
 }
