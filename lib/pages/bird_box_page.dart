@@ -1,5 +1,5 @@
 import 'package:animations/animations.dart';
-import 'package:flutter/foundation.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:redland_green_bird_survey/models/bird_box.dart';
@@ -23,19 +23,6 @@ class BirdBoxPage extends StatefulWidget {
 }
 
 class _BirdBoxPageState extends State<BirdBoxPage> {
-  List<Marker> _markers = [];
-
-  @override
-  void initState() {
-    _markers = [
-      Marker(
-          point: widget.birdBox.location,
-          builder: (context) => Icon(Icons.location_pin))
-    ];
-
-    super.initState();
-  }
-
   @override
   Widget build(BuildContext context) {
     List<Sighting> _sightingList = [];
@@ -87,9 +74,7 @@ class _BirdBoxPageState extends State<BirdBoxPage> {
                         child: OpenContainer(
                           closedBuilder: (context, open) => FlutterMap(
                             options: MapOptions(
-                                onTap: (_) {
-                                  open();
-                                },
+                                onTap: (tapPosition, point) => open(),
                                 zoom: 17,
                                 center: widget.birdBox.location),
                             layers: [

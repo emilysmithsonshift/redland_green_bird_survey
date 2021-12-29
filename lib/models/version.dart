@@ -9,12 +9,13 @@ class Version {
 
   static Future checkVersion(BuildContext context) async {
     final DatabaseReference reference =
-        FirebaseDatabase.instance.reference().child("version");
-    final DataSnapshot snapshot = await reference.once();
-    if (snapshot.value == null) {
+        FirebaseDatabase.instance.ref().child("version");
+    final DatabaseEvent databaseEvent = await reference.once();
+    final String latestVersion = databaseEvent.snapshot.value;
+    if (latestVersion == null) {
       return true;
     }
-    final String latestVersion = snapshot.value;
+
     if (latestVersion != currentVersion) {
       showDialog(
         context: context,

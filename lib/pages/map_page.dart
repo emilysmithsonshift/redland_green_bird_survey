@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:flutter_map_location_marker/flutter_map_location_marker.dart';
 import 'package:flutter_map_marker_cluster/flutter_map_marker_cluster.dart';
-import 'package:flutter_map_marker_popup/flutter_map_marker_popup.dart';
+
 import 'package:latlong2/latlong.dart';
 import 'package:redland_green_bird_survey/models/bird_box.dart';
 import 'package:redland_green_bird_survey/pages/bird_box_page.dart';
@@ -56,9 +56,7 @@ class _MapPageState extends State<MapPage> {
         mapController: mapController,
         options: MapOptions(
           maxZoom: 18,
-          onTap: (_) {
-            _popupController.hidePopup();
-          },
+          onTap: (tapPosition, point) => _popupController.hideAllPopups(),
           bounds: _bounds,
           boundsOptions: const FitBoundsOptions(
             padding: EdgeInsets.only(

@@ -25,7 +25,7 @@ class Sighting {
 
   static void addSighting(Sighting _sighting) {
     final DatabaseReference reference =
-        FirebaseDatabase.instance.reference().child("observations");
+        FirebaseDatabase.instance.ref().child("observations");
     final String newkey = reference.push().key;
     reference.child(newkey).set({
       'user': _sighting.user,
@@ -39,7 +39,7 @@ class Sighting {
 
   static void updateSighting(Sighting _sighting, String id) {
     final DatabaseReference reference =
-        FirebaseDatabase.instance.reference().child("observations");
+        FirebaseDatabase.instance.ref().child("observations");
     reference.child(id).update({
       'user': _sighting.user,
       'date_time': _sighting.dateTime.toIso8601String(),
@@ -52,14 +52,14 @@ class Sighting {
 
   static Future<bool> getSightings() async {
     final DatabaseReference reference =
-        FirebaseDatabase.instance.reference().child("observations");
-    final DataSnapshot snapshot = await reference.once();
-
+        FirebaseDatabase.instance.ref().child("observations");
+    final DatabaseEvent databaseEvent = await reference.once();
+    final Map<dynamic, dynamic> returnedList = databaseEvent.snapshot.value;
     observations.clear();
-    if (snapshot.value == null) {
+    if (returnedList == null) {
       return true;
     }
-    final returnedList = snapshot.value;
+
     returnedList.forEach((key, value) {
       observations.add(
         Sighting(

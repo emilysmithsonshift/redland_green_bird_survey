@@ -101,16 +101,15 @@ class News {
 
   static Future<bool> getNews() async {
     final DatabaseReference reference =
-        FirebaseDatabase.instance.reference().child("news");
-    final DataSnapshot snapshot = await reference.once();
-
+        FirebaseDatabase.instance.ref().child("news");
+    final DatabaseEvent databaseEvent = await reference.once();
+    final Map<dynamic, dynamic> returnedList = databaseEvent.snapshot.value;
     newsList.clear();
-    if (snapshot.value == null) {
+    if (returnedList == null) {
       print('null');
       return true;
     }
 
-    final returnedList = snapshot.value;
     returnedList.forEach((key, value) {
       newsList.add(
         News(
