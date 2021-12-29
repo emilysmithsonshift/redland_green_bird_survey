@@ -1,6 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+
 import 'package:redland_green_bird_survey/pages/awaiting_email_verification.dart';
 import 'package:redland_green_bird_survey/pages/introduction_page.dart';
 
@@ -23,6 +25,8 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: ThemeData(
+        appBarTheme:
+            AppBarTheme(systemOverlayStyle: SystemUiOverlayStyle.light),
         textTheme: TextTheme(
           headline1: TextStyle(
               fontSize: 16.0, fontWeight: FontWeight.bold, color: Colors.black),
