@@ -13,7 +13,7 @@ class _NewsPageState extends State<NewsPage> {
   Widget build(BuildContext context) {
     return PageTemplate(
       title: 'Latest News',
-      image: 'assets/dunnock.png',
+      image: 'assets/longtailedtit2.png',
       heroTag: 'latestNews',
       widgetList:
           News.newsList.map((News news) => NewsWidget(news: news)).toList(),

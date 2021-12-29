@@ -102,7 +102,7 @@ class _HomePageState extends State<HomePage> {
             );
           }),
       RGListTile(
-        imageAsset: 'assets/dunnock.png',
+        imageAsset: 'assets/longtailedtit2.png',
         alignment: Alignment.center,
         navigateTo: NewsPage(),
         heroTag: 'latestNews',
@@ -179,7 +179,7 @@ class _HomePageState extends State<HomePage> {
           heroTag: 'map_page',
           navigateTo: MapPage(),
           text: 'Map',
-          imageAsset: 'assets/longtailedtit.png'),
+          imageAsset: 'assets/dunnock.png'),
       RGGridTile(
           heroTag: 'bird_box_list',
           navigateTo: BirdBoxListPage(),
