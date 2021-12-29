@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 
 Widget listTile(
-    {Function onTap,
-    bool imageLeft,
-    String imageAsset,
-    List<Widget> content,
-    int photoRatio}) {
+    {Function? onTap,
+    required bool imageLeft,
+    String? imageAsset,
+    required List<Widget> content,
+    int? photoRatio}) {
   return GestureDetector(
     onTap: () {
-      onTap();
+      onTap!();
     },
     child: Container(
       margin: EdgeInsets.symmetric(vertical: 8),
@@ -38,7 +38,7 @@ Widget listTile(
                   image: DecorationImage(
                     fit: BoxFit.cover,
                     image: AssetImage(
-                      imageAsset,
+                      imageAsset!,
                     ),
                   ),
                 ),
@@ -79,7 +79,7 @@ Widget listTile(
                   image: DecorationImage(
                     fit: BoxFit.cover,
                     image: AssetImage(
-                      imageAsset,
+                      imageAsset!,
                     ),
                   ),
                 ),

@@ -16,14 +16,14 @@ class Photo {
 }
 
 class Bird {
-  String name;
-  String scientificName;
-  String birdFamily;
-  String conservationStatus;
-  String description;
-  List<Photo> images;
-  BirdType birdType;
-  int id;
+  String? name;
+  String? scientificName;
+  String? birdFamily;
+  String? conservationStatus;
+  String? description;
+  List<Photo>? images;
+  BirdType? birdType;
+  int? id;
 
   Bird({
     this.name,

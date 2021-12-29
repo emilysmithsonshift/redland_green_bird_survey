@@ -9,11 +9,11 @@ import 'package:redland_green_bird_survey/pages/bird_fact_page.dart';
 import 'package:redland_green_bird_survey/pages/enter_observations_page.dart';
 
 Widget observationDetails({
-  Sighting sighting,
-  BuildContext context,
-  bool showBoxNo,
-  bool showUser,
-  Function setState,
+  required Sighting sighting,
+  BuildContext? context,
+  required bool showBoxNo,
+  required bool showUser,
+  Function? setState,
 }) {
   Bird bird = Bird.birdsList.firstWhere((bird) => sighting.bird == bird.id);
 
@@ -42,7 +42,7 @@ Widget observationDetails({
             GestureDetector(
               onTap: () {
                 Navigator.push(
-                  context,
+                  context!,
                   MaterialPageRoute(
                     builder: (context) => BirdFactPage(
                       bird: bird,
@@ -57,7 +57,7 @@ Widget observationDetails({
                   child: SizedBox(
                     height: 70,
                     width: 70,
-                    child: bird.images.isEmpty
+                    child: bird.images!.isEmpty
                         ? Container(
                             color: bird.name == 'No bird seen'
                                 ? Colors.grey[400]
@@ -70,7 +70,7 @@ Widget observationDetails({
                             ),
                           )
                         : Image.asset(
-                            bird.images[0].asset,
+                            bird.images![0].asset,
                             fit: BoxFit.cover,
                           ),
                   ),
@@ -90,7 +90,7 @@ Widget observationDetails({
                     ),
                     const SizedBox(height: 4),
                     Text(
-                      '${DateFormat('d MMMM yyyy').format(sighting.dateTime)} ${DateFormat.jm().format(sighting.dateTime)}',
+                      '${DateFormat('d MMMM yyyy').format(sighting.dateTime!)} ${DateFormat.jm().format(sighting.dateTime!)}',
                     ),
                     const SizedBox(height: 4),
                     if (showUser)
@@ -104,10 +104,11 @@ Widget observationDetails({
               GestureDetector(
                 onTap: () {
                   Navigator.push(
-                    context,
+                    context!,
                     MaterialPageRoute(
                       builder: (context) => BirdBoxPage(
-                          birdBox: BirdBox.birdBoxesList[sighting.birdBox - 1]),
+                          birdBox:
+                              BirdBox.birdBoxesList[sighting.birdBox! - 1]),
                     ),
                   );
                 },
@@ -136,7 +137,7 @@ Widget observationDetails({
           child: IconButton(
             onPressed: () {
               Navigator.push(
-                context,
+                context!,
                 MaterialPageRoute(
                   builder: (_) => EnterObservationsPage(
                     sighting: sighting,
@@ -157,7 +158,7 @@ Widget observationDetails({
           child: IconButton(
             onPressed: () {
               showDialog(
-                context: context,
+                context: context!,
                 builder: (BuildContext context) {
                   return AlertDialog(
                     title: Text(
@@ -167,12 +168,12 @@ Widget observationDetails({
                         onPressed: () async {
                           final DatabaseReference reference = FirebaseDatabase
                               .instance
-                              .reference()
+                              .ref()
                               .child("observations");
-                          await reference.child(sighting.id).remove();
+                          await reference.child(sighting.id!).remove();
                           Navigator.pop(context);
                           await Sighting.getSightings();
-                          setState();
+                          setState!();
                         },
                         child: const Text('Delete'),
                       ),

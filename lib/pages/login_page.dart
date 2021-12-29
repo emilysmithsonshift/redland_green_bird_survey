@@ -16,7 +16,7 @@ class _LoginPageState extends State<LoginPage> {
 
   String emailErrorMsg = '';
   String passwordErrorMsg = '';
-  String errorMsg = '';
+  String? errorMsg = '';
   bool isLoading = false;
 
   @override
@@ -92,7 +92,7 @@ class _LoginPageState extends State<LoginPage> {
               ),
             ),
             Text(
-              errorMsg,
+              errorMsg!,
               style: const TextStyle(color: Colors.red),
             ),
             Align(
@@ -131,26 +131,24 @@ class _LoginPageState extends State<LoginPage> {
                     }
 
                     final FirebaseAuth _auth = FirebaseAuth.instance;
-                    final UserCredential _user = await _auth
+                    await _auth
                         .signInWithEmailAndPassword(
-                            email: emailController.value.text ?? '',
-                            password: passwordController.value.text ?? '')
+                            email: emailController.value.text,
+                            password: passwordController.value.text)
                         .catchError((error, stacktrace) {
                       setState(() {
                         isLoading = false;
                         errorMsg = error.message;
                       });
-                      return null;
                     });
-                    if (_user != null) {
-                      Navigator.pushAndRemoveUntil(
-                        context,
-                        MaterialPageRoute(
-                          builder: (BuildContext context) => MyApp(),
-                        ),
-                        (Route<dynamic> route) => false,
-                      );
-                    }
+
+                    Navigator.pushAndRemoveUntil(
+                      context,
+                      MaterialPageRoute(
+                        builder: (BuildContext context) => MyApp(),
+                      ),
+                      (Route<dynamic> route) => false,
+                    );
                   },
                   child:
                       isLoading ? CircularProgressIndicator() : Text('Submit'),
@@ -171,7 +169,7 @@ class _LoginPageState extends State<LoginPage> {
                     final FirebaseAuth _auth = FirebaseAuth.instance;
                     _auth
                         .sendPasswordResetEmail(
-                            email: emailController.value.text ?? '')
+                            email: emailController.value.text)
                         .catchError((error) {
                       if (error.toString() ==
                           '[firebase_auth/user-not-found] There is no user record corresponding to this identifier. The user may have been deleted.') {

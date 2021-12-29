@@ -1,13 +1,13 @@
 import 'package:firebase_database/firebase_database.dart';
 
 class News {
-  String title;
-  String headline;
-  String body;
-  String url;
-  String photo;
-  DateTime dateTime;
-  String photoCaption;
+  String? title;
+  String? headline;
+  String? body;
+  String? url;
+  String? photo;
+  DateTime? dateTime;
+  String? photoCaption;
 
   News({
     this.title,
@@ -86,15 +86,15 @@ class News {
   ];
   static void addNews(News _news) {
     final DatabaseReference reference =
-        FirebaseDatabase.instance.reference().child("news");
-    final String newkey = reference.push().key;
+        FirebaseDatabase.instance.ref().child("news");
+    final String newkey = reference.push().key!;
     reference.child(newkey).set({
       'title': _news.title,
       'headline': _news.headline,
       'body': _news.body,
       'url': _news.url,
       'photo': _news.photo,
-      'dateTime': _news.dateTime.toIso8601String(),
+      'dateTime': _news.dateTime!.toIso8601String(),
       'photoCaption': _news.photoCaption,
     });
   }
@@ -103,7 +103,8 @@ class News {
     final DatabaseReference reference =
         FirebaseDatabase.instance.ref().child("news");
     final DatabaseEvent databaseEvent = await reference.once();
-    final Map<dynamic, dynamic> returnedList = databaseEvent.snapshot.value;
+    final Map<dynamic, dynamic>? returnedList =
+        databaseEvent.snapshot.value as Map<dynamic, dynamic>?;
     newsList.clear();
     if (returnedList == null) {
       print('null');
@@ -123,7 +124,7 @@ class News {
         ),
       );
     });
-    newsList.sort((News a, News b) => b.dateTime.compareTo(a.dateTime));
+    newsList.sort((News a, News b) => b.dateTime!.compareTo(a.dateTime!));
     return true;
   }
 }

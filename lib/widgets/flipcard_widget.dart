@@ -6,9 +6,9 @@ import 'package:redland_green_bird_survey/models/dyk.dart';
 import '../settings.dart';
 
 class FlipCardWidget extends StatefulWidget {
-  final DYK dyk;
+  final DYK? dyk;
 
-  const FlipCardWidget({Key key, this.dyk}) : super(key: key);
+  const FlipCardWidget({Key? key, this.dyk}) : super(key: key);
 
   @override
   _FlipCardWidgetState createState() => _FlipCardWidgetState();
@@ -16,8 +16,8 @@ class FlipCardWidget extends StatefulWidget {
 
 class _FlipCardWidgetState extends State<FlipCardWidget>
     with TickerProviderStateMixin {
-  AnimationController _animationController;
-  Animation<double> _animation;
+  late AnimationController _animationController;
+  late Animation<double> _animation;
   AnimationStatus _animationStatus = AnimationStatus.dismissed;
 
   @override
@@ -56,7 +56,7 @@ class _FlipCardWidgetState extends State<FlipCardWidget>
                       width: double.infinity,
                       height: double.infinity,
                       child: Image.asset(
-                        widget.dyk.image,
+                        widget.dyk!.image!,
                         fit: BoxFit.cover,
                       ),
                     ),
@@ -69,7 +69,7 @@ class _FlipCardWidgetState extends State<FlipCardWidget>
                       padding: EdgeInsets.all(8),
                       child: Center(
                         child: Text(
-                          widget.dyk.question,
+                          widget.dyk!.question!,
                           style: Theme.of(context).textTheme.headline1,
                         ),
                       ),
@@ -96,7 +96,7 @@ class _FlipCardWidgetState extends State<FlipCardWidget>
                     child: Transform.scale(
                       scale: 1,
                       child: SingleChildScrollView(
-                        child: Text(widget.dyk.answer),
+                        child: Text(widget.dyk!.answer!),
                       ),
                     ),
                   ),

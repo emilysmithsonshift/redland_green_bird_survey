@@ -3,15 +3,15 @@ import 'package:flutter/material.dart';
 import '../settings.dart';
 
 class RGListTile extends StatelessWidget {
-  final String imageAsset;
-  final Widget widget;
-  final bool imageLeft;
-  final Widget navigateTo;
-  final String heroTag;
-  final Alignment alignment;
+  final String? imageAsset;
+  final Widget? widget;
+  final bool? imageLeft;
+  final Widget? navigateTo;
+  final String? heroTag;
+  final Alignment? alignment;
 
   const RGListTile(
-      {Key key,
+      {Key? key,
       this.imageAsset,
       this.widget,
       this.imageLeft,
@@ -26,7 +26,7 @@ class RGListTile extends StatelessWidget {
       onTap: () {
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => navigateTo),
+          MaterialPageRoute(builder: (context) => navigateTo!),
         );
       },
       child: Container(
@@ -49,7 +49,7 @@ class RGListTile extends StatelessWidget {
           ),
           child: Row(
             children: [
-              if (imageLeft)
+              if (imageLeft!)
                 Flexible(
                   child: Hero(
                     tag: heroTag ?? '',
@@ -63,7 +63,7 @@ class RGListTile extends StatelessWidget {
                           fit: BoxFit.cover,
                           alignment: alignment ?? Alignment.center,
                           image: AssetImage(
-                            imageAsset,
+                            imageAsset!,
                           ),
                         ),
                       ),
@@ -74,17 +74,17 @@ class RGListTile extends StatelessWidget {
                 flex: 2,
                 child: ClipRRect(
                     borderRadius: BorderRadius.only(
-                      topRight: Radius.circular(imageLeft ? 20.0 : 0),
-                      bottomRight: Radius.circular(imageLeft ? 20.0 : 0),
-                      topLeft: Radius.circular(imageLeft ? 0.0 : 20),
-                      bottomLeft: Radius.circular(imageLeft ? 0.0 : 20),
+                      topRight: Radius.circular(imageLeft! ? 20.0 : 0),
+                      bottomRight: Radius.circular(imageLeft! ? 20.0 : 0),
+                      topLeft: Radius.circular(imageLeft! ? 0.0 : 20),
+                      bottomLeft: Radius.circular(imageLeft! ? 0.0 : 20),
                     ),
                     child: Container(
                         height: double.infinity,
                         color: Colors.green[50],
                         child: widget)),
               ),
-              if (!imageLeft)
+              if (!imageLeft!)
                 Flexible(
                   child: Hero(
                     tag: heroTag ?? '',
@@ -97,7 +97,7 @@ class RGListTile extends StatelessWidget {
                         image: DecorationImage(
                           fit: BoxFit.cover,
                           image: AssetImage(
-                            imageAsset,
+                            imageAsset!,
                           ),
                         ),
                       ),

@@ -9,10 +9,10 @@ enum DYKType {
 }
 
 class DYK {
-  String question;
-  String answer;
-  DYKType type;
-  String image;
+  String? question;
+  String? answer;
+  DYKType? type;
+  String? image;
 
   DYK({this.question, this.answer, this.type, this.image});
 

@@ -5,14 +5,14 @@ import 'package:redland_green_bird_survey/widgets/page_template.dart';
 import '../settings.dart';
 
 class BirdBoxTypePage extends StatelessWidget {
-  final BoxType boxType;
+  final BoxType? boxType;
 
-  const BirdBoxTypePage({Key key, this.boxType}) : super(key: key);
+  const BirdBoxTypePage({Key? key, this.boxType}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return PageTemplate(
-      title: 'Bird Box Type: ${boxType.name}',
-      image: boxType.image,
+      title: 'Bird Box Type: ${boxType!.name}',
+      image: boxType!.image,
       widgetList: [
         Container(
           margin: const EdgeInsets.all(8),
@@ -26,7 +26,7 @@ class BirdBoxTypePage extends StatelessWidget {
                 style: TextStyle(fontWeight: FontWeight.bold),
               ),
               const SizedBox(height: 12),
-              Text(boxType.description),
+              Text(boxType!.description),
               const SizedBox(height: 12),
               Text(BoxType.generalBirdBoxDescription),
             ],

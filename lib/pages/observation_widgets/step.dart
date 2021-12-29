@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 
 class CustomStep {
-  int stepNumber;
-  String title;
-  Widget content;
-  Function onNext;
-  bool isFirst = false;
-  bool isLast = false;
-  bool proceed;
-  String errorMsg;
+  int? stepNumber;
+  String? title;
+  Widget? content;
+  Function? onNext;
+  bool? isFirst = false;
+  bool? isLast = false;
+  bool? proceed;
+  String? errorMsg;
   CustomStep(
       {this.stepNumber,
       this.title,
@@ -21,9 +21,9 @@ class CustomStep {
 }
 
 class CustomStepper extends StatefulWidget {
-  final List<CustomStep> customStepList;
+  final List<CustomStep>? customStepList;
 
-  const CustomStepper({Key key, this.customStepList}) : super(key: key);
+  const CustomStepper({Key? key, this.customStepList}) : super(key: key);
   @override
   _CustomStepperState createState() => _CustomStepperState();
 }
@@ -42,12 +42,12 @@ class _CustomStepperState extends State<CustomStepper> {
         },
         physics: NeverScrollableScrollPhysics(),
         scrollDirection: Axis.vertical,
-        children: widget.customStepList.map((CustomStep step) {
+        children: widget.customStepList!.map((CustomStep step) {
           return customStep(step: step);
         }).toList());
   }
 
-  Widget customStep({CustomStep step}) {
+  Widget customStep({required CustomStep step}) {
     return SafeArea(
       top: false,
       child: Padding(
@@ -67,7 +67,7 @@ class _CustomStepperState extends State<CustomStepper> {
               ),
             ),
             Expanded(
-              child: step.content,
+              child: step.content!,
             ),
             if (showErrorMsg)
               Text(
@@ -78,7 +78,7 @@ class _CustomStepperState extends State<CustomStepper> {
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
                 Visibility(
-                  visible: !step.isFirst,
+                  visible: !step.isFirst!,
                   child: ElevatedButton(
                     style: ElevatedButton.styleFrom(primary: Colors.green[100]),
                     onPressed: () {
@@ -104,12 +104,12 @@ class _CustomStepperState extends State<CustomStepper> {
                 ElevatedButton(
                   style: ElevatedButton.styleFrom(primary: Colors.green[100]),
                   onPressed: () {
-                    if (step.proceed) {
+                    if (step.proceed!) {
                       setState(() {
                         showErrorMsg = false;
                       });
-                      widget.customStepList[currentPage].onNext();
-                      if (!widget.customStepList[currentPage].isLast) {
+                      widget.customStepList![currentPage].onNext!();
+                      if (!widget.customStepList![currentPage].isLast!) {
                         currentPage++;
                         controller.animateToPage(
                           currentPage,
@@ -126,10 +126,10 @@ class _CustomStepperState extends State<CustomStepper> {
                   child: Row(
                     children: [
                       Text(
-                        step.isLast ? 'Submit' : 'Next',
+                        step.isLast! ? 'Submit' : 'Next',
                         style: TextStyle(color: Colors.black),
                       ),
-                      step.isLast
+                      step.isLast!
                           ? SizedBox(width: 30)
                           : Icon(
                               Icons.keyboard_arrow_down,

@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:redland_green_bird_survey/models/bird_box.dart';
 
 class BirdBoxWidget extends StatelessWidget {
-  final BirdBox birdBox;
+  final BirdBox? birdBox;
 
-  const BirdBoxWidget({Key key, this.birdBox}) : super(key: key);
+  const BirdBoxWidget({Key? key, this.birdBox}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -24,14 +24,14 @@ class BirdBoxWidget extends StatelessWidget {
                 padding: const EdgeInsets.all(6.0),
                 child: ClipOval(
                   child: Hero(
-                    tag: "birdbox ${birdBox.id}",
-                    child: Image.asset(birdBox.boxType.image),
+                    tag: "birdbox ${birdBox!.id}",
+                    child: Image.asset(birdBox!.boxType!.image),
                   ),
                 ),
               ),
             ),
             FittedBox(
-              child: Text('Bird Box ${birdBox.id.toString()}',
+              child: Text('Bird Box ${birdBox!.id.toString()}',
                   style: Theme.of(context).textTheme.headline2),
             ),
           ],

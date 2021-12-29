@@ -26,10 +26,10 @@ class _RegistrationPageState extends State<RegistrationPage> {
     Future<void> _register() async {
       final FirebaseAuth _auth = FirebaseAuth.instance;
 
-      final User user = (await _auth
+      final User? user = (await _auth
               .createUserWithEmailAndPassword(
-        email: emailController.text ?? '',
-        password: passwordController.text ?? '',
+        email: emailController.text,
+        password: passwordController.text,
       )
               .catchError((error) {
         print(error);
@@ -97,7 +97,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
           },
         );
       } else {
-        return false;
+        return;
       }
     }
 

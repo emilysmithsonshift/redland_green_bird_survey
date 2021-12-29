@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 
 class PageTemplate extends StatelessWidget {
-  final String title;
-  final String image;
-  final List<Widget> widgetList;
-  final List<Widget> gridList;
-  final String heroTag;
-  final double size;
-  final List<Widget> listTileList;
+  final String? title;
+  final String? image;
+  final List<Widget>? widgetList;
+  final List<Widget>? gridList;
+  final String? heroTag;
+  final double? size;
+  final List<Widget>? listTileList;
 
   const PageTemplate(
-      {Key key,
+      {Key? key,
       this.title,
       this.image,
       this.widgetList,
@@ -39,7 +39,7 @@ class PageTemplate extends StatelessWidget {
                   child: Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 2.0),
                     child: Text(
-                      title,
+                      title!,
                       textAlign: TextAlign.center,
                       style: TextStyle(
                         color: Colors.white,
@@ -51,9 +51,9 @@ class PageTemplate extends StatelessWidget {
                 ),
               ),
               background: Hero(
-                tag: heroTag,
+                tag: heroTag!,
                 child: Image.asset(
-                  image,
+                  image!,
                   fit: BoxFit.cover,
                 ),
               ),
@@ -63,9 +63,9 @@ class PageTemplate extends StatelessWidget {
             SliverList(
               delegate: SliverChildBuilderDelegate(
                 (BuildContext context, int index) {
-                  return widgetList[index];
+                  return widgetList![index];
                 },
-                childCount: widgetList.length,
+                childCount: widgetList!.length,
               ),
             ), // Re-implementing the above SliverGrid.count example:
           if (listTileList != null)
@@ -76,8 +76,8 @@ class PageTemplate extends StatelessWidget {
               ),
               delegate:
                   SliverChildBuilderDelegate((BuildContext context, int index) {
-                return listTileList[index];
-              }, childCount: listTileList.length),
+                return listTileList![index];
+              }, childCount: listTileList!.length),
             ),
           if (gridList != null)
             SliverGrid(
@@ -87,8 +87,8 @@ class PageTemplate extends StatelessWidget {
               ),
               delegate:
                   SliverChildBuilderDelegate((BuildContext context, int index) {
-                return gridList[index];
-              }, childCount: gridList.length),
+                return gridList![index];
+              }, childCount: gridList!.length),
             ),
         ],
       ),

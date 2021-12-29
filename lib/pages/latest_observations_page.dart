@@ -27,7 +27,7 @@ class _LatestObservationsPageState extends State<LatestObservationsPage> {
       case 2:
         _sightingList = Sighting.observations
             .where((sighting) =>
-                sighting.userEmail == FirebaseAuth.instance.currentUser.email)
+                sighting.userEmail == FirebaseAuth.instance.currentUser!.email)
             .toList();
         break;
     }
@@ -50,7 +50,7 @@ class _LatestObservationsPageState extends State<LatestObservationsPage> {
                       padding: const EdgeInsets.all(8.0),
                       child: Text(
                         'Latest Bird Sightings',
-                        style: Theme.of(context).textTheme.headline2.copyWith(
+                        style: Theme.of(context).textTheme.headline2!.copyWith(
                             fontWeight: _sortList == 0
                                 ? FontWeight.bold
                                 : FontWeight.normal,
@@ -71,7 +71,7 @@ class _LatestObservationsPageState extends State<LatestObservationsPage> {
                       padding: const EdgeInsets.all(8.0),
                       child: Text(
                         'All Observations',
-                        style: Theme.of(context).textTheme.headline2.copyWith(
+                        style: Theme.of(context).textTheme.headline2!.copyWith(
                             fontWeight: _sortList == 1
                                 ? FontWeight.bold
                                 : FontWeight.normal,
@@ -92,7 +92,7 @@ class _LatestObservationsPageState extends State<LatestObservationsPage> {
                       padding: const EdgeInsets.all(8.0),
                       child: Text(
                         'My Observations',
-                        style: Theme.of(context).textTheme.headline2.copyWith(
+                        style: Theme.of(context).textTheme.headline2!.copyWith(
                             fontWeight: _sortList == 2
                                 ? FontWeight.bold
                                 : FontWeight.normal,

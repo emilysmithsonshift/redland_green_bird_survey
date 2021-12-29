@@ -28,7 +28,7 @@ class _BirdIdentifierScreenState extends State<BirdIdentifierScreen> {
           .map(
             (bird) => RGGridTile(
               navigateTo: BirdFactPage(bird: bird),
-              imageAsset: bird.images[0].asset,
+              imageAsset: bird.images![0].asset,
               text: bird.name,
               heroTag: '${bird.name}1',
             ),

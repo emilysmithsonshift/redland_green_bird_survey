@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-Widget Comments({Function onChanged, String comment}) {
+Widget Comments({Function? onChanged, String? comment}) {
   return SingleChildScrollView(
     child: Column(
       children: [
@@ -38,7 +38,7 @@ Widget Comments({Function onChanged, String comment}) {
                 keyboardType: TextInputType.multiline,
                 initialValue: comment,
                 onChanged: (value) {
-                  onChanged(value);
+                  onChanged!(value);
                 },
               ),
             ),

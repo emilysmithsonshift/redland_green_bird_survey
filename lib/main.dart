@@ -61,7 +61,7 @@ class _InitialPageState extends State<InitialPage> {
           if (FirebaseAuth.instance.currentUser == null) {
             return IntroductionPage();
           } else {
-            if (FirebaseAuth.instance.currentUser.emailVerified) {
+            if (FirebaseAuth.instance.currentUser!.emailVerified) {
               return HomePage();
             } else {
               return AwaitingEmailVerification();

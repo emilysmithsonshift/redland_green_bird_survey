@@ -42,13 +42,13 @@ Widget SelectBird(int _bird, Function onSelect) {
                 Radius.circular(10),
               ),
               image: DecorationImage(
-                colorFilter: birdList[index].images.isEmpty
+                colorFilter: birdList[index].images!.isEmpty
                     ? const ColorFilter.mode(Colors.grey, BlendMode.clear)
                     : const ColorFilter.mode(Colors.white, BlendMode.colorBurn),
                 fit: BoxFit.fill,
-                image: AssetImage(birdList[index].images.isEmpty
+                image: AssetImage(birdList[index].images!.isEmpty
                     ? 'assets/bluetit.png'
-                    : birdList[index].images[0].asset),
+                    : birdList[index].images![0].asset),
               ),
             ),
             child: Stack(
@@ -108,7 +108,7 @@ Widget SelectBird(int _bird, Function onSelect) {
                     width: double.infinity,
                     padding: const EdgeInsets.all(2.0),
                     child: Text(
-                      birdList[index].name,
+                      birdList[index].name!,
                       textAlign: TextAlign.center,
                     ),
                   ),

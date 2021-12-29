@@ -4,11 +4,11 @@ import 'package:redland_green_bird_survey/models/bird_box.dart';
 import '../map_page.dart';
 
 class SelectBirdBoxNo extends StatefulWidget {
-  final int birdBox;
-  final Function onSelect;
-  final BuildContext context;
+  final int? birdBox;
+  final Function? onSelect;
+  final BuildContext? context;
 
-  const SelectBirdBoxNo({Key key, this.birdBox, this.onSelect, this.context})
+  const SelectBirdBoxNo({Key? key, this.birdBox, this.onSelect, this.context})
       : super(key: key);
   @override
   _SelectBirdBoxNoState createState() => _SelectBirdBoxNoState();
@@ -38,7 +38,7 @@ class _SelectBirdBoxNoState extends State<SelectBirdBoxNo> {
                 BirdBox _birdBox = BirdBox.birdBoxesList[index];
                 return GestureDetector(
                   onTap: () {
-                    widget.onSelect(index + 1);
+                    widget.onSelect!(index + 1);
                   },
                   child: Padding(
                     padding: const EdgeInsets.all(6.0),
@@ -65,7 +65,7 @@ class _SelectBirdBoxNoState extends State<SelectBirdBoxNo> {
                             width: widget.birdBox == _birdBox.id ? 2.0 : 0.0,
                             color: widget.birdBox == _birdBox.id
                                 ? Colors.blueAccent
-                                : Colors.green[50],
+                                : Colors.green[50]!,
                           ),
                         ),
                         child: Center(
@@ -121,7 +121,7 @@ class _SelectBirdBoxNoState extends State<SelectBirdBoxNo> {
                     ),
                   )
                 : Text(BirdBox
-                    .birdBoxesList[widget.birdBox - 1].locationDescription),
+                    .birdBoxesList[widget.birdBox! - 1].locationDescription!),
           ),
         ),
       ],

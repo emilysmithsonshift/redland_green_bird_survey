@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
 
 Widget step({
-  int stepNumber,
-  String title,
-  String subtitle,
-  Widget content,
-  Function onNext,
-  Function onBack,
-  bool showPrevious,
-  String nextButtonText,
-  BuildContext context,
-  bool showErrorMsg,
-  String errorMsg,
+  int? stepNumber,
+  required String title,
+  String? subtitle,
+  required Widget content,
+  Function? onNext,
+  Function? onBack,
+  required bool showPrevious,
+  String? nextButtonText,
+  BuildContext? context,
+  required bool showErrorMsg,
+  String? errorMsg,
 }) {
   return Padding(
     padding: const EdgeInsets.all(8.0),
@@ -52,7 +52,7 @@ Widget step({
         Expanded(child: content),
         showErrorMsg
             ? Text(
-                errorMsg,
+                errorMsg!,
                 style: TextStyle(color: Colors.red),
               )
             : Text(''),
@@ -66,14 +66,14 @@ Widget step({
                   padding: const EdgeInsets.only(right: 8.0),
                   child: ElevatedButton(
                     onPressed: () {
-                      onBack();
+                      onBack!();
                     },
                     child: Text('Back'),
                   ),
                 ),
               ElevatedButton(
                 onPressed: () {
-                  onNext();
+                  onNext!();
                 },
                 child: Text(nextButtonText ?? 'Next'),
               )

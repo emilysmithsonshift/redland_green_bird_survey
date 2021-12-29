@@ -12,9 +12,9 @@ import 'package:redland_green_bird_survey/pages/bird_box_page.dart';
 bool mapSatellite = false;
 
 class MapPage extends StatefulWidget {
-  final int birdBox;
+  final int? birdBox;
 
-  const MapPage({Key key, this.birdBox}) : super(key: key);
+  const MapPage({Key? key, this.birdBox}) : super(key: key);
   @override
   _MapPageState createState() => _MapPageState();
 }
@@ -22,13 +22,13 @@ class MapPage extends StatefulWidget {
 class _MapPageState extends State<MapPage> {
   final List<Marker> _markers = [];
   MapController mapController = MapController();
-  LatLngBounds _bounds;
+  LatLngBounds? _bounds;
   bool permissionGranted = false;
   final PopupController _popupController = PopupController();
 
   _fetchBounds() {
     _bounds = LatLngBounds.fromPoints(
-        BirdBox.birdBoxesList.map((birdBox) => birdBox.location).toList());
+        BirdBox.birdBoxesList.map((birdBox) => birdBox.location).toList() as List<LatLng>);
   }
 
   @override
@@ -36,7 +36,7 @@ class _MapPageState extends State<MapPage> {
     _fetchBounds();
 
     if (widget.birdBox != null) {
-      int i = widget.birdBox;
+      int i = widget.birdBox!;
       final Marker _marker = MapMarker(birdBox: BirdBox.birdBoxesList[i]);
       _markers.add(_marker);
     } else {
@@ -71,7 +71,7 @@ class _MapPageState extends State<MapPage> {
             LocationMarkerPlugin(),
           ],
           center: widget.birdBox != null
-              ? BirdBox.birdBoxesList[widget.birdBox].location
+              ? BirdBox.birdBoxesList[widget.birdBox!].location
               : LatLng(51.474508, -2.608220),
           zoom: 17.0,
         ),
@@ -94,7 +94,7 @@ class _MapPageState extends State<MapPage> {
             popupOptions: PopupOptions(
               popupController: _popupController,
               popupBuilder: (BuildContext context, Marker marker) {
-                return PopUp(marker: marker);
+                return PopUp(marker: marker as MapMarker?);
               },
             ),
             builder: (context, markers) {
@@ -122,7 +122,7 @@ class _MapPageState extends State<MapPage> {
               color: Colors.black),
         ),
         appBar: AppBar(
-          backgroundColor: Colors.green[100].withOpacity(0.6),
+          backgroundColor: Colors.green[100]!.withOpacity(0.6),
           title: Text('Map'),
         ),
         extendBodyBehindAppBar: Platform.isIOS,
@@ -133,10 +133,10 @@ class _MapPageState extends State<MapPage> {
 class MapMarker extends Marker {
   BirdBox birdBox;
   MapMarker({
-    this.birdBox,
+    required this.birdBox,
   }) : super(
           anchorPos: AnchorPos.align(AnchorAlign.top),
-          point: birdBox.location,
+          point: birdBox.location!,
           builder: (BuildContext ctx) => Icon(
             Icons.location_pin,
             color: mapSatellite ? Colors.green : Colors.black,
@@ -145,9 +145,9 @@ class MapMarker extends Marker {
 }
 
 class PopUp extends StatefulWidget {
-  final MapMarker marker;
+  final MapMarker? marker;
 
-  const PopUp({Key key, this.marker}) : super(key: key);
+  const PopUp({Key? key, this.marker}) : super(key: key);
   @override
   _PopUpState createState() => _PopUpState();
 }
@@ -161,7 +161,7 @@ class _PopUpState extends State<PopUp> {
           context,
           MaterialPageRoute(
             builder: (context) => BirdBoxPage(
-              birdBox: widget.marker.birdBox,
+              birdBox: widget.marker!.birdBox,
             ),
           ),
         );
@@ -178,9 +178,9 @@ class _PopUpState extends State<PopUp> {
             leading: Hero(
                 tag: 'starling',
                 child: ClipOval(
-                    child: Image.asset(widget.marker.birdBox.boxType.image))),
-            title: Text('Bird Box ${widget.marker.birdBox.id}'),
-            subtitle: Text(widget.marker.birdBox.locationDescription),
+                    child: Image.asset(widget.marker!.birdBox.boxType!.image))),
+            title: Text('Bird Box ${widget.marker!.birdBox.id}'),
+            subtitle: Text(widget.marker!.birdBox.locationDescription!),
           ),
         ),
       ),

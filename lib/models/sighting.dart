@@ -2,13 +2,13 @@ import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 
 class Sighting {
-  String id;
-  DateTime dateTime;
-  int birdBox;
-  int bird;
-  String user;
-  String userEmail;
-  String comment;
+  String? id;
+  DateTime? dateTime;
+  int? birdBox;
+  int? bird;
+  String? user;
+  String? userEmail;
+  String? comment;
 
   Sighting({
     this.id,
@@ -26,10 +26,10 @@ class Sighting {
   static void addSighting(Sighting _sighting) {
     final DatabaseReference reference =
         FirebaseDatabase.instance.ref().child("observations");
-    final String newkey = reference.push().key;
+    final String newkey = reference.push().key!;
     reference.child(newkey).set({
       'user': _sighting.user,
-      'date_time': _sighting.dateTime.toIso8601String(),
+      'date_time': _sighting.dateTime!.toIso8601String(),
       'bird_box': _sighting.birdBox,
       'bird': _sighting.bird,
       'userEmail': _sighting.userEmail,
@@ -42,7 +42,7 @@ class Sighting {
         FirebaseDatabase.instance.ref().child("observations");
     reference.child(id).update({
       'user': _sighting.user,
-      'date_time': _sighting.dateTime.toIso8601String(),
+      'date_time': _sighting.dateTime!.toIso8601String(),
       'bird_box': _sighting.birdBox,
       'bird': _sighting.bird,
       'userEmail': _sighting.userEmail,
@@ -54,7 +54,7 @@ class Sighting {
     final DatabaseReference reference =
         FirebaseDatabase.instance.ref().child("observations");
     final DatabaseEvent databaseEvent = await reference.once();
-    final Map<dynamic, dynamic> returnedList = databaseEvent.snapshot.value;
+    final Map<dynamic, dynamic>? returnedList = databaseEvent.snapshot.value as Map<dynamic, dynamic>?;
     observations.clear();
     if (returnedList == null) {
       return true;
@@ -65,15 +65,15 @@ class Sighting {
         Sighting(
           id: key as String,
           dateTime: DateTime.parse(value['date_time'] as String),
-          user: value['user'] as String,
+          user: value['user'] as String?,
           userEmail: value['userEmail'],
           bird: value['bird'],
-          birdBox: value['bird_box'] as int,
+          birdBox: value['bird_box'] as int?,
         ),
       );
     });
     observations
-        .sort((Sighting a, Sighting b) => b.dateTime.compareTo(a.dateTime));
+        .sort((Sighting a, Sighting b) => b.dateTime!.compareTo(a.dateTime!));
     sightings = observations.where((sighting) => sighting.bird != 0).toList();
     observationsNotifier.value++;
     return true;

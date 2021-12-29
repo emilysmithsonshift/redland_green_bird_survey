@@ -21,22 +21,22 @@ class _FactPageState extends State<FactPage> {
           switch (selectedIndex) {
             case 0:
               return dyk.type == DYKType.general;
-              break;
+
             case 1:
               return dyk.type == DYKType.nestBoxes;
-              break;
+
             case 2:
               return dyk.type == DYKType.birdNames;
-              break;
+
             case 3:
               return dyk.type == DYKType.passerines;
-              break;
+
             case 4:
               return dyk.type == DYKType.corvids;
-              break;
+
             case 5:
               return dyk.type == DYKType.birdsOfPrey;
-              break;
+
             default:
               return false;
           }
@@ -58,7 +58,7 @@ class _FactPageState extends State<FactPage> {
             borderRadius: BorderRadius.all(Radius.circular(20)),
             boxShadow: [
               BoxShadow(
-                color: index == selectedIndex ? Colors.green[50] : Colors.grey,
+                color: index == selectedIndex ? Colors.green[50]! : Colors.grey,
                 offset: Offset(index == selectedIndex ? 0 : 5.0,
                     index == selectedIndex ? 0 : 5.0),
                 blurRadius: index == selectedIndex ? 0 : 5.0,
@@ -107,7 +107,7 @@ class _FactPageState extends State<FactPage> {
               Column(
                 children: _dykList
                     .map((dyk) =>
-                        FlipCardWidget(dyk: dyk, key: Key(dyk.question)))
+                        FlipCardWidget(dyk: dyk, key: Key(dyk.question!)))
                     .toList(),
               ),
             ],

@@ -1,13 +1,12 @@
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
 
 class TimeOfObservation extends StatelessWidget {
-  final DateTime dateTime;
-  final Function onSelected;
-  final DateTime maxDate;
+  final DateTime? dateTime;
+  final Function? onSelected;
+  final DateTime? maxDate;
 
   const TimeOfObservation(
-      {Key key, this.dateTime, this.onSelected, this.maxDate})
+      {Key? key, this.dateTime, this.onSelected, this.maxDate})
       : super(key: key);
 
   @override
@@ -28,7 +27,7 @@ class TimeOfObservation extends StatelessWidget {
           minimumDate: DateTime(2021),
           maximumDate: maxDate,
           onDateTimeChanged: (DateTime newDateTime) {
-            onSelected(newDateTime);
+            onSelected!(newDateTime);
           },
         ),
       ),

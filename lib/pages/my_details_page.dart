@@ -17,14 +17,14 @@ class _MyDetailsPageState extends State<MyDetailsPage> {
   Widget build(BuildContext context) {
     _sightingList = Sighting.observations
         .where((sighting) =>
-            sighting.userEmail == FirebaseAuth.instance.currentUser.email)
+            sighting.userEmail == FirebaseAuth.instance.currentUser!.email)
         .toList();
     Widget _content = Column(
       children: [
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text('Nickname: ${FirebaseAuth.instance.currentUser.displayName}',
+            Text('Nickname: ${FirebaseAuth.instance.currentUser!.displayName}',
                 style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18)),
             IconButton(
               icon: Icon(
@@ -36,7 +36,7 @@ class _MyDetailsPageState extends State<MyDetailsPage> {
                   context: context,
                   builder: (BuildContext context) {
                     TextEditingController controller = TextEditingController(
-                        text: FirebaseAuth.instance.currentUser.displayName);
+                        text: FirebaseAuth.instance.currentUser!.displayName);
                     return AlertDialog(
                       title: Text('Change your nickname'),
                       content: Container(
@@ -64,7 +64,7 @@ class _MyDetailsPageState extends State<MyDetailsPage> {
                       actions: [
                         ElevatedButton(
                           onPressed: () async {
-                            await FirebaseAuth.instance.currentUser
+                            await FirebaseAuth.instance.currentUser!
                                 .updateDisplayName(controller.value.text);
                             Navigator.pop(context);
                           },

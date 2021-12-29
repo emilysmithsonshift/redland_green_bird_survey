@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
 class RGGridTile extends StatelessWidget {
-  final String text;
-  final String imageAsset;
-  final Widget navigateTo;
-  final String heroTag;
+  final String? text;
+  final String? imageAsset;
+  final Widget? navigateTo;
+  final String? heroTag;
 
   const RGGridTile(
-      {Key key, this.text, this.imageAsset, this.navigateTo, this.heroTag})
+      {Key? key, this.text, this.imageAsset, this.navigateTo, this.heroTag})
       : super(key: key);
 
   @override
@@ -31,7 +31,7 @@ class RGGridTile extends StatelessWidget {
           image: DecorationImage(
             fit: BoxFit.cover,
             image: AssetImage(
-              imageAsset,
+              imageAsset!,
             ),
           ),
         ),
@@ -49,7 +49,7 @@ class RGGridTile extends StatelessWidget {
             width: double.infinity,
             padding: const EdgeInsets.all(8.0),
             child: Text(
-              text,
+              text!,
               textAlign: TextAlign.center,
             ),
           ),

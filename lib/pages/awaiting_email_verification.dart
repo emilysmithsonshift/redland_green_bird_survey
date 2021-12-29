@@ -15,8 +15,8 @@ class AwaitingEmailVerification extends StatefulWidget {
 }
 
 class _AwaitingEmailVerificationState extends State<AwaitingEmailVerification> {
-  User user = FirebaseAuth.instance.currentUser;
-  Timer timer;
+  User? user = FirebaseAuth.instance.currentUser;
+  late Timer timer;
 
   @override
   void initState() {
@@ -37,7 +37,7 @@ class _AwaitingEmailVerificationState extends State<AwaitingEmailVerification> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text('We have sent an email with a verification link to'
-                '\n\n${user.email}'
+                '\n\n${user!.email}'
                 '\n\nPlease tap the link to verify your email address.'),
             Padding(
               padding: const EdgeInsets.all(24.0),
@@ -66,8 +66,8 @@ class _AwaitingEmailVerificationState extends State<AwaitingEmailVerification> {
 
   Future<void> _checkEmailVerified() async {
     user = FirebaseAuth.instance.currentUser;
-    await user.reload();
-    if (user.emailVerified) {
+    await user!.reload();
+    if (user!.emailVerified) {
       timer.cancel();
       Navigator.of(context).pushAndRemoveUntil(
           MaterialPageRoute(builder: (context) => MyApp()),

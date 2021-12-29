@@ -11,24 +11,24 @@ import 'observation_widgets/comments.dart';
 import 'observation_widgets/time_of_observation.dart';
 
 class EnterObservationsPage extends StatefulWidget {
-  final int birdBox;
-  final Sighting sighting;
+  final int? birdBox;
+  final Sighting? sighting;
 
-  const EnterObservationsPage({Key key, this.birdBox, this.sighting})
+  const EnterObservationsPage({Key? key, this.birdBox, this.sighting})
       : super(key: key);
   @override
   _EnterObservationsPageState createState() => _EnterObservationsPageState();
 }
 
 class _EnterObservationsPageState extends State<EnterObservationsPage> {
-  int _birdBox = -1;
+  int? _birdBox = -1;
   int _bird = -1;
   DateTime _dateTime = DateTime.now();
-  bool showModal;
-  String _comment;
+  late bool showModal;
+  String? _comment;
   int currentPage = 0;
 
-  void checkShowModal() async {
+  Future checkShowModal() async {
     final prefs = await SharedPreferences.getInstance();
     showModal = prefs.getBool('showModal') ?? true;
   }
@@ -68,7 +68,7 @@ class _EnterObservationsPageState extends State<EnterObservationsPage> {
     //   isLoading = false;
     // });
 
-    WidgetsBinding.instance.addPostFrameCallback((_) => showMod());
+    WidgetsBinding.instance!.addPostFrameCallback((_) => showMod());
   }
 
   void showMod() async {
@@ -270,13 +270,13 @@ class _EnterObservationsPageState extends State<EnterObservationsPage> {
                     final Sighting _sighting = Sighting(
                       dateTime: _dateTime,
                       birdBox: _birdBox,
-                      userEmail: FirebaseAuth.instance.currentUser.email,
-                      user: FirebaseAuth.instance.currentUser.displayName,
+                      userEmail: FirebaseAuth.instance.currentUser!.email,
+                      user: FirebaseAuth.instance.currentUser!.displayName,
                       bird: _bird,
                       comment: _comment,
                     );
                     if (widget.sighting != null) {
-                      Sighting.updateSighting(_sighting, widget.sighting.id);
+                      Sighting.updateSighting(_sighting, widget.sighting!.id!);
                     } else {
                       Sighting.addSighting(_sighting);
                     }

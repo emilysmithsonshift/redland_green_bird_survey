@@ -4,10 +4,10 @@ import 'package:redland_green_bird_survey/models/birds.dart';
 import '../settings.dart';
 
 class BirdFactPage extends StatefulWidget {
-  final Bird bird;
-  final String heroKey;
+  final Bird? bird;
+  final String? heroKey;
 
-  const BirdFactPage({Key key, this.bird, this.heroKey}) : super(key: key);
+  const BirdFactPage({Key? key, this.bird, this.heroKey}) : super(key: key);
 
   @override
   _BirdFactPageState createState() => _BirdFactPageState();
@@ -19,7 +19,7 @@ class _BirdFactPageState extends State<BirdFactPage> {
 
   @override
   void initState() {
-    for (int i = 0; i < widget.bird.images.length; i++) {
+    for (int i = 0; i < widget.bird!.images!.length; i++) {
       photoList.add(
         GestureDetector(
           onTap: () {
@@ -38,7 +38,7 @@ class _BirdFactPageState extends State<BirdFactPage> {
                 image: DecorationImage(
                   fit: BoxFit.cover,
                   image: AssetImage(
-                    widget.bird.images[i].asset,
+                    widget.bird!.images![i].asset,
                   ),
                 ),
               )),
@@ -60,7 +60,7 @@ class _BirdFactPageState extends State<BirdFactPage> {
                 SizedBox(
                   height: MediaQuery.of(context).size.width,
                   child: Hero(
-                    tag: widget.heroKey ?? '${widget.bird.name}1',
+                    tag: widget.heroKey ?? '${widget.bird!.name}1',
                     child: Material(
                       color: Colors.green[100],
                       child: Container(
@@ -72,7 +72,7 @@ class _BirdFactPageState extends State<BirdFactPage> {
                           image: DecorationImage(
                             fit: BoxFit.cover,
                             image: AssetImage(
-                              widget.bird.images[imageNumber].asset,
+                              widget.bird!.images![imageNumber].asset,
                             ),
                           ),
                         ),
@@ -89,7 +89,7 @@ class _BirdFactPageState extends State<BirdFactPage> {
                               height: 60,
                               child: Center(
                                 child: FittedBox(
-                                  child: Text(widget.bird.name,
+                                  child: Text(widget.bird!.name!,
                                       style: TextStyle(
                                         fontSize: 32,
                                         fontWeight: FontWeight.bold,
@@ -130,16 +130,16 @@ class _BirdFactPageState extends State<BirdFactPage> {
                                             .textTheme
                                             .headline2),
                                     Text(
-                                      widget.bird.conservationStatus ?? '',
+                                      widget.bird!.conservationStatus ?? '',
                                       style: Theme.of(context)
                                           .textTheme
-                                          .headline2
+                                          .headline2!
                                           .copyWith(
-                                            color: widget.bird
+                                            color: widget.bird!
                                                         .conservationStatus ==
                                                     'Green'
                                                 ? Colors.green
-                                                : widget.bird
+                                                : widget.bird!
                                                             .conservationStatus ==
                                                         'Amber'
                                                     ? Colors.amber
@@ -155,7 +155,7 @@ class _BirdFactPageState extends State<BirdFactPage> {
                                         style: Theme.of(context)
                                             .textTheme
                                             .headline2),
-                                    Text(widget.bird.scientificName ?? '')
+                                    Text(widget.bird!.scientificName ?? '')
                                   ]),
                                 ),
                                 Padding(
@@ -169,23 +169,23 @@ class _BirdFactPageState extends State<BirdFactPage> {
                                     ),
                                     Expanded(
                                         child:
-                                            Text(widget.bird.birdFamily ?? ''))
+                                            Text(widget.bird!.birdFamily ?? ''))
                                   ]),
                                 ),
-                                if (widget.bird.birdType == BirdType.nesting)
+                                if (widget.bird!.birdType == BirdType.nesting)
                                   Padding(
                                     padding: const EdgeInsets.all(8.0),
                                     child: Text(
                                       'This species might use one of the nest boxes.',
                                     ),
                                   ),
-                                if (widget.bird.birdType == BirdType.other)
+                                if (widget.bird!.birdType == BirdType.other)
                                   Padding(
                                     padding: const EdgeInsets.all(8.0),
                                     child: Text(
                                         'This species might be seen on the green, but is not one of the species that will use a nest box'),
                                   ),
-                                if (widget.bird.birdType == BirdType.predator)
+                                if (widget.bird!.birdType == BirdType.predator)
                                   Padding(
                                     padding: const EdgeInsets.all(8.0),
                                     child: Text(
@@ -306,7 +306,7 @@ class _BirdFactPageState extends State<BirdFactPage> {
                           )
                         ],
                       ),
-                      Text(widget.bird.description),
+                      Text(widget.bird!.description!),
                     ],
                   ),
                 ),

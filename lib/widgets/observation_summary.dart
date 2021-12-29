@@ -15,11 +15,11 @@ Widget observationSummary(Sighting sighting, BuildContext context) {
             Text(
               Bird.birdsList
                   .firstWhere((bird) => sighting.bird == bird.id)
-                  .name,
+                  .name!,
               style: Theme.of(context).textTheme.headline2,
             ),
             Text(
-              '${DateFormat('d MMM yyyy').format(sighting.dateTime)}  ${DateFormat.jm().format(sighting.dateTime)}',
+              '${DateFormat('d MMM yyyy').format(sighting.dateTime!)}  ${DateFormat.jm().format(sighting.dateTime!)}',
             ),
           ],
         ),
