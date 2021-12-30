@@ -7,6 +7,7 @@ import 'package:redland_green_bird_survey/pages/information_page.dart';
 import 'package:redland_green_bird_survey/pages/interesting_facts.dart';
 import 'package:redland_green_bird_survey/pages/my_details_page.dart';
 import 'package:redland_green_bird_survey/pages/news_page.dart';
+import 'package:redland_green_bird_survey/pages/quiz_page.dart';
 import 'package:redland_green_bird_survey/pages/welcome_page.dart';
 import 'package:redland_green_bird_survey/widgets/observation_summary.dart';
 import 'package:redland_green_bird_survey/widgets/page_template.dart';
@@ -186,21 +187,27 @@ class _HomePageState extends State<HomePage> {
           text: 'Bird Box List',
           imageAsset: 'assets/jay.png'),
       RGGridTile(
-          heroTag: 'my_details',
-          navigateTo: MyDetailsPage(),
-          text: 'My details',
-          imageAsset: 'assets/coaltit1.png'),
-      RGGridTile(
         heroTag: 'fact_page',
         navigateTo: FactPage(),
         text: 'Did you know?',
         imageAsset: 'assets/nuthatch_close.png',
       ),
       RGGridTile(
+        text: 'Quiz',
+        imageAsset: 'assets/sparrow_1.png',
+        heroTag: 'quiz',
+        navigateTo: QuizPage(),
+      ),
+      RGGridTile(
           heroTag: 'information',
           navigateTo: InformationPage(),
           text: 'About',
           imageAsset: 'assets/wagtail.png'),
+      RGGridTile(
+          heroTag: 'my_details',
+          navigateTo: MyDetailsPage(),
+          text: 'My details',
+          imageAsset: 'assets/coaltit1.png'),
     ];
 
     return RefreshIndicator(

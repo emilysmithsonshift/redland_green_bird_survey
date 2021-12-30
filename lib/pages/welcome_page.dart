@@ -120,7 +120,7 @@ class _WelcomePageState extends State<WelcomePage> {
                 'since the end of the second world war, a decline which is still continuing in many species. '
                 '\n\nInstalling bird boxes is one way to help cavity-nesting species: nest boxes provide substitutes '
                 'for natural nesting sites and can offer protection from predators. '
-                'We have chosen nest boxes which have a long life and are resistant to damage by predators.'),
+                'We have chosen nest boxes which have a long life and are resistant to damage by predators.\n\n'),
             SizedBox(height: 20),
           ],
         ),
