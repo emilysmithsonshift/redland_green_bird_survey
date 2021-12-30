@@ -179,6 +179,7 @@ class Bird {
       Photo('assets/wren.png', giorgio),
       Photo('assets/wren2.png', giorgio),
       Photo('assets/wren_4.png', giorgio),
+      Photo('assets/wren5.png', giorgio),
     ],
     birdFamily: 'Troglodytidae (Wrens)',
     conservationStatus: 'Green',

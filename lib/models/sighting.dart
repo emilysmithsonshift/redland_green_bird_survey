@@ -34,7 +34,6 @@ class Sighting {
       'bird': _sighting.bird,
       'userEmail': _sighting.userEmail,
     });
-    getSightings();
   }
 
   static void updateSighting(Sighting _sighting, String id) {
@@ -47,35 +46,38 @@ class Sighting {
       'bird': _sighting.bird,
       'userEmail': _sighting.userEmail,
     });
-    getSightings();
   }
 
-  static Future<bool> getSightings() async {
+  static Future getSightings() async {
     final DatabaseReference reference =
         FirebaseDatabase.instance.ref().child("observations");
-    final DatabaseEvent databaseEvent = await reference.once();
-    final Map<dynamic, dynamic>? returnedList = databaseEvent.snapshot.value as Map<dynamic, dynamic>?;
-    observations.clear();
-    if (returnedList == null) {
-      return true;
-    }
+    Stream<DatabaseEvent> stream = reference.onValue;
+    stream.listen((event) {
+      final Map<dynamic, dynamic>? returnedList =
+          event.snapshot.value as Map<dynamic, dynamic>?;
+      observations.clear();
+      if (returnedList == null) {
+        observationsNotifier.value++;
+        return;
+      }
 
-    returnedList.forEach((key, value) {
-      observations.add(
-        Sighting(
-          id: key as String,
-          dateTime: DateTime.parse(value['date_time'] as String),
-          user: value['user'] as String?,
-          userEmail: value['userEmail'],
-          bird: value['bird'],
-          birdBox: value['bird_box'] as int?,
-        ),
+      returnedList.forEach((key, value) {
+        observations.add(
+          Sighting(
+            id: key as String,
+            dateTime: DateTime.parse(value['date_time'] as String),
+            user: value['user'] as String?,
+            userEmail: value['userEmail'],
+            bird: value['bird'],
+            birdBox: value['bird_box'] as int?,
+          ),
+        );
+      });
+      observations.sort(
+        (Sighting a, Sighting b) => b.dateTime!.compareTo(a.dateTime!),
       );
+      sightings = observations.where((sighting) => sighting.bird != 0).toList();
+      observationsNotifier.value++;
     });
-    observations
-        .sort((Sighting a, Sighting b) => b.dateTime!.compareTo(a.dateTime!));
-    sightings = observations.where((sighting) => sighting.bird != 0).toList();
-    observationsNotifier.value++;
-    return true;
   }
 }

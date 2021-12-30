@@ -3,11 +3,12 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-import 'package:redland_green_bird_survey/pages/awaiting_email_verification.dart';
-import 'package:redland_green_bird_survey/pages/introduction_page.dart';
-
 import 'models/version.dart';
+import 'pages/awaiting_email_verification.dart';
 import 'pages/home_page/home_page.dart';
+import 'pages/introduction_page.dart';
+import 'presentation/awaiting_email_verification.dart';
+import 'presentation/introduction_page.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -27,6 +28,17 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: ThemeData(
+        elevatedButtonTheme: ElevatedButtonThemeData(
+          style: ButtonStyle(
+            shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+              RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(18.0),
+              ),
+            ),
+            backgroundColor: MaterialStateProperty.all(Colors.green[50]),
+            foregroundColor: MaterialStateProperty.all(Colors.black),
+          ),
+        ),
         appBarTheme:
             const AppBarTheme(systemOverlayStyle: SystemUiOverlayStyle.light),
         textTheme: const TextTheme(
