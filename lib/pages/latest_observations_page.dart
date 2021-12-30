@@ -1,8 +1,9 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:redland_green_bird_survey/models/sighting.dart';
-import 'package:redland_green_bird_survey/widgets/observation_widget.dart';
-import 'package:redland_green_bird_survey/widgets/page_template.dart';
+
+import '../models/sighting.dart';
+import '../widgets/observation_widget.dart';
+import '../widgets/page_template.dart';
 
 class LatestObservationsPage extends StatefulWidget {
   const LatestObservationsPage({Key? key}) : super(key: key);
