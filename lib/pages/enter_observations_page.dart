@@ -77,7 +77,7 @@ class _EnterObservationsPageState extends State<EnterObservationsPage> {
         context: context,
         builder: (BuildContext context) {
           return AlertDialog(
-            title: Text("How to take a bird box observation:"),
+            title: const Text("How to take a bird box observation:"),
             actions: <Widget>[
               TextButton(
                 child: const Text('Don\'t show this again'),
@@ -96,7 +96,7 @@ class _EnterObservationsPageState extends State<EnterObservationsPage> {
             content: SingleChildScrollView(
               child: Column(
                 children: <Widget>[
-                  Text(
+                  const Text(
                       "1. Stand quietly, close enough to be able to identify the bird, but not so close as to disturb them. Use binoculars if you have them."
                       "\n\n2. Watch the box until you see a bird entering or leaving the box, or for at least 5 minutes."
                       "\n\n3. Provide observations for as many or as few boxes as you wish, and if possible, repeat the observation over as many days as you can."),
@@ -104,16 +104,16 @@ class _EnterObservationsPageState extends State<EnterObservationsPage> {
                       style: Theme.of(context).textTheme.headline1),
                   Text('\nI didn’t see any activity at all. Should I log this?',
                       style: Theme.of(context).textTheme.headline1),
-                  Text(
+                  const Text(
                       "Absolutely! If you have watched a box for at least five minutes, and have not seen any birds entering or leaving the nest, or any activity near to the nest, this is still a valuable record, as it tells us which boxes might not be used at that time. It helps us to decide if we should move the box to a different location. Please submit such findings!"),
                   Text('\nWhen is the best time of year to spot birds nesting?',
                       style: Theme.of(context).textTheme.headline1),
-                  Text(
+                  const Text(
                       "Birds nest in the spring and summer, so these months are the best times to record activity."
                       " Some birds, such as wrens, might also use nest boxes as winter night time roosts – you need to be around at dawn or dusk to see any evidence of this! You could also use this app to report winter roosts."),
                   Text('\nHow long should I wait at each box?',
                       style: Theme.of(context).textTheme.headline1),
-                  Text(
+                  const Text(
                       "When birds are feeding young, you are more likely to see activity at the nest fairly quickly. "
                       "If you are taking an observation before the young have hatched, "
                       "it may take longer to see if the nest is being used, so wait quietly for at least 5 minutes "
@@ -121,12 +121,12 @@ class _EnterObservationsPageState extends State<EnterObservationsPage> {
                   Text(
                       '\nI entered a comment but it did not show up in my observation. Why?',
                       style: Theme.of(context).textTheme.headline1),
-                  Text(
+                  const Text(
                       "We do monitor the comments but we do not publish them to the public in order to safeguard from anything inappropriate."
                       " Rest assured that your comments will be read by the Redland Green Community Group. "),
                   Text('\nI made a mistake. What should I do?',
                       style: Theme.of(context).textTheme.headline1),
-                  Text(
+                  const Text(
                       "Don't panic! Simply go back to the home page and tap on 'My Details'. "
                       "You can see, edit or delete any of your observations there."),
                 ],
@@ -148,7 +148,7 @@ class _EnterObservationsPageState extends State<EnterObservationsPage> {
           height: 35,
           child: FloatingActionButton(
             backgroundColor: Colors.green[100],
-            child: Icon(
+            child: const Icon(
               Icons.help_outline,
               color: Colors.black,
             ),
@@ -167,7 +167,7 @@ class _EnterObservationsPageState extends State<EnterObservationsPage> {
             child: Material(
               child: Container(
                 height: MediaQuery.of(context).size.height * 0.25,
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                   image: DecorationImage(
                     image: AssetImage(
                       'assets/greattit.png',
@@ -180,13 +180,14 @@ class _EnterObservationsPageState extends State<EnterObservationsPage> {
                     Align(
                       alignment: Alignment.centerLeft,
                       child: IconButton(
-                        icon: Icon(Icons.arrow_back_ios, color: Colors.white),
+                        icon: const Icon(Icons.arrow_back_ios,
+                            color: Colors.white),
                         onPressed: () {
                           Navigator.of(context).pop();
                         },
                       ),
                     ),
-                    Align(
+                    const Align(
                       alignment: Alignment.bottomCenter,
                       child: FittedBox(
                         child: Text(
@@ -246,7 +247,7 @@ class _EnterObservationsPageState extends State<EnterObservationsPage> {
                 CustomStep(
                     stepNumber: 3,
                     title: 'Please select which bird you saw',
-                    content: SelectBird(_bird, (int bird) {
+                    content: selectBird(_bird, (int bird) {
                       setState(() {
                         _bird = bird;
                       });
@@ -262,7 +263,7 @@ class _EnterObservationsPageState extends State<EnterObservationsPage> {
                       'Thank you for your submission. If you have any comments please enter them here.',
                   content: SizedBox(
                     height: 300,
-                    child: Comments(onChanged: (String comment) {
+                    child: comments(onChanged: (String comment) {
                       _comment = comment;
                     }),
                   ),
@@ -285,8 +286,8 @@ class _EnterObservationsPageState extends State<EnterObservationsPage> {
                         context: context,
                         builder: (BuildContext context) {
                           return AlertDialog(
-                            title:
-                                Text("Thank you for entering an observation."),
+                            title: const Text(
+                                "Thank you for entering an observation."),
                             actions: <Widget>[
                               TextButton(
                                 child: const Text('Enter another observation'),
@@ -303,7 +304,8 @@ class _EnterObservationsPageState extends State<EnterObservationsPage> {
                                   Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                      builder: (_) => EnterObservationsPage(),
+                                      builder: (_) =>
+                                          const EnterObservationsPage(),
                                     ),
                                   );
                                 },
@@ -314,13 +316,13 @@ class _EnterObservationsPageState extends State<EnterObservationsPage> {
                                   context,
                                   MaterialPageRoute(
                                     builder: (BuildContext context) =>
-                                        HomePage(),
+                                        const HomePage(),
                                   ),
                                   (Route<dynamic> route) => false,
                                 ),
                               ),
                             ],
-                            content: Text(
+                            content: const Text(
                                 'Your observations will help us better understand how the bird boxes are used.'),
                           );
                         });

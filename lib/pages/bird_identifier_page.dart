@@ -6,6 +6,8 @@ import 'package:redland_green_bird_survey/widgets/rg_grid_tile.dart';
 import 'bird_fact_page.dart';
 
 class BirdIdentifierScreen extends StatefulWidget {
+  const BirdIdentifierScreen({Key? key}) : super(key: key);
+
   @override
   _BirdIdentifierScreenState createState() => _BirdIdentifierScreenState();
 }

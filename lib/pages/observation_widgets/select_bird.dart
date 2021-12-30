@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:redland_green_bird_survey/models/birds.dart';
 
-Widget SelectBird(int _bird, Function onSelect) {
+Widget selectBird(int _bird, Function onSelect) {
   List<Bird> birdList = Bird.birdsList
       .where((bird) => bird.birdType == BirdType.nesting)
       .toList();
@@ -11,7 +11,7 @@ Widget SelectBird(int _bird, Function onSelect) {
   return SizedBox(
     height: 1000,
     child: GridView.builder(
-      padding: EdgeInsets.all(0),
+      padding: const EdgeInsets.all(0),
       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 3,
       ),
@@ -32,7 +32,7 @@ Widget SelectBird(int _bird, Function onSelect) {
               boxShadow: _bird == birdList[index].id
                   ? []
                   : [
-                      BoxShadow(
+                      const BoxShadow(
                         color: Colors.grey,
                         offset: Offset(3.0, 3.0),
                         blurRadius: 3.0,
@@ -54,9 +54,9 @@ Widget SelectBird(int _bird, Function onSelect) {
             child: Stack(
               children: [
                 if (birdList[index] == Bird.other)
-                  Center(
+                  const Center(
                     child: Padding(
-                      padding: const EdgeInsets.only(
+                      padding: EdgeInsets.only(
                           top: 2.0, left: 2.0, bottom: 20, right: 2),
                       child: Text(
                         'I saw a bird use the bird box but it was not one listed here.',
@@ -69,8 +69,8 @@ Widget SelectBird(int _bird, Function onSelect) {
                     ),
                   ),
                 if (birdList[index] == Bird.unidentified)
-                  Padding(
-                    padding: const EdgeInsets.only(
+                  const Padding(
+                    padding: EdgeInsets.only(
                         top: 2.0, left: 2.0, bottom: 20, right: 2),
                     child: Center(
                       child: Text(
@@ -84,8 +84,8 @@ Widget SelectBird(int _bird, Function onSelect) {
                     ),
                   ),
                 if (birdList[index] == Bird.none)
-                  Padding(
-                    padding: const EdgeInsets.only(
+                  const Padding(
+                    padding: EdgeInsets.only(
                         top: 2.0, left: 2.0, bottom: 20, right: 2),
                     child: Center(
                       child: Text(

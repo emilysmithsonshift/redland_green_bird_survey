@@ -9,6 +9,8 @@ import '../main.dart';
 import '../settings.dart';
 
 class AwaitingEmailVerification extends StatefulWidget {
+  const AwaitingEmailVerification({Key? key}) : super(key: key);
+
   @override
   _AwaitingEmailVerificationState createState() =>
       _AwaitingEmailVerificationState();
@@ -20,7 +22,7 @@ class _AwaitingEmailVerificationState extends State<AwaitingEmailVerification> {
 
   @override
   void initState() {
-    timer = Timer.periodic(Duration(seconds: 1), (timer) {
+    timer = Timer.periodic(const Duration(seconds: 1), (timer) {
       _checkEmailVerified();
     });
     super.initState();
@@ -39,18 +41,20 @@ class _AwaitingEmailVerificationState extends State<AwaitingEmailVerification> {
             Text('We have sent an email with a verification link to'
                 '\n\n${user!.email}'
                 '\n\nPlease tap the link to verify your email address.'),
-            Padding(
-              padding: const EdgeInsets.all(24.0),
+            const Padding(
+              padding: EdgeInsets.all(24.0),
               child: CircularProgressIndicator(
                 strokeWidth: 6,
               ),
             ),
             ElevatedButton(
               onPressed: () {
-                Navigator.pushReplacement(context,
-                    MaterialPageRoute(builder: (_) => IntroductionPage()));
+                Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(
+                        builder: (_) => const IntroductionPage()));
               },
-              child: Text('go back'),
+              child: const Text('go back'),
             ),
           ],
         ),
@@ -70,7 +74,7 @@ class _AwaitingEmailVerificationState extends State<AwaitingEmailVerification> {
     if (user!.emailVerified) {
       timer.cancel();
       Navigator.of(context).pushAndRemoveUntil(
-          MaterialPageRoute(builder: (context) => MyApp()),
+          MaterialPageRoute(builder: (context) => const MyApp()),
           (Route<dynamic> route) => false);
     }
   }

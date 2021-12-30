@@ -20,6 +20,8 @@ import 'latest_observations_page.dart';
 import 'map_page.dart';
 
 class HomePage extends StatefulWidget {
+  const HomePage({Key? key}) : super(key: key);
+
   @override
   _HomePageState createState() => _HomePageState();
 }
@@ -28,14 +30,12 @@ class _HomePageState extends State<HomePage> {
   Future<bool>? loading;
   @override
   void initState() {
-    News.getNews()
-      ..then((_) {
-        setState(() {});
-      });
-    Sighting.getSightings()
-      ..then((_) {
-        setState(() {});
-      });
+    News.getNews().then((_) {
+      setState(() {});
+    });
+    Sighting.getSightings().then((_) {
+      setState(() {});
+    });
 
     super.initState();
   }
@@ -44,7 +44,7 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     final List<Widget> _widgetList = [
       RGListTile(
-        navigateTo: WelcomePage(),
+        navigateTo: const WelcomePage(),
         imageAsset: 'assets/bluetit.png',
         heroTag: 'welcome',
         imageLeft: false,
@@ -58,7 +58,7 @@ class _HomePageState extends State<HomePage> {
                   style: Theme.of(context).textTheme.headline1,
                 ),
               ),
-              Text(
+              const Text(
                   'In 2020, Redland Green Community Group installed 16 bird boxes in trees around the green.'
                   '\n\nThis app has been created to track the boxes and their inhabitants.'
                   '\n\nTap for more information.')
@@ -72,14 +72,14 @@ class _HomePageState extends State<HomePage> {
             return RGListTile(
               imageAsset: 'assets/goldfinch4.png',
               alignment: Alignment.centerLeft,
-              navigateTo: LatestObservationsPage(),
+              navigateTo: const LatestObservationsPage(),
               heroTag: 'goldfinch',
               imageLeft: true,
               widget: Sighting.observations.isNotEmpty
                   ? Column(
                       children: [
                         Padding(
-                          padding: EdgeInsets.all(12.0),
+                          padding: const EdgeInsets.all(12.0),
                           child: Center(
                             child: Text('Recent Bird Sightings at Boxes',
                                 textAlign: TextAlign.center,
@@ -97,7 +97,7 @@ class _HomePageState extends State<HomePage> {
                         )
                       ],
                     )
-                  : Center(
+                  : const Center(
                       child: CircularProgressIndicator(),
                     ),
             );
@@ -105,15 +105,15 @@ class _HomePageState extends State<HomePage> {
       RGListTile(
         imageAsset: 'assets/longtailedtit2.png',
         alignment: Alignment.center,
-        navigateTo: NewsPage(),
+        navigateTo: const NewsPage(),
         heroTag: 'latestNews',
         imageLeft: false,
         widget: News.newsList.isEmpty
-            ? CircularProgressIndicator()
+            ? const CircularProgressIndicator()
             : Column(
                 children: [
                   Padding(
-                    padding: EdgeInsets.all(12.0),
+                    padding: const EdgeInsets.all(12.0),
                     child: Center(
                       child: Text('Latest News',
                           textAlign: TextAlign.center,
@@ -148,7 +148,7 @@ class _HomePageState extends State<HomePage> {
                                   textAlign: TextAlign.start,
                                 ),
                               ),
-                              SizedBox(
+                              const SizedBox(
                                 height: 12,
                               ),
                             ],
@@ -163,47 +163,47 @@ class _HomePageState extends State<HomePage> {
     ];
 
     final List<Widget> _gridList = [
-      RGGridTile(
+      const RGGridTile(
           heroTag: 'songthrush',
           navigateTo: BirdIdentifierScreen(),
           text: 'Redland Green Birds',
           imageAsset: 'assets/songthrush.png'),
       RGGridTile(
           heroTag: 'greattit',
-          navigateTo: EnterObservationsPage(),
+          navigateTo: const EnterObservationsPage(),
           setState: () {
             setState(() {});
           },
           text: 'Enter observations ',
           imageAsset: 'assets/greattit.png'),
-      RGGridTile(
+      const RGGridTile(
           heroTag: 'map_page',
           navigateTo: MapPage(),
           text: 'Map',
           imageAsset: 'assets/dunnock.png'),
-      RGGridTile(
+      const RGGridTile(
           heroTag: 'bird_box_list',
           navigateTo: BirdBoxListPage(),
           text: 'Bird Box List',
           imageAsset: 'assets/jay.png'),
-      RGGridTile(
+      const RGGridTile(
         heroTag: 'fact_page',
         navigateTo: FactPage(),
         text: 'Did you know?',
         imageAsset: 'assets/nuthatch_close.png',
       ),
-      RGGridTile(
+      const RGGridTile(
         text: 'Quiz',
         imageAsset: 'assets/sparrow_1.png',
         heroTag: 'quiz',
         navigateTo: QuizPage(),
       ),
-      RGGridTile(
+      const RGGridTile(
           heroTag: 'information',
           navigateTo: InformationPage(),
           text: 'About',
           imageAsset: 'assets/wagtail.png'),
-      RGGridTile(
+      const RGGridTile(
           heroTag: 'my_details',
           navigateTo: MyDetailsPage(),
           text: 'My details',

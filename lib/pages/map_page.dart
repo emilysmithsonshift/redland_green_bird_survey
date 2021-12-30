@@ -27,8 +27,9 @@ class _MapPageState extends State<MapPage> {
   final PopupController _popupController = PopupController();
 
   _fetchBounds() {
-    _bounds = LatLngBounds.fromPoints(
-        BirdBox.birdBoxesList.map((birdBox) => birdBox.location).toList() as List<LatLng>);
+    _bounds = LatLngBounds.fromPoints(BirdBox.birdBoxesList
+        .map((birdBox) => birdBox.location)
+        .toList() as List<LatLng>);
   }
 
   @override
@@ -68,7 +69,7 @@ class _MapPageState extends State<MapPage> {
           ),
           plugins: [
             MarkerClusterPlugin(),
-            LocationMarkerPlugin(),
+            const LocationMarkerPlugin(),
           ],
           center: widget.birdBox != null
               ? BirdBox.birdBoxesList[widget.birdBox!].location
@@ -123,7 +124,7 @@ class _MapPageState extends State<MapPage> {
         ),
         appBar: AppBar(
           backgroundColor: Colors.green[100]!.withOpacity(0.6),
-          title: Text('Map'),
+          title: const Text('Map'),
         ),
         extendBodyBehindAppBar: Platform.isIOS,
         body: _googleMap());
@@ -168,7 +169,7 @@ class _PopUpState extends State<PopUp> {
       },
       child: Container(
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.all(Radius.circular(10)),
+          borderRadius: const BorderRadius.all(Radius.circular(10)),
           color: Colors.green[50],
         ),
         width: MediaQuery.of(context).size.width * 0.9,

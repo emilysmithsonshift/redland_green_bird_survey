@@ -5,7 +5,7 @@ import 'package:redland_green_bird_survey/widgets/page_template.dart';
 import 'package:redland_green_bird_survey/widgets/quiz_flipcard_widget.dart';
 
 class QuizPage extends StatefulWidget {
-  QuizPage({Key? key}) : super(key: key);
+  const QuizPage({Key? key}) : super(key: key);
 
   @override
   _QuizPageState createState() => _QuizPageState();
@@ -48,7 +48,7 @@ class _QuizPageState extends State<QuizPage> {
       Center(
         child: Text(
           'Question ${quizQuestion + 1} of 20',
-          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+          style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
         ),
       ),
       const SizedBox(height: 8),
@@ -59,7 +59,7 @@ class _QuizPageState extends State<QuizPage> {
             padding: const EdgeInsets.all(8.0),
             child: Text(
               question.question,
-              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+              style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
             ),
           ),
         ),
@@ -67,10 +67,10 @@ class _QuizPageState extends State<QuizPage> {
       Padding(
         padding: const EdgeInsets.symmetric(horizontal: 8.0),
         child: GridView.builder(
-            padding: EdgeInsets.all(0),
+            padding: const EdgeInsets.all(0),
             shrinkWrap: true,
             itemCount: question.images.length,
-            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: 2,
               childAspectRatio: 1,
             ),
@@ -90,11 +90,11 @@ class _QuizPageState extends State<QuizPage> {
           children: [
             Text(
               'Score: $score',
-              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+              style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
             ),
             showNextButton
                 ? ElevatedButton(
-                    child: Text('Next'),
+                    child: const Text('Next'),
                     onPressed: () {
                       setState(() {
                         quizQuestion++;
@@ -114,23 +114,23 @@ class _QuizPageState extends State<QuizPage> {
 
   List<Widget> introduction() {
     return [
-      SizedBox(height: 16),
-      Center(
+      const SizedBox(height: 16),
+      const Center(
         child: Text(
           'Can you identify these 20 birds? ',
           style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
         ),
       ),
-      SizedBox(height: 16),
-      Padding(
-        padding: const EdgeInsets.all(8.0),
+      const SizedBox(height: 16),
+      const Padding(
+        padding: EdgeInsets.all(8.0),
         child: Text(
             'Try these 20 multiple-choice questions testing you on your bird knowlege.'),
       ),
       Padding(
         padding: const EdgeInsets.all(16.0),
         child: Container(
-          decoration: BoxDecoration(
+          decoration: const BoxDecoration(
             shape: BoxShape.circle,
             image: DecorationImage(
               image: AssetImage('assets/owl.png'),
@@ -142,7 +142,7 @@ class _QuizPageState extends State<QuizPage> {
       ),
       Center(
         child: ElevatedButton(
-          child: Text('Start'),
+          child: const Text('Start'),
           onPressed: () {
             setState(() {
               score = 0;
@@ -174,7 +174,7 @@ class _QuizPageState extends State<QuizPage> {
         child: Center(
           child: Text(
             'You scored $score out of 20!',
-            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+            style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
           ),
         ),
       ),
@@ -197,13 +197,13 @@ class _QuizPageState extends State<QuizPage> {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             ElevatedButton(
-              child: Text('Home'),
+              child: const Text('Home'),
               onPressed: () {
                 Navigator.pop(context);
               },
             ),
             ElevatedButton(
-              child: Text('Try again'),
+              child: const Text('Try again'),
               onPressed: () {
                 setState(() {
                   quizQuestion = -1;

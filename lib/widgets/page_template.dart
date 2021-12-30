@@ -30,9 +30,9 @@ class PageTemplate extends StatelessWidget {
             // pinned: true,
             expandedHeight: MediaQuery.of(context).size.height * 0.25,
             flexibleSpace: FlexibleSpaceBar(
-              titlePadding: EdgeInsets.all(0),
+              titlePadding: const EdgeInsets.all(0),
               title: ConstrainedBox(
-                constraints: BoxConstraints(
+                constraints: const BoxConstraints(
                   maxWidth: double.infinity,
                 ),
                 child: FittedBox(
@@ -41,7 +41,7 @@ class PageTemplate extends StatelessWidget {
                     child: Text(
                       title!,
                       textAlign: TextAlign.center,
-                      style: TextStyle(
+                      style: const TextStyle(
                         color: Colors.white,
                         fontWeight: FontWeight.bold,
                         fontSize: 18,
@@ -70,7 +70,7 @@ class PageTemplate extends StatelessWidget {
             ), // Re-implementing the above SliverGrid.count example:
           if (listTileList != null)
             SliverGrid(
-              gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
+              gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
                 maxCrossAxisExtent: 600,
                 childAspectRatio: 1.8,
               ),

@@ -33,8 +33,8 @@ Widget observationDetails({
           ],
         ),
         padding: showUser
-            ? EdgeInsets.all(8)
-            : EdgeInsets.only(top: 24, bottom: 24, left: 8, right: 8),
+            ? const EdgeInsets.all(8)
+            : const EdgeInsets.only(top: 24, bottom: 24, left: 8, right: 8),
         margin: const EdgeInsets.all(8),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -145,7 +145,7 @@ Widget observationDetails({
                 ),
               );
             },
-            icon: Icon(
+            icon: const Icon(
               Icons.edit,
               color: Colors.grey,
             ),
@@ -161,7 +161,7 @@ Widget observationDetails({
                 context: context!,
                 builder: (BuildContext context) {
                   return AlertDialog(
-                    title: Text(
+                    title: const Text(
                         'Are you sure you want to delete this observation?'),
                     actions: [
                       ElevatedButton(
@@ -188,7 +188,7 @@ Widget observationDetails({
                 },
               );
             },
-            icon: Icon(
+            icon: const Icon(
               Icons.delete,
               color: Colors.grey,
             ),

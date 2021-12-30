@@ -6,6 +6,8 @@ import 'package:redland_green_bird_survey/widgets/observation_widget.dart';
 import 'package:redland_green_bird_survey/widgets/page_template.dart';
 
 class MyDetailsPage extends StatefulWidget {
+  const MyDetailsPage({Key? key}) : super(key: key);
+
   @override
   _MyDetailsPageState createState() => _MyDetailsPageState();
 }
@@ -25,9 +27,10 @@ class _MyDetailsPageState extends State<MyDetailsPage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text('Nickname: ${FirebaseAuth.instance.currentUser!.displayName}',
-                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18)),
+                style:
+                    const TextStyle(fontWeight: FontWeight.bold, fontSize: 18)),
             IconButton(
-              icon: Icon(
+              icon: const Icon(
                 Icons.edit,
                 color: Colors.grey,
               ),
@@ -38,7 +41,7 @@ class _MyDetailsPageState extends State<MyDetailsPage> {
                     TextEditingController controller = TextEditingController(
                         text: FirebaseAuth.instance.currentUser!.displayName);
                     return AlertDialog(
-                      title: Text('Change your nickname'),
+                      title: const Text('Change your nickname'),
                       content: Container(
                         margin: const EdgeInsets.all(8),
                         padding: const EdgeInsets.all(8),
@@ -86,25 +89,25 @@ class _MyDetailsPageState extends State<MyDetailsPage> {
             Navigator.pushAndRemoveUntil(
               context,
               MaterialPageRoute(
-                builder: (BuildContext context) => IntroductionPage(),
+                builder: (BuildContext context) => const IntroductionPage(),
               ),
               (Route<dynamic> route) => false,
             );
           },
-          child: Text(
+          child: const Text(
             'Logout',
             style: TextStyle(
               color: Colors.red,
             ),
           ),
         ),
-        Text(
+        const Text(
           'My observations',
           style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
         ),
         _sightingList.isEmpty
-            ? Padding(
-                padding: const EdgeInsets.all(8.0),
+            ? const Padding(
+                padding: EdgeInsets.all(8.0),
                 child: Text('You have no observations yet.'),
               )
             : Column(

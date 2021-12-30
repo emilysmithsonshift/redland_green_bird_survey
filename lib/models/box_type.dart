@@ -20,7 +20,7 @@ class BoxType {
     'assets/bird_boxes/alicante_open.png',
     'assets/bird_boxes/alicante_open.jpg',
   );
-  static final String generalBirdBoxDescription =
+  static const String generalBirdBoxDescription =
       'These nestboxes are manufactured from WoodStone which is a mix of '
       'concrete and FSC certified wood fibres. Unlike a traditional wooden nest box, '
       'these boxes will not rot away or deteriorate and are guaranteed for 10 years. '

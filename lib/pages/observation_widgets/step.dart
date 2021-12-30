@@ -40,7 +40,7 @@ class _CustomStepperState extends State<CustomStepper> {
         onPageChanged: (newPage) {
           currentPage = newPage;
         },
-        physics: NeverScrollableScrollPhysics(),
+        physics: const NeverScrollableScrollPhysics(),
         scrollDirection: Axis.vertical,
         children: widget.customStepList!.map((CustomStep step) {
           return customStep(step: step);
@@ -55,11 +55,11 @@ class _CustomStepperState extends State<CustomStepper> {
         child: Column(
           children: [
             Container(
-              padding: EdgeInsets.all(8),
+              padding: const EdgeInsets.all(8),
               width: double.infinity,
               child: Text(
                 '${step.stepNumber.toString()}. ${step.title}',
-                style: TextStyle(
+                style: const TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: 18,
                 ),
@@ -72,7 +72,7 @@ class _CustomStepperState extends State<CustomStepper> {
             if (showErrorMsg)
               Text(
                 step.errorMsg ?? '',
-                style: TextStyle(color: Colors.red),
+                style: const TextStyle(color: Colors.red),
               ),
             Row(
               mainAxisAlignment: MainAxisAlignment.end,
@@ -85,12 +85,12 @@ class _CustomStepperState extends State<CustomStepper> {
                       currentPage--;
                       controller.animateToPage(
                         currentPage,
-                        duration: Duration(seconds: 1),
+                        duration: const Duration(seconds: 1),
                         curve: Curves.easeIn,
                       );
                     },
                     child: Row(
-                      children: [
+                      children: const [
                         Text(
                           'Back',
                           style: TextStyle(color: Colors.black),
@@ -100,7 +100,7 @@ class _CustomStepperState extends State<CustomStepper> {
                     ),
                   ),
                 ),
-                SizedBox(width: 20),
+                const SizedBox(width: 20),
                 ElevatedButton(
                   style: ElevatedButton.styleFrom(primary: Colors.green[100]),
                   onPressed: () {
@@ -113,7 +113,7 @@ class _CustomStepperState extends State<CustomStepper> {
                         currentPage++;
                         controller.animateToPage(
                           currentPage,
-                          duration: Duration(seconds: 1),
+                          duration: const Duration(seconds: 1),
                           curve: Curves.easeIn,
                         );
                       }
@@ -127,11 +127,11 @@ class _CustomStepperState extends State<CustomStepper> {
                     children: [
                       Text(
                         step.isLast! ? 'Submit' : 'Next',
-                        style: TextStyle(color: Colors.black),
+                        style: const TextStyle(color: Colors.black),
                       ),
                       step.isLast!
-                          ? SizedBox(width: 30)
-                          : Icon(
+                          ? const SizedBox(width: 30)
+                          : const Icon(
                               Icons.keyboard_arrow_down,
                               color: Colors.black,
                             ),

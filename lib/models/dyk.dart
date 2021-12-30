@@ -16,7 +16,7 @@ class DYK {
 
   DYK({this.question, this.answer, this.type, this.image});
 
-  static List<DYK> DYKList = [
+  static List<DYK> didYouKnowList = [
     DYK(
       question: 'What birds might I see (or hear) around Redland Green?',
       answer:

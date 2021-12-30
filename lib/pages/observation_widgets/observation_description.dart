@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-Widget ObservationDescription({
+Widget observationDescription({
   Function? onSelected,
   int? sightingType,
   required List sightingTypeList,
@@ -12,7 +12,7 @@ Widget ObservationDescription({
           onSelected!(sightingType.id);
         },
         child: Container(
-          constraints: BoxConstraints(minHeight: 50),
+          constraints: const BoxConstraints(minHeight: 50),
           padding: const EdgeInsets.all(8),
           margin: const EdgeInsets.all(4),
           decoration: BoxDecoration(
@@ -23,7 +23,7 @@ Widget ObservationDescription({
             boxShadow: sightingType == sightingType.id
                 ? []
                 : [
-                    BoxShadow(
+                    const BoxShadow(
                       color: Colors.grey,
                       offset: Offset(3.0, 3.0),
                       blurRadius: 3.0,

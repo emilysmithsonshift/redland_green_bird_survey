@@ -16,7 +16,7 @@ import 'map_page.dart';
 class BirdBoxPage extends StatefulWidget {
   final BirdBox? birdBox;
 
-  BirdBoxPage({Key? key, this.birdBox}) : super(key: key);
+  const BirdBoxPage({Key? key, this.birdBox}) : super(key: key);
 
   @override
   _BirdBoxPageState createState() => _BirdBoxPageState();
@@ -38,9 +38,9 @@ class _BirdBoxPageState extends State<BirdBoxPage> {
             decoration: defaultBoxDecoration(),
             margin: const EdgeInsets.all(8.0),
             child: OpenContainer(
-              transitionDuration: Duration(milliseconds: 750),
-              closedShape: RoundedRectangleBorder(
-                borderRadius: const BorderRadius.all(
+              transitionDuration: const Duration(milliseconds: 750),
+              closedShape: const RoundedRectangleBorder(
+                borderRadius: BorderRadius.all(
                   Radius.circular(20.0),
                 ),
               ),
@@ -67,7 +67,7 @@ class _BirdBoxPageState extends State<BirdBoxPage> {
                     SizedBox(
                       height: 150,
                       child: ClipRRect(
-                        borderRadius: BorderRadius.only(
+                        borderRadius: const BorderRadius.only(
                           bottomLeft: Radius.circular(20),
                           bottomRight: Radius.circular(20),
                         ),
@@ -85,7 +85,8 @@ class _BirdBoxPageState extends State<BirdBoxPage> {
                               MarkerLayerOptions(
                                 markers: [
                                   Marker(
-                                    builder: (_) => Icon(Icons.location_pin),
+                                    builder: (_) =>
+                                        const Icon(Icons.location_pin),
                                     point: widget.birdBox!.location!,
                                   )
                                 ],
@@ -110,26 +111,28 @@ class _BirdBoxPageState extends State<BirdBoxPage> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                SizedBox(
+                const SizedBox(
                   width: double.infinity,
                   child: Text(
                     'All the bird boxes were cleaned out in February 2021.',
                     textAlign: TextAlign.start,
                   ),
                 ),
-                SizedBox(height: 8),
+                const SizedBox(height: 8),
                 if (widget.birdBox!.boxState == BoxState.noNest)
-                  Text(
+                  const Text(
                       'This box showed no sign of having been used. If it is not used this year we shall consider moving it.'),
                 if (widget.birdBox!.boxState == BoxState.blueTitNest)
-                  Text('This box contained a fully formed blue tit nest.'),
+                  const Text(
+                      'This box contained a fully formed blue tit nest.'),
                 if (widget.birdBox!.boxState == BoxState.greatTitNest)
-                  Text('This box contained a fully formed great tit nest.'),
+                  const Text(
+                      'This box contained a fully formed great tit nest.'),
                 if (widget.birdBox!.boxState == BoxState.partNest)
-                  Text(
+                  const Text(
                       'This box contained a partly formed nest which implies the bird was disturbed before they managed to complete nesting.'),
                 if (widget.birdBox!.boxState == BoxState.unidentifiedNest)
-                  Text('This box contained a fully formed nest.'),
+                  const Text('This box contained a fully formed nest.'),
               ],
             ),
           ),
@@ -168,8 +171,8 @@ class _BirdBoxPageState extends State<BirdBoxPage> {
             style: Theme.of(context).textTheme.headline1,
           ),
           _sightingList.isEmpty
-              ? Padding(
-                  padding: const EdgeInsets.all(8.0),
+              ? const Padding(
+                  padding: EdgeInsets.all(8.0),
                   child: Text(
                     'No observations have been made for this bird box yet.'
                     '\n\nTo enter one, tap the obervations button above',
@@ -192,7 +195,7 @@ class _BirdBoxPageState extends State<BirdBoxPage> {
       title: 'Bird Box ${widget.birdBox!.id}',
       image: widget.birdBox!.boxType!.image,
       widgetList: [content()],
-      gridList: [],
+      gridList: const [],
       heroTag: 'birdbox ${widget.birdBox!.id}',
     );
   }

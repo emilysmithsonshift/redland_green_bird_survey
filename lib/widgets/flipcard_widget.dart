@@ -24,7 +24,7 @@ class _FlipCardWidgetState extends State<FlipCardWidget>
   void initState() {
     _animationController = AnimationController(
       vsync: this,
-      duration: Duration(seconds: 1),
+      duration: const Duration(seconds: 1),
     );
     _animation = Tween<double>(end: 1, begin: 0).animate(
       _animationController,
@@ -41,12 +41,12 @@ class _FlipCardWidgetState extends State<FlipCardWidget>
   Widget _widget() {
     return Container(
       decoration: defaultBoxDecoration(),
-      margin: EdgeInsets.symmetric(vertical: 8),
+      margin: const EdgeInsets.symmetric(vertical: 8),
       width: double.infinity,
       height: MediaQuery.of(context).size.width / 2,
       child: (_animation.value < 0.5)
           ? ClipRRect(
-              borderRadius: BorderRadius.all(
+              borderRadius: const BorderRadius.all(
                 Radius.circular(20),
               ),
               child: Row(
@@ -66,7 +66,7 @@ class _FlipCardWidgetState extends State<FlipCardWidget>
                       color: Colors.green[50],
                       width: double.infinity,
                       height: double.infinity,
-                      padding: EdgeInsets.all(8),
+                      padding: const EdgeInsets.all(8),
                       child: Center(
                         child: Text(
                           widget.dyk!.question!,
@@ -83,7 +83,7 @@ class _FlipCardWidgetState extends State<FlipCardWidget>
               height: double.infinity,
               decoration: BoxDecoration(
                 color: Colors.green[50],
-                borderRadius: BorderRadius.all(
+                borderRadius: const BorderRadius.all(
                   Radius.circular(20),
                 ),
               ),

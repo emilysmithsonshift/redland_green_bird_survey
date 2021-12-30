@@ -1,4 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:redland_green_bird_survey/pages/login_page.dart';
 import 'package:redland_green_bird_survey/widgets/page_template.dart';
@@ -6,6 +7,8 @@ import 'package:redland_green_bird_survey/widgets/page_template.dart';
 import '../main.dart';
 
 class RegistrationPage extends StatefulWidget {
+  const RegistrationPage({Key? key}) : super(key: key);
+
   @override
   _RegistrationPageState createState() => _RegistrationPageState();
 }
@@ -32,15 +35,18 @@ class _RegistrationPageState extends State<RegistrationPage> {
         password: passwordController.text,
       )
               .catchError((error) {
+        // ignore: avoid_print
         print(error);
-        print(error.toString());
+        if (kDebugMode) {
+          print(error.toString());
+        }
         if (error.toString() ==
             '[firebase_auth/email-already-in-use] The email address is already in use by another account.') {
           showDialog(
             context: context,
             builder: (BuildContext context) {
               return AlertDialog(
-                title: Text('Oh dear'),
+                title: const Text('Oh dear'),
                 content: Text(
                     "The email address ${emailController.value.text} has already been registered. Please log in."),
                 actions: [
@@ -49,7 +55,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
                       Navigator.pushAndRemoveUntil(
                         context,
                         MaterialPageRoute(
-                          builder: (BuildContext context) => LoginPage(),
+                          builder: (BuildContext context) => const LoginPage(),
                         ),
                         (Route<dynamic> route) => false,
                       );
@@ -61,7 +67,9 @@ class _RegistrationPageState extends State<RegistrationPage> {
             },
           );
         } else {
-          print(error.toString());
+          if (kDebugMode) {
+            print(error.toString());
+          }
         }
       }))
           .user;
@@ -85,7 +93,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
                     Navigator.pushAndRemoveUntil(
                       context,
                       MaterialPageRoute(
-                        builder: (BuildContext context) => MyApp(),
+                        builder: (BuildContext context) => const MyApp(),
                       ),
                       (Route<dynamic> route) => false,
                     );
@@ -102,8 +110,8 @@ class _RegistrationPageState extends State<RegistrationPage> {
     }
 
     final List<Widget> _widgetList = [
-      Padding(
-        padding: const EdgeInsets.all(8.0),
+      const Padding(
+        padding: EdgeInsets.all(8.0),
         child: Text(
             'You need to register in order to use this app. We will never share '
             'your details with third parties.'),
@@ -193,11 +201,11 @@ class _RegistrationPageState extends State<RegistrationPage> {
                 'Please enter your email address',
               ),
               subtitle: _emailErrorMsg
-                  ? Text('Please enter a valid e-mail address',
+                  ? const Text('Please enter a valid e-mail address',
                       style: TextStyle(
                         color: Colors.red,
                       ))
-                  : Text(''),
+                  : const Text(''),
               content: Container(
                 margin: const EdgeInsets.all(8),
                 padding: const EdgeInsets.all(8),
@@ -230,13 +238,13 @@ class _RegistrationPageState extends State<RegistrationPage> {
               subtitle: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text('At least 6 characters'),
+                  const Text('At least 6 characters'),
                   _passwordErrorMsg
-                      ? Text('Please enter a valid password',
+                      ? const Text('Please enter a valid password',
                           style: TextStyle(
                             color: Colors.red,
                           ))
-                      : Text(''),
+                      : const Text(''),
                 ],
               ),
               content: Container(
@@ -271,11 +279,12 @@ class _RegistrationPageState extends State<RegistrationPage> {
                 'Please choose a nickname (this will be visible to the public)',
               ),
               subtitle: _nickNameErrorMsg
-                  ? Text('Please choose a nickname with at least 3 characters.',
+                  ? const Text(
+                      'Please choose a nickname with at least 3 characters.',
                       style: TextStyle(
                         color: Colors.red,
                       ))
-                  : Text(''),
+                  : const Text(''),
               content: Container(
                 margin: const EdgeInsets.all(8),
                 padding: const EdgeInsets.all(8),

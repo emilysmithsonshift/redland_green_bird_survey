@@ -7,6 +7,8 @@ import 'login_page.dart';
 import 'map_page.dart';
 
 class IntroductionPage extends StatelessWidget {
+  const IntroductionPage({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     final List<Widget> _widgetList = [
@@ -23,13 +25,13 @@ class IntroductionPage extends StatelessWidget {
                 '\nIn 2020 Redland Green Community Group installed 16 bird boxes around the Green'
                 '\n\nThis app has been created to enable the community to monitor the boxes and learn more about the birdlife on Redland Green. '),
             Container(
-                padding: EdgeInsets.all(8),
-                margin: EdgeInsets.all(8),
+                padding: const EdgeInsets.all(8),
+                margin: const EdgeInsets.all(8),
                 decoration: defaultBoxDecoration(color: Colors.green[50]),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Center(
+                    const Center(
                       child: Text(
                         'Helping out is as easy as 1 2 3\n',
                         style: TextStyle(
@@ -39,9 +41,9 @@ class IntroductionPage extends StatelessWidget {
                     GestureDetector(
                       onTap: () {
                         Navigator.push(context,
-                            MaterialPageRoute(builder: (_) => MapPage()));
+                            MaterialPageRoute(builder: (_) => const MapPage()));
                       },
-                      child: Text(
+                      child: const Text(
                         '1. Find a bird Box',
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
@@ -51,33 +53,33 @@ class IntroductionPage extends StatelessWidget {
                     GestureDetector(
                       onTap: () {
                         Navigator.push(context,
-                            MaterialPageRoute(builder: (_) => MapPage()));
+                            MaterialPageRoute(builder: (_) => const MapPage()));
                       },
-                      child: Text(
+                      child: const Text(
                         'Use the handy map to help you.\n',
                       ),
                     ),
-                    SizedBox(height: 8),
-                    Text(
+                    const SizedBox(height: 8),
+                    const Text(
                       '2. Observe',
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
                       ),
                     ),
-                    Text(
+                    const Text(
                         'Watch the bird box to see if there is any activity.\n'),
-                    SizedBox(height: 8),
-                    Text(
+                    const SizedBox(height: 8),
+                    const Text(
                       '3. Enter your observation into the app',
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
                       ),
                     ),
-                    Text('It is quick and easy.'),
-                    SizedBox(height: 8),
+                    const Text('It is quick and easy.'),
+                    const SizedBox(height: 8),
                   ],
                 )),
-            Text(
+            const Text(
                 '\n\nIn order to use this app you will need to register or log in if you have previously registered \n\n'),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -87,7 +89,7 @@ class IntroductionPage extends StatelessWidget {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => LoginPage(),
+                          builder: (context) => const LoginPage(),
                         ),
                       );
                     },
@@ -97,7 +99,7 @@ class IntroductionPage extends StatelessWidget {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => RegistrationPage(),
+                          builder: (context) => const RegistrationPage(),
                         ),
                       );
                     },

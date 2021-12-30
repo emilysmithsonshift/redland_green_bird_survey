@@ -4,6 +4,8 @@ import 'package:redland_green_bird_survey/widgets/news_widget.dart';
 import 'package:redland_green_bird_survey/widgets/page_template.dart';
 
 class NewsPage extends StatefulWidget {
+  const NewsPage({Key? key}) : super(key: key);
+
   @override
   _NewsPageState createState() => _NewsPageState();
 }

@@ -33,7 +33,7 @@ class _QuizFlipCardWidgetState extends State<QuizFlipCardWidget>
     currentImage = widget.image;
     _animationController = AnimationController(
       vsync: this,
-      duration: Duration(milliseconds: 500),
+      duration: const Duration(milliseconds: 500),
     );
     _animation = Tween<double>(end: 1, begin: 0).animate(
       _animationController,
@@ -51,7 +51,7 @@ class _QuizFlipCardWidgetState extends State<QuizFlipCardWidget>
         decoration: defaultBoxDecoration(),
         child: (_animation.value < 0.5)
             ? ClipRRect(
-                borderRadius: BorderRadius.all(
+                borderRadius: const BorderRadius.all(
                   Radius.circular(20),
                 ),
                 child: SizedBox(
@@ -68,7 +68,7 @@ class _QuizFlipCardWidgetState extends State<QuizFlipCardWidget>
                 height: double.infinity,
                 decoration: BoxDecoration(
                   color: Colors.green[50],
-                  borderRadius: BorderRadius.all(
+                  borderRadius: const BorderRadius.all(
                     Radius.circular(20),
                   ),
                 ),
@@ -84,9 +84,9 @@ class _QuizFlipCardWidgetState extends State<QuizFlipCardWidget>
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             widget.correct
-                                ? Icon(Icons.check, color: Colors.green)
-                                : Icon(Icons.close, color: Colors.red),
-                            SizedBox(
+                                ? const Icon(Icons.check, color: Colors.green)
+                                : const Icon(Icons.close, color: Colors.red),
+                            const SizedBox(
                               width: 8,
                             ),
                             Expanded(

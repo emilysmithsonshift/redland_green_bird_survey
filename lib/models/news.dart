@@ -107,7 +107,6 @@ class News {
         databaseEvent.snapshot.value as Map<dynamic, dynamic>?;
     newsList.clear();
     if (returnedList == null) {
-      print('null');
       return true;
     }
 

@@ -32,17 +32,18 @@ Widget step({
                 child: Center(
                   child: Text(
                     stepNumber.toString(),
-                    style: TextStyle(
+                    style: const TextStyle(
                       fontWeight: FontWeight.bold,
                     ),
                   ),
                 ),
               ),
-              SizedBox(width: 16),
+              const SizedBox(width: 16),
               Expanded(
                 child: Text(
                   title,
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+                  style: const TextStyle(
+                      fontWeight: FontWeight.bold, fontSize: 16),
                 ),
               ),
             ],
@@ -53,9 +54,9 @@ Widget step({
         showErrorMsg
             ? Text(
                 errorMsg!,
-                style: TextStyle(color: Colors.red),
+                style: const TextStyle(color: Colors.red),
               )
-            : Text(''),
+            : const Text(''),
         SizedBox(
           height: 30,
           child: Row(
@@ -68,7 +69,7 @@ Widget step({
                     onPressed: () {
                       onBack!();
                     },
-                    child: Text('Back'),
+                    child: const Text('Back'),
                   ),
                 ),
               ElevatedButton(

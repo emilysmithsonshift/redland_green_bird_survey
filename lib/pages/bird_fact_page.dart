@@ -79,7 +79,7 @@ class _BirdFactPageState extends State<BirdFactPage> {
                         child: Align(
                           alignment: Alignment.bottomCenter,
                           child: Container(
-                              decoration: BoxDecoration(
+                              decoration: const BoxDecoration(
                                 color: Colors.white30,
                                 borderRadius: BorderRadius.only(
                                     bottomLeft: Radius.circular(20),
@@ -90,7 +90,7 @@ class _BirdFactPageState extends State<BirdFactPage> {
                               child: Center(
                                 child: FittedBox(
                                   child: Text(widget.bird!.name!,
-                                      style: TextStyle(
+                                      style: const TextStyle(
                                         fontSize: 32,
                                         fontWeight: FontWeight.bold,
                                       )),
@@ -173,21 +173,21 @@ class _BirdFactPageState extends State<BirdFactPage> {
                                   ]),
                                 ),
                                 if (widget.bird!.birdType == BirdType.nesting)
-                                  Padding(
-                                    padding: const EdgeInsets.all(8.0),
+                                  const Padding(
+                                    padding: EdgeInsets.all(8.0),
                                     child: Text(
                                       'This species might use one of the nest boxes.',
                                     ),
                                   ),
                                 if (widget.bird!.birdType == BirdType.other)
-                                  Padding(
-                                    padding: const EdgeInsets.all(8.0),
+                                  const Padding(
+                                    padding: EdgeInsets.all(8.0),
                                     child: Text(
                                         'This species might be seen on the green, but is not one of the species that will use a nest box'),
                                   ),
                                 if (widget.bird!.birdType == BirdType.predator)
-                                  Padding(
-                                    padding: const EdgeInsets.all(8.0),
+                                  const Padding(
+                                    padding: EdgeInsets.all(8.0),
                                     child: Text(
                                         'This species is a potential predator of eggs or young birds in the bird boxes.'),
                                   ),
@@ -197,20 +197,20 @@ class _BirdFactPageState extends State<BirdFactPage> {
                           Padding(
                             padding: const EdgeInsets.all(16.0),
                             child: IconButton(
-                              icon: Icon(Icons.info_outline),
+                              icon: const Icon(Icons.info_outline),
                               onPressed: () {
                                 showDialog(
                                   context: context,
                                   builder: (BuildContext context) {
                                     return AlertDialog(
-                                      title: Text('Conservation Status'),
+                                      title: const Text('Conservation Status'),
                                       content: Wrap(
                                         runSpacing: 10,
                                         children: [
-                                          Text(
+                                          const Text(
                                               'The conservation list puts birds and other UK animals into 3 categories:'),
                                           RichText(
-                                            text: TextSpan(
+                                            text: const TextSpan(
                                               text: 'Green: ',
                                               style: TextStyle(
                                                   color: Colors.green,
@@ -229,7 +229,7 @@ class _BirdFactPageState extends State<BirdFactPage> {
                                             ),
                                           ),
                                           RichText(
-                                            text: TextSpan(
+                                            text: const TextSpan(
                                               text: 'Amber: ',
                                               style: TextStyle(
                                                 color: Colors.amber,
@@ -249,7 +249,7 @@ class _BirdFactPageState extends State<BirdFactPage> {
                                             ),
                                           ),
                                           RichText(
-                                            text: TextSpan(
+                                            text: const TextSpan(
                                               text: 'Red: ',
                                               style: TextStyle(
                                                   color: Colors.red,
@@ -268,7 +268,7 @@ class _BirdFactPageState extends State<BirdFactPage> {
                                             ),
                                           ),
                                           RichText(
-                                            text: TextSpan(
+                                            text: const TextSpan(
                                               text:
                                                   'This is reviewed every five years and the last review showed that  ',
                                               style: TextStyle(

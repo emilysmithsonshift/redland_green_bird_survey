@@ -30,12 +30,12 @@ class RGGridTile extends StatelessWidget {
         child: Material(
           color: Colors.green[100],
           child: Container(
-            margin: EdgeInsets.all(8),
+            margin: const EdgeInsets.all(8),
             width: 200,
             height: 200,
             // margin: const EdgeInsets.all(8),
             decoration: BoxDecoration(
-              borderRadius: BorderRadius.all(Radius.circular(20)),
+              borderRadius: const BorderRadius.all(Radius.circular(20)),
               image: DecorationImage(
                 fit: BoxFit.cover,
                 image: AssetImage(
@@ -66,7 +66,7 @@ class RGGridTile extends StatelessWidget {
                 child: Text(
                   text!,
                   textAlign: TextAlign.center,
-                  style: TextStyle(fontWeight: FontWeight.bold),
+                  style: const TextStyle(fontWeight: FontWeight.bold),
                 ),
               ),
             ),

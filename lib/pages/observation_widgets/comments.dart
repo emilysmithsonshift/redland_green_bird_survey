@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 
-Widget Comments({Function? onChanged, String? comment}) {
+Widget comments({Function? onChanged, String? comment}) {
   return SingleChildScrollView(
     child: Column(
       children: [
-        Text('Please note your comment will not be visible to the public.'),
+        const Text(
+            'Please note your comment will not be visible to the public.'),
         SizedBox(
           height: 200,
           child: Container(
@@ -25,7 +26,7 @@ Widget Comments({Function? onChanged, String? comment}) {
               padding: const EdgeInsets.all(8.0),
               child: TextFormField(
                 textInputAction: TextInputAction.go,
-                decoration: InputDecoration(
+                decoration: const InputDecoration(
                   border: InputBorder.none,
                   focusedBorder: InputBorder.none,
                   enabledBorder: InputBorder.none,

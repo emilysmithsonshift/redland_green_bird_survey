@@ -19,7 +19,7 @@ class _SelectBirdBoxNoState extends State<SelectBirdBoxNo> {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Text(
+        const Text(
             'This section is only for observing birds that are using our bird boxes. '
             'If you spot anything else you would like to share, '
             'please email emily_foulkes@hotmail.com'),
@@ -29,7 +29,7 @@ class _SelectBirdBoxNoState extends State<SelectBirdBoxNo> {
               padding: const EdgeInsets.all(0),
               // physics: NeverScrollableScrollPhysics(),
               shrinkWrap: true,
-              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 5,
                 childAspectRatio: 1.0,
               ),
@@ -54,7 +54,7 @@ class _SelectBirdBoxNoState extends State<SelectBirdBoxNo> {
                           ),
                           boxShadow: widget.birdBox != _birdBox.id
                               ? [
-                                  BoxShadow(
+                                  const BoxShadow(
                                     color: Colors.grey,
                                     offset: Offset(3.0, 3.0),
                                     blurRadius: 3.0,
@@ -71,7 +71,7 @@ class _SelectBirdBoxNoState extends State<SelectBirdBoxNo> {
                         child: Center(
                           child: Text(
                             _birdBox.id.toString(),
-                            style: TextStyle(
+                            style: const TextStyle(
                               fontWeight: FontWeight.bold,
                             ),
                           ),
@@ -112,7 +112,7 @@ class _SelectBirdBoxNoState extends State<SelectBirdBoxNo> {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (_) => MapPage(),
+                            builder: (_) => const MapPage(),
                           ),
                         );
                       },

@@ -4,12 +4,14 @@ import 'package:redland_green_bird_survey/widgets/flipcard_widget.dart';
 import 'package:redland_green_bird_survey/widgets/page_template.dart';
 
 class FactPage extends StatefulWidget {
+  const FactPage({Key? key}) : super(key: key);
+
   @override
   _FactPageState createState() => _FactPageState();
 }
 
 class _FactPageState extends State<FactPage> {
-  List<DYK> _dykList = [];
+  final List<DYK> _dykList = [];
   int selectedIndex = 0;
 
   @override
@@ -17,7 +19,7 @@ class _FactPageState extends State<FactPage> {
     Widget optionContainer(String title, int index) {
       _dykList.clear();
       _dykList.addAll(
-        DYK.DYKList.where((dyk) {
+        DYK.didYouKnowList.where((dyk) {
           switch (selectedIndex) {
             case 0:
               return dyk.type == DYKType.general;
@@ -49,13 +51,13 @@ class _FactPageState extends State<FactPage> {
           });
         },
         child: Container(
-          padding: EdgeInsets.all(8),
+          padding: const EdgeInsets.all(8),
           width: 100,
           height: 70,
-          margin: EdgeInsets.all(8),
+          margin: const EdgeInsets.all(8),
           decoration: BoxDecoration(
             color: Colors.green[50],
-            borderRadius: BorderRadius.all(Radius.circular(20)),
+            borderRadius: const BorderRadius.all(Radius.circular(20)),
             boxShadow: [
               BoxShadow(
                 color: index == selectedIndex ? Colors.green[50]! : Colors.grey,

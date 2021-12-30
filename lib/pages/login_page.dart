@@ -5,6 +5,8 @@ import 'package:redland_green_bird_survey/widgets/page_template.dart';
 import '../main.dart';
 
 class LoginPage extends StatefulWidget {
+  const LoginPage({Key? key}) : super(key: key);
+
   @override
   _LoginPageState createState() => _LoginPageState();
 }
@@ -145,13 +147,14 @@ class _LoginPageState extends State<LoginPage> {
                     Navigator.pushAndRemoveUntil(
                       context,
                       MaterialPageRoute(
-                        builder: (BuildContext context) => MyApp(),
+                        builder: (BuildContext context) => const MyApp(),
                       ),
                       (Route<dynamic> route) => false,
                     );
                   },
-                  child:
-                      isLoading ? CircularProgressIndicator() : Text('Submit'),
+                  child: isLoading
+                      ? const CircularProgressIndicator()
+                      : const Text('Submit'),
                 ),
               ),
             ),

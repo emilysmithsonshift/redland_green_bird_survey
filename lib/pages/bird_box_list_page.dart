@@ -7,6 +7,8 @@ import 'package:redland_green_bird_survey/widgets/page_template.dart';
 import 'bird_box_page.dart';
 
 class BirdBoxListPage extends StatefulWidget {
+  const BirdBoxListPage({Key? key}) : super(key: key);
+
   @override
   _BirdBoxListPageState createState() => _BirdBoxListPageState();
 }
@@ -21,7 +23,7 @@ class _BirdBoxListPageState extends State<BirdBoxListPage> {
       gridList: BirdBox.birdBoxesList.map((BirdBox birdBox) {
         return Container(
             decoration: defaultBoxDecoration(),
-            margin: EdgeInsets.all(8),
+            margin: const EdgeInsets.all(8),
             child: GestureDetector(
               onTap: () {
                 Navigator.push(

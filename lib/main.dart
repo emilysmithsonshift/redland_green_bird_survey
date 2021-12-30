@@ -12,10 +12,12 @@ import 'pages/home_page.dart';
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatefulWidget {
+  const MyApp({Key? key}) : super(key: key);
+
   @override
   _MyAppState createState() => _MyAppState();
 }
@@ -26,8 +28,8 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
       theme: ThemeData(
         appBarTheme:
-            AppBarTheme(systemOverlayStyle: SystemUiOverlayStyle.light),
-        textTheme: TextTheme(
+            const AppBarTheme(systemOverlayStyle: SystemUiOverlayStyle.light),
+        textTheme: const TextTheme(
           headline1: TextStyle(
               fontSize: 16.0, fontWeight: FontWeight.bold, color: Colors.black),
           headline2: TextStyle(
@@ -35,12 +37,14 @@ class _MyAppState extends State<MyApp> {
         ),
       ),
       title: 'Redland Green Bird Survey',
-      home: InitialPage(),
+      home: const InitialPage(),
     );
   }
 }
 
 class InitialPage extends StatefulWidget {
+  const InitialPage({Key? key}) : super(key: key);
+
   @override
   _InitialPageState createState() => _InitialPageState();
 }
@@ -63,12 +67,12 @@ class _InitialPageState extends State<InitialPage> {
           return const Text('Something went wrong!');
         } else if (snapshot.hasData) {
           if (FirebaseAuth.instance.currentUser == null) {
-            return IntroductionPage();
+            return const IntroductionPage();
           } else {
             if (FirebaseAuth.instance.currentUser!.emailVerified) {
-              return HomePage();
+              return const HomePage();
             } else {
-              return AwaitingEmailVerification();
+              return const AwaitingEmailVerification();
             }
           }
         } else {

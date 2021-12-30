@@ -16,8 +16,8 @@ class NewsWidget extends StatelessWidget {
       child: Column(
         children: [
           Container(
-            padding: EdgeInsets.all(12),
-            margin: EdgeInsets.all(8),
+            padding: const EdgeInsets.all(12),
+            margin: const EdgeInsets.all(8),
             decoration: defaultBoxDecoration(color: Colors.green[50]),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,

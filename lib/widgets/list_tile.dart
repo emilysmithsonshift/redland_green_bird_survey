@@ -11,7 +11,7 @@ Widget listTile(
       onTap!();
     },
     child: Container(
-      margin: EdgeInsets.symmetric(vertical: 8),
+      margin: const EdgeInsets.symmetric(vertical: 8),
       height: 200,
       decoration: const BoxDecoration(
         borderRadius: BorderRadius.all(

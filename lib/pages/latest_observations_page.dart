@@ -5,6 +5,8 @@ import 'package:redland_green_bird_survey/widgets/observation_widget.dart';
 import 'package:redland_green_bird_survey/widgets/page_template.dart';
 
 class LatestObservationsPage extends StatefulWidget {
+  const LatestObservationsPage({Key? key}) : super(key: key);
+
   @override
   _LatestObservationsPageState createState() => _LatestObservationsPageState();
 }
@@ -106,8 +108,8 @@ class _LatestObservationsPageState extends State<LatestObservationsPage> {
             ),
           ),
           _sightingList.isEmpty
-              ? Padding(
-                  padding: const EdgeInsets.all(8.0),
+              ? const Padding(
+                  padding: EdgeInsets.all(8.0),
                   child: Text('You have no observations yet.'),
                 )
               : Column(

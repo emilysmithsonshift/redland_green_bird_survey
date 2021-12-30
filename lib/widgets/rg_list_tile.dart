@@ -33,7 +33,7 @@ class RGListTile extends StatelessWidget {
         decoration: defaultBoxDecoration(),
         margin: const EdgeInsets.all(8.0),
         child: Container(
-          constraints: BoxConstraints(maxWidth: 400),
+          constraints: const BoxConstraints(maxWidth: 400),
           height: 200,
           decoration: const BoxDecoration(
             borderRadius: BorderRadius.all(
