@@ -12,14 +12,14 @@ enum BoxState {
 
 class BirdBox {
   int? id;
-  LatLng? location;
+  LatLng location;
   String? locationDescription;
   BoxType? boxType;
   BoxState? boxState;
 
   BirdBox(
       {this.id,
-      this.location,
+      required this.location,
       this.boxType,
       this.locationDescription,
       this.boxState});

@@ -4,10 +4,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:flutter_map_location_marker/flutter_map_location_marker.dart';
 import 'package:flutter_map_marker_cluster/flutter_map_marker_cluster.dart';
-
 import 'package:latlong2/latlong.dart';
-import 'package:redland_green_bird_survey/models/bird_box.dart';
-import 'package:redland_green_bird_survey/pages/bird_box_page.dart';
+
+import '../models/bird_box.dart';
+import 'bird_box_page.dart';
 
 bool mapSatellite = false;
 
@@ -22,14 +22,13 @@ class MapPage extends StatefulWidget {
 class _MapPageState extends State<MapPage> {
   final List<Marker> _markers = [];
   MapController mapController = MapController();
-  LatLngBounds? _bounds;
+  late LatLngBounds _bounds;
   bool permissionGranted = false;
   final PopupController _popupController = PopupController();
 
   _fetchBounds() {
-    _bounds = LatLngBounds.fromPoints(BirdBox.birdBoxesList
-        .map((birdBox) => birdBox.location)
-        .toList() as List<LatLng>);
+    _bounds = LatLngBounds.fromPoints(
+        BirdBox.birdBoxesList.map((birdBox) => birdBox.location).toList());
   }
 
   @override
