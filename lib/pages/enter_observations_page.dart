@@ -1,13 +1,13 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:redland_green_bird_survey/models/sighting.dart';
-import 'package:redland_green_bird_survey/pages/observation_widgets/select_bird.dart';
-import 'package:redland_green_bird_survey/pages/observation_widgets/select_bird_box_no.dart';
-import 'package:redland_green_bird_survey/pages/observation_widgets/step.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../models/sighting.dart';
 import 'home_page/home_page.dart';
 import 'observation_widgets/comments.dart';
+import 'observation_widgets/select_bird.dart';
+import 'observation_widgets/select_bird_box_no.dart';
+import 'observation_widgets/step.dart';
 import 'observation_widgets/time_of_observation.dart';
 
 class EnterObservationsPage extends StatefulWidget {
@@ -46,27 +46,6 @@ class _EnterObservationsPageState extends State<EnterObservationsPage> {
         _birdBox = widget.birdBox;
       });
     }
-    // if (widget.sighting != null) {
-    //   setState(() {
-    //     _birdBox = widget.sighting.birdBox;
-    //     _bird = Bird.birdsList
-    //         .indexWhere((bird) => widget.sighting.bird == bird.id);
-    //     _sightingType = widget.sighting.sightingType;
-    //     _furtherDetailstype =
-    //         FurtherDetailsOptions.furtherDetailsOptionsList.indexWhere(
-    //               (element) => element.id == widget.sighting.furtherDetailsOption,
-    //         );
-    //     _comment = widget.sighting.comment;
-    //     _furtherDetailstype = widget.sighting.furtherDetailsOption;
-    //     _dateTime = widget.sighting.dateTime;
-    //   });
-    // } else {
-    //   _dateTime = DateTime.now();
-    // }
-    // maxDate = DateTime.now();
-    // setState(() {
-    //   isLoading = false;
-    // });
 
     WidgetsBinding.instance!.addPostFrameCallback((_) => showMod());
   }
@@ -172,7 +151,8 @@ class _EnterObservationsPageState extends State<EnterObservationsPage> {
                     image: AssetImage(
                       'assets/greattit2.png',
                     ),
-                    fit: BoxFit.fill,
+                    alignment: Alignment.topCenter,
+                    fit: BoxFit.fitWidth,
                   ),
                 ),
                 child: Stack(

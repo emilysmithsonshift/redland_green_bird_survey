@@ -54,6 +54,7 @@ class PageTemplate extends StatelessWidget {
                 tag: heroTag!,
                 child: Image.asset(
                   image!,
+                  alignment: Alignment.topCenter,
                   fit: BoxFit.cover,
                 ),
               ),
