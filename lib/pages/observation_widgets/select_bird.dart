@@ -47,7 +47,7 @@ Widget selectBird(int _bird, Function onSelect) {
                     : const ColorFilter.mode(Colors.white, BlendMode.colorBurn),
                 fit: BoxFit.fill,
                 image: AssetImage(birdList[index].images!.isEmpty
-                    ? 'assets/bluetit.png'
+                    ? 'assets/bluetit1.png'
                     : birdList[index].images![0].asset),
               ),
             ),

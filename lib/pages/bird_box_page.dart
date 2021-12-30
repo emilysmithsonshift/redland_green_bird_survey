@@ -6,7 +6,7 @@ import 'package:redland_green_bird_survey/models/bird_box.dart';
 import 'package:redland_green_bird_survey/models/sighting.dart';
 import 'package:redland_green_bird_survey/pages/bird_box_type_page.dart';
 import 'package:redland_green_bird_survey/widgets/page_template.dart';
-import 'package:redland_green_bird_survey/widgets/rg_grid_tile.dart';
+import 'package:redland_green_bird_survey/pages/home_page/widgets/rg_grid_tile.dart';
 
 import '../settings.dart';
 import '../widgets/observation_widget.dart';
@@ -151,7 +151,7 @@ class _BirdBoxPageState extends State<BirdBoxPage> {
                       setState(() {});
                     },
                     text: 'Enter observations for this box',
-                    imageAsset: 'assets/greattit.png',
+                    imageAsset: 'assets/greattit2.png',
                   ),
                 ),
                 Flexible(

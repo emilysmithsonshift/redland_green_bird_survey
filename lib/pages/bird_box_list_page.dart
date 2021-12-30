@@ -19,7 +19,7 @@ class _BirdBoxListPageState extends State<BirdBoxListPage> {
     return PageTemplate(
       size: MediaQuery.of(context).size.width / 3,
       title: 'Bird Box List',
-      image: 'assets/jay.png',
+      image: 'assets/jay1.png',
       gridList: BirdBox.birdBoxesList.map((BirdBox birdBox) {
         return Container(
             decoration: defaultBoxDecoration(),

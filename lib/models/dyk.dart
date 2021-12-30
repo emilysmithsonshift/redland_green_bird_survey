@@ -50,7 +50,7 @@ class DYK {
       answer:
           'Ultraviolet light has a shorter wavelength than light in the spectrum that is visible to humans, but ultra-violet light is visible to insects, birds and some mammals. Phenomena visible in UV light might function to communicate messages between animals, both within and between species. For example, the blue crown feathers on blue tits’ heads reflect UV light, making the crown glow brightly. Brighter crown feathers have been shown to be associated with successful fledging of chicks; and females with brighter crowns also seem to be preferred by males. Brighter crowns on female blue tits may therefore signal reproductive success to males. There is still a lot to learn!',
       type: DYKType.general,
-      image: 'assets/bluetit.png',
+      image: 'assets/bluetit1.png',
     ),
     DYK(
       question: 'What threats do birds face?',
@@ -79,7 +79,7 @@ class DYK {
       answer:
           'The changing climate is causing important ecological events to happen at different times than in the past. It has been observed that spring events such as trees budding and a peak in caterpillar numbers are now happening earlier by about 3 weeks. Birds such as blue and great tits and pied flycatchers lay their eggs at a time which enables them to take advantage of this great bounty of caterpillars for feeding their young. If the flush of food is now happening earlier, what are the consequences for birds if they are not able to adapt and breed earlier? This is the phenological mismatch: events that used to be synchronised are no longer, as they are shifting at different rates. These changes and their consequences are the subjects of active research.',
       type: DYKType.general,
-      image: 'assets/greattit.png',
+      image: 'assets/greattit2.png',
     ),
     DYK(
       question:
@@ -87,7 +87,7 @@ class DYK {
       answer:
           'Coal tits nest in tree hollows or old mouse holes in the ground. They will nest in boxes, although they prefer boxes with a small hole to prevent larger birds from being able to evict them. While coal tits do live in this area, it is unlikely any of our boxes will be used by coal tits, as they prefer to nest in boxes hung in conifers rather than deciduous trees. Perhaps we should plant a few more conifers?',
       type: DYKType.nestBoxes,
-      image: 'assets/coaltit.png',
+      image: 'assets/coaltit2.png',
     ),
     DYK(
       question: 'Will long-tailed tits use the nest boxes in Redland Green?',
@@ -101,7 +101,7 @@ class DYK {
       answer:
           'Goldfinches are not cavity nesters. They prefer to nest in trees or dense hedgerows and tend to nest in small, loose colonies. The female will weave moss, leaves, grass and other materials brought to her by the male into a cup-like structure, using vertical branches as a framework. The nest is lined with wool or plant material. It is most unlikely that a goldfinch would use a nest box.',
       type: DYKType.nestBoxes,
-      image: 'assets/goldfinch.png',
+      image: 'assets/goldfinch1.png',
     ),
     DYK(
       question: 'Will dunnocks use the nest boxes in Redland Green?',
@@ -159,7 +159,7 @@ class DYK {
       answer:
           "The blue tit used to be known as ‘Tom titmouse’ or ‘tom tit’, or, more remotely ‘pickcheese’. Birds in the tit family, Paridae, used to be known as ‘titmouses’ (or ‘titmice’) and occasionally today the full name ‘titmouse’ is still used, as in ‘blue titmouse’ or ‘great titmouse’. The ‘tit’ component is of Norse origin, and means ‘small object or creature’, although an alternative view is that the word might have evolved in the fourteenth century as an echo of the bird’s song. ‘Mouse’, evolved from a Norse word ‘mose’ meaning “small bird”. The name ‘titomose’ first appeared in the fourteenth century and gradually evolved into ‘titmouse’. ",
       type: DYKType.birdNames,
-      image: 'assets/bluetit.png',
+      image: 'assets/bluetit1.png',
     ),
     DYK(
       question: "What bird used to be known as a ‘mud dabbler’?",
@@ -209,7 +209,7 @@ class DYK {
       answer:
           "Brightness varies according to how many yellow-green caterpillars are eaten, as such caterpillars contain high levels of the carotene (red, orange, yellow) pigments.",
       type: DYKType.passerines,
-      image: 'assets/bluetit.png',
+      image: 'assets/bluetit1.png',
     ),
     DYK(
       question: "What do goldfinches eat?",
@@ -240,7 +240,7 @@ class DYK {
       answer:
           "The great tit is likely to be successfully raised along with the rest of the brood, but it will be confused about its species. It won’t recover from this, and will not be able to breed.",
       type: DYKType.passerines,
-      image: 'assets/greattit_close.png',
+      image: 'assets/greattit3png',
     ),
     DYK(
       question: "Why did Victorians keep goldfinches as cage birds?",
@@ -254,7 +254,7 @@ class DYK {
       answer:
           "From a distance, dunnocks can be mistaken for house sparrows, as at 14cm long they are a similar size and have similar colours. The most significant difference in appearance is that they have a fine pointed bill like a robin, not the thick bill of the sparrow. Another clue is that house sparrows congregate in flocks, while dunnocks are usually seen alone or in pairs. While having a superficial resemblance to sparrows, they are not related to them, and belong to a different family. Dunnocks are common, and often found in gardens. However, they are shy birds, not venturing much out into the open, and so may not be noticed. They spend a lot of time near to the ground, and usually search for invertebrates and seeds on the ground. They generally fly at a low level. ",
       type: DYKType.passerines,
-      image: 'assets/dunnock.png',
+      image: 'assets/dunnock2.png',
     ),
     DYK(
       question: "Why do pied wagtails wag their tails up and down?",
@@ -282,7 +282,7 @@ class DYK {
       answer:
           "Dunnocks are unlike most other song birds in that they have a variety of mating systems, and which may differ from one breeding season to another. In polyandry, females mate with two or more males. In polygyny, two or more females mate with one male, and only that male. They also practice polygynandry, in which males and females both mate with two or more mates, and monogamy (the female and male mate only with each other) in a breeding season. The system that is adopted depends upon a multiplicity of factors. One is the ratio of females to males in an area; another is the degree to which territories overlap. Monogamy is likely if one female and one male territory overlap. If two or three female territories overlap one male territory, the birds are likely to be polygamous. If two males co-operate to defend a territory that has several females, they will adopt polygynandry. Polyandry is the most common breeding system overall. With respect to an individual bird’s success in passing on its genes, polygyny favours males, and polyandry favours females. Another factor that influences breeding behaviour is the availability of food. Female territories reduce in size if food is plentiful. This makes it easier for males to have exclusive access to females. These factors mean that different mating behaviours will be adopted by the same birds in different breeding seasons.",
       type: DYKType.passerines,
-      image: 'assets/dunnock.png',
+      image: 'assets/dunnock2.png',
     ),
     DYK(
       question: "What is the most widely distributed bird in the world?",
@@ -311,7 +311,7 @@ class DYK {
       answer:
           "On Redland Green, resident corvids, or members of the crow family, include carrion crows, jackdaws, jays and magpies. But occasionally, if you’re lucky, you might see or hear a raven (Corvus corax) flying high above the green. \n\nRavens used to be common residents of towns and cities, but persecution reduced their numbers to just 1,000 pairs, most of which were far from urban areas. Ravens have more recently been expanding their range once again, and they now number around 12,000 breeding pairs in the UK, a rare conservation success story. \n\nWhile they have not in general returned to urban areas, ravens now breed in the Avon Gorge. The raven is the largest of the corvids in the UK with a wingspan of 120-150cm: bigger than that of a buzzard. \n\nIt has a thick neck with shaggy throat feathers, a thick black bill, and a long, diamond or wedge-shaped tail. \n\nThe raven’s call is very distinctive: a deep “cronk”. By contrast, the carrion crow, the bird most likely to be confused with a raven, has a wingspan of 93-104cm. Its tail has a rounded fan-like shape, and its call is a higher pitched “caw caw”.",
       type: DYKType.corvids,
-      image: 'assets/crow.png',
+      image: 'assets/crow1.png',
     ),
     DYK(
       question: "Do carrion crows have predators?",
@@ -332,7 +332,7 @@ class DYK {
       answer:
           "Yes. A female sparrowhawk, despite being only slightly larger than a jay, but weighing more, is capable of catching and killing a jay. The much smaller male sparrowhawk would not be able to do this.",
       type: DYKType.corvids,
-      image: 'assets/jay.png',
+      image: 'assets/jay1.png',
     ),
     DYK(
       question: "Are there tawny owls in Redland?",

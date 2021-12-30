@@ -63,7 +63,7 @@ class _AwaitingEmailVerificationState extends State<AwaitingEmailVerification> {
     return PageTemplate(
       heroTag: 'awaiting_verification',
       title: 'Introduction',
-      image: 'assets/bluetit.png',
+      image: 'assets/bluetit1.png',
       widgetList: _widgetList,
     );
   }

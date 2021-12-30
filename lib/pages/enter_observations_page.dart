@@ -6,7 +6,7 @@ import 'package:redland_green_bird_survey/pages/observation_widgets/select_bird_
 import 'package:redland_green_bird_survey/pages/observation_widgets/step.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import 'home_page.dart';
+import 'home_page/home_page.dart';
 import 'observation_widgets/comments.dart';
 import 'observation_widgets/time_of_observation.dart';
 
@@ -170,7 +170,7 @@ class _EnterObservationsPageState extends State<EnterObservationsPage> {
                 decoration: const BoxDecoration(
                   image: DecorationImage(
                     image: AssetImage(
-                      'assets/greattit.png',
+                      'assets/greattit2.png',
                     ),
                     fit: BoxFit.fill,
                   ),

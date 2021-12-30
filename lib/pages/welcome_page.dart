@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:redland_green_bird_survey/pages/enter_observations_page.dart';
-import 'package:redland_green_bird_survey/pages/map_page.dart';
-import 'package:redland_green_bird_survey/widgets/page_template.dart';
 
 import '../settings.dart';
+import '../widgets/page_template.dart';
+import 'enter_observations_page.dart';
+import 'map_page.dart';
 
 class WelcomePage extends StatefulWidget {
   const WelcomePage({Key? key}) : super(key: key);
@@ -130,7 +130,7 @@ class _WelcomePageState extends State<WelcomePage> {
     ];
     return PageTemplate(
       title: 'Information',
-      image: 'assets/bluetit.png',
+      image: 'assets/bluetit5.png',
       heroTag: 'welcome',
       widgetList: _widgetList,
     );

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:redland_green_bird_survey/models/quiz_questions.dart';
 
-import 'package:redland_green_bird_survey/widgets/page_template.dart';
-import 'package:redland_green_bird_survey/widgets/quiz_flipcard_widget.dart';
+import '../models/quiz_questions.dart';
+import '../widgets/page_template.dart';
+import '../widgets/quiz_flipcard_widget.dart';
 
 class QuizPage extends StatefulWidget {
   const QuizPage({Key? key}) : super(key: key);
@@ -20,7 +20,7 @@ class _QuizPageState extends State<QuizPage> {
   Widget build(BuildContext context) {
     return PageTemplate(
       title: 'Quiz',
-      image: 'assets/sparrow_1.png',
+      image: 'assets/songthrush.png',
       heroTag: 'quiz',
       widgetList: quizQuestion == -1
           ? introduction()

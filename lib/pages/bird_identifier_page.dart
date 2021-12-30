@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:redland_green_bird_survey/models/birds.dart';
 import 'package:redland_green_bird_survey/widgets/page_template.dart';
-import 'package:redland_green_bird_survey/widgets/rg_grid_tile.dart';
+import 'package:redland_green_bird_survey/pages/home_page/widgets/rg_grid_tile.dart';
 
 import 'bird_fact_page.dart';
 

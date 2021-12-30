@@ -76,8 +76,8 @@ class Bird {
     description:
         "At 14cm long and weighing 18g, the great tit is the largest of the UK’s eight tit species. Males and females are alike, with blue grey wings and green backs. They have white cheeks and glossy black heads. The black continues as a thick stripe down the centre of their yellow chests and abdomen. The male’s stripe is thicker than the female’s, whose stripe is often discontinuous. The thicker the male’s stripe, the more attractive he is to the female as it indicates how good a father the bird will be.\n\nGreat tits eat insects, caterpillars, seeds and nuts. Like other tits, they prefer not to be out in the open for long: they are a woodland bird, but have readily moved into the gardens of built-up areas and have become familiar visitors to bird feeders. \n\nThe great tit has up to 40 types of calls and songs. The “teacher, teacher” call, used to assert a territory, is one of the most familiar. The female rarely calls. Individual males with large repertoires of songs and calls are more dominant birds, and also more successful breeders.\n\nNests are made from moss and grass, and lined with hair and feathers. Great tits will also readily use nest boxes. A clutch can be up to 15 eggs. Eggs, laid in April or May, are incubated by the female for about 2 weeks. Both parents feed the young after fledging. Occasionally great tits will have a second brood in the breeding season. Nests may sometimes contain blue tit eggs. It’s thought this might be because the great tit evicted a blue tit from a good nesting site, or perhaps it could be that a blue tit without a nest of its own has managed to lay eggs there. \n\nThere are estimated to be around 2.5 million breeding territories in the UK.",
     images: [
-      Photo('assets/greattit_close.png', giorgio),
-      Photo('assets/greattit.png', giorgio),
+      Photo('assets/greattit3.png', giorgio),
+      Photo('assets/greattit2.png', giorgio),
       Photo('assets/greattit1.png', giorgio),
     ],
     scientificName: 'Parus major',
@@ -91,11 +91,12 @@ class Bird {
     description:
         "Blue tits are among the most frequent visitors to our bird feeders and are also quite gregarious, visiting feeders in small groups. They eat insects, spiders, caterpillars, seeds and nuts. They are 12cm in length and 11g in weight – up to half the weight of robins. \n\nMales and females are striking birds, with their colourful mix of blue, yellow, white and green feathers. The blue cap on their head can be raised into a little crest. \n\nBlue tits are notable for their acrobatic skills, often hanging upside down while searching for food. \n\nLike all tits, blue tits usually nest in tree holes. They start prospecting for a place to nest as early as January. The female makes the nest from moss, grass, leaves, hair and spiders’ webs, lining them with feathers, fur or wool. Up to 16 eggs are usually laid from mid-April. The female incubates the eggs alone for 12-15 days, and the male brings her food. Both parents feed the young after fledging. A pair usually has only one brood in the year, but if food is plentiful, they may have a second brood. Sometimes, great tit eggs are found in blue tit nests.\n\nThe breeding population of the British Isles is around 3.5 million breeding territories, and the number of birds may increase to 15 million birds with over-wintering European blue tits. Blue tit numbers have been increasing in recent years, and this may be the result of bird boxes and feeders, to which they have readily adapted. Blue tits are probably the most common bird found in nest boxes.",
     images: [
-      Photo('assets/bluetit_close.png', giorgio),
+      Photo('assets/bluetit1.png', giorgio),
       Photo('assets/bluetit3.png', giorgio),
       Photo('assets/bluetit.jpg', giorgio),
       Photo('assets/bluetit4.png', giorgio),
-      Photo('assets/bluetit.png', giorgio)
+      Photo('assets/bluetit1.png', giorgio),
+      Photo('assets/bluetit5.png', giorgio),
     ],
     scientificName: 'Cyanistes caeruleus',
     conservationStatus: 'Green',
@@ -108,10 +109,10 @@ class Bird {
     description:
         "One of the most populous birds in the British Isles, the blackbird is just at home in a town park, a suburban garden, or woodland. They eat worms, insects, berries and fruit, and can often be seen on lawns with their heads tilted to one side as they listen for earthworms.\n\nThe blackbird has a beautiful rich song, which is part learned and part improvised. Typically, they like to sing after rain, and sometimes sing at night, particularly if they are near street lights.\n\nMales are black with an orange-yellow beak and eye ring, while females are dark brown, often with paler streaks and spots on their breasts. The birds are 24-25cm in length and weigh between 80-100g. \n\nBlackbirds rear 2-3 broods a season, and may attempt a fourth brood in a good year. The same nest, made of plant material lined with mud and grass, is sometimes used for successive broods. A clutch is normally 3-5 eggs, and is incubated by the female. Hatching takes place 13-14 days after laying. Only the female broods the chicks, but both parents feed them.\n\nIt’s estimated there are over 5 million breeding pairs in the British Isles. In the autumn months, blackbird numbers are swelled by migrant blackbirds from Scandinavia and continental Europe. Some stay here for the winter; others continue further south.",
     images: [
-      Photo('assets/blackbird_close.png', giorgio),
+      Photo('assets/blackbird4.png', giorgio),
       Photo('assets/blackbird1.png', giorgio),
       Photo('assets/blackbird2.png', giorgio),
-      Photo('assets/blackbird_3.png', giorgio),
+      Photo('assets/blackbird3.png', giorgio),
     ],
     scientificName: 'Turdus merula',
     birdFamily: 'Turdidae (Thrushes)',
@@ -160,8 +161,8 @@ class Bird {
           "\n\nThey nest in hedges or shrubs, laying up to five eggs.",
       images: [
         Photo('assets/dunnock1.png', giorgio),
-        Photo('assets/dunnock_close.png', giorgio),
-        Photo('assets/dunnock.png', giorgio),
+        Photo('assets/dunnock3.png', giorgio),
+        Photo('assets/dunnock2.png', giorgio),
       ],
       scientificName: 'Prunella modularis',
       conservationStatus: 'Amber',
@@ -226,7 +227,7 @@ class Bird {
     description:
         "The carrion crow, or simply ‘crow’, is generally a solitary bird, seen alone or in pairs, and while generally fearless, it is wary of humans. It is about 45-47cm long and weighs 370-650g. Crows are entirely black, including their beaks, feet and legs, though the feathers on their heads, wings and backs have green and purple iridescences. Their thighs are neatly feathered.\n\nCrows are found in a wide variety of habitats, from woodlands to wetland and heathlands. They are intelligent, opportunistic and adaptable birds and have colonised cities readily. \n\nThey eat a range of foods including carrion, fruit, grain, invertebrates, small mammals, frogs, and the eggs and chicks of other birds. Their diet changes across the seasons, with predation upon eggs and chicks tending to be related to the need to feed their own young. As crows have only one clutch of eggs a season, predation on other birds is in general limited to the breeding season. However, crows will occasionally hunt together to predate other birds, sometimes catching them in flight. They will also harass other birds, or animals such as foxes, for their kills. Studies have found a crow’s diet can consist of over 1000 different food items.\n\nCarrion crows generally pair for life. They breed between late March and early June. Both birds build the nest, which may be in a variety of places (tree forks, old buildings, cliffs, and elsewhere) using an assortment of materials including twigs, bones and even wire. They reinforce the nests with mud, and line them with bark, wool, feathers, grass, paper, hair and other materials. They generally lay 3-4 eggs, which are incubated by the female for 18-20 days. The male feeds her during incubation. Both parents bring food to the chicks. The chicks fledge 4-5 weeks after hatching, and are dependent upon their parents for several more weeks.\n\nWhile crows have large territories centred upon their nests, neighbouring crows will sometimes co-operate to ‘mob’ or chase away potential predators or intruders. Crows maintain their territories year round, although they may depart overnight for communal roosts in winter. \n\nIt’s estimated that there are around 1 million breeding pairs in the UK, although they aren’t found in north and west Scotland or in Northern Ireland.",
     images: [
-      Photo('assets/crow.png', giorgio),
+      Photo('assets/crow1.png', giorgio),
       Photo('assets/crow2.png', giorgio),
       Photo('assets/crow3.png', giorgio),
       Photo('assets/crow4.png', giorgio),
@@ -242,7 +243,7 @@ class Bird {
     description:
         "The jay differs from other corvids in being extremely colourful. It has a pinkish body, black and white wings with a striking patch of banded blues, a white rump, black tail, black ‘moustache’ and pale chin. Its crown feathers are streaked black and white, and when it is displaying or excited, it can raise the feathers into a crest. Its length is around 35cm and weight 140-190g.\n\nThey are woodland birds, and shy of humans, preferring not to be seen. However, they are sociable and have many different calls, many of which mimic other birds, particularly other corvids. The call we are most likely to be familiar with is their harsh alarm call.\n\nJays have a mixed diet, eating seeds such as acorns and beech mast, fruit, insects, small rodents, bats, newts, birds’ eggs and young birds.\n\nJays are well known for caching food in autumn, particularly acorns, to eat in winter. They have good memories and are capable of retrieving several thousand acorns.\n\nMales and females usually pair for life. Both birds build a rather untidy nest of twigs in a tree or shrub, and line it with hairs, fibres and roots. They have one clutch of 4-5 eggs, which are incubated by the female. Both parents feed the young, which fledge at around 19-20 days. \n\nIt is estimated that there are 170,000 territories in the UK.",
     images: [
-      Photo('assets/jay.png', giorgio),
+      Photo('assets/jay1.png', giorgio),
     ],
     scientificName: 'Garrulus glandarius',
     birdFamily: 'Corvidae (crows)',
@@ -258,7 +259,7 @@ class Bird {
           "\n\nThey have a song of repeated phrases that are similar to those the great tit but more high pitched.",
       images: [
         Photo('assets/coaltit1.png', giorgio),
-        Photo('assets/coaltit.png', giorgio),
+        Photo('assets/coaltit2.png', giorgio),
       ],
       conservationStatus: 'Green',
       scientificName: 'Periparus ater',
@@ -273,7 +274,7 @@ class Bird {
         "\n\nTheir long fine beaks enable them to extract seeds from thistles and teasels. "
         "\n\nThey are increasingly using bird tables and feeders.",
     images: [
-      Photo('assets/goldfinch.png', giorgio),
+      Photo('assets/goldfinch1.png', giorgio),
       Photo('assets/goldfinch2.png', giorgio),
       Photo('assets/goldfinch3.png', giorgio),
       Photo('assets/goldfinch4.png', giorgio),
@@ -403,11 +404,11 @@ class Bird {
     description: "",
     images: [
       Photo(
-        'assets/jackdaw_1.png',
+        'assets/jackdaw1.png',
         giorgio,
       ),
       Photo(
-        'assets/jackdaw.png',
+        'assets/jackdaw2.png',
         keith,
       ),
     ],

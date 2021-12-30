@@ -113,7 +113,7 @@ class IntroductionPage extends StatelessWidget {
     return PageTemplate(
       heroTag: 'introduction',
       title: 'Introduction',
-      image: 'assets/bluetit.png',
+      image: 'assets/bluetit1.png',
       widgetList: _widgetList,
     );
   }

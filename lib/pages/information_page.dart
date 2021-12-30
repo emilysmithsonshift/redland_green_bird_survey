@@ -29,7 +29,7 @@ class _InformationPageState extends State<InformationPage> {
                       : throw 'Could not launch https://www.instagram.com/giorgio_pede_photography/';
                 },
                 imageLeft: false,
-                imageAsset: 'assets/jay.png',
+                imageAsset: 'assets/jay1.png',
                 content: [
                   const Text(
                     'The beautiful photos on this app are all thanks to local photographer Giorgio Pede.'
@@ -93,7 +93,7 @@ class _InformationPageState extends State<InformationPage> {
                       : throw 'Could not launch $url';
                 },
                 imageLeft: true,
-                imageAsset: 'assets/dunnock.png',
+                imageAsset: 'assets/dunnock2.png',
                 content: [
                   const Text(
                       'If you enjoyed this app, please consider giving it a 5 star rating'),
@@ -115,7 +115,7 @@ class _InformationPageState extends State<InformationPage> {
                       : throw 'Could not launch $url';
                 },
                 imageLeft: false,
-                imageAsset: 'assets/bluetit.png',
+                imageAsset: 'assets/bluetit1.png',
                 content: [
                   const Text(
                     'Why not download the Redland Green Tree Trail?',

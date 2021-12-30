@@ -7,7 +7,7 @@ import 'package:redland_green_bird_survey/pages/awaiting_email_verification.dart
 import 'package:redland_green_bird_survey/pages/introduction_page.dart';
 
 import 'models/version.dart';
-import 'pages/home_page.dart';
+import 'pages/home_page/home_page.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();

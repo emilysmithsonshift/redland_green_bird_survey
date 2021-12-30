@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../settings.dart';
+import '../../../settings.dart';
 
 class RGListTile extends StatelessWidget {
   final String? imageAsset;
@@ -96,6 +96,7 @@ class RGListTile extends StatelessWidget {
                         ),
                         image: DecorationImage(
                           fit: BoxFit.cover,
+                          alignment: alignment ?? Alignment.center,
                           image: AssetImage(
                             imageAsset!,
                           ),

@@ -18,7 +18,7 @@ class QuizQuestion {
       'sparrow_2.png',
       'robin1.png',
       'dunnock1.png',
-      'jay.png',
+      'jay1.png',
     ],
     answers: ['Sparrow', 'Robin', 'Dunnock', 'Jay'],
     correctAnswer: 1,
@@ -26,10 +26,10 @@ class QuizQuestion {
   static final question1 = QuizQuestion(
     question: "Which of these birds is a Dunnock?",
     images: [
-      'bluetit.png',
-      'crow.png',
-      'dunnock.png',
-      'goldfinch.png',
+      'bluetit1.png',
+      'crow1.png',
+      'dunnock2.png',
+      'goldfinch1.png',
     ],
     correctAnswer: 2,
     answers: [
@@ -42,7 +42,7 @@ class QuizQuestion {
   static final question2 = QuizQuestion(
     question: "Which of these birds is a Jackdaw?",
     images: [
-      'jackdaw_1.png',
+      'jackdaw1.png',
       'kestrel.png',
       'crow2.png',
       'robin.png',
@@ -58,9 +58,9 @@ class QuizQuestion {
   static final question3 = QuizQuestion(
     question: "Which of these birds is a Great tit?",
     images: [
-      'jay.png',
+      'jay1.png',
       'longtailedtit.png',
-      'greattit.png',
+      'greattit2.png',
       'bluetit3.png',
     ],
     answers: [
@@ -90,7 +90,7 @@ class QuizQuestion {
   static final question5 = QuizQuestion(
     question: "Which of these birds is a Long Tailed Tit?",
     images: [
-      'crow.png',
+      'crow1.png',
       'pigeon.png',
       'songthrush.png',
       'longtailedtit.png',
@@ -106,7 +106,7 @@ class QuizQuestion {
   static final question6 = QuizQuestion(
     question: "Which of these birds is a Wren?",
     images: [
-      'wren.png',
+      'wren3.png',
       'wagtail1.png',
       'robin1.png',
       'pigeon.png',
@@ -160,10 +160,10 @@ class QuizQuestion {
   static final question10 = QuizQuestion(
     question: "Which of these birds is a Blackbird?",
     images: [
-      'jackdaw_1.png',
+      'jackdaw1.png',
       'blackbird1.png',
-      'crow.png',
-      'greattit.png',
+      'crow1.png',
+      'greattit2.png',
     ],
     answers: ['Jackdaw', 'Blackbird', 'Crow', 'Great tit'],
     correctAnswer: 1,
@@ -171,7 +171,7 @@ class QuizQuestion {
   static final question11 = QuizQuestion(
     question: "Which of these birds is a Jay?",
     images: [
-      'jay.png',
+      'jay1.png',
       'kestrel.png',
       'longtailedtit2.png',
       'goldfinch4.png',
@@ -183,7 +183,7 @@ class QuizQuestion {
     question: "Which of these birds is a Coal tit?",
     images: [
       'kestrel_1.png',
-      'jay.png',
+      'jay1.png',
       'crow3.png',
       'coaltit1.png',
     ],
@@ -194,8 +194,8 @@ class QuizQuestion {
     question: "Which of these birds is a Goldfinch?",
     images: [
       'starling.png',
-      'crow.png',
-      'goldfinch.png',
+      'crow1.png',
+      'goldfinch1.png',
       'owl.png',
     ],
     answers: ['Starling', 'Crow', 'Goldfinch', 'Owl'],
@@ -245,7 +245,7 @@ class QuizQuestion {
       'crow2.png',
       'blackbird1.png',
       'goldfinch4.png',
-      'jay.png',
+      'jay1.png',
     ],
     answers: ['Crow', 'Blackbird', 'Goldfinch', 'Jay'],
     correctAnswer: 0,

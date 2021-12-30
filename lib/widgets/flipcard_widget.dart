@@ -24,7 +24,7 @@ class _FlipCardWidgetState extends State<FlipCardWidget>
   void initState() {
     _animationController = AnimationController(
       vsync: this,
-      duration: const Duration(seconds: 1),
+      duration: const Duration(milliseconds: 500),
     );
     _animation = Tween<double>(end: 1, begin: 0).animate(
       _animationController,
