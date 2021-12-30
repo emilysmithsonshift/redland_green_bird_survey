@@ -87,7 +87,7 @@ class _BirdBoxPageState extends State<BirdBoxPage> {
                                   Marker(
                                     builder: (_) =>
                                         const Icon(Icons.location_pin),
-                                    point: widget.birdBox!.location!,
+                                    point: widget.birdBox!.location,
                                   )
                                 ],
                               )

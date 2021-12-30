@@ -7,8 +7,6 @@ import 'models/version.dart';
 import 'pages/awaiting_email_verification.dart';
 import 'pages/home_page/home_page.dart';
 import 'pages/introduction_page.dart';
-import 'presentation/awaiting_email_verification.dart';
-import 'presentation/introduction_page.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();

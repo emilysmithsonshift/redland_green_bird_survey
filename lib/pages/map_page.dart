@@ -136,7 +136,7 @@ class MapMarker extends Marker {
     required this.birdBox,
   }) : super(
           anchorPos: AnchorPos.align(AnchorAlign.top),
-          point: birdBox.location!,
+          point: birdBox.location,
           builder: (BuildContext ctx) => Icon(
             Icons.location_pin,
             color: mapSatellite ? Colors.green : Colors.black,
