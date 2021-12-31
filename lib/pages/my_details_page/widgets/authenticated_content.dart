@@ -1,27 +1,28 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:redland_green_bird_survey/models/sighting.dart';
-import 'package:redland_green_bird_survey/pages/introduction_page.dart';
-import 'package:redland_green_bird_survey/widgets/observation_widget.dart';
-import 'package:redland_green_bird_survey/widgets/page_template.dart';
 
-class MyDetailsPage extends StatefulWidget {
-  const MyDetailsPage({Key? key}) : super(key: key);
+import '../../../models/sighting.dart';
+import '../../../widgets/observation_widget.dart';
+import '../my_details_controller.dart';
+
+class AuthenticatedContent extends StatefulWidget {
+  final MyDetailsController controller;
+  const AuthenticatedContent({Key? key, required this.controller})
+      : super(key: key);
 
   @override
-  _MyDetailsPageState createState() => _MyDetailsPageState();
+  State<AuthenticatedContent> createState() => _AuthenticatedContentState();
 }
 
-class _MyDetailsPageState extends State<MyDetailsPage> {
+class _AuthenticatedContentState extends State<AuthenticatedContent> {
   List<Sighting> _sightingList = [];
-
   @override
   Widget build(BuildContext context) {
     _sightingList = Sighting.observations
         .where((sighting) =>
             sighting.userEmail == FirebaseAuth.instance.currentUser!.email)
         .toList();
-    Widget _content = Column(
+    return Column(
       children: [
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -32,6 +33,7 @@ class _MyDetailsPageState extends State<MyDetailsPage> {
             IconButton(
               icon: const Icon(
                 Icons.edit,
+                size: 20,
                 color: Colors.grey,
               ),
               onPressed: () {
@@ -42,26 +44,11 @@ class _MyDetailsPageState extends State<MyDetailsPage> {
                         text: FirebaseAuth.instance.currentUser!.displayName);
                     return AlertDialog(
                       title: const Text('Change your nickname'),
-                      content: Container(
-                        margin: const EdgeInsets.all(8),
-                        padding: const EdgeInsets.all(8),
-                        decoration: const BoxDecoration(
-                          color: Colors.white,
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.grey,
-                              offset: Offset(5.0, 5.0),
-                              blurRadius: 5.0,
-                            )
-                          ],
-                          borderRadius: BorderRadius.all(Radius.circular(10)),
-                        ),
-                        child: Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: TextFormField(
-                            controller: controller,
-                            keyboardType: TextInputType.name,
-                          ),
+                      content: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: TextFormField(
+                          controller: controller,
+                          keyboardType: TextInputType.name,
                         ),
                       ),
                       actions: [
@@ -83,22 +70,17 @@ class _MyDetailsPageState extends State<MyDetailsPage> {
             ),
           ],
         ),
-        TextButton(
-          onPressed: () {
-            FirebaseAuth.instance.signOut();
-            Navigator.pushAndRemoveUntil(
-              context,
-              MaterialPageRoute(
-                builder: (BuildContext context) => const IntroductionPage(),
+        Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Container(
+            decoration: const BoxDecoration(
+              shape: BoxShape.circle,
+              image: DecorationImage(
+                image: AssetImage('assets/goldfinch1.png'),
               ),
-              (Route<dynamic> route) => false,
-            );
-          },
-          child: const Text(
-            'Logout',
-            style: TextStyle(
-              color: Colors.red,
             ),
+            height: 100,
+            width: 100,
           ),
         ),
         const Text(
@@ -121,14 +103,21 @@ class _MyDetailsPageState extends State<MyDetailsPage> {
                         setState(() {});
                       });
                 }).toList(),
-              )
+              ),
+        TextButton(
+          onPressed: () {
+            FirebaseAuth.instance.signOut();
+
+            widget.controller.content.value = MyDetailsView.unauthenticated;
+          },
+          child: const Text(
+            'Logout',
+            style: TextStyle(
+              color: Colors.red,
+            ),
+          ),
+        ),
       ],
-    );
-    return PageTemplate(
-      title: 'My Details',
-      image: 'assets/coaltit1.png',
-      widgetList: [_content],
-      heroTag: 'my_details',
     );
   }
 }

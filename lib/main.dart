@@ -1,12 +1,9 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 import 'models/version.dart';
-import 'pages/awaiting_email_verification.dart';
 import 'pages/home_page/home_page.dart';
-import 'pages/introduction_page.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -76,15 +73,7 @@ class _InitialPageState extends State<InitialPage> {
         if (snapshot.hasError) {
           return const Text('Something went wrong!');
         } else if (snapshot.hasData) {
-          if (FirebaseAuth.instance.currentUser == null) {
-            return const IntroductionPage();
-          } else {
-            if (FirebaseAuth.instance.currentUser!.emailVerified) {
-              return const HomePage();
-            } else {
-              return const AwaitingEmailVerification();
-            }
-          }
+          return const HomePage();
         } else {
           return const Center(
             child: CircularProgressIndicator(),
