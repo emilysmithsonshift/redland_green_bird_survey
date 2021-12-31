@@ -13,7 +13,7 @@
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>org.uk.rgcg.redlandGreenBirdSurvey</string>
+	<string>uk.org.rgcg.redlandGreenBirdSurvey</string>
 	<key>PROJECT_ID</key>
 	<string>redland-green-bird-surve-3ef37</string>
 	<key>STORAGE_BUCKET</key>
