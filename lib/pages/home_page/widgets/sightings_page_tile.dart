@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../models/sighting.dart';
-import '../../../widgets/observation_summary.dart';
+import 'observation_summary.dart';
 
 class SightingsPageTile extends StatelessWidget {
   const SightingsPageTile({Key? key}) : super(key: key);

@@ -4,14 +4,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:redland_green_bird_survey/models/bird_box.dart';
 import 'package:redland_green_bird_survey/models/sighting.dart';
-import 'package:redland_green_bird_survey/pages/bird_box_type_page.dart';
+import 'package:redland_green_bird_survey/pages/bird_box_page/bird_box_type_page.dart';
 import 'package:redland_green_bird_survey/widgets/page_template.dart';
 import 'package:redland_green_bird_survey/pages/home_page/widgets/rg_grid_tile.dart';
 
-import '../settings.dart';
-import '../widgets/observation_widget.dart';
-import 'enter_observations_page/enter_observations_page.dart';
-import 'map_page.dart';
+import '../../settings.dart';
+import '../../widgets/observation_widget.dart';
+import '../enter_observations_page/enter_observations_page.dart';
+import '../map_page.dart';
 
 class BirdBoxPage extends StatefulWidget {
   final BirdBox? birdBox;

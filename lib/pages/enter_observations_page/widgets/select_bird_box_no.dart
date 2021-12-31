@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:redland_green_bird_survey/models/bird_box.dart';
 
-import '../map_page.dart';
+import '../../../models/bird_box.dart';
+import '../../map_page.dart';
 
 class SelectBirdBoxNo extends StatefulWidget {
   final int? birdBox;

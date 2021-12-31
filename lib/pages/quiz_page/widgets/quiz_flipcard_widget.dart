@@ -2,7 +2,7 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 
-import '../settings.dart';
+import '../../../settings.dart';
 
 class QuizFlipCardWidget extends StatefulWidget {
   final String image;

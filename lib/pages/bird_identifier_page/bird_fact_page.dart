@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:redland_green_bird_survey/models/birds.dart';
 
-import '../settings.dart';
+import '../../settings.dart';
 
 class BirdFactPage extends StatefulWidget {
   final Bird? bird;

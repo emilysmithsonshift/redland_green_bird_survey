@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:redland_green_bird_survey/models/bird_box.dart';
-import 'package:redland_green_bird_survey/settings.dart';
-import 'package:redland_green_bird_survey/widgets/bird_box_widget.dart';
-import 'package:redland_green_bird_survey/widgets/page_template.dart';
 
-import 'bird_box_page.dart';
+import '../../models/bird_box.dart';
+import '../../settings.dart';
+import '../../widgets/page_template.dart';
+import '../bird_box_page/bird_box_page.dart';
+import 'widgets/bird_box_widget.dart';
 
 class BirdBoxListPage extends StatefulWidget {
   const BirdBoxListPage({Key? key}) : super(key: key);

@@ -1,9 +1,9 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
-import 'package:redland_green_bird_survey/models/dyk.dart';
+import '../../../models/dyk.dart';
 
-import '../settings.dart';
+import '../../../settings.dart';
 
 class FlipCardWidget extends StatefulWidget {
   final DYK? dyk;

@@ -1,16 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:redland_green_bird_survey/models/dyk.dart';
-import 'package:redland_green_bird_survey/widgets/flipcard_widget.dart';
-import 'package:redland_green_bird_survey/widgets/page_template.dart';
 
-class FactPage extends StatefulWidget {
-  const FactPage({Key? key}) : super(key: key);
+import '../../models/dyk.dart';
+import '../../widgets/page_template.dart';
+import 'widgets/flipcard_widget.dart';
+
+class DidYouKnowPage extends StatefulWidget {
+  const DidYouKnowPage({Key? key}) : super(key: key);
 
   @override
-  _FactPageState createState() => _FactPageState();
+  _DidYouKnowPageState createState() => _DidYouKnowPageState();
 }
 
-class _FactPageState extends State<FactPage> {
+class _DidYouKnowPageState extends State<DidYouKnowPage> {
   final List<DYK> _dykList = [];
   int selectedIndex = 0;
 

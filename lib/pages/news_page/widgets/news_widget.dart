@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:jiffy/jiffy.dart';
-import 'package:redland_green_bird_survey/models/news.dart';
 import 'package:transparent_image/transparent_image.dart';
 
-import '../settings.dart';
+import '../../../models/news.dart';
+import '../../../settings.dart';
 
 class NewsWidget extends StatelessWidget {
   final News? news;

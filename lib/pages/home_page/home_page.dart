@@ -3,16 +3,16 @@ import 'package:flutter/material.dart';
 import '../../models/news.dart';
 import '../../models/sighting.dart';
 import '../../widgets/page_template.dart';
-import '../bird_box_list_page.dart';
-import '../bird_identifier_page.dart';
+import '../bird_box_list_page/bird_box_list_page.dart';
+import '../bird_identifier_page/bird_identifier_page.dart';
 import '../enter_observations_page/enter_observations_page.dart';
-import '../information_page.dart';
-import '../interesting_facts.dart';
+import '../information_page/information_page.dart';
+import '../did_you_know_page/did_you_know.dart';
 import '../latest_observations_page.dart';
 import '../map_page.dart';
 import '../my_details_page/my_details_page.dart';
-import '../news_page.dart';
-import '../quiz_page.dart';
+import '../news_page/news_page.dart';
+import '../quiz_page/quiz_page.dart';
 import '../welcome_page.dart';
 import 'widgets/latest_news_page_tile.dart';
 import 'widgets/rg_grid_tile.dart';
@@ -104,7 +104,7 @@ class _HomePageState extends State<HomePage> {
                 imageAsset: 'assets/jay1.png'),
             const RGGridTile(
               heroTag: 'fact_page',
-              navigateTo: FactPage(),
+              navigateTo: DidYouKnowPage(),
               text: 'Did you know?',
               imageAsset: 'assets/nuthatch_close.png',
             ),

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-import '../models/quiz_questions.dart';
-import '../widgets/page_template.dart';
-import '../widgets/quiz_flipcard_widget.dart';
+import '../../models/quiz_questions.dart';
+import '../../widgets/page_template.dart';
+import 'widgets/quiz_flipcard_widget.dart';
 
 class QuizPage extends StatefulWidget {
   const QuizPage({Key? key}) : super(key: key);

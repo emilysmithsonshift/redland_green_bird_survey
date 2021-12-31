@@ -4,13 +4,13 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../models/sighting.dart';
 import '../home_page/home_page.dart';
-import '../observation_widgets/comments.dart';
-import '../observation_widgets/select_bird.dart';
-import '../observation_widgets/select_bird_box_no.dart';
-import '../observation_widgets/step.dart';
-import '../observation_widgets/time_of_observation.dart';
+import 'widgets/comments.dart';
 import 'widgets/need_to_register.dart';
+import 'widgets/select_bird.dart';
+import 'widgets/select_bird_box_no.dart';
 import 'widgets/show_instructions.dart';
+import 'widgets/step.dart';
+import 'widgets/time_of_observation.dart';
 
 class EnterObservationsPage extends StatefulWidget {
   final int? birdBox;

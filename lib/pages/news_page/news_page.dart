@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:redland_green_bird_survey/models/news.dart';
-import 'package:redland_green_bird_survey/widgets/news_widget.dart';
-import 'package:redland_green_bird_survey/widgets/page_template.dart';
+
+import '../../models/news.dart';
+import '../../widgets/page_template.dart';
+import 'widgets/news_widget.dart';
 
 class NewsPage extends StatefulWidget {
   const NewsPage({Key? key}) : super(key: key);

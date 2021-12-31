@@ -1,9 +1,10 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
-import 'package:redland_green_bird_survey/widgets/list_tile.dart';
-import 'package:redland_green_bird_survey/widgets/page_template.dart';
 import 'package:url_launcher/url_launcher.dart';
+
+import '../../widgets/page_template.dart';
+import 'widgets/list_tile.dart';
 
 class InformationPage extends StatefulWidget {
   const InformationPage({Key? key}) : super(key: key);

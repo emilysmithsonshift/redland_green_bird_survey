@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:redland_green_bird_survey/models/box_type.dart';
 import 'package:redland_green_bird_survey/widgets/page_template.dart';
 
-import '../settings.dart';
+import '../../settings.dart';
 
 class BirdBoxTypePage extends StatelessWidget {
   final BoxType? boxType;
