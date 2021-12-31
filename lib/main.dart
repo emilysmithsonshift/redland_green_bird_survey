@@ -9,9 +9,7 @@ import 'pages/home_page/home_page.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp(
-    options: DefaultFirebaseOptions.currentPlatform,
-  );
+
   runApp(const MyApp());
 }
 
@@ -61,7 +59,9 @@ class InitialPage extends StatefulWidget {
 }
 
 class _InitialPageState extends State<InitialPage> {
-  final Future<FirebaseApp> _fbApp = Firebase.initializeApp();
+  final Future<FirebaseApp> _fbApp = Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
 
   @override
   void initState() {

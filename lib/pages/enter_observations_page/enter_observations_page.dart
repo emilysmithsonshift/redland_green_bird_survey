@@ -42,7 +42,8 @@ class _EnterObservationsPageState extends State<EnterObservationsPage> {
   }
 
   Future initialise() async {
-    if (FirebaseAuth.instance.currentUser == null) {
+    if (FirebaseAuth.instance.currentUser == null ||
+        !FirebaseAuth.instance.currentUser!.emailVerified) {
       return WidgetsBinding.instance!
           .addPostFrameCallback((_) => needToRegister(context));
     }

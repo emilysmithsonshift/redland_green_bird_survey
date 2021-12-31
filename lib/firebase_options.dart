@@ -43,7 +43,8 @@ class DefaultFirebaseOptions {
     messagingSenderId: '971193985300',
     projectId: 'redland-green-bird-surve-3ef37',
     authDomain: 'redland-green-bird-surve-3ef37.firebaseapp.com',
-    databaseURL: 'https://redland-green-bird-surve-3ef37-default-rtdb.firebaseio.com',
+    databaseURL:
+        'https://redland-green-bird-surve-3ef37-default-rtdb.firebaseio.com',
     storageBucket: 'redland-green-bird-surve-3ef37.appspot.com',
     measurementId: 'G-WV8EZ51B98',
   );
@@ -53,7 +54,8 @@ class DefaultFirebaseOptions {
     appId: '1:971193985300:android:b5e7f1aa6a0e141647ba01',
     messagingSenderId: '971193985300',
     projectId: 'redland-green-bird-surve-3ef37',
-    databaseURL: 'https://redland-green-bird-surve-3ef37-default-rtdb.firebaseio.com',
+    databaseURL:
+        'https://redland-green-bird-surve-3ef37-default-rtdb.firebaseio.com',
     storageBucket: 'redland-green-bird-surve-3ef37.appspot.com',
   );
 
@@ -62,9 +64,11 @@ class DefaultFirebaseOptions {
     appId: '1:971193985300:ios:0f03084edab6ddf047ba01',
     messagingSenderId: '971193985300',
     projectId: 'redland-green-bird-surve-3ef37',
-    databaseURL: 'https://redland-green-bird-surve-3ef37-default-rtdb.firebaseio.com',
+    databaseURL:
+        'https://redland-green-bird-surve-3ef37-default-rtdb.firebaseio.com',
     storageBucket: 'redland-green-bird-surve-3ef37.appspot.com',
-    iosClientId: '971193985300-t3cslr3suq0ao7323s6e3d7b9ng7pnlh.apps.googleusercontent.com',
+    iosClientId:
+        '971193985300-t3cslr3suq0ao7323s6e3d7b9ng7pnlh.apps.googleusercontent.com',
     iosBundleId: 'org.uk.rgcg.redlandGreenBirdSurvey',
   );
 }
