@@ -7,7 +7,7 @@ import 'package:flutter_map_marker_cluster/flutter_map_marker_cluster.dart';
 import 'package:latlong2/latlong.dart';
 
 import '../models/bird_box.dart';
-import 'bird_box_page.dart';
+import 'bird_box_page/bird_box_page.dart';
 
 bool mapSatellite = false;
 
