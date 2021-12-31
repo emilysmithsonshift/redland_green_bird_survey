@@ -10,7 +10,7 @@ import '../information_page.dart';
 import '../interesting_facts.dart';
 import '../latest_observations_page.dart';
 import '../map_page.dart';
-import '../my_details_page.dart';
+import '../my_details_page/my_details_page.dart';
 import '../news_page.dart';
 import '../quiz_page.dart';
 import '../welcome_page.dart';
