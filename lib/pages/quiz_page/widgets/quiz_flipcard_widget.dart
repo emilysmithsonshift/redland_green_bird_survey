@@ -80,23 +80,25 @@ class _QuizFlipCardWidgetState extends State<QuizFlipCardWidget>
                       transform: Matrix4.identity()..rotateY(pi),
                       child: Transform.scale(
                         scale: 1,
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            widget.correct
-                                ? const Icon(Icons.check, color: Colors.green)
-                                : const Icon(Icons.close, color: Colors.red),
-                            const SizedBox(
-                              width: 8,
-                            ),
-                            Expanded(
-                              child: Text(
-                                widget.correct
-                                    ? 'Correct this is a ${widget.answer}'
-                                    : 'Wrong, this is a ${widget.answer}',
+                        child: Center(
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              widget.correct
+                                  ? const Icon(Icons.check, color: Colors.green)
+                                  : const Icon(Icons.close, color: Colors.red),
+                              const SizedBox(
+                                width: 8,
                               ),
-                            ),
-                          ],
+                              Flexible(
+                                child: Text(
+                                  widget.correct
+                                      ? 'Correct this is a ${widget.answer}'
+                                      : 'Wrong, this is a ${widget.answer}',
+                                ),
+                              ),
+                            ],
+                          ),
                         ),
                       ),
                     ),
