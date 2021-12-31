@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:redland_green_bird_survey/pages/my_details_page/widgets/login_content.dart';
 
 import '../../widgets/page_template.dart';
 import 'my_details_controller.dart';
 import 'widgets/authenticated_content.dart';
+import 'widgets/awaiting_verification_content.dart';
+import 'widgets/login_content.dart';
+import 'widgets/register_content.dart';
 import 'widgets/unauthenticated_content.dart';
 
 class MyDetailsPage extends StatefulWidget {
@@ -40,7 +42,11 @@ class _MyDetailsPageState extends State<MyDetailsPage> {
               currentWidget = LoginContent(controller: controller);
               break;
             case MyDetailsView.register:
-              // currentWidget = RegisterContent(controller: controller);
+              currentWidget = RegisterContent(controller: controller);
+              break;
+            case MyDetailsView.awaitingVerification:
+              currentWidget =
+                  AwaitingVerificationContent(controller: controller);
               break;
           }
           return PageTemplate(

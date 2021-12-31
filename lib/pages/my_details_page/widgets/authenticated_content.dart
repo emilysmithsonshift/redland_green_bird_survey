@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 
 import '../../../models/sighting.dart';
 import '../../../widgets/observation_widget.dart';
+import '../../enter_observations_page/enter_observations_page.dart';
 import '../my_details_controller.dart';
 
 class AuthenticatedContent extends StatefulWidget {
@@ -24,6 +25,9 @@ class _AuthenticatedContentState extends State<AuthenticatedContent> {
         .toList();
     return Column(
       children: [
+        const SizedBox(height: 16),
+        Text('Email: ${FirebaseAuth.instance.currentUser!.email}',
+            style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 18)),
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -88,9 +92,24 @@ class _AuthenticatedContentState extends State<AuthenticatedContent> {
           style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
         ),
         _sightingList.isEmpty
-            ? const Padding(
-                padding: EdgeInsets.all(8.0),
-                child: Text('You have no observations yet.'),
+            ? Column(
+                children: [
+                  const Padding(
+                    padding: EdgeInsets.all(8.0),
+                    child: Text('You have no observations yet.'),
+                  ),
+                  ElevatedButton(
+                    onPressed: () {
+                      Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(
+                          builder: (_) => const EnterObservationsPage(),
+                        ),
+                      );
+                    },
+                    child: const Text('Enter a new observation'),
+                  ),
+                ],
               )
             : Column(
                 children: _sightingList.map((Sighting sighting) {

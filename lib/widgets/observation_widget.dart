@@ -6,7 +6,7 @@ import 'package:redland_green_bird_survey/models/birds.dart';
 import 'package:redland_green_bird_survey/models/sighting.dart';
 import 'package:redland_green_bird_survey/pages/bird_box_page.dart';
 import 'package:redland_green_bird_survey/pages/bird_fact_page.dart';
-import 'package:redland_green_bird_survey/pages/enter_observations_page.dart';
+import 'package:redland_green_bird_survey/pages/enter_observations_page/enter_observations_page.dart';
 
 Widget observationDetails({
   required Sighting sighting,

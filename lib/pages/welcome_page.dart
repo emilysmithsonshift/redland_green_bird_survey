@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../settings.dart';
 import '../widgets/page_template.dart';
-import 'enter_observations_page.dart';
+import 'enter_observations_page/enter_observations_page.dart';
 import 'map_page.dart';
 
 class WelcomePage extends StatefulWidget {

@@ -10,7 +10,7 @@ import 'package:redland_green_bird_survey/pages/home_page/widgets/rg_grid_tile.d
 
 import '../settings.dart';
 import '../widgets/observation_widget.dart';
-import 'enter_observations_page.dart';
+import 'enter_observations_page/enter_observations_page.dart';
 import 'map_page.dart';
 
 class BirdBoxPage extends StatefulWidget {

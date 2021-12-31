@@ -5,7 +5,7 @@ import '../../models/sighting.dart';
 import '../../widgets/page_template.dart';
 import '../bird_box_list_page.dart';
 import '../bird_identifier_page.dart';
-import '../enter_observations_page.dart';
+import '../enter_observations_page/enter_observations_page.dart';
 import '../information_page.dart';
 import '../interesting_facts.dart';
 import '../latest_observations_page.dart';

@@ -6,6 +6,7 @@ enum MyDetailsView {
   unauthenticated,
   login,
   register,
+  awaitingVerification,
 }
 
 class MyDetailsController {
@@ -15,7 +16,11 @@ class MyDetailsController {
     if (FirebaseAuth.instance.currentUser == null) {
       content.value = MyDetailsView.unauthenticated;
     } else {
-      content.value = MyDetailsView.authenticated;
+      if (FirebaseAuth.instance.currentUser!.emailVerified) {
+        content.value = MyDetailsView.authenticated;
+      } else {
+        content.value = MyDetailsView.awaitingVerification;
+      }
     }
   }
 }
