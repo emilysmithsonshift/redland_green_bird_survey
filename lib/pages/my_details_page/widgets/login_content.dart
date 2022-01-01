@@ -60,7 +60,7 @@ class _LoginContentState extends State<LoginContent> {
                     keyboardType: TextInputType.emailAddress,
                     decoration: const InputDecoration.collapsed(
                       fillColor: Colors.white,
-                      hintText: 'eg john_smith@mail.com',
+                      hintText: '',
                     ),
                   ),
                 ),
