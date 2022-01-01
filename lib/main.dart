@@ -1,4 +1,5 @@
 import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter/foundation.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -7,9 +8,17 @@ import 'firebase_options.dart';
 import 'models/version.dart';
 import 'pages/home_page/home_page.dart';
 
-Future<void> main() async {
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-
+  try {
+    await Firebase.initializeApp(
+      options: DefaultFirebaseOptions.currentPlatform,
+    );
+  } on FirebaseException catch (e) {
+    if (kDebugMode) {
+      print(e);
+    }
+  }
   runApp(const MyApp());
 }
 
@@ -59,10 +68,6 @@ class InitialPage extends StatefulWidget {
 }
 
 class _InitialPageState extends State<InitialPage> {
-  final Future<FirebaseApp> _fbApp = Firebase.initializeApp(
-    options: DefaultFirebaseOptions.currentPlatform,
-  );
-
   @override
   void initState() {
     Version.checkVersion(context);
@@ -71,19 +76,6 @@ class _InitialPageState extends State<InitialPage> {
 
   @override
   Widget build(BuildContext context) {
-    return FutureBuilder(
-      future: _fbApp,
-      builder: (context, snapshot) {
-        if (snapshot.hasError) {
-          return const Text('Something went wrong!');
-        } else if (snapshot.hasData) {
-          return const HomePage();
-        } else {
-          return const Center(
-            child: CircularProgressIndicator(),
-          );
-        }
-      },
-    );
+    return const HomePage();
   }
 }
