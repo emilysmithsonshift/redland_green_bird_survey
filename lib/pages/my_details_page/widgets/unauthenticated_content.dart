@@ -18,7 +18,7 @@ class _UnauthenticatedContentState extends State<UnauthenticatedContent> {
       const Padding(
         padding: EdgeInsets.symmetric(horizontal: 16.0),
         child: Text(
-            '\n\nIn order to submit any observations to this app you will need to register or log in if you have previously registered \n'),
+            '\n\nIn order to submit any observations to this app you will need to register or log in if you have previously registered. \n'),
       ),
       Container(
         decoration: const BoxDecoration(
@@ -27,8 +27,8 @@ class _UnauthenticatedContentState extends State<UnauthenticatedContent> {
             image: AssetImage('assets/robin1.png'),
           ),
         ),
-        height: 250,
-        width: 250,
+        height: 200,
+        width: 200,
       ),
       const SizedBox(height: 16),
       Row(

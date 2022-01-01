@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
 class PageTemplate extends StatelessWidget {
-  final String? title;
-  final String? image;
+  final String title;
+  final String image;
   final List<Widget>? widgetList;
   final List<Widget>? gridList;
   final String? heroTag;
@@ -11,8 +11,8 @@ class PageTemplate extends StatelessWidget {
 
   const PageTemplate(
       {Key? key,
-      this.title,
-      this.image,
+      required this.title,
+      required this.image,
       this.widgetList,
       this.gridList,
       this.heroTag,
@@ -27,24 +27,26 @@ class PageTemplate extends StatelessWidget {
         slivers: <Widget>[
           SliverAppBar(
             backgroundColor: Colors.green[100],
-            // pinned: true,
             expandedHeight: MediaQuery.of(context).size.height * 0.25,
             flexibleSpace: FlexibleSpaceBar(
               titlePadding: const EdgeInsets.all(0),
-              title: ConstrainedBox(
-                constraints: const BoxConstraints(
-                  maxWidth: double.infinity,
-                ),
-                child: FittedBox(
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 2.0),
-                    child: Text(
-                      title!,
-                      textAlign: TextAlign.center,
-                      style: const TextStyle(
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 18,
+              title: Align(
+                alignment: Alignment.bottomCenter,
+                child: ConstrainedBox(
+                  constraints: const BoxConstraints(
+                    maxWidth: double.infinity,
+                  ),
+                  child: FittedBox(
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 2.0),
+                      child: Text(
+                        title,
+                        textAlign: TextAlign.center,
+                        style: const TextStyle(
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 18,
+                        ),
                       ),
                     ),
                   ),
@@ -53,7 +55,7 @@ class PageTemplate extends StatelessWidget {
               background: Hero(
                 tag: heroTag!,
                 child: Image.asset(
-                  image!,
+                  image,
                   alignment: const Alignment(
                     0,
                     -1 / 2,
