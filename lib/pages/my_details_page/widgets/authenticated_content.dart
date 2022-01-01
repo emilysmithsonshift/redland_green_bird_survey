@@ -123,6 +123,7 @@ class _AuthenticatedContentState extends State<AuthenticatedContent> {
                       });
                 }).toList(),
               ),
+        const SizedBox(height: 60),
         TextButton(
           onPressed: () {
             FirebaseAuth.instance.signOut();
