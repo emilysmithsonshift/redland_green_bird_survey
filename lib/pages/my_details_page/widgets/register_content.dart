@@ -34,8 +34,6 @@ class _RegisterContentState extends State<RegisterContent> {
         password: passwordController.text,
       )
               .catchError((error) {
-        // ignore: avoid_print
-        print(error);
         if (kDebugMode) {
           print(error.toString());
         }
