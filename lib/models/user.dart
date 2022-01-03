@@ -15,7 +15,11 @@ class User {
   Future<void> addUserToDB() async {
     final DatabaseReference reference =
         FirebaseDatabase.instance.ref().child("users");
+<<<<<<< HEAD
     final String newkey = reference.push().key!;
+=======
+    final String newkey = reference.push().key;
+>>>>>>> f7145220ac30b24f80f91788e75572acd6fb1111
     reference.child(newkey).set({
       'name': currentUser.name,
       'email': currentUser.email,

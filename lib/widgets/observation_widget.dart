@@ -5,9 +5,15 @@ import 'package:intl/intl.dart';
 import '../models/bird_box.dart';
 import '../models/birds.dart';
 import '../models/sighting.dart';
+<<<<<<< HEAD
 import '../pages/bird_box_page/bird_box_page.dart';
 import '../pages/bird_identifier_page/bird_fact_page.dart';
 import '../pages/enter_observations_page/enter_observations_page.dart';
+=======
+import '../pages/bird_box_page.dart';
+import '../pages/bird_fact_page.dart';
+import '../pages/enter_observations_page.dart';
+>>>>>>> f7145220ac30b24f80f91788e75572acd6fb1111
 
 Widget observationDetails({
   required Sighting sighting,

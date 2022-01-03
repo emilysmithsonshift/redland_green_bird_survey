@@ -11,7 +11,11 @@ class Version {
     final DatabaseReference reference =
         FirebaseDatabase.instance.ref().child("version");
     final DatabaseEvent databaseEvent = await reference.once();
+<<<<<<< HEAD
     final String? latestVersion = databaseEvent.snapshot.value as String?;
+=======
+    final String latestVersion = databaseEvent.snapshot.value;
+>>>>>>> f7145220ac30b24f80f91788e75572acd6fb1111
     if (latestVersion == null) {
       return true;
     }

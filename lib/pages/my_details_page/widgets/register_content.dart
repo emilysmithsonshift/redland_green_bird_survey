@@ -162,6 +162,30 @@ class _RegisterContentState extends State<RegisterContent> {
               });
             }
           },
+<<<<<<< HEAD:lib/pages/my_details_page/widgets/register_content.dart
+=======
+          // controlsBuilder: (BuildContext context,
+          //     {onStepContinue, onStepCancel}) {
+          //   return Row(
+          //     children: <Widget>[
+          //       if (_currentStep > 0)
+          //         ElevatedButton(
+          //           onPressed: onStepCancel,
+          //           child: const Text('Back'),
+          //         ),
+          //       const SizedBox(width: 20),
+          //       ElevatedButton(
+          //         onPressed: onStepContinue,
+          //         child: _currentStep == 2
+          //             ? isLoading == false
+          //                 ? Text('Submit')
+          //                 : CircularProgressIndicator()
+          //             : Text('Next'),
+          //       ),
+          //     ],
+          //   );
+          // },
+>>>>>>> f7145220ac30b24f80f91788e75572acd6fb1111:lib/pages/registration_page.dart
           steps: [
             Step(
               title: const Text(

@@ -10,6 +10,7 @@ import 'pages/home_page/home_page.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+<<<<<<< HEAD
   try {
     await Firebase.initializeApp(
       options: DefaultFirebaseOptions.currentPlatform,
@@ -20,6 +21,10 @@ void main() async {
     }
   }
   runApp(const MyApp());
+=======
+  // await Firebase.initializeApp();
+  runApp(MyApp());
+>>>>>>> f7145220ac30b24f80f91788e75572acd6fb1111
 }
 
 class MyApp extends StatefulWidget {
@@ -55,7 +60,11 @@ class _MyAppState extends State<MyApp> {
         ),
       ),
       title: 'Redland Green Bird Survey',
+<<<<<<< HEAD
       home: const InitialPage(),
+=======
+      home: HomePage(),
+>>>>>>> f7145220ac30b24f80f91788e75572acd6fb1111
     );
   }
 }

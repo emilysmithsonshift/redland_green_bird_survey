@@ -1,4 +1,5 @@
 import 'package:animations/animations.dart';
+<<<<<<< HEAD:lib/pages/bird_box_page/bird_box_page.dart
 
 import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
@@ -12,6 +13,20 @@ import '../../settings.dart';
 import '../../widgets/observation_widget.dart';
 import '../enter_observations_page/enter_observations_page.dart';
 import '../map_page.dart';
+=======
+import 'package:flutter/material.dart';
+import 'package:flutter_map/flutter_map.dart';
+
+import '../models/bird_box.dart';
+import '../models/sighting.dart';
+import '../settings.dart';
+import '../widgets/observation_widget.dart';
+import '../widgets/page_template.dart';
+import '../widgets/rg_grid_tile.dart';
+import 'bird_box_type_page.dart';
+import 'enter_observations_page.dart';
+import 'map_page.dart';
+>>>>>>> f7145220ac30b24f80f91788e75572acd6fb1111:lib/pages/bird_box_page.dart
 
 class BirdBoxPage extends StatefulWidget {
   final BirdBox? birdBox;
