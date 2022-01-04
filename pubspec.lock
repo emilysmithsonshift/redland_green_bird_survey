@@ -146,6 +146,7 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.7.0"
+<<<<<<< HEAD
   flutter_lints:
     dependency: "direct main"
     description:
@@ -153,6 +154,8 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.0.4"
+=======
+>>>>>>> f7145220ac30b24f80f91788e75572acd6fb1111
   flutter_map:
     dependency: "direct main"
     description:
