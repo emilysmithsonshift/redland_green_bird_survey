@@ -121,7 +121,7 @@ class _SelectBirdBoxNoState extends State<SelectBirdBoxNo> {
                     ),
                   )
                 : Text(BirdBox
-                    .birdBoxesList[widget.birdBox! - 1].locationDescription!),
+                    .birdBoxesList[widget.birdBox! - 1].locationDescription),
           ),
         ),
       ],

@@ -25,7 +25,7 @@ class BirdBoxWidget extends StatelessWidget {
                 child: ClipOval(
                   child: Hero(
                     tag: "birdbox ${birdBox!.id}",
-                    child: Image.asset(birdBox!.boxType!.image),
+                    child: Image.asset(birdBox!.boxType.image),
                   ),
                 ),
               ),

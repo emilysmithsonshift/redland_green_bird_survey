@@ -14,9 +14,9 @@ import '../enter_observations_page/enter_observations_page.dart';
 import '../map_page.dart';
 
 class BirdBoxPage extends StatefulWidget {
-  final BirdBox? birdBox;
+  final BirdBox birdBox;
 
-  const BirdBoxPage({Key? key, this.birdBox}) : super(key: key);
+  const BirdBoxPage({Key? key, required this.birdBox}) : super(key: key);
 
   @override
   _BirdBoxPageState createState() => _BirdBoxPageState();
@@ -28,7 +28,7 @@ class _BirdBoxPageState extends State<BirdBoxPage> {
     List<Sighting> _sightingList = [];
     Widget content() {
       _sightingList = Sighting.observations
-          .where((sighting) => sighting.birdBox == widget.birdBox!.id)
+          .where((sighting) => sighting.birdBox == widget.birdBox.id)
           .toList();
 
       return Padding(
@@ -46,7 +46,7 @@ class _BirdBoxPageState extends State<BirdBoxPage> {
               ),
               closedColor: Colors.green[50]!,
               openBuilder: (context, action) {
-                return MapPage(birdBox: widget.birdBox!.id);
+                return MapPage(birdBox: widget.birdBox.id);
               },
               closedBuilder: (context, action) {
                 return Column(
@@ -60,7 +60,7 @@ class _BirdBoxPageState extends State<BirdBoxPage> {
                             style: TextStyle(fontWeight: FontWeight.bold),
                           ),
                           const SizedBox(height: 12),
-                          Text(widget.birdBox!.locationDescription!),
+                          Text(widget.birdBox.locationDescription),
                         ],
                       ),
                     ),
@@ -76,7 +76,7 @@ class _BirdBoxPageState extends State<BirdBoxPage> {
                             options: MapOptions(
                                 onTap: (tapPosition, point) => open(),
                                 zoom: 17,
-                                center: widget.birdBox!.location),
+                                center: widget.birdBox.location),
                             layers: [
                               TileLayerOptions(
                                   urlTemplate:
@@ -87,14 +87,14 @@ class _BirdBoxPageState extends State<BirdBoxPage> {
                                   Marker(
                                     builder: (_) =>
                                         const Icon(Icons.location_pin),
-                                    point: widget.birdBox!.location,
+                                    point: widget.birdBox.location,
                                   )
                                 ],
                               )
                             ],
                           ),
                           openBuilder: (context, close) =>
-                              MapPage(birdBox: widget.birdBox!.id),
+                              MapPage(birdBox: widget.birdBox.id),
                         ),
                       ),
                     ),
@@ -114,25 +114,12 @@ class _BirdBoxPageState extends State<BirdBoxPage> {
                 const SizedBox(
                   width: double.infinity,
                   child: Text(
-                    'All the bird boxes were cleaned out in February 2021.',
+                    'All the bird boxes were cleaned out in February 2021 and January 2022',
                     textAlign: TextAlign.start,
                   ),
                 ),
                 const SizedBox(height: 8),
-                if (widget.birdBox!.boxState == BoxState.noNest)
-                  const Text(
-                      'This box showed no sign of having been used. If it is not used this year we shall consider moving it.'),
-                if (widget.birdBox!.boxState == BoxState.blueTitNest)
-                  const Text(
-                      'This box contained a fully formed blue tit nest.'),
-                if (widget.birdBox!.boxState == BoxState.greatTitNest)
-                  const Text(
-                      'This box contained a fully formed great tit nest.'),
-                if (widget.birdBox!.boxState == BoxState.partNest)
-                  const Text(
-                      'This box contained a partly formed nest which implies the bird was disturbed before they managed to complete nesting.'),
-                if (widget.birdBox!.boxState == BoxState.unidentifiedNest)
-                  const Text('This box contained a fully formed nest.'),
+                Text(widget.birdBox.boxState)
               ],
             ),
           ),
@@ -145,7 +132,7 @@ class _BirdBoxPageState extends State<BirdBoxPage> {
                   child: RGGridTile(
                     heroTag: 'greattit',
                     navigateTo: EnterObservationsPage(
-                      birdBox: widget.birdBox!.id,
+                      birdBox: widget.birdBox.id,
                     ),
                     setState: () {
                       setState(() {});
@@ -158,9 +145,9 @@ class _BirdBoxPageState extends State<BirdBoxPage> {
                   child: RGGridTile(
                     heroTag: 'bird_box_type',
                     navigateTo:
-                        BirdBoxTypePage(boxType: widget.birdBox!.boxType),
-                    text: '\nBoxType: ${widget.birdBox!.boxType!.name}',
-                    imageAsset: widget.birdBox!.boxType!.image,
+                        BirdBoxTypePage(boxType: widget.birdBox.boxType),
+                    text: '\nBoxType: ${widget.birdBox.boxType.name}',
+                    imageAsset: widget.birdBox.boxType.image,
                   ),
                 ),
               ],
@@ -192,11 +179,11 @@ class _BirdBoxPageState extends State<BirdBoxPage> {
     }
 
     return PageTemplate(
-      title: 'Bird Box ${widget.birdBox!.id}',
-      image: widget.birdBox!.boxType!.image,
+      title: 'Bird Box ${widget.birdBox.id}',
+      image: widget.birdBox.boxType.image,
       widgetList: [content()],
       gridList: const [],
-      heroTag: 'birdbox ${widget.birdBox!.id}',
+      heroTag: 'birdbox ${widget.birdBox.id}',
     );
   }
 }

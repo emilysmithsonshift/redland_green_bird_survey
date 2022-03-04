@@ -191,11 +191,7 @@ class Bird {
   static final Bird starling = Bird(
     name: 'Starling',
     description:
-        "Smaller than blackbirds, Starlings appear black from a distance but are actually very glossy with a sheen of purples and greens."
-        "\n\nThough once abundant, starlings are in huge decline and are now red-listed as a bird of concern."
-        "\n\nThey are extremely sociable birds who like to feed and roost communally."
-        "\n\nWinter roosts can hold anything from a few thousand to several million birds. "
-        "\n\nBefore going to roost they indulge in impressive coordinate manoeuvres called murmations.",
+        "Starlings are attractive birds, with breeding plumages of glossy iridescent purples, blues and greens, pinks and cream. Their plumage at other times of year is more muted, with brown feathers and white markings. At 21-22 cm in length, they are smaller than blackbirds, and have thin, yellow, medium length beaks and short tails. In the breeding season, males and females can be distinguished by their beaks: those of males have blue bases, and females, pink. \n\nIn flight their wings form a triangular shape. Their flight is fast and direct. They are noisy and very sociable birds, spending much of the year in flocks. \n\nWhile they are still regarded as a common garden bird, their numbers have declined sharply elsewhere since the 1980s, even though their natural habitats are very varied, including coastal and inland wetlands, grassland, woodland and farmland. This decline has placed them on the red list. There are estimated to be 1.8 million pairs in the UK. \n\nIn September and October, resident birds’ numbers are increased by the arrival of birds from northern Europe and Scandinavia which overwinter in the UK, escaping more severe conditions in their countries of origin. It is during the winter that the spectacular aerial gatherings known as murmurations may be seen as dusk approaches. Murmurations are collective movements to confuse and evade predators, such as falcons or hawks. Thousands of birds fly in close synchronised formation, diving and wheeling and producing spectacular aerial patterns before plunging into their night time communal roost. Roosts may be in trees such as conifers, in reedbeds, or in manmade structures such as piers. \n\nStarlings mostly eat invertebrates such as earthworms, leatherjackets, spiders and moths, but also seeds and fruit. They often search for food on grass, probing the ground for invertebrates with their beaks. However, their diet contains an increasing proportion of plant matter from the summer onwards. In response to this, their intestines increase in length, to adjust for the greater difficulty of digesting plant matter.  \n\nMale starlings will establish breeding territories from January onwards. The male will attempt to defend a number of suitable nesting sites in tree cavities or below roof tiles, and try to attract several females. However, there is stiff competition for nesting sites, and most starlings therefore end up with one nesting site and one mate. In late March or early April, males build their nests from leaves and dry grass and attract a female by singing near the nest. The female completes the nest, adding moss and feathers. 4-7 eggs are usually laid in mid-April, and these, brooded by the female, hatch about two weeks later. Both parents raise the chicks.  A pair may produce 1-3 clutches a season \n\nSome females engage in what is known as brood parasitism, by depositing one of their eggs in the nest of another female. The females which do this tend to be birds which haven’t yet secured a mate or a nest site. Even though many of them do go on to have a nest of their own later in the season, giving them another chance to breed, the incentive for brood parasitism is that earlier breeding probably gives the resulting young birds a better chance of survival. \n\nThe decline of nesting sites is thought to be one of the factors responsible for the starling’s decline in numbers. In urban areas, modern building practices, including renovations, mean that cavities under roof tiles and behind barge boards and soffits no longer exist, denying starlings nesting opportunities that used to be plentiful. Starlings will, however, readily use nest boxes designed specifically for them. \n\nBirds of prey and domestic cats number amongst the starling’s main predators.",
     images: [
       Photo('assets/starling.png', giorgio),
       Photo('assets/starling2.png', giorgio),
@@ -205,7 +201,7 @@ class Bird {
     scientificName: 'Sturnus vulgaris',
     birdFamily: 'Starling',
     conservationStatus: 'Red',
-    birdType: BirdType.other,
+    birdType: BirdType.nesting,
     id: 11,
   );
   static final Bird wagtail = Bird(
@@ -255,9 +251,7 @@ class Bird {
   static final Bird coaltit = Bird(
       name: 'Coal tit',
       description:
-          "The coal tit has a distinctive grey back, black cap and white patch at the back of its neck. "
-          "\n\nIn winter they form flocks with other tits."
-          "\n\nThey have a song of repeated phrases that are similar to those the great tit but more high pitched.",
+          "The smallest of the UK’s tits, the coal tit weighs only 8-10 grams and has a length of about 11-12cm. It’s a less colourful bird than either the blue tit or the great tit, with more subdued dominant colours. Its upperparts are olive-grey and its underparts buff coloured, and each wing has white bars. The coal tit’s crown and bib are black, and cheeks and neck nape white. \n\nIt’s a shy bird with a preference for conifers. Its bill is smaller and thinner than those of blue and great tits, which enables it to feed on conifer seeds that the other tits can’t access. \n\nCoal tits also eat insects and seeds such as beech mast and will readily eat food such as seeds, suet and mealworms from bird food tables and feeders.  Coal tits store food when it is plentiful, intending the food to be for less easy times; however, they often forget where they have stashed their stores. Great tits have been observed watching coal tits hide their food, and then plundering the cache. \n\nThe song is a “pee-chew”, and is a bit like a faster great tit song. \n\nIt’s thought that there are around 680,000 breeding pairs in the UK. \n\nCoal tits are sometimes seen in the vicinity of Redland Green.",
       images: [
         Photo('assets/coaltit1.png', giorgio),
         Photo('assets/coaltit2.png', giorgio),
@@ -270,10 +264,7 @@ class Bird {
   static final Bird goldfinch = Bird(
     name: 'GoldFinch',
     description:
-        "Goldfinches are probably the most exotic birds you'll see on the Green. Thy have a bright red face and yellow wing patch. "
-        "\n\nThey have a delightful twittering song and call."
-        "\n\nTheir long fine beaks enable them to extract seeds from thistles and teasels. "
-        "\n\nThey are increasingly using bird tables and feeders.",
+        "The goldfinch is a bird of woodland and farmland, but has in the last decades colonised urban areas where they visit bird food tables and feeders. Adults are brightly coloured golden-green birds with red faces, white necks, black caps and eye markings, and black wings with yellow patches; juveniles lack the red faces. Goldfinches are a little smaller than robins. They are seed specialists, with long fine beaks which allow them to extract seeds from plants such a thistles and teasels that other birds can’t reach. They also eat insects. \n\nThey have a beautiful, liquid twittering song and are highly sociable birds, often breeding in loose colonies and flying in small flocks. It’s a restless bird, often on the wing, and often singing as it flies. In a good year, they may raise several broods of around 5 chicks. In winter, larger flocks of maybe 100 birds will congregate and search for food. In very poor winter weather, some birds may migrate to France and Spain. \n\nGoldfinches can often be seen in Redland’s allotments and parks. They benefit from areas with trees and bushes and untended places with plants bearing seeds. Places are kept wild for species such as the goldfinch in Redland’s allotments. \n\nThere are estimated to be around 1.2 million breeding pairs in the UK. Their numbers have grown considerably since they became a protected species; prior to that, human persecution had caused steep declines in their numbers.",
     images: [
       Photo('assets/goldfinch1.png', giorgio),
       Photo('assets/goldfinch2.png', giorgio),
@@ -289,9 +280,7 @@ class Bird {
   static final Bird longtailedtit = Bird(
     name: 'Long-tailed Tit',
     description:
-        "These adorable tiny birds with tails longer than their body is often seen in flocks of about 20 birds."
-        "\n\nThey rove the woods and hedgerows and they can be quite noisy. "
-        "\n\nTheir undulating flight is quite distinctive.",
+        "Long-tailed tits are small and dainty birds of around 14cm in length. They are easily recognisable because their tails are longer than their body length. Long-tailed tits have black, white and pink backs, white heads with black eyestripes and pale pink undersides. Their tails are black and white. Their black beaks are short. They have an undulating flight pattern. \n\nDespite their name, long-tailed tits aren’t closely related to the other British tits, and belong to a different family, Aegithalidae, the tit family being the Paridae family. \n\nThey are very sociable birds, generally spending their time in groups of up to 20 individuals, and are seldom seen alone. In winter they may form larger flocks with other species of tit. Long-tailed tits are insect and invertebrate specialists, although they do eat seeds in winter when food is scarce. The birds are very acrobatic, and pluck their prey from trees and other vegetation. \n\nIn winter, the birds roost overnight in groups in trees and shrubs, and nestle together very closely in order to avoid losing body heat, a threat resulting from their very small body mass. They are one of the species that might use nest boxes to roost in during winter. Mortality can be as high as 80% in very cold winters. \n\nThey love the cover of trees and bushes, and can be heard making contact calls with each other that sound rather like a high-pitched “tsee-tsee-tsee”. Their song is characterised by trills and twittering. \n\nPlentiful tree and bush cover around Redland Green, and particularly in the neighbouring allotments provide a haven for these beautiful birds, and they can be seen and heard around Redland Green. \n\nThere are estimated to be 340,000 breeding territories in the UK. Their numbers have been increasing in the last decades, possibly because of fat and seeds put out on bird tables and in feeders.",
     images: [
       Photo('assets/longtailedtit.png', giorgio),
       Photo('assets/longtailedtit2.png', giorgio),
@@ -443,14 +432,18 @@ class Bird {
     id: 22,
   );
 
-  // static final Bird pigeon = Bird(
-  //   name: 'Pigeon',
-  //   description: '',
-  //   images: [
-  //     Photo('assets/pigeon.png', giorgio),
-  //   ],
-  //
-  // );
+  static final Bird pigeon = Bird(
+    scientificName: 'Columba palumbus',
+    birdFamily: 'Columbidae (Pigeons and doves)',
+    conservationStatus: 'Amber',
+    birdType: BirdType.other,
+    name: 'Pigeon',
+    description:
+        "The woodpigeon is the UK’s largest and most common pigeon. It’s a plump bird with a length of 40-42cm and weighs around half a kilo. Largely grey, the woodpigeon has a pinkish breast, iridescent green and purple neck feathers, a white neck patch and white wing patches. The bird is found across the UK, having extended its original habitat of woodlands and fields to urban parks and gardens. Its distinctive cooing call is a sound familiar to most. \n\nIts fondness for brassicas (such cabbages, kale, brussels sprouts) and peas and grains makes it unpopular with farmers and allotmenters. It also eats buds, shoots, seeds and berries, as well as invertebrates such as insects and worms. In winter, the birds can fill their crops with seeds and other food, which they digest overnight. The crops can hold a considerable amount of food. \n\n Although the bird is on the amber list of conservation concern, as an agricultural pest the bird is shot throughout the year, and it’s also possible to buy wood pigeon for eating. \n\n Pigeons breed any time throughout the year. Their nests are generally made in forks of trees or on branches, and look like rather untidy accumulations of twigs. They often re-use their nests. No more than two eggs are laid in each brood. \n\n Woodpigeons feed their young on “pigeon milk” – a regurgitated and extremely rich milky substance produced in the parents’ crops (a food-storage organ) during the breeding season. This ensures the young birds put on weight very rapidly. \n\n There are estimated to be 5.4 million breeding pairs in UK. Numbers have increased in the last 50 years, and it’s thought this might be because of the cultivation of winter cereals and oilseed rape, providing more winter food. In the autumn, many wood pigeons from the continent migrate here to overwinter and large flocks may form. Woodpigeons are often found on and around Redland Green.",
+    images: [
+      Photo('assets/pigeon.png', giorgio),
+    ],
+  );
   static final List<Bird> birdsList = [
     blackbird,
     blueTit,
@@ -474,6 +467,7 @@ class Bird {
     jackdaw,
     piedFlycatcher,
     kestrel,
+    pigeon,
     other,
     unidentified,
     none

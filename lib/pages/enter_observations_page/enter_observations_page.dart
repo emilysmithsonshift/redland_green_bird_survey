@@ -44,7 +44,7 @@ class _EnterObservationsPageState extends State<EnterObservationsPage> {
   Future initialise() async {
     if (FirebaseAuth.instance.currentUser == null ||
         !FirebaseAuth.instance.currentUser!.emailVerified) {
-      return WidgetsBinding.instance!
+      return WidgetsBinding.instance
           .addPostFrameCallback((_) => needToRegister(context));
     }
     await checkShowModal();
@@ -54,7 +54,7 @@ class _EnterObservationsPageState extends State<EnterObservationsPage> {
       });
     }
     if (showModal) {
-      WidgetsBinding.instance!
+      WidgetsBinding.instance
           .addPostFrameCallback((_) => showInstructions(context));
     }
   }

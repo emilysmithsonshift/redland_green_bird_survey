@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../../settings.dart';
 
-class RGListTile extends StatelessWidget {
+class RGListTile extends StatefulWidget {
   final String? imageAsset;
   final Widget? widget;
   final bool? imageLeft;
@@ -21,13 +21,26 @@ class RGListTile extends StatelessWidget {
       : super(key: key);
 
   @override
+  State<RGListTile> createState() => _RGListTileState();
+}
+
+class _RGListTileState extends State<RGListTile> {
+  bool pressed = false;
+  @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {
+      onTap: () async {
+        setState(() {
+          pressed = true;
+        });
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => navigateTo!),
+          MaterialPageRoute(builder: (context) => widget.navigateTo!),
         );
+        await Future.delayed(const Duration(seconds: 1));
+        setState(() {
+          pressed = false;
+        });
       },
       child: Container(
         decoration: defaultBoxDecoration(),
@@ -35,24 +48,26 @@ class RGListTile extends StatelessWidget {
         child: Container(
           constraints: const BoxConstraints(maxWidth: 400),
           height: 200,
-          decoration: const BoxDecoration(
-            borderRadius: BorderRadius.all(
+          decoration: BoxDecoration(
+            borderRadius: const BorderRadius.all(
               Radius.circular(20.0),
             ),
-            boxShadow: [
-              BoxShadow(
-                color: Colors.grey,
-                offset: Offset(5.0, 5.0),
-                blurRadius: 5.0,
-              )
-            ],
+            boxShadow: pressed
+                ? []
+                : [
+                    const BoxShadow(
+                      color: Colors.grey,
+                      offset: Offset(5.0, 5.0),
+                      blurRadius: 5.0,
+                    )
+                  ],
           ),
           child: Row(
             children: [
-              if (imageLeft!)
+              if (widget.imageLeft!)
                 Flexible(
                   child: Hero(
-                    tag: heroTag ?? '',
+                    tag: widget.heroTag ?? '',
                     child: Container(
                       decoration: BoxDecoration(
                         borderRadius: const BorderRadius.only(
@@ -61,9 +76,9 @@ class RGListTile extends StatelessWidget {
                         ),
                         image: DecorationImage(
                           fit: BoxFit.cover,
-                          alignment: alignment ?? Alignment.center,
+                          alignment: widget.alignment ?? Alignment.center,
                           image: AssetImage(
-                            imageAsset!,
+                            widget.imageAsset!,
                           ),
                         ),
                       ),
@@ -74,20 +89,21 @@ class RGListTile extends StatelessWidget {
                 flex: 2,
                 child: ClipRRect(
                     borderRadius: BorderRadius.only(
-                      topRight: Radius.circular(imageLeft! ? 20.0 : 0),
-                      bottomRight: Radius.circular(imageLeft! ? 20.0 : 0),
-                      topLeft: Radius.circular(imageLeft! ? 0.0 : 20),
-                      bottomLeft: Radius.circular(imageLeft! ? 0.0 : 20),
+                      topRight: Radius.circular(widget.imageLeft! ? 20.0 : 0),
+                      bottomRight:
+                          Radius.circular(widget.imageLeft! ? 20.0 : 0),
+                      topLeft: Radius.circular(widget.imageLeft! ? 0.0 : 20),
+                      bottomLeft: Radius.circular(widget.imageLeft! ? 0.0 : 20),
                     ),
                     child: Container(
                         height: double.infinity,
                         color: Colors.green[50],
-                        child: widget)),
+                        child: widget.widget)),
               ),
-              if (!imageLeft!)
+              if (!widget.imageLeft!)
                 Flexible(
                   child: Hero(
-                    tag: heroTag ?? '',
+                    tag: widget.heroTag ?? '',
                     child: Container(
                       decoration: BoxDecoration(
                         borderRadius: const BorderRadius.only(
@@ -96,9 +112,9 @@ class RGListTile extends StatelessWidget {
                         ),
                         image: DecorationImage(
                           fit: BoxFit.cover,
-                          alignment: alignment ?? Alignment.center,
+                          alignment: widget.alignment ?? Alignment.center,
                           image: AssetImage(
-                            imageAsset!,
+                            widget.imageAsset!,
                           ),
                         ),
                       ),

@@ -178,9 +178,9 @@ class _PopUpState extends State<PopUp> {
             leading: Hero(
                 tag: 'starling',
                 child: ClipOval(
-                    child: Image.asset(widget.marker!.birdBox.boxType!.image))),
+                    child: Image.asset(widget.marker!.birdBox.boxType.image))),
             title: Text('Bird Box ${widget.marker!.birdBox.id}'),
-            subtitle: Text(widget.marker!.birdBox.locationDescription!),
+            subtitle: Text(widget.marker!.birdBox.locationDescription),
           ),
         ),
       ),
